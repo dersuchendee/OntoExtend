@@ -16,6 +16,75 @@ from tqdm import tqdm
 import time
 import rdflib
 from rdflib import Graph, Namespace, RDF, RDFS, OWL, URIRef, Literal
+from copy import deepcopy
+from collections import defaultdict
+
+# === pricing you control (USD per 1K tokens) ===
+# Prefer env vars so you don't hardcode changing prices.
+def _p(env, default):
+    v = os.getenv(env)
+    return float(v) if v else default
+
+PRICES_PER_1K = {
+    # Chat/completions models (input vs output)
+    "gpt-4o": {
+        "input": _p("PRICE_GPT_4O_INPUT_PER_1K", None),   # e.g., 0.0025  (set in env)
+        "output": _p("PRICE_GPT_4O_OUTPUT_PER_1K", None),  # e.g., 0.0100  (set in env)
+    },
+    # Embeddings models (input only)
+    "text-embedding-3-small": {
+        "input": _p("PRICE_TEXT_EMBEDDING_3_SMALL_PER_1K", 0.00002),  # $0.02 / 1M by default
+    },
+}
+
+
+
+
+class TokenCostTracker:
+    def __init__(self):
+        # per-model counters
+        self.totals = defaultdict(lambda: {"prompt": 0, "completion": 0, "embedding": 0})
+
+    def snapshot(self):
+        return deepcopy(self.totals)
+
+    def diff(self, before, after):
+        out = {}
+        for m in set(before.keys()) | set(after.keys()):
+            out[m] = {
+                "prompt":  after[m]["prompt"]  - before.get(m, {}).get("prompt", 0),
+                "completion": after[m]["completion"] - before.get(m, {}).get("completion", 0),
+                "embedding": after[m]["embedding"] - before.get(m, {}).get("embedding", 0),
+            }
+        return out
+
+    def note_chat(self, model: str, usage) -> None:
+        # usage has prompt_tokens, completion_tokens, total_tokens
+        if not usage:
+            return
+        self.totals[model]["prompt"] += int(getattr(usage, "prompt_tokens", 0) or 0)
+        self.totals[model]["completion"] += int(getattr(usage, "completion_tokens", 0) or 0)
+
+    def note_embed(self, model: str, usage, fallback_text: Optional[str] = None) -> None:
+        if usage and getattr(usage, "total_tokens", None) is not None:
+            self.totals[model]["embedding"] += int(usage.total_tokens)
+        elif fallback_text is not None:
+            # conservative fallback: count with tiktoken if API didn't return usage
+            self.totals[model]["embedding"] += len(ENC.encode(fallback_text))
+
+    def model_cost_usd(self, model: str, counts: Dict[str, int]) -> float:
+        p = PRICES_PER_1K.get(model, {})
+        cin  = (counts.get("prompt", 0) + counts.get("embedding", 0)) / 1000.0 * (p.get("input") or 0.0)
+        cout = counts.get("completion", 0) / 1000.0 * (p.get("output") or 0.0)
+        return cin + cout
+
+    def totals_cost_usd(self) -> float:
+        total = 0.0
+        for m, c in self.totals.items():
+            total += self.model_cost_usd(m, c)
+        return total
+
+token_tracker = TokenCostTracker()
 
 
 ENC = get_encoding("cl100k_base")
@@ -36,7 +105,30 @@ PROCESSING_LOG_CSV = CACHE_DIR / "cq_processing_log.csv"
 COMBINED_ONTOLOGY_FILE = CACHE_DIR / "combined_ontology.ttl"
 INDIVIDUAL_ONTOLOGIES_DIR = CACHE_DIR / "individual_ontologies"
 INDIVIDUAL_ONTOLOGIES_DIR.mkdir(exist_ok=True)
+TOKEN_COST_CSV = CACHE_DIR / "token_cost_log.csv"
 
+def log_cost_row(cq_index: int, cq: str, deltas: Dict[str, Dict[str, int]]) -> None:
+    TOKEN_COST_CSV.parent.mkdir(exist_ok=True)
+    newfile = not TOKEN_COST_CSV.exists()
+    with TOKEN_COST_CSV.open("a", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        if newfile:
+            writer.writerow([
+                "timestamp", "cq_index", "cq",
+                "model", "prompt_tokens", "completion_tokens", "embedding_tokens", "cost_usd"
+            ])
+        for model, counts in deltas.items():
+            cost = token_tracker.model_cost_usd(model, counts)
+            writer.writerow([
+                datetime.now().isoformat(),
+                cq_index,
+                cq[:200] + ("..." if len(cq) > 200 else ""),
+                model,
+                counts.get("prompt", 0),
+                counts.get("completion", 0),
+                counts.get("embedding", 0),
+                f"{cost:.6f}",
+            ])
 # ── Prefix collection ──────────────────────────────────────────────────────
 STANDARD_PREFIXES = {
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
@@ -368,6 +460,8 @@ _STORE = None
 
 async def embed(text: str) -> np.ndarray:
     r = await openai_client.embeddings.create(model=EMBED_MODEL, input=text)
+    # Track embedding tokens (prefer API usage; fallback to tiktoken)
+    token_tracker.note_embed(EMBED_MODEL, getattr(r, "usage", None), fallback_text=text)
     return np.asarray(r.data[0].embedding, dtype="float32")[None, :]
 
 
@@ -434,7 +528,7 @@ USER_TMPL = """
 
 You are a helpful assistant designed to generate ontologies. You receive a Competency Question (CQ) and an Ontology Story (OS). \n
 Based on CQ, which is a requirement for the ontology, and OS, which tells you what the context of the ontology is, your task is generating one ontology (O). The goal is to generate O that models the CQ properly. This means there is a way to write a SPARQL query to extract the answer to this CQ in O.  \n
-Reuse the relevant ontology elements provided in the RELEVANT ONTOLOGY ELEMENTS section below whenever possible. These elements come from multiple reference ontologies. Only create new elements if absolutely necessary. \n
+Reuse the relevant ontology elements provided in the RELEVANT ONTOLOGY ELEMENTS section below whenever possible. These elements come from multiple reference ontologies. Only create new elements if absolutely necessary. In any case, add labels and comments. \n
 Use the following prefixes: \n
 {prefix_block}\n
 
@@ -460,15 +554,17 @@ async def ask_llm(prompt: str) -> str:
     try:
         response = await openai_client.chat.completions.create(
             model=LLM_MODEL,
-            temperature=0.1,
+            temperature=0,
             messages=[
                 {"role": "system", "content": SYS_PROMPT},
                 {"role": "user", "content": prompt}
             ]
         )
+        # Track chat tokens
+        token_tracker.note_chat(LLM_MODEL, getattr(response, "usage", None))
         return response.choices[0].message.content or ""
     except Exception as e:
-        print(f"[red]❌ LLM Error: {e}[/red]")
+        print(f"[red]LLM Error: {e}[/red]")
         raise
 
 
@@ -711,6 +807,7 @@ async def process_cq_dataset(csv_file: str, ontology_files: List[str],
 
     for idx, row in df.iterrows():
         cq = str(row['CQ']).strip()
+        before = token_tracker.snapshot()
 
         if not cq or cq.lower() in ['nan', 'none', '']:
             print(f"[yellow]Row {idx}: Empty CQ, skipping[/yellow]")
@@ -741,12 +838,15 @@ async def process_cq_dataset(csv_file: str, ontology_files: List[str],
                 log_processing_result(idx, cq, True, len(relevant_elements), source_counts, processing_time)
                 successful += 1
 
-                print(f"[green]✅ CQ {idx} processed successfully[/green]")
+                print(f"[green]CQ {idx} processed successfully[/green]")
             else:
-                print(f"[red]❌ CQ {idx}: Generated invalid Turtle[/red]")
+                print(f"[red]CQ {idx}: Generated invalid Turtle[/red]")
                 log_processing_result(idx, cq, False, len(relevant_elements), source_counts,
                                       time.time() - cq_start_time, "Invalid Turtle")
                 failed += 1
+                after = token_tracker.snapshot()
+                deltas = token_tracker.diff(before, after)
+                log_cost_row(idx, cq, deltas)
 
         except Exception as e:
             processing_time = time.time() - cq_start_time
@@ -754,6 +854,9 @@ async def process_cq_dataset(csv_file: str, ontology_files: List[str],
             print(f"[red]CQ {idx} failed: {error_msg}[/red]")
             log_processing_result(idx, cq, False, 0, {}, processing_time, error_msg)
             failed += 1
+            after = token_tracker.snapshot()
+            deltas = token_tracker.diff(before, after)
+            log_cost_row(idx, cq, deltas)
 
         pbar.update(1)
 
@@ -786,6 +889,8 @@ async def process_cq_dataset(csv_file: str, ontology_files: List[str],
     print(f"Successful: {successful}")
     print(f"Failed: {failed}")
     print(f"Success rate: {(successful / len(df) * 100):.1f}%")
+    print(f"[bold green]💲 Estimated total API cost (USD): {token_tracker.totals_cost_usd():.6f}[/bold green]")
+
     #print(
 
 
@@ -854,7 +959,7 @@ def expand_onto_args(files: Optional[List[str]], dirs: Optional[List[str]]) -> L
         for d in dirs:
             p = Path(d)
             if not p.exists() or not p.is_dir():
-                print(f"[yellow]⚠️ Not a directory (skipped): {d}[/yellow]")
+                print(f"[yellow]Not a directory (skipped): {d}[/yellow]")
                 continue
             candidates.extend(str(f) for f in p.rglob("*.ttl"))
             candidates.extend(str(f) for f in p.rglob("*.owl"))
