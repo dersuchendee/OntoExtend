@@ -1,0 +1,111 @@
+@prefix : <http://www.example.org/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix actorODP2: <http://w3id.org/CEON/ontology/actorODP/> .
+@prefix brick6: <https://brickschema.org/schema/Brick#> .
+@prefix csvw6: <http://www.w3.org/ns/csvw#> .
+@prefix cvn: <http://w3id.org/CEON/ontology/cvn/> .
+@prefix dc6: <http://purl.org/dc/elements/1.1/> .
+@prefix dcam6: <http://purl.org/dc/dcam/> .
+@prefix dcat6: <http://www.w3.org/ns/dcat#> .
+@prefix dcmitype6: <http://purl.org/dc/dcmitype/> .
+@prefix dcterms6: <http://purl.org/dc/terms/> .
+@prefix doap6: <http://usefulinc.com/ns/doap#> .
+@prefix foaf6: <http://xmlns.com/foaf/0.1/> .
+@prefix geo6: <http://www.opengis.net/ont/geosparql#> .
+@prefix ns: <http://w3id.org/CEON/ontology/actor/> .
+@prefix ns3: <http://w3id.org/CEON/ontology/datasheet/> .
+@prefix ns4: <http://w3id.org/CEON/ontology/material/> .
+@prefix ns5: <http://w3id.org/CEON/ontology/product/> .
+@prefix ns6: <http://w3id.org/CEON/ontology/statement/> .
+@prefix odp4: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix odrl6: <http://www.w3.org/ns/odrl/2/> .
+@prefix org6: <http://www.w3.org/ns/org#> .
+@prefix processODP: <http://w3id.org/CEON/ontology/processODP/> .
+@prefix prof6: <http://www.w3.org/ns/dx/prof/> .
+@prefix prov6: <http://www.w3.org/ns/prov#> .
+@prefix qb6: <http://purl.org/linked-data/cube#> .
+@prefix resourceODP5: <http://w3id.org/CEON/ontology/resourceODP/> .
+@prefix schema6: <https://schema.org/> .
+@prefix sh6: <http://www.w3.org/ns/shacl#> .
+@prefix skos6: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa6: <http://www.w3.org/ns/sosa/> .
+@prefix ssn6: <http://www.w3.org/ns/ssn/> .
+@prefix time6: <http://www.w3.org/2006/time#> .
+@prefix vann6: <http://purl.org/vocab/vann/> .
+@prefix void6: <http://rdfs.org/ns/void#> .
+@prefix wgs6: <https://www.w3.org/2003/01/geo/wgs84_pos#> .
+
+# Combined ontology generated from competency questions
+# Reference ontologies: actor.ttl, actorODP.ttl, datasheet.ttl, material.ttl, product.ttl, statement.ttl
+# Generated on: 2025-08-05T16:34:04.697185
+# Total fragments: 3
+
+<http://www.example.org/ontology> a owl:Ontology .
+
+# ── Fragment 1: What materials does a fibre contain? ──
+
+:Material rdf:type owl:Class ;
+    rdfs:subClassOf ns4:Matter .
+
+:Fibre rdf:type owl:Class ;
+    rdfs:subClassOf :Material .
+
+:containsMaterial rdf:type owl:ObjectProperty ;
+    rdfs:domain :Fibre ;
+    rdfs:range :MaterialComponent ;
+    rdfs:subPropertyOf ns4:hasMaterialComponent .
+
+:MaterialComponent rdf:type owl:Class ;
+    rdfs:subClassOf ns4:MaterialComponent .
+
+# ── Fragment 2: What are the properties of and data about that fibre? ──
+
+:DataAboutFibre rdf:type owl:Class ;
+    rdfs:subClassOf [
+        rdf:type owl:Restriction ;
+        owl:onProperty ns6:statementAbout ;
+        owl:someValuesFrom :Fibre
+    ] .
+
+:Fibre rdf:type owl:Class ;
+    rdfs:subClassOf ns4:Material .
+
+:hasProperty rdf:type owl:ObjectProperty ;
+    rdfs:domain :Fibre ;
+    rdfs:range owl:Thing . # GENERATED
+
+:hasData rdf:type owl:ObjectProperty ;
+    rdfs:domain :Fibre ;
+    rdfs:range ns3:DataSheet . # GENERATED
+
+# ── Fragment 3: When were material content and/or properties of this fiber changed? ──
+
+:MaterialChangeEvent rdf:type owl:Class ;
+    rdfs:subClassOf prov6:Activity . # GENERATED
+
+:hasMaterialChange rdf:type owl:ObjectProperty ;
+    rdfs:domain ns4:Material ;
+    rdfs:range :MaterialChangeEvent . # GENERATED
+
+:hasPropertyChange rdf:type owl:ObjectProperty ;
+    rdfs:domain ns4:Material ;
+    rdfs:range :MaterialChangeEvent . # GENERATED
+
+:hasChangeTime rdf:type owl:DatatypeProperty ;
+    rdfs:domain :MaterialChangeEvent ;
+    rdfs:range xsd:dateTime . # GENERATED
+
+ns4:Material rdf:type owl:Class .
+
+ns6:MassFractionOfRecycledMaterialStatement rdf:type owl:Class ;
+    rdfs:subClassOf ns6:MFOfPreConsumerRecycledMaterialContentStatement , 
+                    ns6:MFOfPostConsumerRecycledMaterialContentStatement .
+
+:MaterialChangeEvent rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :hasChangeTime ;
+    owl:someValuesFrom xsd:dateTime
+] . # GENERATED
