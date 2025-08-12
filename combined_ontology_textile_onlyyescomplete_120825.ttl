@@ -1,0 +1,560 @@
+@prefix : <http://www.example.org/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix actorODP2: <http://w3id.org/CEON/ontology/actorODP/> .
+@prefix brick6: <https://brickschema.org/schema/Brick#> .
+@prefix csvw6: <http://www.w3.org/ns/csvw#> .
+@prefix cvn: <http://w3id.org/CEON/ontology/cvn/> .
+@prefix dc6: <http://purl.org/dc/elements/1.1/> .
+@prefix dcam6: <http://purl.org/dc/dcam/> .
+@prefix dcat6: <http://www.w3.org/ns/dcat#> .
+@prefix dcmitype6: <http://purl.org/dc/dcmitype/> .
+@prefix dcterms6: <http://purl.org/dc/terms/> .
+@prefix doap6: <http://usefulinc.com/ns/doap#> .
+@prefix foaf6: <http://xmlns.com/foaf/0.1/> .
+@prefix geo6: <http://www.opengis.net/ont/geosparql#> .
+@prefix ns: <http://w3id.org/CEON/ontology/actor/> .
+@prefix ns3: <http://w3id.org/CEON/ontology/datasheet/> .
+@prefix ns4: <http://w3id.org/CEON/ontology/material/> .
+@prefix ns5: <http://w3id.org/CEON/ontology/product/> .
+@prefix ns6: <http://w3id.org/CEON/ontology/statement/> .
+@prefix odp4: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix odrl6: <http://www.w3.org/ns/odrl/2/> .
+@prefix org6: <http://www.w3.org/ns/org#> .
+@prefix processODP: <http://w3id.org/CEON/ontology/processODP/> .
+@prefix prof6: <http://www.w3.org/ns/dx/prof/> .
+@prefix prov6: <http://www.w3.org/ns/prov#> .
+@prefix qb6: <http://purl.org/linked-data/cube#> .
+@prefix resourceODP5: <http://w3id.org/CEON/ontology/resourceODP/> .
+@prefix schema6: <https://schema.org/> .
+@prefix sh6: <http://www.w3.org/ns/shacl#> .
+@prefix skos6: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa6: <http://www.w3.org/ns/sosa/> .
+@prefix ssn6: <http://www.w3.org/ns/ssn/> .
+@prefix time6: <http://www.w3.org/2006/time#> .
+@prefix vann6: <http://purl.org/vocab/vann/> .
+@prefix void6: <http://rdfs.org/ns/void#> .
+@prefix wgs6: <https://www.w3.org/2003/01/geo/wgs84_pos#> .
+
+# Combined ontology generated from competency questions
+# Reference ontologies: actor.ttl, actorODP.ttl, datasheet.ttl, material.ttl, product.ttl, statement.ttl
+# Generated on: 2025-08-12T07:24:28.520584
+# Total fragments: 12
+
+<http://www.example.org/ontology> a owl:Ontology .
+
+# ── Fragment 1: What materials does a fibre contain? ──
+
+#################################################################
+# Ontology Header
+#################################################################
+
+:Ontology a owl:Ontology .
+
+#################################################################
+# Reused Classes (from material ontology)
+#################################################################
+
+# Material and MaterialComponent already exist in the referenced ontology.
+# Below we add the necessary subclass axiom for clarity.
+
+:MaterialComponent rdfs:subClassOf :Material .
+
+#################################################################
+# New Class for Fibre
+#################################################################
+
+:Fibre a owl:Class ; # GENERATED
+  rdfs:label "Fibre"@en ;
+  rdfs:comment "A fibre is a type of Material that may contain other materials."@en ;
+  rdfs:subClassOf 
+    :Material ,
+    [ a owl:Restriction ;
+      owl:onProperty :hasMaterialComponent ;
+      owl:someValuesFrom :MaterialComponent
+    ] .
+
+# ── Fragment 2: What products (fibers) are in my library? ──
+
+########################################################################
+# Classes
+########################################################################
+
+:Library a owl:Class ;  # GENERATED
+  rdfs:subClassOf ns5:Location ;
+  rdfs:label "Library" ;
+  rdfs:comment "A library that stores products (e.g., fibers)" .
+
+:Fiber a owl:Class ;  # GENERATED
+  rdfs:subClassOf ns5:Product ;
+  rdfs:label "Fiber" ;
+  rdfs:comment "A fiber is a type of product" .
+
+########################################################################
+# Object Properties
+########################################################################
+
+:hasItem a owl:ObjectProperty ;  # GENERATED
+  rdfs:domain :Library ;
+  rdfs:range ns5:Product ;
+  rdfs:label "has item" ;
+  rdfs:comment "Indicates that a library stores a particular product" .
+
+# ── Fragment 3: What substances (products) are included in Restricted Substance List (RSL)? ──
+
+#################################################################
+# Generated ontology elements for Restricted Substance List (RSL)
+#################################################################
+
+:RestrictedSubstanceList
+    a owl:Class ;
+    rdfs:subClassOf ns5:Regulation ;
+    rdfs:label "Restricted Substance List"@en ;
+    rdfs:comment "A restricted substance list enumerates substances that are banned or limited in products."@en ;
+    # Ensure each RSL includes at least one chemical substance
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :includesRestrictedSubstance ;
+        owl:someValuesFrom ns4:ChemicalSubstance
+    ] ; 
+    # GENERATED
+.
+
+:includesRestrictedSubstance
+    a owl:ObjectProperty ;
+    rdfs:label "includes restricted substance"@en ;
+    rdfs:comment "Indicates that a Restricted Substance List includes a chemical substance."@en ;
+    rdfs:domain :RestrictedSubstanceList ;
+    rdfs:range ns4:ChemicalSubstance ;
+    # GENERATED
+.
+
+# ── Fragment 4: What are the components of a product? ──
+
+:OntologyProductComponents a owl:Ontology ;
+    rdfs:label "Ontology for Product Components" .
+
+:Product a owl:Class ;
+    rdfs:label "Product" ;
+    rdfs:comment "Physical-based object designed for or utilized with a purpose." .
+
+:hasProductComponent a owl:ObjectProperty ;
+    rdfs:label "has product component" ;
+    rdfs:comment "hasProductComponent intends to represent that a product can have other product components." ;
+    rdfs:domain :Product ;
+    rdfs:range :Product .
+
+:ProductComposition a owl:Class ;
+    rdfs:label "Product composition" ;
+    rdfs:comment "A product composition is the composed information of a product in terms of a specific component, in which such a component is also a product." ;
+    rdfs:subClassOf ns5:Composition .
+
+:Product rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty :hasProductComponent ;
+    owl:allValuesFrom :Product
+] .
+
+# ── Fragment 5: Is a material recognized as a recycled material? ──
+
+:MyOntology a owl:Ontology .
+
+#################################################################
+# Reused Classes from references
+#################################################################
+
+ns4:Material a owl:Class ;
+  rdfs:label "Material"@en .
+
+ns6:RecycledMaterialStatement a owl:Class ;
+  rdfs:label "Recycled Material Statement"@en ;
+  rdfs:comment "Recycled Material Statement in PCDS."@en .
+
+#################################################################
+# New Object Property
+#################################################################
+
+:hasRecycledMaterialStatement
+  a owl:ObjectProperty ;
+  rdfs:label "has recycled material statement"@en ;
+  rdfs:comment "Relates a Material to a RecycledMaterialStatement."@en ;
+  rdfs:domain ns4:Material ;
+  rdfs:range ns6:RecycledMaterialStatement .
+  # GENERATED
+
+#################################################################
+# New Class for recognized recycled material
+#################################################################
+
+:RecognizedRecycledMaterial
+  a owl:Class ;
+  rdfs:label "Recognized Recycled Material"@en ;
+  rdfs:comment "A material that is recognized as a recycled material."@en ;
+  rdfs:subClassOf 
+    ns4:Material ,
+    [ a owl:Restriction ;
+      owl:onProperty :hasRecycledMaterialStatement ;
+      owl:someValuesFrom ns6:RecycledMaterialStatement
+    ] .
+  # GENERATED
+
+# ── Fragment 6: What resources are used in the assembly process of a fiber and what are the quan... ──
+
+#################################################################
+## Classes
+#################################################################
+
+:AssemblyProcess rdf:type owl:Class ;  # GENERATED
+  rdfs:label "Assembly Process"@en ;
+  rdfs:comment "Represents the assembly process for a product."@en ;
+  rdfs:subClassOf [
+    rdf:type owl:Restriction ;
+    owl:onProperty :hasResourceUse ;
+    owl:minCardinality "1"^^xsd:nonNegativeInteger
+  ] .
+
+:ResourceUse rdf:type owl:Class ;  # GENERATED
+  rdfs:label "Resource Use"@en ;
+  rdfs:comment "Links a resource with its quantity used in a process."@en .
+
+:Fiber rdf:type owl:Class ;  # GENERATED
+  rdfs:label "Fiber"@en ;
+  rdfs:comment "Represents a fiber product."@en ;
+  rdfs:subClassOf ns5:Product .
+
+#################################################################
+## Object Properties
+#################################################################
+
+:hasAssemblyProcess rdf:type owl:ObjectProperty ;  # GENERATED
+  rdfs:label "has assembly process"@en ;
+  rdfs:comment "Associates a fiber with its assembly process."@en ;
+  rdfs:domain :Fiber ;
+  rdfs:range :AssemblyProcess .
+
+:hasResourceUse rdf:type owl:ObjectProperty ;  # GENERATED
+  rdfs:label "has resource use"@en ;
+  rdfs:comment "Associates a process with a particular resource usage."@en ;
+  rdfs:domain :AssemblyProcess ;
+  rdfs:range :ResourceUse .
+
+:resource rdf:type owl:ObjectProperty ;  # GENERATED
+  rdfs:label "resource"@en ;
+  rdfs:comment "Indicates the manufacturing resource used."@en ;
+  rdfs:domain :ResourceUse ;
+  rdfs:range actorODP2:ManufacturingResource .
+
+#################################################################
+## Data Properties
+#################################################################
+
+:quantity rdf:type owl:DatatypeProperty ;  # GENERATED
+  rdfs:label "quantity"@en ;
+  rdfs:comment "Indicates the quantity of the resource used."@en ;
+  rdfs:domain :ResourceUse ;
+  rdfs:range xsd:decimal .
+
+# ── Fragment 7: What properties does a material have? ──
+
+#################################################################
+# Classes
+#################################################################
+
+ns4:Matter
+  a owl:Class ;
+  rdfs:label "Matter" ;
+  rdfs:comment "Matter represents anything that occupies space and has mass." .
+
+ns4:Material
+  a owl:Class ;
+  rdfs:subClassOf ns4:Matter,
+    [ a owl:Restriction ;
+      owl:onProperty ns4:hasMaterialComponent ;
+      owl:allValuesFrom ns4:MaterialComponent
+    ],
+    [ a owl:Restriction ;
+      owl:onProperty ns4:hasChemicalEntity ;
+      owl:allValuesFrom ns4:ChemicalEntity
+    ] ;
+  rdfs:label "Material" ;
+  rdfs:comment "Material as a sub-concept of Matter, can be a substance or a collection of substances." .
+
+ns4:MaterialComponent
+  a owl:Class ;
+  rdfs:label "Material Component" ;
+  rdfs:comment "A material component is a part of a material." .
+
+ns4:ChemicalEntity
+  a owl:Class ;
+  rdfs:label "Chemical Entity" ;
+  rdfs:comment "A chemical entity is an abstraction of entities that can compose matter, e.g., molecular entities or chemical substances." .
+
+ns4:MolecularEntity
+  a owl:Class ;
+  rdfs:label "Molecular Entity" ;
+  rdfs:comment "A molecular entity is a singular, distinguishable chemical entity, such as an atom or ion." .
+
+ns4:ChemicalSubstance
+  a owl:Class ;
+  rdfs:label "Chemical Substance" ;
+  rdfs:comment "A chemical substance made up of a collection of molecular entities." .
+
+ns4:Constituent
+  a owl:Class ;
+  rdfs:label "Constituent" ;
+  rdfs:comment "A constituent of a material." .
+
+#################################################################
+# Object Properties
+#################################################################
+
+ns4:hasMaterialComponent
+  a owl:ObjectProperty ;
+  rdfs:domain ns4:Material ;
+  rdfs:range ns4:MaterialComponent ;
+  rdfs:label "has material component" ;
+  rdfs:comment "Represents that a material can have a collection of components." .
+
+ns4:hasChemicalEntity
+  a owl:ObjectProperty ;
+  rdfs:domain ns4:Material ;
+  rdfs:range ns4:ChemicalEntity ;
+  rdfs:label "has chemical entity" ;
+  rdfs:comment "Represents that a material can have a collection of chemical entities." .
+
+#################################################################
+# Data Properties
+#################################################################
+
+ns4:descriptiveFormula
+  a owl:DatatypeProperty ;
+  rdfs:domain ns4:MolecularEntity ;
+  rdfs:range xsd:string ;
+  rdfs:label "descriptive formula" ;
+  rdfs:comment "Represents that a molecular entity has the descriptive formula in a string." .
+
+# ── Fragment 8: What is the repair/reuse guidance of a product? ──
+
+########################################################################
+## Classes
+########################################################################
+
+:Product
+   rdf:type owl:Class ;
+   rdfs:label "Product" ;
+   rdfs:comment "Represents a product." .
+   # GENERATED
+
+:RepairReuseGuidance
+   rdf:type owl:Class ;
+   rdfs:label "Repair/Reuse Guidance" ;
+   rdfs:comment "Represents instructions or specifications about how to repair or reuse a product." .
+   # GENERATED
+
+########################################################################
+## Object Properties
+########################################################################
+
+:hasRepairReuseGuidance
+   rdf:type owl:ObjectProperty ;
+   rdfs:label "has repair/reuse guidance" ;
+   rdfs:comment "Relates a product with its repair or reuse guidance." ;
+   rdfs:domain :Product ;
+   rdfs:range :RepairReuseGuidance .
+   # GENERATED
+
+# ── Fragment 9: What is the material composition of a specific product? ──
+
+###########################################################################
+# Ontology Declaration
+###########################################################################
+
+:MaterialCompositionOntology a owl:Ontology ;
+    rdfs:comment "Ontology to represent the material composition of a product." .
+
+###########################################################################
+# Generated Class (Needed to model 'Product')
+###########################################################################
+
+:Product a owl:Class ;  # GENERATED
+    rdfs:label "Product" ;
+    rdfs:comment "Represents a product." .
+
+###########################################################################
+# Classes from the product ontology
+###########################################################################
+
+ns5:Composition a owl:Class ;
+    rdfs:label "Composition" ;
+    rdfs:comment "A relation that represents a composing relation." .
+
+ns5:Matter a owl:Class ;
+    rdfs:label "Matter" ;
+    rdfs:comment "Matter from the product ontology." .
+
+ns5:MatterComposition a owl:Class ;
+    rdfs:subClassOf ns5:Composition ,
+        [ a owl:Restriction ;
+          owl:onProperty ns5:compositionOf ;
+          owl:someValuesFrom :Product
+        ],
+        [ a owl:Restriction ;
+          owl:onProperty ns5:associatedWithMatter ;
+          owl:someValuesFrom ns4:Material
+        ] ;
+    rdfs:label "Matter Composition" ;
+    rdfs:comment "A product composition in terms of a specific component, which is also matter." .
+
+###########################################################################
+# Class from the material ontology
+###########################################################################
+
+ns4:Material a owl:Class ;
+    rdfs:subClassOf ns5:Matter ;
+    rdfs:label "Material" ;
+    rdfs:comment "Material as a sub-concept of Matter, can be a substance or a collection of substances." .
+
+###########################################################################
+# Object Properties
+###########################################################################
+
+ns5:compositionOf a owl:ObjectProperty ;
+    rdfs:label "composition of" ;
+    rdfs:comment "Represents what the composition is a composition of (e.g., a product)." ;
+    rdfs:domain ns5:Composition .
+
+ns5:hasComposition a owl:ObjectProperty ;
+    rdfs:label "has composition" ;
+    rdfs:comment "Represents that a product can have composition information." ;
+    rdfs:range ns5:Composition .
+
+ns5:associatedWithMatter a owl:ObjectProperty ;
+    rdfs:label "associated with matter" ;
+    rdfs:comment "Connects a matter composition information to the matter it regards." ;
+    rdfs:domain ns5:MatterComposition ;
+    rdfs:range ns5:Matter .
+
+# ── Fragment 10: What are the properties of specific materials? ──
+
+<> a owl:Ontology .
+
+################################################################################
+# Reuse of classes from the material ontology
+################################################################################
+
+ns4:Material a owl:Class ;
+    rdfs:label "Material"@en ;
+    rdfs:comment "Material as a sub-concept of Matter, can be a substance or a collection of substance which a physical object is composed of."@en ;
+    rdfs:subClassOf ns4:Matter ,
+        [ a owl:Restriction ;
+          owl:onProperty :hasMaterialProperty ;
+          owl:someValuesFrom :MaterialProperty
+        ] .
+
+ns4:Matter a owl:Class .
+ns4:MaterialComponent a owl:Class .
+ns4:RareEarthElement a owl:Class .
+ns4:ChemicalSubstance a owl:Class .
+ns4:Constituent a owl:Class .
+ns4:MolecularEntity a owl:Class .
+
+ns4:hasMaterialComponent a owl:ObjectProperty ;
+    rdfs:domain ns4:Material ;
+    rdfs:range ns4:MaterialComponent .
+
+ns4:hasChemicalEntity a owl:ObjectProperty ;
+    rdfs:domain ns4:Material ;
+    rdfs:range ns4:ChemicalSubstance .
+
+################################################################################
+# New elements to represent properties of materials
+################################################################################
+
+:MaterialProperty a owl:Class ;  # GENERATED
+    rdfs:label "Material Property"@en ;
+    rdfs:comment "A property or attribute of a material."@en .
+
+:hasMaterialProperty a owl:ObjectProperty ;  # GENERATED
+    rdfs:label "has material property"@en ;
+    rdfs:comment "Relates a material to one of its properties."@en ;
+    rdfs:domain ns4:Material ;
+    rdfs:range :MaterialProperty .
+
+################################################################################
+# Other references from product and statement ontologies (label/comment only)
+################################################################################
+
+ns5:MatterComposition a owl:Class ;
+    rdfs:label "Matter composition"@en ;
+    rdfs:comment "A product composition is the composed information of a product in terms of a specific component, in which such a component is also a matter."@en .
+
+ns5:associatedWithMatter a owl:ObjectProperty ;
+    rdfs:domain ns5:MatterComposition ;
+    rdfs:range ns4:Matter .
+
+ns5:hasComposition a owl:ObjectProperty ;
+    rdfs:range ns5:MatterComposition .
+
+ns6:hasPostConsumerRecycledMaterialCompositionThreshold a owl:ObjectProperty ;
+    rdfs:domain ns6:PostConsumerRecycledMaterialCompositionStatement .
+
+ns6:hasPreConsumerRecycledMaterialCompositionThreshold a owl:ObjectProperty ;
+    rdfs:domain ns6:PreConsumerRecycledMaterialCompositionStatement .
+
+ns6:PreConsumerRecycledMaterialCompositionAvailabilityStatement a owl:Class .
+ns6:PostConsumerRecycledMaterialCompositionAvailabilityStatement a owl:Class .
+ns6:PostConsumerRecycledMaterialCompositionStatement a owl:Class .
+ns6:PreConsumerRecycledMaterialCompositionStatement a owl:Class .
+
+actorODP2:capabilityProperty a owl:ObjectProperty .
+
+# ── Fragment 11: What is the disassembly method of a product? ──
+
+:O a owl:Ontology .
+
+ns5:Product a owl:Class ;
+    rdfs:label "Product" ;
+    rdfs:comment "Physical-based object designed for or utilized with a purpose." .
+
+ns6:DisassemblyStatement a owl:Class ;
+    rdfs:label "Disassembly Statement" ;
+    rdfs:comment "Disassembly Statement in PCDS." .
+
+:hasDisassemblyMethod a owl:ObjectProperty ;  # GENERATED
+    rdfs:domain ns5:Product ;
+    rdfs:range ns6:DisassemblyStatement ;
+    rdfs:label "has disassembly method" ;
+    rdfs:comment "Relates a product to its disassembly method (a DisassemblyStatement)." .
+
+ns5:Product rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty :hasDisassemblyMethod ;
+    owl:allValuesFrom ns6:DisassemblyStatement
+] .
+
+# ── Fragment 12: What is the guidance of of disassembly method? ──
+
+<http://www.example.org/ontology>
+    a owl:Ontology .
+
+#################################################################
+# From statement ontology (reused)
+#################################################################
+
+ns6:DisassemblyStatement
+    a owl:Class ;
+    rdfs:label "Disassembly Statement" ;
+    rdfs:comment "Disassembly Statement in PCDS." .
+
+#################################################################
+# Newly generated property to answer the CQ
+#################################################################
+
+:hasGuidance
+    a owl:DatatypeProperty ;  # GENERATED
+    rdfs:label "has guidance" ;  # GENERATED
+    rdfs:comment "Associates a disassembly statement with textual guidance." ;  # GENERATED
+    rdfs:domain ns6:DisassemblyStatement ;  # GENERATED
+    rdfs:range xsd:string .  # GENERATED
