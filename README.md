@@ -1,6 +1,8 @@
 # OntoExtend 
 
-![OntoExtendLogo](ontoextend@4x.png)
+<p align="center">
+  <img src="ontoextend@4x.png" alt="OntoExtend Logo" width="400"/>
+</p>
 
 ## Ontology Extension through Retrieval-Augmented Generation
 
