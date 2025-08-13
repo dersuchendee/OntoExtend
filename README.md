@@ -32,6 +32,9 @@ export PRICE_GPT_4O_OUTPUT_PER_1K=0.0100
 
 ### Basic Usage
 
+#### Prerequisites: Reference Ontologies or ODPs
+Before running OntoExtend, you need reference ontologies (core ontologies/ODPs) for the system to extend from. The system requires existing ontology files in TTL or OWL format to use as knowledge base. Competency questions are needed as they serve as new requirements to extend the ontology.
+
 #### Single Competency Question
 ```bash
 python tidied_rag_ontology.py cq \
