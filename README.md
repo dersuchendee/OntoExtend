@@ -1,6 +1,6 @@
 # OntoExtend 
 
-![OntoExtendLogo](ontoextend@1x.png)
+![OntoExtendLogo](ontoextend@4x.png)
 
 ## Ontology Extension through Retrieval-Augmented Generation
 
