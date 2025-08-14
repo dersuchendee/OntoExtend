@@ -1,9 +1,9 @@
 # OntoExtend 
+![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-yellow.svg)
 
 <p align="center">
   <img src="ontoextend@4x.png" alt="OntoExtend Logo" width="400"/>
 </p>
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Ontology Extension through Retrieval-Augmented Generation
 
