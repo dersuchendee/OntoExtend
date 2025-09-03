@@ -1,0 +1,593 @@
+@prefix : <http://w3id.org/CEON/ontology/product/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@base <http://w3id.org/CEON/ontology/product/> .
+
+<http://w3id.org/CEON/ontology/product/> rdf:type owl:Ontology ;
+                                          owl:versionIRI <http://w3id.org/CEON/ontology/product/0.5/> ;
+                                          owl:imports <http://w3id.org/CEON/ontology/actorODP/0.4/> ,
+                                                      <http://w3id.org/CEON/ontology/resourceODP/0.5/> ;
+                                          dcterms:contributor "Eva Blomqvist" ;
+                                          dcterms:created "2025-03-19"^^xsd:date ;
+                                          dcterms:creator "Huanyu Li" ;
+                                          dcterms:description "The Product module of CEON (Circular Economy Ontology Network)." ;
+                                          dcterms:issued "2025-06-30"^^xsd:date ;
+                                          dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+                                          dcterms:publisher "Onto-DESIDE" ;
+                                          dcterms:title "Circular Economy Ontology Network (CEON) - Product Module" ;
+                                          vann:preferredNamespacePrefix "ceon-product" ;
+                                          vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/product/" ;
+                                          odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: CVN-Resource-2, CVN-ResrouceType-4, C11-2, C12-1, C13-3, E2-1, T8-3." ,
+                                                                 "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: CE5-2, C1-4, C2-5, C5-3, C11-2, C12-1, C13-3, C13-4, C13-9, E1-4, E1-5, E1-15, E2-1, E3-2, E3-5, E4-1, E4-2, E4-8, E4-9, E6-7, T4-3, T4-5, T6-1, T8-3, T9-2." ;
+                                          rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+                                          owl:priorVersion 0.4 ;
+                                          owl:versionInfo 0.5 .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/location/hasLocation
+<http://w3id.org/CEON/ontology/location/hasLocation> rdf:type owl:ObjectProperty .
+
+
+###  http://w3id.org/CEON/ontology/product/associatedWithMatter
+:associatedWithMatter rdf:type owl:ObjectProperty ;
+                      rdfs:domain :MatterComposition ;
+                      rdfs:range resourceODP:Matter ;
+                      rdfs:comment "associatedWithMatter intends to represent the matter to which a matter compopsition information regards to." ;
+                      rdfs:label "associated with matter" .
+
+
+###  http://w3id.org/CEON/ontology/product/associatedWithProductModel
+:associatedWithProductModel rdf:type owl:ObjectProperty ;
+                            rdfs:domain :ProductComposition ;
+                            rdfs:range :Product ;
+                            rdfs:comment "associatedWithProductModel intends to represent the product model to which a product compopsition information regards to." ;
+                            rdfs:label "associated with product model" .
+
+
+###  http://w3id.org/CEON/ontology/product/associatedWithProductObject
+:associatedWithProductObject rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf owl:topObjectProperty ;
+                             rdfs:domain :ProductObjectComposition ;
+                             rdfs:range :Item ;
+                             rdfs:comment "associatedWithProductObject intends to represent the item (product object) to which a product object compopsition information regards to." ;
+                             rdfs:label "associated with product object" .
+
+
+###  http://w3id.org/CEON/ontology/product/batchOfProduct
+:batchOfProduct rdf:type owl:ObjectProperty ;
+                rdfs:domain resourceODP:BatchOfObjects ;
+                rdfs:range :Product ;
+                rdfs:comment "batchOfProduct intends to represent what is the model product of a batch of objects." ;
+                rdfs:label "batch of products" .
+
+
+###  http://w3id.org/CEON/ontology/product/complianceWith
+:complianceWith rdf:type owl:ObjectProperty ;
+                rdfs:domain :Compliance ;
+                rdfs:comment "Represents what the compliance is compliant with (e.g. a standard or regulation)." ;
+                rdfs:label "compliance with" .
+
+
+###  http://w3id.org/CEON/ontology/product/compositionOf
+:compositionOf rdf:type owl:ObjectProperty ;
+               rdfs:domain :Composition ;
+               rdfs:range [ rdf:type owl:Class ;
+                            owl:unionOf ( :Item
+                                          :Product
+                                          resourceODP:Matter
+                                        )
+                          ] ;
+               rdfs:comment "Represents what the composition is a composition of (i.e., the product, the product object or matter that is broken down into its components)." ;
+               rdfs:label "composition of" .
+
+
+###  http://w3id.org/CEON/ontology/product/hasAssemblyLocation
+:hasAssemblyLocation rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf <http://w3id.org/CEON/ontology/location/hasLocation> ;
+                     rdfs:domain [ rdf:type owl:Class ;
+                                   owl:unionOf ( :Item
+                                                 :Product
+                                               )
+                                 ] ;
+                     rdfs:range :AssemblyLocation ;
+                     rdfs:comment "Used to represent the location of assembly of a product or product object (item)." ;
+                     rdfs:label "has assembly location" .
+
+
+###  http://w3id.org/CEON/ontology/product/hasCompliance
+:hasCompliance rdf:type owl:ObjectProperty ;
+               rdfs:domain [ rdf:type owl:Class ;
+                             owl:unionOf ( actorODP:Actor
+                                           <http://w3id.org/CEON/ontology/processODP/Process>
+                                           :Item
+                                           :Product
+                                         )
+                           ] ;
+               rdfs:range :Compliance ;
+               rdfs:comment "Used to link something (e.g., product or process) to a compliance." ;
+               rdfs:label "has compliance" .
+
+
+###  http://w3id.org/CEON/ontology/product/hasComposition
+:hasComposition rdf:type owl:ObjectProperty ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( :Product
+                                            resourceODP:PhysicalObject
+                                          )
+                            ] ;
+                rdfs:range :Composition ;
+                rdfs:comment "hasComposition intends to represent that a product model or physical object can have compostition information." ;
+                rdfs:label "has composition" .
+
+
+###  http://w3id.org/CEON/ontology/product/hasManufacturerLocation
+:hasManufacturerLocation rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf <http://w3id.org/CEON/ontology/location/hasLocation> ;
+                         rdfs:domain [ rdf:type owl:Class ;
+                                       owl:unionOf ( :Item
+                                                     :Product
+                                                   )
+                                     ] ;
+                         rdfs:range :ManufactureLocation ;
+                         rdfs:comment "Used to represent the location of manufacturer of a product or product object (item)." ;
+                         rdfs:label "has manufacture location" .
+
+
+###  http://w3id.org/CEON/ontology/product/hasOriginLocation
+:hasOriginLocation rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf <http://w3id.org/CEON/ontology/location/hasLocation> ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( :Item
+                                               :Product
+                                             )
+                               ] ;
+                   rdfs:range :OriginLocation ;
+                   rdfs:comment "Used to represent the location of origin of a product or product object (item)." ;
+                   rdfs:label "has origin location" .
+
+
+###  http://w3id.org/CEON/ontology/product/hasProductComponent
+:hasProductComponent rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Product ;
+                     rdfs:range :Product ;
+                     rdfs:comment "hasProductComponent intends to represent that a product can have other product components." ;
+                     rdfs:label "has product component" .
+
+
+###  http://w3id.org/CEON/ontology/product/hasProductObjectComponent
+:hasProductObjectComponent rdf:type owl:ObjectProperty ;
+                           rdfs:domain :Item ;
+                           rdfs:range :Item ;
+                           rdfs:label "has product object component" .
+
+
+###  http://w3id.org/CEON/ontology/product/modelledBy
+:modelledBy rdf:type owl:ObjectProperty ;
+            rdfs:domain :Item ;
+            rdfs:range :Product ;
+            rdfs:comment "modelledBy intends to represent that product objects follow particular product models." ;
+            rdfs:label "modelled by" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/location/hasCity
+<http://w3id.org/CEON/ontology/location/hasCity> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://w3id.org/CEON/ontology/location/hasCountry
+<http://w3id.org/CEON/ontology/location/hasCountry> rdf:type owl:DatatypeProperty .
+
+
+###  http://w3id.org/CEON/ontology/location/hasPostalCode
+<http://w3id.org/CEON/ontology/location/hasPostalCode> rdf:type owl:DatatypeProperty ;
+                                                       rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://w3id.org/CEON/ontology/location/hasStreetAddress
+<http://w3id.org/CEON/ontology/location/hasStreetAddress> rdf:type owl:DatatypeProperty ;
+                                                          rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://w3id.org/CEON/ontology/product/compositionQuantity
+:compositionQuantity rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Composition ;
+                     rdfs:range xsd:double ;
+                     rdfs:comment "compositionQuantity represents the quantity of elements of a composition." ;
+                     rdfs:label "composition quantity" .
+
+
+###  http://w3id.org/CEON/ontology/product/countryOfAssembly
+:countryOfAssembly rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf <http://w3id.org/CEON/ontology/location/hasCountry> ;
+                   rdfs:domain :AssemblyLocation ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "Used to represent the country of assembly of a product or product object (item)." ;
+                   rdfs:label "Country of assembly" .
+
+
+###  http://w3id.org/CEON/ontology/product/countryOfManufacture
+:countryOfManufacture rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf <http://w3id.org/CEON/ontology/location/hasCountry> ;
+                      rdfs:domain :ManufactureLocation ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment "Used to represent the country of manufacture of a product or product object (item)." ;
+                      rdfs:label "Country of manufacture" .
+
+
+###  http://w3id.org/CEON/ontology/product/countryOfOrigin
+:countryOfOrigin rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf <http://w3id.org/CEON/ontology/location/hasCountry> ;
+                 rdfs:domain :OriginLocation ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "Used to represent the country of origin of a product or product object (item)." ;
+                 rdfs:label "Country of origin" .
+
+
+###  http://w3id.org/CEON/ontology/product/countryOfProduction
+:countryOfProduction rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf <http://w3id.org/CEON/ontology/location/hasCountry> ;
+                     rdfs:domain :ProductionLocation ;
+                     rdfs:range xsd:string ;
+                     rdfs:comment "Used to represent the country of production of a product or product object (item)." ;
+                     rdfs:label "Country of production" .
+
+
+###  http://w3id.org/CEON/ontology/product/hasBrand
+:hasBrand rdf:type owl:DatatypeProperty ;
+          rdfs:range xsd:string ;
+          rdfs:comment "The brand name of a product." ;
+          rdfs:label "has brand" .
+
+
+###  http://w3id.org/CEON/ontology/product/hasCertificate
+:hasCertificate rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Compliance ;
+                rdfs:comment "Link to the the certificate that certifies the compliance" ;
+                rdfs:label "has certificate" .
+
+
+###  http://w3id.org/CEON/ontology/product/hasGlobalTradeItemNumber
+:hasGlobalTradeItemNumber rdf:type owl:DatatypeProperty ;
+                          rdfs:range xsd:string ;
+                          rdfs:label "Global Trade Item Number (GTIN)" ;
+                          rdfs:seeAlso "https://www.gs1.org/standards/id-keys/gtin" .
+
+
+###  http://w3id.org/CEON/ontology/product/hasProductName
+:hasProductName rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:string ;
+                rdfs:comment "The name of a product." ;
+                rdfs:label "product name" .
+
+
+###  http://w3id.org/CEON/ontology/product/productionSite
+:productionSite rdf:type owl:DatatypeProperty ;
+                rdfs:domain :ProductionLocation ;
+                rdfs:range xsd:string ;
+                rdfs:comment "The name of a production site location" ;
+                rdfs:label "production site" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://w3id.org/CEON/ontology/actorODP/Actor
+actorODP:Actor rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/actorODP/ResourceRelation
+actorODP:ResourceRelation rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/location/Location
+<http://w3id.org/CEON/ontology/location/Location> rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/processODP/Process
+<http://w3id.org/CEON/ontology/processODP/Process> rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/product/AssemblyLocation
+:AssemblyLocation rdf:type owl:Class ;
+                  rdfs:subClassOf <http://w3id.org/CEON/ontology/location/Location> ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://w3id.org/CEON/ontology/location/hasCity> ;
+                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://w3id.org/CEON/ontology/location/hasPostalCode> ;
+                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://w3id.org/CEON/ontology/location/hasStreetAddress> ;
+                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :countryOfAssembly ;
+                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:string
+                                  ] ;
+                  rdfs:comment "The location where a physical object is assembled." ;
+                  rdfs:label "Assembly Location" .
+
+
+###  http://w3id.org/CEON/ontology/product/Compliance
+:Compliance rdf:type owl:Class ;
+            rdfs:comment "Represents that something is compliant with some standard or has a received a certain certification." ;
+            rdfs:label "Compliance" .
+
+
+###  http://w3id.org/CEON/ontology/product/Composition
+:Composition rdf:type owl:Class ;
+             rdfs:subClassOf actorODP:ResourceParticipation ;
+             rdfs:comment "A relation that represents a composing relation." ;
+             rdfs:label "Composition" .
+
+
+###  http://w3id.org/CEON/ontology/product/ISOCompliance
+:ISOCompliance rdf:type owl:Class ;
+               rdfs:subClassOf :Compliance ;
+               rdfs:comment "ISO compliance is a compliance issuing thay sth (e.g., organization's structure, business operations, practices or policies) follows a specific ISO standard." ;
+               rdfs:label "ISO Compliance" .
+
+
+###  http://w3id.org/CEON/ontology/product/Item
+:Item rdf:type owl:Class ;
+      rdfs:subClassOf resourceODP:PhysicalObject ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :modelledBy ;
+                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onClass :Product
+                      ] ;
+      rdfs:comment "An item is a physical object put into a market for sale, i.e. corresponding to an individual of a product. The item can be a thing that grows naturally or produced through some chemical or manufacturing processes." ;
+      rdfs:label "Item" .
+
+
+###  http://w3id.org/CEON/ontology/product/ManufactureLocation
+:ManufactureLocation rdf:type owl:Class ;
+                     rdfs:subClassOf <http://w3id.org/CEON/ontology/location/Location> ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty <http://w3id.org/CEON/ontology/location/hasCity> ;
+                                       owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onDataRange xsd:string
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty <http://w3id.org/CEON/ontology/location/hasPostalCode> ;
+                                       owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onDataRange xsd:string
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty <http://w3id.org/CEON/ontology/location/hasStreetAddress> ;
+                                       owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onDataRange xsd:string
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :countryOfManufacture ;
+                                       owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onDataRange xsd:string
+                                     ] ;
+                     rdfs:comment "The location where a physical object is manufactured." ;
+                     rdfs:label "Manufacture Location" .
+
+
+###  http://w3id.org/CEON/ontology/product/MatterComposition
+:MatterComposition rdf:type owl:Class ;
+                   rdfs:subClassOf :Composition ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :associatedWithMatter ;
+                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                     owl:onClass resourceODP:Matter
+                                   ] ;
+                   rdfs:comment "A product composition is the composed information of a product in terms of a specific component, in which such a component is also a matter." ;
+                   rdfs:label "Matter composition" .
+
+
+###  http://w3id.org/CEON/ontology/product/OriginLocation
+:OriginLocation rdf:type owl:Class ;
+                rdfs:subClassOf <http://w3id.org/CEON/ontology/location/Location> ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty <http://w3id.org/CEON/ontology/location/hasCity> ;
+                                  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onDataRange xsd:string
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty <http://w3id.org/CEON/ontology/location/hasPostalCode> ;
+                                  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onDataRange xsd:string
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty <http://w3id.org/CEON/ontology/location/hasStreetAddress> ;
+                                  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onDataRange xsd:string
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :countryOfOrigin ;
+                                  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onDataRange xsd:string
+                                ] ;
+                rdfs:comment "The origin location of a physical object" ;
+                rdfs:label "Origin Location" .
+
+
+###  http://w3id.org/CEON/ontology/product/Product
+:Product rdf:type owl:Class ;
+         rdfs:subClassOf :Solution ,
+                         resourceODP:Resource ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasComposition ;
+                           owl:someValuesFrom :MatterComposition
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasComposition ;
+                           owl:someValuesFrom :ProductComposition
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasAssemblyLocation ;
+                           owl:allValuesFrom :AssemblyLocation
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasManufacturerLocation ;
+                           owl:allValuesFrom :ManufactureLocation
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasOriginLocation ;
+                           owl:allValuesFrom :OriginLocation
+                         ] ;
+         rdfs:comment "Physical-based object designed for or utilized with a purpose. A product can be, for example: goods of any type; hardware (e.g. engine mechanical part, spare parts, consumables); electrical or electronic hardware devices or components (e.g. computers, communication equipment and sensors); processed materials (e.g. lubricant, cement)." ,
+                      "Represents the common sense notion of a product, i.e. the abstract notion of a product type, which is a model that is used for manufacturing items of that product." ;
+         rdfs:isDefinedBy "ISO 59004:2024 -3.2.2 product" ;
+         rdfs:label "Product" .
+
+
+###  http://w3id.org/CEON/ontology/product/ProductComposition
+:ProductComposition rdf:type owl:Class ;
+                    rdfs:subClassOf :Composition ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :associatedWithProductModel ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass :Product
+                                    ] ;
+                    rdfs:comment "A product composition is the composed information of a product in terms of a specific component, in which such a component is also a product." ;
+                    rdfs:label "Product composition" .
+
+
+###  http://w3id.org/CEON/ontology/product/ProductObjectComposition
+:ProductObjectComposition rdf:type owl:Class ;
+                          rdfs:subClassOf :Composition ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty :associatedWithProductObject ;
+                                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onClass :Item
+                                          ] ;
+                          rdfs:comment "A product object composition is the composed information of a product object in terms of a specific component, in which such a component is also a product object." ;
+                          rdfs:label "Product Object Composition" .
+
+
+###  http://w3id.org/CEON/ontology/product/ProductionLocation
+:ProductionLocation rdf:type owl:Class ;
+                    rdfs:subClassOf <http://w3id.org/CEON/ontology/location/Location> ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty <http://w3id.org/CEON/ontology/location/hasCity> ;
+                                      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onDataRange xsd:string
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty <http://w3id.org/CEON/ontology/location/hasPostalCode> ;
+                                      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onDataRange xsd:string
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty <http://w3id.org/CEON/ontology/location/hasStreetAddress> ;
+                                      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onDataRange xsd:string
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :countryOfProduction ;
+                                      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onDataRange xsd:string
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :productionSite ;
+                                      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onDataRange xsd:string
+                                    ] ;
+                    rdfs:comment "The production location of a physical object" ;
+                    rdfs:label "Production Location" .
+
+
+###  http://w3id.org/CEON/ontology/product/REACHCompliance
+:REACHCompliance rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                       owl:onProperty :complianceWith ;
+                                       owl:hasValue :REACH
+                                     ] ;
+                 rdfs:subClassOf :Compliance ;
+                 rdfs:comment "REACH (Regulation on the registration, evaluation, authorisation and restriction of chemicals) compliance is a compliance issueing that the REACH regulation is satisfied." ;
+                 rdfs:label "REACH Compliance" ;
+                 rdfs:seeAlso "https://environment.ec.europa.eu/topics/chemicals/reach-regulation_en" .
+
+
+###  http://w3id.org/CEON/ontology/product/Regulation
+:Regulation rdf:type owl:Class ;
+            rdfs:comment "The rules or restrictions made or maintained by authorities." ;
+            rdfs:label "Regulation" .
+
+
+###  http://w3id.org/CEON/ontology/product/RoHSCompliance
+:RoHSCompliance rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty :complianceWith ;
+                                      owl:hasValue :RoHS
+                                    ] ;
+                rdfs:subClassOf :Compliance ;
+                rdfs:comment "RoHS (Restriction of Hazardous Substances in Electrical and Electronic Equipment) compliance is a compliance issuing that RoHS objectives are satisfied." ;
+                rdfs:label "RoHS Compliance" ;
+                rdfs:seeAlso "https://environment.ec.europa.eu/topics/waste-and-recycling/rohs-directive_en" .
+
+
+###  http://w3id.org/CEON/ontology/product/Solution
+:Solution rdf:type owl:Class ;
+          rdfs:comment "Product or service, or a combination thereof, that fulfils a need of an interested party." ;
+          rdfs:isDefinedBy "ISO 59004:2024 - 3.2.1 solution" ;
+          rdfs:label "Solution" .
+
+
+###  http://w3id.org/CEON/ontology/product/SupplierLocation
+:SupplierLocation rdf:type owl:Class ;
+                  rdfs:subClassOf <http://w3id.org/CEON/ontology/location/Location> ;
+                  rdfs:comment "The location of supplier of a product or item." ;
+                  rdfs:label "Supplier Location" .
+
+
+###  http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects
+resourceODP:BatchOfObjects rdf:type owl:Class ;
+                           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                             owl:onProperty :batchOfProduct ;
+                                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                             owl:onClass :Product
+                                           ] .
+
+
+###  http://w3id.org/CEON/ontology/resourceODP/Matter
+resourceODP:Matter rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/resourceODP/PhysicalObject
+resourceODP:PhysicalObject rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://w3id.org/CEON/ontology/product/REACH
+:REACH rdf:type owl:NamedIndividual ,
+                :Regulation .
+
+
+###  http://w3id.org/CEON/ontology/product/RoHS
+:RoHS rdf:type owl:NamedIndividual ,
+               :Regulation .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

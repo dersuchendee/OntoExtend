@@ -1,0 +1,1366 @@
+@prefix : <http://w3id.org/CEON/ontology/statement/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@base <http://w3id.org/CEON/ontology/statement/> .
+
+<http://w3id.org/CEON/ontology/statement/> rdf:type owl:Ontology ;
+                                            owl:versionIRI <http://w3id.org/CEON/ontology/statement/0.2/> ;
+                                            owl:imports <http://w3id.org/CEON/ontology/actorODP/0.3/> ,
+                                                        <http://w3id.org/CEON/ontology/quantity/0.2/> ,
+                                                        <http://w3id.org/CEON/ontology/resourceODP/0.5/> ;
+                                            dcterms:contributor "Eva Blomqvist" ;
+                                            dcterms:created "2025-03-23"^^xsd:date ;
+                                            dcterms:creator "Huanyu Li" ;
+                                            dcterms:description "A module to represent statements of CEON resources." ;
+                                            dcterms:issued "2025-06-30"^^xsd:date ;
+                                            dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+                                            dcterms:publisher "Onto-DESIDE" ;
+                                            dcterms:title "Circular Economy Ontology Network (CEON) - Statement Module" ;
+                                            vann:preferredNamespacePrefix "ceon-statement" ;
+                                            vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/statement/" ;
+                                            owl:priorVersion 0.1 ;
+                                            owl:versionInfo 0.2 .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/publisher
+dcterms:publisher rdf:type owl:AnnotationProperty .
+
+
+###  http://qudt.org/schema/qudt/hasUnit
+<http://qudt.org/schema/qudt/hasUnit> rdf:type owl:AnnotationProperty .
+
+
+###  http://qudt.org/schema/qudt/numericValue
+<http://qudt.org/schema/qudt/numericValue> rdf:type owl:AnnotationProperty .
+
+
+###  http://w3id.org/CEON/ontology/quantity#hasMaximalValueIncludedOfInterval
+<http://w3id.org/CEON/ontology/quantity#hasMaximalValueIncludedOfInterval> rdf:type owl:AnnotationProperty .
+
+
+###  http://w3id.org/CEON/ontology/quantity#hasMinimalValueIncludedOfInterval
+<http://w3id.org/CEON/ontology/quantity#hasMinimalValueIncludedOfInterval> rdf:type owl:AnnotationProperty .
+
+
+###  http://w3id.org/CEON/ontology/quantity#hasMinimalValueNotIncludedOfInterval
+<http://w3id.org/CEON/ontology/quantity#hasMinimalValueNotIncludedOfInterval> rdf:type owl:AnnotationProperty .
+
+
+###  http://w3id.org/CEON/ontology/statement/PCDSmapping
+:PCDSmapping rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/statement/hasAvailability
+:hasAvailability rdf:type owl:ObjectProperty ;
+                 rdfs:range :Availability ;
+                 rdfs:comment "hasAvailability represents the abailability of some resource or information." ;
+                 rdfs:label "has availability" .
+
+
+###  http://w3id.org/CEON/ontology/statement/hasChemicalSubstanceThresholdUsedByManufacturer
+:hasChemicalSubstanceThresholdUsedByManufacturer rdf:type owl:ObjectProperty ;
+                                                 rdfs:subPropertyOf :hasQuantityInterval ;
+                                                 rdfs:domain :ProductCompositionStatement ;
+                                                 rdfs:range <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                 rdfs:label "has chemical substance threshold used by manufacturer" .
+
+
+###  http://w3id.org/CEON/ontology/statement/hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix
+:hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix rdf:type owl:ObjectProperty ;
+                                                              rdfs:subPropertyOf :hasQuantityInterval ;
+                                                              rdfs:domain :RenewableEnergyStatement ;
+                                                              rdfs:range <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                              rdfs:label "has fraction of renewable energy out of the total production energy mix" .
+
+
+###  http://w3id.org/CEON/ontology/statement/hasMassFractionForDemounting
+:hasMassFractionForDemounting rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf :hasQuantityInterval ;
+                              rdfs:domain :DemountingStatement ;
+                              rdfs:range <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                              rdfs:label "has mass fraction for demounting" .
+
+
+###  http://w3id.org/CEON/ontology/statement/hasMassFractionForDisassembly
+:hasMassFractionForDisassembly rdf:type owl:ObjectProperty ;
+                               rdfs:subPropertyOf :hasQuantityInterval ;
+                               rdfs:domain :DisassemblyStatement ;
+                               rdfs:range <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                               rdfs:label "has mass fraction for disassembly" .
+
+
+###  http://w3id.org/CEON/ontology/statement/hasMassFractionOfAllDisclosedChemicalSubstance
+:hasMassFractionOfAllDisclosedChemicalSubstance rdf:type owl:ObjectProperty ;
+                                                rdfs:subPropertyOf :hasQuantityInterval ;
+                                                rdfs:domain :ProductCompositionStatement ;
+                                                rdfs:range <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                rdfs:label "has mass fraction of all disclosed chemical substance" .
+
+
+###  http://w3id.org/CEON/ontology/statement/hasMassFractionOfDismantableComponentsForReuseAndRecycle
+:hasMassFractionOfDismantableComponentsForReuseAndRecycle rdf:type owl:ObjectProperty ;
+                                                          rdfs:subPropertyOf :hasQuantityInterval ;
+                                                          rdfs:domain :DismantlingStatement ;
+                                                          rdfs:range <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                          rdfs:label "has mass fraction of dismantable components for reuse and recycle" .
+
+
+###  http://w3id.org/CEON/ontology/statement/hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass
+:hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass rdf:type owl:ObjectProperty ;
+                                                                        rdfs:subPropertyOf :hasQuantityInterval ;
+                                                                        rdfs:domain :RecycledMaterialStatement ;
+                                                                        rdfs:range <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                                        rdfs:label "has mass fraction of post consumer recycled materials out of the total product mass" .
+
+
+###  http://w3id.org/CEON/ontology/statement/hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass
+:hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass rdf:type owl:ObjectProperty ;
+                                                                       rdfs:subPropertyOf :hasQuantityInterval ;
+                                                                       rdfs:domain :RecycledMaterialStatement ;
+                                                                       rdfs:range <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                                       rdfs:label "has mass fraction of pre consumer recycled materials out of the total product mass" .
+
+
+###  http://w3id.org/CEON/ontology/statement/hasMassFractionOfProductDesignedForRecyclingToOriginalInput
+:hasMassFractionOfProductDesignedForRecyclingToOriginalInput rdf:type owl:ObjectProperty ;
+                                                             rdfs:subPropertyOf :hasQuantityInterval ;
+                                                             rdfs:domain :RecyclingStatement ;
+                                                             rdfs:range <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                             rdfs:label "has mass fraction of product designed for recycling to original input" .
+
+
+###  http://w3id.org/CEON/ontology/statement/hasMassFractionOfProductReleasedIntoEnvironment
+:hasMassFractionOfProductReleasedIntoEnvironment rdf:type owl:ObjectProperty ;
+                                                 rdfs:subPropertyOf :hasQuantityInterval ;
+                                                 rdfs:domain :ReleasedIntoEnvironmentStatement ;
+                                                 rdfs:range <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                 rdfs:label "has mass fraction of product released into environment" .
+
+
+###  http://w3id.org/CEON/ontology/statement/hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass
+:hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass rdf:type owl:ObjectProperty ;
+                                                            rdfs:subPropertyOf :hasQuantityInterval ;
+                                                            rdfs:domain :RecycledMaterialStatement ;
+                                                            rdfs:range <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                            rdfs:label "has mass fraction of recycled materials out of the total product mass" .
+
+
+###  http://w3id.org/CEON/ontology/statement/hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass
+:hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass rdf:type owl:ObjectProperty ;
+                                                             rdfs:subPropertyOf :hasQuantityInterval ;
+                                                             rdfs:domain :SustainablyProducedRenewableMaterialStatement ;
+                                                             rdfs:range <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                             rdfs:label "has mass fraction of renewable materials out of the total product mass" .
+
+
+###  http://w3id.org/CEON/ontology/statement/hasMassFractionOfReusedPartsOutOfTheTotalProduct
+:hasMassFractionOfReusedPartsOutOfTheTotalProduct rdf:type owl:ObjectProperty ;
+                                                  rdfs:subPropertyOf :hasQuantityInterval ;
+                                                  rdfs:domain :ReusedContentStatement ;
+                                                  rdfs:range <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                  rdfs:label "has mass fraction of reused parts out of the total product" .
+
+
+###  http://w3id.org/CEON/ontology/statement/hasPostConsumerRecycledMaterialCompositionThreshold
+:hasPostConsumerRecycledMaterialCompositionThreshold rdf:type owl:ObjectProperty ;
+                                                     rdfs:subPropertyOf :hasQuantityInterval ;
+                                                     rdfs:domain :RecycledMaterialStatement ;
+                                                     rdfs:range <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                     rdfs:label "has post consumer recycled material composition threshold" .
+
+
+###  http://w3id.org/CEON/ontology/statement/hasPreConsumerRecycledMaterialCompositionThreshold
+:hasPreConsumerRecycledMaterialCompositionThreshold rdf:type owl:ObjectProperty ;
+                                                    rdfs:subPropertyOf :hasQuantityInterval ;
+                                                    rdfs:domain :RecycledMaterialStatement ;
+                                                    rdfs:range <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                    rdfs:label "has pre consumer recycled material composition threshold" .
+
+
+###  http://w3id.org/CEON/ontology/statement/hasQuantityInterval
+:hasQuantityInterval rdf:type owl:ObjectProperty ;
+                     rdfs:range <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                     rdfs:label "has quantity interval" .
+
+
+###  http://w3id.org/CEON/ontology/statement/hasValidation
+:hasValidation rdf:type owl:ObjectProperty ;
+               rdfs:range :Validation ;
+               rdfs:label "has validation" .
+
+
+###  http://w3id.org/CEON/ontology/statement/hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction
+:hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction rdf:type owl:ObjectProperty ;
+                                                                      rdfs:subPropertyOf :hasQuantityInterval ;
+                                                                      rdfs:domain :WaterReuseOrRecirculationStatement ;
+                                                                      rdfs:range <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                                      rdfs:label "has volume fraction of reduction of direct water consumption used in production" .
+
+
+###  http://w3id.org/CEON/ontology/statement/hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction
+:hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction rdf:type owl:ObjectProperty ;
+                                                              rdfs:subPropertyOf :hasQuantityInterval ;
+                                                              rdfs:domain :WaterReuseOrRecirculationStatement ;
+                                                              rdfs:range <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                              rdfs:label "has volume fraction of reused or recirculated water used in production" .
+
+
+###  http://w3id.org/CEON/ontology/statement/statementAbout
+:statementAbout rdf:type owl:ObjectProperty ;
+                rdfs:domain :Statement ;
+                rdfs:comment "Generic property to express what the statement is about, i.e. what is involved in the statement." ;
+                rdfs:label "statement about" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/statement/availableEndDate
+:availableEndDate rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:date ;
+                  rdfs:label "available end date" .
+
+
+###  http://w3id.org/CEON/ontology/statement/availableStartDate
+:availableStartDate rdf:type owl:DatatypeProperty ;
+                    rdfs:range xsd:date ;
+                    rdfs:label "available start date" .
+
+
+###  http://w3id.org/CEON/ontology/statement/isPCDSStatementTrue
+:isPCDSStatementTrue rdf:type owl:DatatypeProperty ;
+                     rdfs:range xsd:boolean ;
+                     rdfs:label "is PCDS statement true" .
+
+
+###  http://w3id.org/CEON/ontology/statement/statementValue
+:statementValue rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Statement ;
+                rdfs:comment "Generic property to express values, e.g. literals, that are involved in this statement." ;
+                rdfs:label "statement value" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://w3id.org/CEON/ontology/actorODP/Role
+<http://w3id.org/CEON/ontology/actorODP/Role> rdfs:subClassOf <http://www.w3.org/ns/prov#Role> .
+
+
+###  http://w3id.org/CEON/ontology/quantity#QuantityInterval
+<http://w3id.org/CEON/ontology/quantity#QuantityInterval> rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/resourceODP/Resource
+resourceODP:Resource rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> .
+
+
+###  http://w3id.org/CEON/ontology/statement/Availability
+:Availability rdf:type owl:Class ;
+              rdfs:comment "Represent the abailability of some resource or information." ;
+              rdfs:label "Availability" .
+
+
+###  http://w3id.org/CEON/ontology/statement/DemountingStatement
+:DemountingStatement rdf:type owl:Class ;
+                     rdfs:subClassOf :PCDSStatement ;
+                     rdfs:comment "Demounting Statement in PCDS." ;
+                     rdfs:label "Demounting Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/DisassemblyStatement
+:DisassemblyStatement rdf:type owl:Class ;
+                      rdfs:subClassOf :PCDSStatement ;
+                      rdfs:comment "Disassembly Statement in PCDS." ;
+                      rdfs:label "Disassembly Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/DisclosedChemicalSubtanceStatement
+:DisclosedChemicalSubtanceStatement rdf:type owl:Class ;
+                                    rdfs:subClassOf :ProductCompositionStatement ,
+                                                    [ rdf:type owl:Class ;
+                                                      owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :hasChemicalSubstanceThresholdUsedByManufacturer ;
+                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/0gt-0.001le>
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :hasChemicalSubstanceThresholdUsedByManufacturer ;
+                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/0gt-0.01le>
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :hasChemicalSubstanceThresholdUsedByManufacturer ;
+                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/0gt-0.1le>
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :hasChemicalSubstanceThresholdUsedByManufacturer ;
+                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/1ge>
+                                                                    ]
+                                                                  )
+                                                    ] ;
+                                    :PCDSmapping "3.1.0.01, 3.1.0.02, 3.1.0.03, 3.1.0.04" ;
+                                    rdfs:label "Disclosed Chemical Substance Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/DismantlingStatement
+:DismantlingStatement rdf:type owl:Class ;
+                      rdfs:subClassOf :PCDSStatement ;
+                      rdfs:comment "Dismantling Statement in PCDS." ;
+                      rdfs:label "Dismantling Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/FractionOfRenewableEnergyAvailabilityStatement
+:FractionOfRenewableEnergyAvailabilityStatement rdf:type owl:Class ;
+                                                rdfs:subClassOf :RenewableEnergyStatement ;
+                                                :PCDSmapping "4.1.1.09" ;
+                                                rdfs:label "Fraction Of Renewable Energy Availability Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/FractionOfRenewableEnergyStatement
+:FractionOfRenewableEnergyStatement rdf:type owl:Class ;
+                                    rdfs:subClassOf :RenewableEnergyStatement ,
+                                                    [ rdf:type owl:Class ;
+                                                      owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix ;
+                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/0ge-0le>
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix ;
+                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/0gt-10le>
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix ;
+                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/10gt-25le>
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix ;
+                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/25gt-50le>
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix ;
+                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/50gt-75le>
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix ;
+                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/75gt-95le>
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix ;
+                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/95gt-99le>
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :hasFractionOfRenewableEnergyOutOfTheTotalProductionEnergyMix ;
+                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/99gt-100le>
+                                                                    ]
+                                                                  )
+                                                    ] ;
+                                    :PCDSmapping "4.1.1.01, 4.1.1.02, 4.1.1.03, 4.1.1.04, 4.1.1.05, 4.1.1.06, 4.1.1.07, 4.1.1.08" ;
+                                    rdfs:label "Fraction Of Renewable Energy Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/HazardousSubstanceDeclarationAvailabiltityStatement
+:HazardousSubstanceDeclarationAvailabiltityStatement rdf:type owl:Class ;
+                                                     rdfs:subClassOf :ProductCompositionStatement ;
+                                                     :PCDSmapping "3.2.0.02" ;
+                                                     rdfs:label "Hazardous Substance Declaration Availabiltity Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/HazardousSubstanceStatement
+:HazardousSubstanceStatement rdf:type owl:Class ;
+                             rdfs:subClassOf :ProductCompositionStatement ;
+                             :PCDSmapping "3.2.0.01" ;
+                             rdfs:label "Hazardous Substance Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MFOfDismantlableComponentForReuseRecycledAvailabilityStatement
+:MFOfDismantlableComponentForReuseRecycledAvailabilityStatement rdf:type owl:Class ;
+                                                                rdfs:subClassOf :DismantlingStatement ;
+                                                                :PCDSmapping "6.2.1.10" ;
+                                                                rdfs:label "Mass Fraction Of Dismantlable Component For Reuse Recycled Availability Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MFOfDismantlableComponentForReuseRecycledStatement
+:MFOfDismantlableComponentForReuseRecycledStatement rdf:type owl:Class ;
+                                                    rdfs:subClassOf :DismantlingStatement ,
+                                                                    [ rdf:type owl:Class ;
+                                                                      owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :hasMassFractionOfDismantableComponentsForReuseAndRecycle ;
+                                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/0ge-0le>
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :hasMassFractionOfDismantableComponentsForReuseAndRecycle ;
+                                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/0gt-10le>
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :hasMassFractionOfDismantableComponentsForReuseAndRecycle ;
+                                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/10gt-25le>
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :hasMassFractionOfDismantableComponentsForReuseAndRecycle ;
+                                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/25gt-50le>
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :hasMassFractionOfDismantableComponentsForReuseAndRecycle ;
+                                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/50gt-75le>
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :hasMassFractionOfDismantableComponentsForReuseAndRecycle ;
+                                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/75gt-95le>
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :hasMassFractionOfDismantableComponentsForReuseAndRecycle ;
+                                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/95gt-99le>
+                                                                                    ]
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty :hasMassFractionOfDismantableComponentsForReuseAndRecycle ;
+                                                                                      owl:hasValue <http://w3id.org/CEON/ontology/statement/99gt-100le>
+                                                                                    ]
+                                                                                  )
+                                                                    ] ;
+                                                    :PCDSmapping "6.2.1.02, 6.2.1.03, 6.2.1.04, 6.2.1.05, 6.2.1.06, 6.2.1.07, 6.2.1.08, 6.2.1.09" ;
+                                                    rdfs:label "Mass Fraction Of Dismantlable Component For Reuse Recycled Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MFOfPostConsumerRecycledMaterialContentAvailabilityStatement
+:MFOfPostConsumerRecycledMaterialContentAvailabilityStatement rdf:type owl:Class ;
+                                                              rdfs:subClassOf :RecycledMaterialStatement ;
+                                                              :PCDSmapping "3.4.0.27" ;
+                                                              rdfs:label "Mass Fraction Of Post Consumer Recycled Material Content Availability Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MFOfPostConsumerRecycledMaterialContentStatement
+:MFOfPostConsumerRecycledMaterialContentStatement rdf:type owl:Class ;
+                                                  rdfs:subClassOf :RecycledMaterialStatement ,
+                                                                  [ rdf:type owl:Class ;
+                                                                    owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                                    owl:hasValue <http://w3id.org/CEON/ontology/statement/0ge-0le>
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                                    owl:hasValue <http://w3id.org/CEON/ontology/statement/0gt-10le>
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                                    owl:hasValue <http://w3id.org/CEON/ontology/statement/10gt-25le>
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                                    owl:hasValue <http://w3id.org/CEON/ontology/statement/25gt-50le>
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                                    owl:hasValue <http://w3id.org/CEON/ontology/statement/50gt-75le>
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                                    owl:hasValue <http://w3id.org/CEON/ontology/statement/75gt-95le>
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                                    owl:hasValue <http://w3id.org/CEON/ontology/statement/95gt-99le>
+                                                                                  ]
+                                                                                  [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty :hasMassFractionOfPostConsumerRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                                    owl:hasValue <http://w3id.org/CEON/ontology/statement/99gt-100le>
+                                                                                  ]
+                                                                                )
+                                                                  ] ;
+                                                  :PCDSmapping "3.4.0.19, 3.4.0.20, 3.4.0.21, 3.4.0.22, 3.4.0.23, 3.4.0.24, 3.4.0.25, 3.4.0.26" ;
+                                                  rdfs:label "Mass Fraction Of Post Consumer Recycled Material Content Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MFOfPreConsumerRecycledMaterialContentAvailabilityStatement
+:MFOfPreConsumerRecycledMaterialContentAvailabilityStatement rdf:type owl:Class ;
+                                                             rdfs:subClassOf :RecycledMaterialStatement ;
+                                                             :PCDSmapping "3.4.0.18" ;
+                                                             rdfs:label "Mass Fraction Of Pre Consumer Recycled Material Content Availability Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MFOfPreConsumerRecycledMaterialContentStatement
+:MFOfPreConsumerRecycledMaterialContentStatement rdf:type owl:Class ;
+                                                 rdfs:subClassOf :RecycledMaterialStatement ,
+                                                                 [ rdf:type owl:Class ;
+                                                                   owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                                   owl:hasValue <http://w3id.org/CEON/ontology/statement/0ge-0le>
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                                   owl:hasValue <http://w3id.org/CEON/ontology/statement/0gt-10le>
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                                   owl:hasValue <http://w3id.org/CEON/ontology/statement/10gt-25le>
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                                   owl:hasValue <http://w3id.org/CEON/ontology/statement/25gt-50le>
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                                   owl:hasValue <http://w3id.org/CEON/ontology/statement/50gt-75le>
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                                   owl:hasValue <http://w3id.org/CEON/ontology/statement/75gt-95le>
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                                   owl:hasValue <http://w3id.org/CEON/ontology/statement/95gt-99le>
+                                                                                 ]
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty :hasMassFractionOfPreConsumerRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                                   owl:hasValue <http://w3id.org/CEON/ontology/statement/99gt-100le>
+                                                                                 ]
+                                                                               )
+                                                                 ] ;
+                                                 :PCDSmapping "3.4.0.10, 3.4.0.11, 3.4.0.12, 3.4.0.13, 3.4.0.14, 3.4.0.15, 3.4.0.16, 3.4.0.17" ;
+                                                 rdfs:label "Mass Fraction Of Pre Consumer Recycled Material Content Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MFOfProductDesignedCleanlyRemovedFromFixedAssemblyAvailabilityStatement
+:MFOfProductDesignedCleanlyRemovedFromFixedAssemblyAvailabilityStatement rdf:type owl:Class ;
+                                                                         rdfs:subClassOf :DemountingStatement ;
+                                                                         :PCDSmapping "5.4.1.14" ;
+                                                                         rdfs:label "Mass Fraction Of Product Designed Cleanly Removed From Fixed Assembly Availability Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MFOfProductDesignedCleanlyRemovedFromFixedAssemblyStatement
+:MFOfProductDesignedCleanlyRemovedFromFixedAssemblyStatement rdf:type owl:Class ;
+                                                             rdfs:subClassOf :DemountingStatement ,
+                                                                             [ rdf:type owl:Class ;
+                                                                               owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty :hasMassFractionForDemounting ;
+                                                                                               owl:hasValue <http://w3id.org/CEON/ontology/statement/0ge-0le>
+                                                                                             ]
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty :hasMassFractionForDemounting ;
+                                                                                               owl:hasValue <http://w3id.org/CEON/ontology/statement/0gt-10le>
+                                                                                             ]
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty :hasMassFractionForDemounting ;
+                                                                                               owl:hasValue <http://w3id.org/CEON/ontology/statement/10gt-25le>
+                                                                                             ]
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty :hasMassFractionForDemounting ;
+                                                                                               owl:hasValue <http://w3id.org/CEON/ontology/statement/25gt-50le>
+                                                                                             ]
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty :hasMassFractionForDemounting ;
+                                                                                               owl:hasValue <http://w3id.org/CEON/ontology/statement/50gt-75le>
+                                                                                             ]
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty :hasMassFractionForDemounting ;
+                                                                                               owl:hasValue <http://w3id.org/CEON/ontology/statement/75gt-95le>
+                                                                                             ]
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty :hasMassFractionForDemounting ;
+                                                                                               owl:hasValue <http://w3id.org/CEON/ontology/statement/95gt-99le>
+                                                                                             ]
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty :hasMassFractionForDemounting ;
+                                                                                               owl:hasValue <http://w3id.org/CEON/ontology/statement/99gt-100le>
+                                                                                             ]
+                                                                                           )
+                                                                             ] ;
+                                                             :PCDSmapping "5.4.1.06, 5.4.1.07, 5.4.1.08, 5.4.1.09, 5.4.1.10, 5.4.1.11, 5.4.1.12, 5.4.1.13" ;
+                                                             rdfs:label "Mass Fraction Of Product Designed Cleanly Removed From Fixed Assembly Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MFOfProductDesignedCleanlyRemovedFromProductAssemblyAvailabilityStatement
+:MFOfProductDesignedCleanlyRemovedFromProductAssemblyAvailabilityStatement rdf:type owl:Class ;
+                                                                           rdfs:subClassOf :DisassemblyStatement ;
+                                                                           :PCDSmapping "5.5.1.09" ;
+                                                                           rdfs:label "Mass Fraction Of Product Designed Cleanly Removed From Product Assembly Availability Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MFOfProductDesignedCleanlyRemovedFromProductAssemblyStatement
+:MFOfProductDesignedCleanlyRemovedFromProductAssemblyStatement rdf:type owl:Class ;
+                                                               rdfs:subClassOf :DisassemblyStatement ,
+                                                                               [ rdf:type owl:Class ;
+                                                                                 owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty :hasMassFractionForDisassembly ;
+                                                                                                 owl:hasValue <http://w3id.org/CEON/ontology/statement/0ge-0le>
+                                                                                               ]
+                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty :hasMassFractionForDisassembly ;
+                                                                                                 owl:hasValue <http://w3id.org/CEON/ontology/statement/0gt-10le>
+                                                                                               ]
+                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty :hasMassFractionForDisassembly ;
+                                                                                                 owl:hasValue <http://w3id.org/CEON/ontology/statement/10gt-25le>
+                                                                                               ]
+                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty :hasMassFractionForDisassembly ;
+                                                                                                 owl:hasValue <http://w3id.org/CEON/ontology/statement/25gt-50le>
+                                                                                               ]
+                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty :hasMassFractionForDisassembly ;
+                                                                                                 owl:hasValue <http://w3id.org/CEON/ontology/statement/50gt-75le>
+                                                                                               ]
+                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty :hasMassFractionForDisassembly ;
+                                                                                                 owl:hasValue <http://w3id.org/CEON/ontology/statement/75gt-95le>
+                                                                                               ]
+                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty :hasMassFractionForDisassembly ;
+                                                                                                 owl:hasValue <http://w3id.org/CEON/ontology/statement/95gt-99le>
+                                                                                               ]
+                                                                                               [ rdf:type owl:Restriction ;
+                                                                                                 owl:onProperty :hasMassFractionForDisassembly ;
+                                                                                                 owl:hasValue <http://w3id.org/CEON/ontology/statement/99gt-100le>
+                                                                                               ]
+                                                                                             )
+                                                                               ] ;
+                                                               :PCDSmapping "5.5.1.02, 5.5.1.03, 5.5.1.04, 5.5.1.05, 5.5.1.06, 5.5.1.07, 5.5.1.08, 5.5.1.09" ;
+                                                               rdfs:label "Mass Fraction Of Product Designed Cleanly Removed From Product Assembly Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MFOfProductRecyclingAtSimilarLevelAvailabilityStatement
+:MFOfProductRecyclingAtSimilarLevelAvailabilityStatement rdf:type owl:Class ;
+                                                         rdfs:subClassOf :RecyclingStatement ;
+                                                         :PCDSmapping "6.4.1.10" ;
+                                                         rdfs:label "Mass Fraction Of Product Recycling At Similar Level Availability Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MFOfProductRecyclingAtSimilarLevelStatement
+:MFOfProductRecyclingAtSimilarLevelStatement rdf:type owl:Class ;
+                                             rdfs:subClassOf :RecyclingStatement ,
+                                                             [ rdf:type owl:Class ;
+                                                               owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :hasMassFractionOfProductDesignedForRecyclingToOriginalInput ;
+                                                                               owl:hasValue <http://w3id.org/CEON/ontology/statement/0ge-0le>
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :hasMassFractionOfProductDesignedForRecyclingToOriginalInput ;
+                                                                               owl:hasValue <http://w3id.org/CEON/ontology/statement/0gt-10le>
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :hasMassFractionOfProductDesignedForRecyclingToOriginalInput ;
+                                                                               owl:hasValue <http://w3id.org/CEON/ontology/statement/10gt-25le>
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :hasMassFractionOfProductDesignedForRecyclingToOriginalInput ;
+                                                                               owl:hasValue <http://w3id.org/CEON/ontology/statement/25gt-50le>
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :hasMassFractionOfProductDesignedForRecyclingToOriginalInput ;
+                                                                               owl:hasValue <http://w3id.org/CEON/ontology/statement/50gt-75le>
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :hasMassFractionOfProductDesignedForRecyclingToOriginalInput ;
+                                                                               owl:hasValue <http://w3id.org/CEON/ontology/statement/75gt-95le>
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :hasMassFractionOfProductDesignedForRecyclingToOriginalInput ;
+                                                                               owl:hasValue <http://w3id.org/CEON/ontology/statement/95gt-99le>
+                                                                             ]
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty :hasMassFractionOfProductDesignedForRecyclingToOriginalInput ;
+                                                                               owl:hasValue <http://w3id.org/CEON/ontology/statement/99gt-100le>
+                                                                             ]
+                                                                           )
+                                                             ] ;
+                                             :PCDSmapping "6.4.1.02, 6.4.1.03, 6.4.1.04, 6.4.1.05, 6.4.1.06, 6.4.1.07, 6.4.1.08, 6.4.1.09" ;
+                                             rdfs:label "Mass Fraction Of Product Recycling At Similar Level Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MFOfProductReleasedToEnvironmentAvailablityStatement
+:MFOfProductReleasedToEnvironmentAvailablityStatement rdf:type owl:Class ;
+                                                      rdfs:subClassOf :ReleasedIntoEnvironmentStatement ;
+                                                      :PCDSmapping "6.1.0.09" ;
+                                                      rdfs:label "Mass Fraction Of Product Released To Environment Availablity Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MFOfProductReleasedToEnvironmentStatement
+:MFOfProductReleasedToEnvironmentStatement rdf:type owl:Class ;
+                                           rdfs:subClassOf :ReleasedIntoEnvironmentStatement ,
+                                                           [ rdf:type owl:Class ;
+                                                             owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :hasMassFractionOfProductReleasedIntoEnvironment ;
+                                                                             owl:hasValue <http://w3id.org/CEON/ontology/statement/0ge-0le>
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :hasMassFractionOfProductReleasedIntoEnvironment ;
+                                                                             owl:hasValue <http://w3id.org/CEON/ontology/statement/0gt-10le>
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :hasMassFractionOfProductReleasedIntoEnvironment ;
+                                                                             owl:hasValue <http://w3id.org/CEON/ontology/statement/10gt-25le>
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :hasMassFractionOfProductReleasedIntoEnvironment ;
+                                                                             owl:hasValue <http://w3id.org/CEON/ontology/statement/25gt-50le>
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :hasMassFractionOfProductReleasedIntoEnvironment ;
+                                                                             owl:hasValue <http://w3id.org/CEON/ontology/statement/50gt-75le>
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :hasMassFractionOfProductReleasedIntoEnvironment ;
+                                                                             owl:hasValue <http://w3id.org/CEON/ontology/statement/75gt-95le>
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :hasMassFractionOfProductReleasedIntoEnvironment ;
+                                                                             owl:hasValue <http://w3id.org/CEON/ontology/statement/95gt-99le>
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :hasMassFractionOfProductReleasedIntoEnvironment ;
+                                                                             owl:hasValue <http://w3id.org/CEON/ontology/statement/99gt-100le>
+                                                                           ]
+                                                                         )
+                                                           ] ;
+                                           :PCDSmapping "6.1.0.01, 6.1.0.02, 6.1.0.03, 6.1.0.04, 6.1.0.05, 6.1.0.06, 6.1.0.07, 6.1.0.08" ;
+                                           rdfs:label "Mass Fraction Of Product Released To Environment Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MFOfRecycledMaterialContentAvailabilityStatement
+:MFOfRecycledMaterialContentAvailabilityStatement rdf:type owl:Class ;
+                                                  rdfs:subClassOf :RecycledMaterialStatement ;
+                                                  :PCDSmapping "3.4.0.09" ;
+                                                  rdfs:label "Mass Fraction Of Recycled Material Availability Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MFOfRenewableMaterialAvailabilityStatement
+:MFOfRenewableMaterialAvailabilityStatement rdf:type owl:Class ;
+                                            rdfs:subClassOf :SustainablyProducedRenewableMaterialStatement ;
+                                            :PCDSmapping "3.5.0.09" ;
+                                            rdfs:label "Mass Fraction Of Renewable Material Availability Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MFOfReusedPartAvailabilityStatement
+:MFOfReusedPartAvailabilityStatement rdf:type owl:Class ;
+                                     rdfs:subClassOf :ReusedContentStatement ;
+                                     :PCDSmapping "3.3.0.10" ;
+                                     rdfs:label "Mass Fraction Reused Part Availability Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MassFractionOfDisclosedChemicalSubstanceStatement
+:MassFractionOfDisclosedChemicalSubstanceStatement rdf:type owl:Class ;
+                                                   rdfs:subClassOf :ProductCompositionStatement ,
+                                                                   [ rdf:type owl:Class ;
+                                                                     owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :hasMassFractionOfAllDisclosedChemicalSubstance ;
+                                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/0ge-0le>
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :hasMassFractionOfAllDisclosedChemicalSubstance ;
+                                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/0gt-10le>
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :hasMassFractionOfAllDisclosedChemicalSubstance ;
+                                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/10gt-25le>
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :hasMassFractionOfAllDisclosedChemicalSubstance ;
+                                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/25gt-50le>
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :hasMassFractionOfAllDisclosedChemicalSubstance ;
+                                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/50gt-75le>
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :hasMassFractionOfAllDisclosedChemicalSubstance ;
+                                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/75gt-95le>
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :hasMassFractionOfAllDisclosedChemicalSubstance ;
+                                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/95gt-99le>
+                                                                                   ]
+                                                                                   [ rdf:type owl:Restriction ;
+                                                                                     owl:onProperty :hasMassFractionOfAllDisclosedChemicalSubstance ;
+                                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/99gt-100le>
+                                                                                   ]
+                                                                                 )
+                                                                   ] ;
+                                                   :PCDSmapping "3.1.0.05, 3.1.0.06, 3.1.0.07, 3.1.0.08, 3.1.0.09, 3.1.0.10, 3.1.0.11, 3.1.0.12" ;
+                                                   rdfs:label "Mass Fraction Of Disclosed Chemical Substance Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MassFractionOfRecycledMaterialStatement
+:MassFractionOfRecycledMaterialStatement rdf:type owl:Class ;
+                                         rdfs:subClassOf :RecycledMaterialStatement ,
+                                                         [ rdf:type owl:Class ;
+                                                           owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                           owl:hasValue <http://w3id.org/CEON/ontology/statement/0ge-0le>
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                           owl:hasValue <http://w3id.org/CEON/ontology/statement/0gt-10le>
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                           owl:hasValue <http://w3id.org/CEON/ontology/statement/10gt-25le>
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                           owl:hasValue <http://w3id.org/CEON/ontology/statement/25gt-50le>
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                           owl:hasValue <http://w3id.org/CEON/ontology/statement/50gt-75le>
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                           owl:hasValue <http://w3id.org/CEON/ontology/statement/75gt-95le>
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                           owl:hasValue <http://w3id.org/CEON/ontology/statement/95gt-99le>
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :hasMassFractionOfRecycledMaterialsOutOfTheTotalProductMass ;
+                                                                           owl:hasValue <http://w3id.org/CEON/ontology/statement/99gt-100le>
+                                                                         ]
+                                                                       )
+                                                         ] ;
+                                         :PCDSmapping "3.4.0.01, 3.4.0.02, 3.4.0.03, 3.4.0.04, 3.4.0.05, 3.4.0.06, 3.4.0.07, 3.4.0.08" ;
+                                         rdfs:label "Mass Fraction Of Recycled Material Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MassFractionOfRenewableMaterialStatement
+:MassFractionOfRenewableMaterialStatement rdf:type owl:Class ;
+                                          rdfs:subClassOf :SustainablyProducedRenewableMaterialStatement ,
+                                                          [ rdf:type owl:Class ;
+                                                            owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass ;
+                                                                            owl:hasValue <http://w3id.org/CEON/ontology/statement/0ge-0le>
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass ;
+                                                                            owl:hasValue <http://w3id.org/CEON/ontology/statement/0gt-10le>
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass ;
+                                                                            owl:hasValue <http://w3id.org/CEON/ontology/statement/10gt-25le>
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass ;
+                                                                            owl:hasValue <http://w3id.org/CEON/ontology/statement/25gt-50le>
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass ;
+                                                                            owl:hasValue <http://w3id.org/CEON/ontology/statement/50gt-75le>
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass ;
+                                                                            owl:hasValue <http://w3id.org/CEON/ontology/statement/75gt-95le>
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass ;
+                                                                            owl:hasValue <http://w3id.org/CEON/ontology/statement/95gt-99le>
+                                                                          ]
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :hasMassFractionOfRenewableMaterialsOutOfTheTotalProductMass ;
+                                                                            owl:hasValue <http://w3id.org/CEON/ontology/statement/99gt-100le>
+                                                                          ]
+                                                                        )
+                                                          ] ;
+                                          :PCDSmapping "3.5.0.01, 3.5.0.02, 3.5.0.03, 3.5.0.04, 3.5.0.05, 3.5.0.06, 3.5.0.07, 3.5.0.08" ;
+                                          rdfs:label "Mass Fraction Of Renewable Material Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/MassFractionOfReusedPartStatement
+:MassFractionOfReusedPartStatement rdf:type owl:Class ;
+                                   rdfs:subClassOf :ReusedContentStatement ,
+                                                   [ rdf:type owl:Class ;
+                                                     owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :hasMassFractionOfReusedPartsOutOfTheTotalProduct ;
+                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/0ge-0le>
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :hasMassFractionOfReusedPartsOutOfTheTotalProduct ;
+                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/0gt-10le>
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :hasMassFractionOfReusedPartsOutOfTheTotalProduct ;
+                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/10gt-25le>
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :hasMassFractionOfReusedPartsOutOfTheTotalProduct ;
+                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/25gt-50le>
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :hasMassFractionOfReusedPartsOutOfTheTotalProduct ;
+                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/50gt-75le>
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :hasMassFractionOfReusedPartsOutOfTheTotalProduct ;
+                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/75gt-95le>
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :hasMassFractionOfReusedPartsOutOfTheTotalProduct ;
+                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/95gt-99le>
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :hasMassFractionOfReusedPartsOutOfTheTotalProduct ;
+                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/99gt-100le>
+                                                                   ]
+                                                                 )
+                                                   ] ;
+                                   :PCDSmapping "3.3.0.02, 3.3.0.03, 3.3.0.04, 3.3.0.05, 3.3.0.06, 3.3.0.07, 3.3.0.08, 3.3.0.09" ;
+                                   rdfs:label "Mass Fraction Of Reused Part Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/PCAvailabilityStatement
+:PCAvailabilityStatement rdf:type owl:Class ;
+                         rdfs:subClassOf :ProductCompositionStatement ;
+                         :PCDSmapping "3.1.0.13" ;
+                         rdfs:label "Product Composition Availability Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/PCDSStatement
+:PCDSStatement rdf:type owl:Class ;
+               rdfs:subClassOf :Statement ;
+               rdfs:comment "PCDS statement is a statement that is based on PCDS template." ;
+               rdfs:label "PCDS Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/PostConsumerRecycledMaterialCompositionAvailabilityStatement
+:PostConsumerRecycledMaterialCompositionAvailabilityStatement rdf:type owl:Class ;
+                                                              rdfs:subClassOf :RecycledMaterialStatement ;
+                                                              :PCDSmapping "3.4.1.04" ;
+                                                              rdfs:label "Post Consumer Recycled Material Composition Availability Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/PostConsumerRecycledMaterialCompositionStatement
+:PostConsumerRecycledMaterialCompositionStatement rdf:type owl:Class ;
+                                                  rdfs:subClassOf :RecycledMaterialStatement ,
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :hasPostConsumerRecycledMaterialCompositionThreshold ;
+                                                                    owl:hasValue <http://w3id.org/CEON/ontology/statement/0.1ge-0.1le>
+                                                                  ] ;
+                                                  :PCDSmapping "3.4.1.03" ;
+                                                  rdfs:label "Post Consumer Recycled Material Composition Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/PreConsumerRecycledMaterialCompositionAvailabilityStatement
+:PreConsumerRecycledMaterialCompositionAvailabilityStatement rdf:type owl:Class ;
+                                                             rdfs:subClassOf :RecycledMaterialStatement ;
+                                                             :PCDSmapping "3.4.1.12" ;
+                                                             rdfs:label "Pre Consumer Recycled Material Composition Availability Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/PreConsumerRecycledMaterialCompositionStatement
+:PreConsumerRecycledMaterialCompositionStatement rdf:type owl:Class ;
+                                                 rdfs:subClassOf :RecycledMaterialStatement ,
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :hasPreConsumerRecycledMaterialCompositionThreshold ;
+                                                                   owl:hasValue <http://w3id.org/CEON/ontology/statement/0.1ge-0.1le>
+                                                                 ] ;
+                                                 :PCDSmapping "3.4.1.01" ;
+                                                 rdfs:label "Pre Consumer Recycled Material Composition Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/ProductCompositionCertificationStatement
+:ProductCompositionCertificationStatement rdf:type owl:Class ;
+                                          rdfs:subClassOf :ProductCompositionStatement ;
+                                          :PCDSmapping "3.1.1.02" ;
+                                          rdfs:label "Product Composition Certification Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/ProductCompositionStatement
+:ProductCompositionStatement rdf:type owl:Class ;
+                             rdfs:subClassOf :PCDSStatement ;
+                             :PCDSmapping "3.1.0.01-3.1.0.13, 3.1.1.01-3.1.1.02, 3.2.0.01-3.2.0.02" ;
+                             rdfs:comment "Product Composition Statement in PCDS." ;
+                             rdfs:label "Product Composition Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/ProductCompositionValidationStatement
+:ProductCompositionValidationStatement rdf:type owl:Class ;
+                                       rdfs:subClassOf :ProductCompositionStatement ;
+                                       :PCDSmapping "3.1.1.01" ;
+                                       rdfs:label "Product Composition Validation Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/RecycledMaterialStatement
+:RecycledMaterialStatement rdf:type owl:Class ;
+                           rdfs:subClassOf :PCDSStatement ;
+                           rdfs:comment "Recycled Material Statement in PCDS." ;
+                           rdfs:label "Recycled Material Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/RecyclingStatement
+:RecyclingStatement rdf:type owl:Class ;
+                    rdfs:subClassOf :PCDSStatement ;
+                    rdfs:comment "Recycling Statement in PCDS." ;
+                    rdfs:label "Recycling Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/ReleasedIntoEnvironmentStatement
+:ReleasedIntoEnvironmentStatement rdf:type owl:Class ;
+                                  rdfs:subClassOf :PCDSStatement ;
+                                  rdfs:comment "Released Into Environment Statement in PCDS." ;
+                                  rdfs:label "Released Into Environment Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/RenewableEnergyStatement
+:RenewableEnergyStatement rdf:type owl:Class ;
+                          rdfs:subClassOf :PCDSStatement ;
+                          rdfs:comment "Renewable Energy Statement in PCDS." ;
+                          rdfs:label "Renewable Energy Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/ReusedContentStatement
+:ReusedContentStatement rdf:type owl:Class ;
+                        rdfs:subClassOf :PCDSStatement ;
+                        rdfs:comment "Reused Content Statement in PCDS." ;
+                        rdfs:label "Reused Content Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/Statement
+:Statement rdf:type owl:Class ;
+           rdfs:subClassOf <http://www.w3.org/ns/prov#Entity> ;
+           rdfs:comment "Generic class representing the concept of a statement, i.e. some piece of information, fact etc that is expressed in the data. Effectively used to reify relations (triples) in the data, and express information about them." ;
+           rdfs:label "Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/SustainablyProducedRenewableMaterialStatement
+:SustainablyProducedRenewableMaterialStatement rdf:type owl:Class ;
+                                               rdfs:subClassOf :PCDSStatement ;
+                                               rdfs:comment "Sustainably Produced Renewable Material Statement in PCDS." ;
+                                               rdfs:label "Sustainably Produced Renewable Material Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/VFOfReductionDirectWaterAvailabilityStatement
+:VFOfReductionDirectWaterAvailabilityStatement rdf:type owl:Class ;
+                                               rdfs:subClassOf :WaterReuseOrRecirculationStatement ;
+                                               :PCDSmapping "4.2.1.18" ;
+                                               rdfs:label "Volume Fraction Of Reduction Direct Water Availability Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/VFOfReductionDirectWaterStatement
+:VFOfReductionDirectWaterStatement rdf:type owl:Class ;
+                                   rdfs:subClassOf :WaterReuseOrRecirculationStatement ,
+                                                   [ rdf:type owl:Class ;
+                                                     owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction ;
+                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/0ge-0le>
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction ;
+                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/0gt-10le>
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction ;
+                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/10gt-25le>
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction ;
+                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/25gt-50le>
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction ;
+                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/50gt-75le>
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction ;
+                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/75gt-95le>
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction ;
+                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/95gt-99le>
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty :hasVolumeFractionOfReductionOfDirectWaterConsumptionUsedInProduction ;
+                                                                     owl:hasValue <http://w3id.org/CEON/ontology/statement/99gt-100le>
+                                                                   ]
+                                                                 )
+                                                   ] ;
+                                   :PCDSmapping "4.2.1.10, 4.2.1.11, 4.2.1.12, 4.2.1.13, 4.2.1.14, 4.2.1.15, 4.2.1.16, 4.2.1.17" ;
+                                   rdfs:label "Volume Fraction Of Reduction Direct Water Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/VFOfReusedRecirculatedWaterAvailabilityStatement
+:VFOfReusedRecirculatedWaterAvailabilityStatement rdf:type owl:Class ;
+                                                  rdfs:subClassOf :WaterReuseOrRecirculationStatement ;
+                                                  :PCDSmapping "4.2.1.09" ;
+                                                  rdfs:label "Volume Fraction Of Reused Recirculated Water Availability Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/VFOfReusedRecirculatedWaterStatement
+:VFOfReusedRecirculatedWaterStatement rdf:type owl:Class ;
+                                      rdfs:subClassOf :WaterReuseOrRecirculationStatement ,
+                                                      [ rdf:type owl:Class ;
+                                                        owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction ;
+                                                                        owl:hasValue <http://w3id.org/CEON/ontology/statement/0ge-0le>
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction ;
+                                                                        owl:hasValue <http://w3id.org/CEON/ontology/statement/0gt-10le>
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction ;
+                                                                        owl:hasValue <http://w3id.org/CEON/ontology/statement/10gt-25le>
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction ;
+                                                                        owl:hasValue <http://w3id.org/CEON/ontology/statement/25gt-50le>
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction ;
+                                                                        owl:hasValue <http://w3id.org/CEON/ontology/statement/50gt-75le>
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction ;
+                                                                        owl:hasValue <http://w3id.org/CEON/ontology/statement/75gt-95le>
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction ;
+                                                                        owl:hasValue <http://w3id.org/CEON/ontology/statement/95gt-99le>
+                                                                      ]
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :hasVolumeFractionOfReusedOrRecirculatedWaterUsedInProduction ;
+                                                                        owl:hasValue <http://w3id.org/CEON/ontology/statement/99gt-100le>
+                                                                      ]
+                                                                    )
+                                                      ] ;
+                                      :PCDSmapping "4.2.1.01, 4.2.1.02, 4.2.1.03, 4.2.1.04, 4.2.1.05, 4.2.1.06, 4.2.1.07, 4.2.1.08" ;
+                                      rdfs:label "Volume Fraction Of Reused Recirculated Water Statement" .
+
+
+###  http://w3id.org/CEON/ontology/statement/Validation
+:Validation rdf:type owl:Class ;
+            rdfs:label "Validation" .
+
+
+###  http://w3id.org/CEON/ontology/statement/WaterReuseOrRecirculationStatement
+:WaterReuseOrRecirculationStatement rdf:type owl:Class ;
+                                    rdfs:subClassOf :PCDSStatement ;
+                                    rdfs:comment "Water Reuse or Recirculation Statement in PCDS." ;
+                                    rdfs:label "Water Reuse Or Recirculation Statement" .
+
+
+###  http://www.w3.org/ns/prov#Entity
+<http://www.w3.org/ns/prov#Entity> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/prov#Role
+<http://www.w3.org/ns/prov#Role> rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://qudt.org/vocab/unit/PERCENT
+<http://qudt.org/vocab/unit/PERCENT> rdf:type owl:NamedIndividual ,
+                                              <http://qudt.org/schema/qudt/Unit> .
+
+
+###  http://w3id.org/CEON/ontology/statement/certified
+:certified rdf:type owl:NamedIndividual ,
+                    :Validation .
+
+
+###  http://w3id.org/CEON/ontology/statement/public
+:public rdf:type owl:NamedIndividual ,
+                 :Availability .
+
+
+###  http://w3id.org/CEON/ontology/statement/secrectAgreement
+:secrectAgreement rdf:type owl:NamedIndividual ,
+                           :Availability .
+
+
+###  http://w3id.org/CEON/ontology/statement/validatedByThirdParty
+:validatedByThirdParty rdf:type owl:NamedIndividual ,
+                                :Validation .
+
+
+###  http://w3id.org/CEON/ontology/statement/0ge-0le
+<http://w3id.org/CEON/ontology/statement/0ge-0le> rdf:type owl:NamedIndividual ,
+                                                           <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                  <http://w3id.org/CEON/ontology/quantity#hasMaximalValueIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/0p> ;
+                                                  <http://w3id.org/CEON/ontology/quantity#hasMinimalValueIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/0p> .
+
+
+###  http://w3id.org/CEON/ontology/statement/0gt-0.001le
+<http://w3id.org/CEON/ontology/statement/0gt-0.001le> rdf:type owl:NamedIndividual ,
+                                                               <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                      <http://w3id.org/CEON/ontology/quantity#hasMaximalValueIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/0.001p> ;
+                                                      <http://w3id.org/CEON/ontology/quantity#hasMinimalValueNotIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/0p> .
+
+
+###  http://w3id.org/CEON/ontology/statement/0gt-0.01le
+<http://w3id.org/CEON/ontology/statement/0gt-0.01le> rdf:type owl:NamedIndividual ,
+                                                              <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                     <http://w3id.org/CEON/ontology/quantity#hasMaximalValueIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/0.01p> ;
+                                                     <http://w3id.org/CEON/ontology/quantity#hasMinimalValueNotIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/0p> .
+
+
+###  http://w3id.org/CEON/ontology/statement/0gt-0.1le
+<http://w3id.org/CEON/ontology/statement/0gt-0.1le> rdf:type owl:NamedIndividual ,
+                                                             <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                    <http://w3id.org/CEON/ontology/quantity#hasMaximalValueIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/0.1p> ;
+                                                    <http://w3id.org/CEON/ontology/quantity#hasMinimalValueNotIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/0p> .
+
+
+###  http://w3id.org/CEON/ontology/statement/0gt-10le
+<http://w3id.org/CEON/ontology/statement/0gt-10le> rdf:type owl:NamedIndividual ,
+                                                            <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                   <http://w3id.org/CEON/ontology/quantity#hasMaximalValueIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/10p> ;
+                                                   <http://w3id.org/CEON/ontology/quantity#hasMinimalValueNotIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/0p> .
+
+
+###  http://w3id.org/CEON/ontology/statement/0p
+<http://w3id.org/CEON/ontology/statement/0p> rdf:type owl:NamedIndividual ,
+                                                      <http://qudt.org/schema/qudt/QuantityValue> ;
+                                             <http://qudt.org/schema/qudt/hasUnit> <http://qudt.org/vocab/unit/PERCENT> ;
+                                             <http://qudt.org/schema/qudt/numericValue> "0.0"^^xsd:double .
+
+
+###  http://w3id.org/CEON/ontology/statement/0.001p
+<http://w3id.org/CEON/ontology/statement/0.001p> rdf:type owl:NamedIndividual ,
+                                                          <http://qudt.org/schema/qudt/QuantityValue> ;
+                                                 <http://qudt.org/schema/qudt/hasUnit> <http://qudt.org/vocab/unit/PERCENT> ;
+                                                 <http://qudt.org/schema/qudt/numericValue> "0.001"^^xsd:double .
+
+
+###  http://w3id.org/CEON/ontology/statement/0.01p
+<http://w3id.org/CEON/ontology/statement/0.01p> rdf:type owl:NamedIndividual ,
+                                                         <http://qudt.org/schema/qudt/QuantityValue> ;
+                                                <http://qudt.org/schema/qudt/hasUnit> <http://qudt.org/vocab/unit/PERCENT> ;
+                                                <http://qudt.org/schema/qudt/numericValue> "0.01"^^xsd:double .
+
+
+###  http://w3id.org/CEON/ontology/statement/0.1ge-0.1le
+<http://w3id.org/CEON/ontology/statement/0.1ge-0.1le> rdf:type owl:NamedIndividual ,
+                                                               <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                      <http://w3id.org/CEON/ontology/quantity#hasMaximalValueIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/0.1p> ;
+                                                      <http://w3id.org/CEON/ontology/quantity#hasMinimalValueIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/0.1p> .
+
+
+###  http://w3id.org/CEON/ontology/statement/0.1p
+<http://w3id.org/CEON/ontology/statement/0.1p> rdf:type owl:NamedIndividual ,
+                                                        <http://qudt.org/schema/qudt/QuantityValue> ;
+                                               <http://qudt.org/schema/qudt/hasUnit> <http://qudt.org/vocab/unit/PERCENT> ;
+                                               <http://qudt.org/schema/qudt/numericValue> "0.1"^^xsd:double .
+
+
+###  http://w3id.org/CEON/ontology/statement/1ge
+<http://w3id.org/CEON/ontology/statement/1ge> rdf:type owl:NamedIndividual ,
+                                                       <http://w3id.org/CEON/ontology/quantity#QuantityInterval> .
+
+
+###  http://w3id.org/CEON/ontology/statement/1p
+<http://w3id.org/CEON/ontology/statement/1p> rdf:type owl:NamedIndividual ,
+                                                      <http://qudt.org/schema/qudt/QuantityValue> ;
+                                             <http://qudt.org/schema/qudt/hasUnit> <http://qudt.org/vocab/unit/PERCENT> ;
+                                             <http://qudt.org/schema/qudt/numericValue> "1.0"^^xsd:double .
+
+
+###  http://w3id.org/CEON/ontology/statement/10gt-25le
+<http://w3id.org/CEON/ontology/statement/10gt-25le> rdf:type owl:NamedIndividual ,
+                                                             <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                    <http://w3id.org/CEON/ontology/quantity#hasMaximalValueIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/25p> ;
+                                                    <http://w3id.org/CEON/ontology/quantity#hasMinimalValueNotIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/10p> .
+
+
+###  http://w3id.org/CEON/ontology/statement/10p
+<http://w3id.org/CEON/ontology/statement/10p> rdf:type owl:NamedIndividual ,
+                                                       <http://qudt.org/schema/qudt/QuantityValue> ;
+                                              <http://qudt.org/schema/qudt/hasUnit> <http://qudt.org/vocab/unit/PERCENT> ;
+                                              <http://qudt.org/schema/qudt/numericValue> "10.0"^^xsd:double .
+
+
+###  http://w3id.org/CEON/ontology/statement/100p
+<http://w3id.org/CEON/ontology/statement/100p> rdf:type owl:NamedIndividual ,
+                                                        <http://qudt.org/schema/qudt/QuantityValue> ;
+                                               <http://qudt.org/schema/qudt/hasUnit> <http://qudt.org/vocab/unit/PERCENT> ;
+                                               <http://qudt.org/schema/qudt/numericValue> "100.0"^^xsd:double .
+
+
+###  http://w3id.org/CEON/ontology/statement/25gt-50le
+<http://w3id.org/CEON/ontology/statement/25gt-50le> rdf:type owl:NamedIndividual ,
+                                                             <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                    <http://w3id.org/CEON/ontology/quantity#hasMaximalValueIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/50p> ;
+                                                    <http://w3id.org/CEON/ontology/quantity#hasMinimalValueNotIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/25p> .
+
+
+###  http://w3id.org/CEON/ontology/statement/25p
+<http://w3id.org/CEON/ontology/statement/25p> rdf:type owl:NamedIndividual ,
+                                                       <http://qudt.org/schema/qudt/QuantityValue> ;
+                                              <http://qudt.org/schema/qudt/hasUnit> <http://qudt.org/vocab/unit/PERCENT> ;
+                                              <http://qudt.org/schema/qudt/numericValue> "25.0"^^xsd:double .
+
+
+###  http://w3id.org/CEON/ontology/statement/50gt-75le
+<http://w3id.org/CEON/ontology/statement/50gt-75le> rdf:type owl:NamedIndividual ,
+                                                             <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                    <http://w3id.org/CEON/ontology/quantity#hasMaximalValueIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/75p> ;
+                                                    <http://w3id.org/CEON/ontology/quantity#hasMinimalValueNotIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/50p> .
+
+
+###  http://w3id.org/CEON/ontology/statement/50p
+<http://w3id.org/CEON/ontology/statement/50p> rdf:type owl:NamedIndividual ,
+                                                       <http://qudt.org/schema/qudt/QuantityValue> ;
+                                              <http://qudt.org/schema/qudt/hasUnit> <http://qudt.org/vocab/unit/PERCENT> ;
+                                              <http://qudt.org/schema/qudt/numericValue> "50.0"^^xsd:double .
+
+
+###  http://w3id.org/CEON/ontology/statement/75gt-95le
+<http://w3id.org/CEON/ontology/statement/75gt-95le> rdf:type owl:NamedIndividual ,
+                                                             <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                    <http://w3id.org/CEON/ontology/quantity#hasMaximalValueIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/95p> ;
+                                                    <http://w3id.org/CEON/ontology/quantity#hasMinimalValueNotIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/75p> .
+
+
+###  http://w3id.org/CEON/ontology/statement/75p
+<http://w3id.org/CEON/ontology/statement/75p> rdf:type owl:NamedIndividual ,
+                                                       <http://qudt.org/schema/qudt/QuantityValue> ;
+                                              <http://qudt.org/schema/qudt/hasUnit> <http://qudt.org/vocab/unit/PERCENT> ;
+                                              <http://qudt.org/schema/qudt/numericValue> "75.0"^^xsd:double .
+
+
+###  http://w3id.org/CEON/ontology/statement/95gt-99le
+<http://w3id.org/CEON/ontology/statement/95gt-99le> rdf:type owl:NamedIndividual ,
+                                                             <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                    <http://w3id.org/CEON/ontology/quantity#hasMaximalValueIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/99p> ;
+                                                    <http://w3id.org/CEON/ontology/quantity#hasMinimalValueNotIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/95p> .
+
+
+###  http://w3id.org/CEON/ontology/statement/95p
+<http://w3id.org/CEON/ontology/statement/95p> rdf:type owl:NamedIndividual ,
+                                                       <http://qudt.org/schema/qudt/QuantityValue> ;
+                                              <http://qudt.org/schema/qudt/hasUnit> <http://qudt.org/vocab/unit/PERCENT> ;
+                                              <http://qudt.org/schema/qudt/numericValue> "95.0"^^xsd:double .
+
+
+###  http://w3id.org/CEON/ontology/statement/99gt-100le
+<http://w3id.org/CEON/ontology/statement/99gt-100le> rdf:type owl:NamedIndividual ,
+                                                              <http://w3id.org/CEON/ontology/quantity#QuantityInterval> ;
+                                                     <http://w3id.org/CEON/ontology/quantity#hasMaximalValueIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/100p> ;
+                                                     <http://w3id.org/CEON/ontology/quantity#hasMinimalValueNotIncludedOfInterval> <http://w3id.org/CEON/ontology/statement/99p> .
+
+
+###  http://w3id.org/CEON/ontology/statement/99p
+<http://w3id.org/CEON/ontology/statement/99p> rdf:type owl:NamedIndividual ,
+                                                       <http://qudt.org/schema/qudt/QuantityValue> ;
+                                              <http://qudt.org/schema/qudt/hasUnit> <http://qudt.org/vocab/unit/PERCENT> ;
+                                              <http://qudt.org/schema/qudt/numericValue> "99.0"^^xsd:double .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
