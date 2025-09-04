@@ -1,0 +1,47 @@
+timestamp,cq_index,cq,success,elements_used,source_ontologies_used,processing_time_seconds,error
+2025-08-05T16:06:54.132657,0,What materials does a fibre contain?,True,20,material:8;statement:11;product:1,5.90,
+2025-08-05T16:07:06.325055,1,What are the properties of and data about that fibre?,True,20,datasheet:3;statement:7;product:4;material:4;actor:1;actorODP:1,12.08,
+2025-08-05T16:07:13.936717,2,When were material content and/or properties of this fiber changed?,True,20,statement:17;material:3,7.50,
+2025-08-05T16:21:22.253068,0,What materials does a fibre contain?,False,20,material:8;statement:11;product:1,6.77,Invalid Turtle
+2025-08-05T16:21:39.809636,1,What are the properties of and data about that fibre?,False,20,datasheet:3;statement:7;product:4;material:4;actor:1;actorODP:1,17.45,Invalid Turtle
+2025-08-05T16:21:55.464746,2,When were material content and/or properties of this fiber changed?,False,20,statement:17;material:3,15.55,Invalid Turtle
+2025-08-05T16:33:51.701474,0,What materials does a fibre contain?,True,20,material:8;statement:11;product:1,4.33,
+2025-08-05T16:33:57.647793,1,What are the properties of and data about that fibre?,True,20,datasheet:3;statement:7;product:4;material:4;actor:1;actorODP:1,5.82,
+2025-08-05T16:34:04.579401,2,When were material content and/or properties of this fiber changed?,True,20,statement:17;material:3,6.80,
+2025-08-05T17:04:17.388579,0,What materials does a fibre contain?,True,20,material:8;statement:11;product:1,8.13,
+2025-08-05T17:04:27.261573,1,What are the properties of and data about that fibre?,True,20,datasheet:3;statement:7;product:4;material:4;actor:1;actorODP:1,9.75,
+2025-08-05T17:04:40.004768,2,When were material content and/or properties of this fiber changed?,True,20,statement:17;material:3,12.63,
+2025-08-05T17:15:36.602803,0,What materials does a fibre contain?,False,0,,0.29,AsyncCompletions.create() got an unexpected keyword argument 'reasoning_effort'
+2025-08-05T17:15:37.004269,1,What are the properties of and data about that fibre?,False,0,,0.29,AsyncCompletions.create() got an unexpected keyword argument 'reasoning_effort'
+2025-08-05T17:15:37.513872,2,When were material content and/or properties of this fiber changed?,False,0,,0.40,AsyncCompletions.create() got an unexpected keyword argument 'reasoning_effort'
+2025-08-05T17:18:40.952425,0,What materials does a fibre contain?,False,0,,0.64,AsyncCompletions.create() got an unexpected keyword argument 'max_completion_tokens'
+2025-08-05T17:18:42.028072,1,What are the properties of and data about that fibre?,False,0,,0.96,AsyncCompletions.create() got an unexpected keyword argument 'max_completion_tokens'
+2025-08-05T17:18:42.368805,2,When were material content and/or properties of this fiber changed?,False,0,,0.23,AsyncCompletions.create() got an unexpected keyword argument 'max_completion_tokens'
+2025-08-05T17:21:24.031914,0,What materials does a fibre contain?,True,20,material:8;statement:11;product:1,20.67,
+2025-08-05T17:22:02.136217,1,What are the properties of and data about that fibre?,True,20,datasheet:3;statement:7;product:4;material:4;actor:1;actorODP:1,37.99,
+2025-08-05T17:22:40.424483,2,When were material content and/or properties of this fiber changed?,True,20,statement:17;material:3,38.17,
+2025-08-06T17:20:02.429334,0,What materials does a fibre contain?,False,0,,1.60,"Error code: 404 - {'error': {'message': 'The model `o1-preview` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}"
+2025-08-06T17:20:03.626807,1,What are the components of a product?,False,0,,1.08,"Error code: 404 - {'error': {'message': 'The model `o1-preview` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}"
+2025-08-06T17:20:04.561376,2,What is the composition of a material?,False,0,,0.83,"Error code: 404 - {'error': {'message': 'The model `o1-preview` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}"
+2025-08-06T17:26:44.962349,0,What materials does a fibre contain?,True,20,material:8;statement:11;product:1,46.30,
+2025-08-06T17:28:25.074234,1,What are the components of a product?,True,20,product:17;material:1;statement:2,100.00,
+2025-08-06T17:29:35.316918,2,What is the composition of a material?,True,20,product:8;material:6;statement:6,70.12,
+2025-08-12T07:17:48.237042,0,What materials does a fibre contain?,True,20,material:8;statement:11;product:1,44.27,
+2025-08-12T07:18:06.953011,1,What products (fibers) are in my library?,True,20,product:8;statement:12,18.60,
+2025-08-12T07:18:34.306853,2,What substances (products) are included in Restricted Substance List (RSL)?,True,20,statement:15;product:3;material:2,27.24,
+2025-08-12T07:19:11.578953,3,What are the components of a product?,True,20,product:17;material:1;statement:2,37.15,
+2025-08-12T07:19:48.802023,4,Is a material recognized as a recycled material?,True,20,statement:20,37.10,
+2025-08-12T07:20:24.741708,5,What resources are used in the assembly process of a fiber and what are the quantities of these resources?,True,20,product:3;actor:1;statement:16,35.83,
+2025-08-12T07:21:07.097679,6,What is the composition of a material?,False,20,product:8;material:6;statement:6,42.23,Invalid Turtle
+2025-08-12T07:21:40.892489,7,What properties does a material have?,True,20,material:10;actor:1;product:5;statement:3;actorODP:1,33.67,
+2025-08-12T07:22:17.637360,8,What is the repair/reuse guidance of a product?,True,20,statement:18;actor:1;product:1,36.63,
+2025-08-12T07:22:51.646418,9,What is the material composition of a specific product?,True,20,product:8;statement:11;material:1,33.89,
+2025-08-12T07:23:27.180968,10,What are the properties of specific materials?,True,20,material:9;product:4;statement:6;actor:1,35.42,
+2025-08-12T07:23:57.811036,11,What is the disassembly method of a product?,True,20,statement:11;product:8;actor:1,30.50,
+2025-08-12T07:24:28.402878,12,What is the guidance of of disassembly method?,True,20,statement:15;actor:1;product:3;actorODP:1,30.46,
+2025-08-13T18:58:52.871716,0,What materials does a fibre contain?,True,20,material:8;statement:11;product:1,8.24,
+2025-09-04T15:08:13.866003,0,What materials does a fibre contain?,True,14,,0.36,
+2025-09-04T15:08:14.844987,1,What are the components of a product?,True,10,,0.87,
+2025-09-04T15:08:15.364906,2,What is the composition of a material?,True,13,,0.41,
+2025-09-04T15:08:15.876525,3,What is the guidance of of disassembly method?,True,16,,0.40,
+2025-09-04T15:08:16.348999,4,Is a material recognized as a recycled material?,True,13,,0.36,

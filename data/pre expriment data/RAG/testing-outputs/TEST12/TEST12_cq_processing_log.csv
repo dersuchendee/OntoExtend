@@ -1,0 +1,6 @@
+timestamp,cq_index,cq,success,elements_used,source_ontologies_used,processing_time_seconds,error
+2025-09-04T17:31:56.206115,0,What materials does a fibre contain?,True,9,,0.27,
+2025-09-04T17:31:56.632551,1,What are the components of a product?,True,12,,0.31,
+2025-09-04T17:31:57.026001,2,What is the composition of a material?,True,10,,0.28,
+2025-09-04T17:31:57.507640,3,What is the guidance of of disassembly method?,True,10,,0.37,
+2025-09-04T17:31:57.882211,4,Is a material recognized as a recycled material?,True,8,,0.27,

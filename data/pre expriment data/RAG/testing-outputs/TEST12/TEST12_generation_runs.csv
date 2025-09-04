@@ -1,0 +1,2 @@
+timestamp,total_cqs,successful,failed,success_rate_percent,total_time_minutes,avg_time_per_cq_seconds,output_file
+2025-09-04T17:31:57.986542,5,5,0,100.0,0.03,0.42,C:\Users\annas\.core_ontology_rag_cache\combined_ontology.ttl

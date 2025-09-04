@@ -1,0 +1,20 @@
+timestamp,cq_index,cq,model,prompt_tokens,completion_tokens,embedding_tokens,cost_usd
+2025-08-05T17:15:36.604805,0,What materials does a fibre contain?,text-embedding-3-small,0,0,7,0.000000
+2025-08-05T17:15:37.005272,1,What are the properties of and data about that fibre?,text-embedding-3-small,0,0,11,0.000000
+2025-08-05T17:15:37.515194,2,When were material content and/or properties of this fiber changed?,text-embedding-3-small,0,0,12,0.000000
+2025-08-05T17:18:40.954911,0,What materials does a fibre contain?,text-embedding-3-small,0,0,7,0.000000
+2025-08-05T17:18:42.029123,1,What are the properties of and data about that fibre?,text-embedding-3-small,0,0,11,0.000000
+2025-08-05T17:18:42.371094,2,When were material content and/or properties of this fiber changed?,text-embedding-3-small,0,0,12,0.000000
+2025-08-06T17:20:02.430300,0,What materials does a fibre contain?,text-embedding-3-small,0,0,7,0.000000
+2025-08-06T17:20:03.627769,1,What are the components of a product?,text-embedding-3-small,0,0,8,0.000000
+2025-08-06T17:20:04.562338,2,What is the composition of a material?,text-embedding-3-small,0,0,8,0.000000
+2025-08-12T07:21:07.100678,6,What is the composition of a material?,o1-2024-12-17,1894,5744,0,0.000000
+2025-08-12T07:21:07.100678,6,What is the composition of a material?,text-embedding-3-small,0,0,8,0.000000
+2025-08-13T18:58:52.880717,0,What materials does a fibre contain?,gpt-4o,1810,308,0,0.000000
+2025-08-13T18:58:52.880717,0,What materials does a fibre contain?,text-embedding-3-small,0,0,7,0.000000
+2025-09-03T11:41:37.862160,-1,Which materials does a fibre contain?,text-embedding-3-small,0,0,7,0.000000
+2025-09-04T15:08:13.867469,0,What materials does a fibre contain?,text-embedding-3-small,0,0,7,0.000000
+2025-09-04T15:08:14.844987,1,What are the components of a product?,text-embedding-3-small,0,0,8,0.000000
+2025-09-04T15:08:15.365714,2,What is the composition of a material?,text-embedding-3-small,0,0,8,0.000000
+2025-09-04T15:08:15.877505,3,What is the guidance of of disassembly method?,text-embedding-3-small,0,0,10,0.000000
+2025-09-04T15:08:16.350038,4,Is a material recognized as a recycled material?,text-embedding-3-small,0,0,9,0.000000
