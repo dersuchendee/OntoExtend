@@ -1,0 +1,6 @@
+timestamp,cq_index,cq,model,prompt_tokens,completion_tokens,embedding_tokens,cost_usd
+2025-09-04T17:31:56.209515,0,What materials does a fibre contain?,text-embedding-ada-002,0,0,7,0.000000
+2025-09-04T17:31:56.633516,1,What are the components of a product?,text-embedding-ada-002,0,0,8,0.000000
+2025-09-04T17:31:57.026959,2,What is the composition of a material?,text-embedding-ada-002,0,0,8,0.000000
+2025-09-04T17:31:57.508644,3,What is the guidance of of disassembly method?,text-embedding-ada-002,0,0,10,0.000000
+2025-09-04T17:31:57.883211,4,Is a material recognized as a recycled material?,text-embedding-ada-002,0,0,9,0.000000
