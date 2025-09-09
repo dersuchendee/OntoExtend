@@ -27,3 +27,9 @@ class MemoryUnit:
         of the results in CoT-SC
         """
         self.SolvedPlans.append(plan)
+
+    def PrintStatus(self):
+        print(f"CoreOntology: {self.CoreOntology[:50]}...")
+        print(f"Tasks: {self.Tasks}")
+        print(f"SolvedPlans: {self.SolvedPlans}")
+        print(f"SolvedTasks: {self.SolvedTasks}")

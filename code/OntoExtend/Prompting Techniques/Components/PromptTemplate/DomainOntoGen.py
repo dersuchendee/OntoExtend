@@ -1,12 +1,4 @@
-
-
-
-
-
-
-
-
-
+#inputs: CQ, Story, Ontology
 
 DomainOntoGen = """<instruction>
 You are a helpful assistant designed to generate ontologies. You receive a Competency Question (CQ) and an Ontology Story (OS). \n
@@ -212,6 +204,6 @@ O:
 </example>
 
 CQ: {CQ}
-OS: {OS}
-O: 
+Story: {OS}
+Arealy existing parts: {Ontology}
 """
