@@ -1,3 +1,4 @@
+from Components import CallRAGUnit # import RAGCaller
 class SplitUnit:
     def __init__(self, split_type= "Decomposed"):
         # Initialize variables
@@ -7,11 +8,22 @@ class SplitUnit:
         self.Plans = []# 2D set if Tasks only for CoT-SC, ToT and GoT
         self.Tasks = []# 1D set if Tasks
 
-    def Decomposer(self, task: str, split_type: str = None):
+    def Decomposer(self, CQs,Stories,Prompt,Dependency='Independent', split_type = 'Decomposed',searchK=10000,topK=20):
         if self.SplitType == "Decomposed":
-            self.Tasks = self.CQs
-            return self.Plans, self.Tasks
-        
+            if Dependency == 'Independent':
+                try:
+                    Cores = [ CallRAGUnit.RAGCaller.CallRAG(CQ=CQ,topK=topK,
+                                                        searchK=searchK) for CQ in CQs]
+                except:
+                    print(f"RAG call failed for the CQ, using an empty string for all.")
+                    Cores = ['' for CQ in CQs]
+                self.Tasks = [Prompt.format(CQ=CQ, Story=Story, Ontology=Core) for CQ, Story,Core in zip(CQs, Stories,Cores)]
+                return self.Tasks
+            
+            elif Dependency == 'Dependent': # later
+                print("Dependent splitting not implemented yet.")
+                return  1/0
+            
         if self.SplitType == "CoT":
             #1- call LLM Unit with a CoT planner prompt
             #2- save the Plan

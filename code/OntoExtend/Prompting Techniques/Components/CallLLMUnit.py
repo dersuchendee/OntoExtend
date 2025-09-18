@@ -1,5 +1,7 @@
 class LLMCaller:
-    def CallLLM(self, prompt):
+    def __init__(self):
+        pass
+    def CallLLM(self, prompt,LLM='GPT-5'):
         # to do later
-        response = f"LLM response to: {prompt}"
+        response = 'Emplty LLM response'
         return response

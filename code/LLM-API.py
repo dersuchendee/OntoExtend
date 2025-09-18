@@ -1,0 +1,33 @@
+"""
+So, we want only one function here, regardless of the model, API type, or provider.
+The function will take in: API (values: OpenAI, LiU Azure,...), API inputs: python dict, LLM, Prompt, some parameters with default values, and return the response.
+To make API key save, we import it from another file, not here.
+"""
+from openai import AzureOpenAI
+import re,ast, os
+import openai
+
+def call_LLM_API(API, API_inputs, LLM, Prompt, **kwargs):
+    if API == 'OpenAI':
+        #anna sofia
+        pass
+    elif API == 'LiU_Azure':
+        #javad
+        api_key = API_inputs['api_key']
+        api_version = API_inputs['api_version']
+        endpoint = API_inputs['endpoint']
+        prompt = Prompt
+        model = LLM if LLM else 'GPT-5'
+
+        client = AzureOpenAI(
+        azure_endpoint = endpoint,
+        api_version=api_version,
+        api_key=api_key 
+        )
+
+        response = client.chat.completions.create(
+        messages = [{"role":"system","content":prompt_text}],
+        stop=None)
+        return response.choices[0].message.content
+
+    return 'not working'

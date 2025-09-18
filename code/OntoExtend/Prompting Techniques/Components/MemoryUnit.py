@@ -3,8 +3,9 @@ class MemoryUnit:
         # Initialize variables
         self.Tasks = []
         self.CoreOntology = ""
+        self.CoreOntologies = [] #use this instead of coreontology if the tasks are independent or core is not updating
         self.SolvedPlans = []
-        self.SolvedTasks = []
+        self.SolvedTasks = [] #solutions for decomposed prompting
 
     def UpdateCoreOntology(self, new_core=''''''):
         """Rewrite the CoreOntology variable from the RAG."""
@@ -30,6 +31,10 @@ class MemoryUnit:
 
     def PrintStatus(self):
         print(f"CoreOntology: {self.CoreOntology[:50]}...")
-        print(f"Tasks: {self.Tasks}")
+        for index , task in enumerate(self.Tasks):
+            print(f"Task {index+1}:")
+            status = "Done" if index <= len(self.SolvedTasks)-1 else "Pending"
+            print(f" - Task: {task[:80]+'''                 ...                 '''+task[-80:]}... Status: {status}")
+            print('\n--------------------------------')
         print(f"SolvedPlans: {self.SolvedPlans}")
         print(f"SolvedTasks: {self.SolvedTasks}")
