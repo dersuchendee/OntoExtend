@@ -1,0 +1,14 @@
+gpt-4o:
+  input: 2.5
+  output: 10.0
+gpt5:
+  input: 2.5
+  output: 10.0
+gemini-25-pro:
+  input: 2.5
+  output: 10.0
+o4-mini:
+  input: 0.5
+  output: 2.0
+text-embedding-3-small:
+  input: 0.02
