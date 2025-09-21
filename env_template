@@ -1,0 +1,36 @@
+### Define LLM service and model
+
+## Standard OpenAI service with OpenAI API key
+LLM_SERVICE = "openai"
+LLM_MODEL = "gpt-4o"
+LLM_TEMPERATURE = 0.7
+OPENAI_API_KEY = "your-api-key-here"
+
+# LLM_MODEL = "o4-mini"
+# LLM_TEMPERATURE = 1.0
+
+## Local OpenAI Service, e.g. via ollama or LMStudio (e.g. for DeepSeek)
+# LLM_SERVICE = "openai"
+# LLM_BASE_URL = "http://127.0.0.1:1234/v1"
+# LLM_MODEL = "dummy"
+# LLM_TEMPERATURE = 0.7
+
+##  Corporate LLM service, e.g. via Azure API
+# LLM_SERVICE = "corporate"
+# LLM_MODEL = "gpt5"
+# LLM_MODEL = "gemini-25-pro"
+
+
+### Define embedding model and vector dimension
+
+# EMBEDDER = "openai"
+# EMBED_MODEL = "text-embedding-3-small"
+# VECTOR_DIM = 1536
+EMBEDDER = "huggingface"
+EMBED_MODEL = "all-MiniLM-L6-v2"
+VECTOR_DIM = 384
+
+
+### Optional: define LLM costs file
+
+LLM_COSTS_FILE = "./code/llm_costs.yaml"
