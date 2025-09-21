@@ -6,7 +6,6 @@ import os
 import re
 import sys
 import time
-from copy import deepcopy
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
@@ -14,30 +13,28 @@ from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 import faiss  # type: ignore
 import numpy as np
-import openai  # type: ignore
 import pandas as pd
 from pydantic import BaseModel, Field
 from rdflib import Graph, Literal, OWL, RDF, RDFS, URIRef
 from rich import print
 from tiktoken import get_encoding
+from dotenv import load_dotenv
+from llm_service import TokenCostTracker, get_llm_service
+from embedder import get_embedder
 
 # ==========================
 # Configuration & Constants
 # ==========================
 
-def _p(env: str, default):
-    v = os.getenv(env)
-    return float(v) if v else default
+load_dotenv()  # take environment variables from .env
 
-PRICES_PER_1K: Dict[str, Dict[str, Optional[float]]] = {
-    "gpt-4o": {  # Chat/completions models (input vs output)
-        "input": _p("PRICE_GPT_4O_INPUT_PER_1K", None),   # e.g., 0.0025 (set in env)
-        "output": _p("PRICE_GPT_4O_OUTPUT_PER_1K", None), # e.g., 0.0100 (set in env)
-    },
-    "text-embedding-3-small": {  # Embeddings (input only)
-        "input": _p("PRICE_TEXT_EMBEDDING_3_SMALL_PER_1K", 0.00002),
-    },
-}
+LLM_SERVICE = os.getenv("LLM_SERVICE", "openai")                    # openai or corporate
+LLM_MODEL = os.getenv("LLM_MODEL", "gpt-4o")
+LLM_TEMPERATURE = os.getenv("LLM_TEMPERATURE", 0.7)
+
+EMBEDDER = os.getenv("EMBEDDER", "openai")                          # openai or huggingface
+EMBED_MODEL = os.getenv("EMBED_MODEL", "text-embedding-3-small")    # embedding-3-small
+VECTOR_DIM = os.getenv("VECTOR_DIM", 1536)                              
 
 ENC = get_encoding("cl100k_base")
 
@@ -48,10 +45,6 @@ STANDARD_PREFIXES: Dict[str, str] = {
     "xsd": "http://www.w3.org/2001/XMLSchema#",
 }
 
-LLM_MODEL = "gpt-4o"
-EMBED_MODEL = "text-embedding-3-small"
-VECTOR_DIM = 1536  # embedding-3-small
-
 SYS_PROMPT = (
     "You are an ontology engineer. Reuse elements from the provided core ontology when possible. "
     "If you must create new elements, append '# GENERATED' as a comment. "
@@ -59,15 +52,15 @@ SYS_PROMPT = (
 )
 
 USER_TMPL = """
-
-You are a helpful assistant designed to generate ontologies. You receive a Competency Question (CQ) and an Ontology Story (OS). \n
+You are a helpful assistant designed to generate ontologies. You receive a COMPETENCY QUESTION (CQ) and optionally an ONTOLOGY STORY (OS). \n
 Based on CQ, which is a requirement for the ontology, and OS, which tells you what the context of the ontology is, your task is generating one ontology (O). The goal is to generate O that models the CQ properly. This means there is a way to write a SPARQL query to extract the answer to this CQ in O.  \n
 Reuse the relevant ontology elements provided in the RELEVANT ONTOLOGY ELEMENTS section below whenever possible. These elements come from multiple reference ontologies. Only create new elements if absolutely necessary. In any case, add labels and comments. \n
-Use the following prefixes: \n
-{prefix_block}\n
+Use the following prefixes:
+{prefix_block}
 
 Don't put any A-Box (instances) in the ontology and just generate the OWL file using Turtle syntax. Include the entities mentioned in the CQ. Remember to use restrictions when the CQ implies it. The output should be self-contained without any errors. Outside of the code box don't put any comment.\n
-Instructions:\n
+
+INSTRUCTIONS:
 1. Analyze the CQ to understand what concepts and relationships are needed
 2. Map the required concepts to classes/properties from the RELEVANT ONTOLOGY ELEMENTS above
 3. Prefer elements with higher semantic similarity to the CQ concepts
@@ -75,12 +68,13 @@ Instructions:\n
 5. Output only the TBox ontology in Turtle syntax (no instances/ABox)
 6. Include restrictions when the CQ implies them (e.g., cardinality, value restrictions)
 7. Ensure the output is syntactically correct and self-contained
-Competency Question: "{cq}" \n
+
+COMPETENCY QUESTION: "{cq}"
+
 RELEVANT ONTOLOGY ELEMENTS (from {num_ontologies} reference ontologies):
 {relevant_elements}
 
 """
-
 
 # ==========================
 # Paths & IO
@@ -117,57 +111,6 @@ class Paths:
     @property
     def individual_dir(self) -> Path:
         return self.cache_dir / "individual_ontologies"
-
-
-# ==========================
-# Cost Tracking & Logging
-# ==========================
-
-class TokenCostTracker:
-    def __init__(self) -> None:
-        self.totals: Dict[str, Dict[str, int]] = {
-            # model -> {prompt, completion, embedding}
-        }
-
-    def _ensure(self, model: str) -> None:
-        if model not in self.totals:
-            self.totals[model] = {"prompt": 0, "completion": 0, "embedding": 0}
-
-    def snapshot(self) -> Dict[str, Dict[str, int]]:
-        return deepcopy(self.totals)
-
-    def diff(self, before: Dict[str, Dict[str, int]], after: Dict[str, Dict[str, int]]) -> Dict[str, Dict[str, int]]:
-        out: Dict[str, Dict[str, int]] = {}
-        for m in set(before.keys()) | set(after.keys()):
-            out[m] = {
-                "prompt": after.get(m, {}).get("prompt", 0) - before.get(m, {}).get("prompt", 0),
-                "completion": after.get(m, {}).get("completion", 0) - before.get(m, {}).get("completion", 0),
-                "embedding": after.get(m, {}).get("embedding", 0) - before.get(m, {}).get("embedding", 0),
-            }
-        return out
-
-    def note_chat(self, model: str, usage: Any) -> None:
-        if not usage:
-            return
-        self._ensure(model)
-        self.totals[model]["prompt"] += int(getattr(usage, "prompt_tokens", 0) or 0)
-        self.totals[model]["completion"] += int(getattr(usage, "completion_tokens", 0) or 0)
-
-    def note_embed(self, model: str, usage: Any, fallback_text: Optional[str] = None) -> None:
-        self._ensure(model)
-        if usage and getattr(usage, "total_tokens", None) is not None:
-            self.totals[model]["embedding"] += int(usage.total_tokens)
-        elif fallback_text is not None:
-            self.totals[model]["embedding"] += len(ENC.encode(fallback_text))
-
-    def model_cost_usd(self, model: str, counts: Dict[str, int]) -> float:
-        p = PRICES_PER_1K.get(model, {})
-        cin = (counts.get("prompt", 0) + counts.get("embedding", 0)) / 1000.0 * (p.get("input") or 0.0)
-        cout = counts.get("completion", 0) / 1000.0 * (p.get("output") or 0.0)
-        return cin + cout
-
-    def totals_cost_usd(self) -> float:
-        return sum(self.model_cost_usd(m, c) for m, c in self.totals.items())
 
 
 class RunLogger:
@@ -476,42 +419,6 @@ class OntologyExtractor:
         return None
 
 
-# ==========================
-# Embedding & Vector Store
-# ==========================
-
-class OpenAIEmbedder:
-    def __init__(self, model: str, tracker: TokenCostTracker, normalize: bool = True, batch_size: int = 64) -> None:
-        self.model = model
-        self.tracker = tracker
-        self.normalize = normalize
-        self.batch_size = max(1, batch_size)
-        self.client = openai.AsyncOpenAI()
-
-    def _l2norm(self, arr: np.ndarray) -> np.ndarray:
-        if not self.normalize:
-            return arr
-        n = np.linalg.norm(arr, axis=1, keepdims=True) + 1e-12
-        return arr / n
-
-    async def embed_one(self, text: str) -> np.ndarray:
-        r = await self.client.embeddings.create(model=self.model, input=text)
-        self.tracker.note_embed(self.model, getattr(r, "usage", None), fallback_text=text)
-        vec = np.asarray(r.data[0].embedding, dtype="float32")[None, :]
-        return self._l2norm(vec)
-
-    async def embed_many(self, texts: List[str]) -> List[np.ndarray]:
-        out: List[np.ndarray] = []
-        for i in range(0, len(texts), self.batch_size):
-            batch = texts[i : i + self.batch_size]
-            r = await self.client.embeddings.create(model=self.model, input=batch)
-            self.tracker.note_embed(self.model, getattr(r, "usage", None))
-            vecs = np.asarray([d.embedding for d in r.data], dtype="float32")
-            vecs = self._l2norm(vecs)
-            out.extend([v[None, :] for v in vecs])
-        return out
-
-
 class FaissVectorStore:
     def __init__(self, dim: int, inner_product: bool = True) -> None:
         self.idx = faiss.IndexFlatIP(dim) if inner_product else faiss.IndexFlatL2(dim)
@@ -557,26 +464,6 @@ class PromptBuilder:
             cq=cq,
             prefix_block=self.prefix_block,
         )
-
-
-class LLMService:
-    def __init__(self, model: str, tracker: TokenCostTracker) -> None:
-        self.model = model
-        self.tracker = tracker
-        self.client = openai.AsyncOpenAI()
-
-    async def complete(self, prompt: str) -> str:
-        try:
-            resp = await self.client.chat.completions.create(
-                model=self.model,
-                temperature=0,
-                messages=[{"role": "system", "content": SYS_PROMPT}, {"role": "user", "content": prompt}],
-            )
-            self.tracker.note_chat(self.model, getattr(resp, "usage", None))
-            return resp.choices[0].message.content or ""
-        except Exception as e:
-            print(f"[red]LLM Error: {e}[/red]")
-            raise
 
 
 # ==========================
@@ -636,15 +523,15 @@ class OntologyRAG:
         self.logger = RunLogger(paths, self.tracker)
         self.extractor = OntologyExtractor(self.logger)
         self.prefix_mgr = PrefixManager()
-        self.embedder = OpenAIEmbedder(EMBED_MODEL, self.tracker, normalize=normalize_vectors, batch_size=batch_size)
-        self.store = FaissVectorStore(VECTOR_DIM, inner_product=True)  # cosine if normalized
-        self.llm = LLMService(LLM_MODEL, self.tracker)
+        self.embedder = get_embedder(EMBEDDER, EMBED_MODEL, self.tracker, normalize=normalize_vectors, batch_size=batch_size)
+        self.store = FaissVectorStore(int(VECTOR_DIM), inner_product=True)  # cosine if normalized
+        self.llm = get_llm_service(LLM_SERVICE, LLM_MODEL, LLM_TEMPERATURE, self.tracker)
 
-    @staticmethod
-    def ensure_api_key() -> None:
-        if not os.getenv("OPENAI_API_KEY"):
-            print("[bold red]OPENAI_API_KEY is not set[/bold red]")
-            sys.exit(1)
+    # @staticmethod
+    # def ensure_api_key() -> None:
+    #     if not os.getenv("OPENAI_API_KEY"):
+    #         print("[bold red]OPENAI_API_KEY is not set[/bold red]")
+    #         sys.exit(1)
 
     async def _build_store(self, ontology_files: List[str]) -> str:
         print("[yellow]Building vector store from reference ontologies...[/yellow]")
@@ -664,12 +551,11 @@ class OntologyRAG:
 
     async def _generate_fragment(self, cq: str, relevant: List[OntologyElement], prefix_block: str) -> str:
         prompt = PromptBuilder(prefix_block).build(cq, relevant)
-        response = await self.llm.complete(prompt)
+        response = await self.llm.complete(prompt, system_prompt=SYS_PROMPT)
         m = re.search(r"```(?:ttl|turtle)?\n(.*?)```", response, re.DOTALL)
         return (m.group(1).strip() if m else response.strip())
 
     async def run_single_cq(self, cq: str, ontology_files: List[str], top_k: int = 20) -> None:
-        self.ensure_api_key()
         prefix_block = await self._build_store(ontology_files)
         before = self.tracker.snapshot()
         relevant = await self._retrieve_relevant(cq, k=top_k)
@@ -689,7 +575,6 @@ class OntologyRAG:
         print(f"[bold green]💲 Estimated total API cost (USD): {self.tracker.totals_cost_usd():.6f}[/bold green]")
 
     async def run_csv(self, csv_file: str, ontology_files: List[str], limit: Optional[int] = None, top_k: int = 20) -> None:
-        self.ensure_api_key()
         print(f"[bold blue]Processing CQ dataset: {csv_file}[/bold blue]")
         print(f"[bold blue]Using {len(ontology_files)} reference ontologies:[/bold blue]")
         for i, onto_file in enumerate(ontology_files, 1):
