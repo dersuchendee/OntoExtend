@@ -17,12 +17,9 @@ def call_LLM_API(API, API_inputs, LLM, Prompt):
         pass
     elif API == 'LiU_Azure':
         #javad
-        api_key = os.getenv("API_KEY")
-        print(api_key)
-
-        #api_key = API_inputs['api_key']
-        #api_version = API_inputs['api_version']
-        #endpoint = API_inputs['endpoint']
+        api_key     = os.getenv("API_KEY")
+        api_version = os.getenv("api_version")
+        endpoint    = os.getenv('endpoint')
         prompt = Prompt
         model = LLM if LLM else 'GPT-5'
 
