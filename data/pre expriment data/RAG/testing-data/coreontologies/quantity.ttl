@@ -1,0 +1,288 @@
+@prefix : <http://w3id.org/CEON/ontology/quantity/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix qudt-unit: <http://qudt.org/vocab/unit/> .
+@base <http://w3id.org/CEON/ontology/quantity/> .
+
+<http://w3id.org/CEON/ontology/quantity/> rdf:type owl:Ontology ;
+                                           owl:versionIRI <http://w3id.org/CEON/ontology/quantity/0.2/> ;
+                                           owl:imports <http://w3id.org/CEON/ontology/qudtunit/2.1/> ;
+                                           dcterms:contributor "Eva Blomqvist" ;
+                                           dcterms:created "2024-12-31"^^xsd:date ;
+                                           dcterms:creator "Huanyu Li" ;
+                                           dcterms:issued "2025-06-30"^^xsd:date ;
+                                           dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+                                           dcterms:publisher "Onto-DESIDE" ;
+                                           dcterms:title "Circular Economy Ontology Network (CEON) - Quantity Module" ;
+                                           vann:preferredNamespacePrefix "ceon-quantity" ;
+                                           vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/quantity/" ;
+                                           <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements> "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: C3-2, C13-1, C13-4, E3-1, E4-11, T6-1, T10-1." ;
+                                           rdfs:comment "This module defines base properties to describe quantitites with standardized units." ;
+                                           rdfs:seeAlso "https://github.com/LiUSemWeb/CEON" ;
+                                           owl:priorVersion 0.1 ;
+                                           owl:versionInfo 0.2 .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/contributor
+dcterms:contributor rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/publisher
+dcterms:publisher rdf:type owl:AnnotationProperty .
+
+
+###  http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements
+<http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/quantity/hasDimension
+:hasDimension rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf qudt:quantityValue ;
+              rdfs:comment "hasDimension is used to describe a dimension of a product or product object." ;
+              rdfs:label "has dimension" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/hasDismantlingCost
+:hasDismantlingCost rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :hasProcessCost ;
+                    rdfs:comment "The cost of dismantling, expressed as an amount of money with a currency unit." ;
+                    rdfs:label "has dismantling cost" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/hasHeight
+:hasHeight rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasDimension ;
+           rdfs:comment "hasHeight is used to describe the height of a product or product object." ;
+           rdfs:label "has height" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/hasLength
+:hasLength rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasDimension ;
+           rdfs:comment "hasLength is used to describe the length of a product or product object." ;
+           rdfs:label "has length" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/hasMarketValue
+:hasMarketValue rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf qudt:quantityValue ;
+                rdfs:comment "The market value, expressed as an amount of money with a currency unit." ;
+                rdfs:label "has market value" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/hasMaximalValueIncludedOfInterval
+:hasMaximalValueIncludedOfInterval rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf qudt:quantityValue ;
+                                   rdfs:domain :QuantityInterval ;
+                                   rdfs:range qudt:QuantityValue ;
+                                   rdfs:comment "represents the maximum value (included) of an interval" ;
+                                   rdfs:label "has maximal value included of interval" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/hasMaximalValueNotIncludedOfInterval
+:hasMaximalValueNotIncludedOfInterval rdf:type owl:ObjectProperty ;
+                                      rdfs:subPropertyOf qudt:quantityValue ;
+                                      rdfs:domain :QuantityInterval ;
+                                      rdfs:range qudt:QuantityValue ;
+                                      rdfs:comment "represents the maximum value (not included) of an interval" ;
+                                      rdfs:label "has maximal value not included of interval" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/hasMinimalValueIncludedOfInterval
+:hasMinimalValueIncludedOfInterval rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf qudt:quantityValue ;
+                                   rdfs:domain :QuantityInterval ;
+                                   rdfs:range qudt:QuantityValue ;
+                                   rdfs:comment "represents the minimal value (included) of an interval" ;
+                                   rdfs:label "has minimal value included of interval" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/hasMinimalValueNotIncludedOfInterval
+:hasMinimalValueNotIncludedOfInterval rdf:type owl:ObjectProperty ;
+                                      rdfs:subPropertyOf qudt:quantityValue ;
+                                      rdfs:domain :QuantityInterval ;
+                                      rdfs:range qudt:QuantityValue ;
+                                      rdfs:comment "represents the minimal value (not included) of an interval" ;
+                                      rdfs:label "has minimal value not included of interval" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/hasPrice
+:hasPrice rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf qudt:quantityValue ;
+          rdfs:comment "represents that sth has a specific cost" ;
+          rdfs:label "has price" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/hasProcessCost
+:hasProcessCost rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf qudt:quantityValue ;
+                rdfs:comment "represents that a process can have a cost" ;
+                rdfs:label "has process cost" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/hasRecyclingCost
+:hasRecyclingCost rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasProcessCost ;
+                  rdfs:comment "The cost of recycling, expressed as an amount of money with a currency unit." ;
+                  rdfs:label "has recycling cost" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/hasRefurbishmentCost
+:hasRefurbishmentCost rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :hasProcessCost ;
+                      rdfs:comment "The cost of refurbishment, expressed as an amount of money with a currency unit." ;
+                      rdfs:label "has refurbishment cost" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/hasTestingCost
+:hasTestingCost rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :hasProcessCost ;
+                rdfs:comment "The cost of testing, expressed as an amount of money with a currency unit." ;
+                rdfs:label "has testing cost" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/hasThickness
+:hasThickness rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :hasDimension ;
+              rdfs:comment "hasThickness is used to describe the thickness of a product or product object." ;
+              rdfs:label "has thickness" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/hasTransportCost
+:hasTransportCost rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasProcessCost ;
+                  rdfs:comment "The cost of transportation, expressed as an amount of money with a currency unit." ;
+                  rdfs:label "has transport cost" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/hasVolume
+:hasVolume rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf qudt:quantityValue ;
+           rdfs:comment "represents the volume of an object" ;
+           rdfs:label "has volume" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/hasWeight
+:hasWeight rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf qudt:quantityValue ;
+           rdfs:comment "represents the weight of an object" ;
+           rdfs:label "has weight" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/hasWidth
+:hasWidth rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :hasDimension ;
+          rdfs:comment "hasWidth is used to describe the width of a product or product object." ;
+          rdfs:label "has width" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/objectValue
+:objectValue rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf qudt:hasQuantityKind ;
+             rdfs:comment "objectValue is analogous to qudt:numericalValue" ;
+             rdfs:label "object value" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/quantity/numericalMaxValue
+:numericalMaxValue rdf:type owl:DatatypeProperty ;
+                   rdfs:range xsd:double ;
+                   rdfs:comment "represents the maximal value of a quantity" ;
+                   rdfs:label "numerical max value" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/numericalMinValue
+:numericalMinValue rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:range xsd:double ;
+                   rdfs:comment "represents the minimal value of a quantity" ;
+                   rdfs:label "numerical min value" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://w3id.org/CEON/ontology/quantity/QuantityInterval
+:QuantityInterval rdf:type owl:Class ;
+                  rdfs:comment "Quantity interval is an interval with two quantity values." ;
+                  rdfs:label "Quantity Interval" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://qudt.org/vocab/unit/EURO-PER-KiloM
+qudt-unit:EURO-PER-KiloM rdf:type owl:NamedIndividual ,
+                                  qudt:Unit ;
+                         dcterms:description "Euro Per Kilometer (€/km) is a unit used to represent the cost or value associated with transporting a resource."^^rdf:HTML ;
+                         qudt:symbol "€/km" ;
+                         rdfs:label "Euro Per Kilometer" .
+
+
+###  http://qudt.org/vocab/unit/EURO-PER-M2
+qudt-unit:EURO-PER-M2 rdf:type owl:NamedIndividual ,
+                               qudt:Unit ;
+                      dcterms:description "Euro Per Square Meter (€/km) is a unit used to represent the cost or value of resource per square meter."^^rdf:HTML ;
+                      qudt:symbol "€/m²" ;
+                      rdfs:label "Euro Per Square Meter" .
+
+
+###  http://w3id.org/CEON/ontology/quantity/Cost
+:Cost rdf:type owl:NamedIndividual .
+
+
+###  http://w3id.org/CEON/ontology/quantity/FloorPanel1
+:FloorPanel1 rdf:type owl:NamedIndividual .
+
+
+###  http://w3id.org/CEON/ontology/quantity/HIGH_QUALITY
+:HIGH_QUALITY rdf:type owl:NamedIndividual .
+
+
+###  http://w3id.org/CEON/ontology/quantity/LOW_QUALITY
+:LOW_QUALITY rdf:type owl:NamedIndividual .
+
+
+###  http://w3id.org/CEON/ontology/quantity/MEDIUM_QUALITY
+:MEDIUM_QUALITY rdf:type owl:NamedIndividual .
+
+
+###  http://w3id.org/CEON/ontology/quantity/Value
+:Value rdf:type owl:NamedIndividual .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

@@ -1,0 +1,226 @@
+@prefix : <http://w3id.org/CEON/ontology/location/> .
+@prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://w3id.org/CEON/ontology/location/> .
+
+<http://w3id.org/CEON/ontology/location/> rdf:type owl:Ontology ;
+                                           owl:versionIRI <http://w3id.org/CEON/ontology/location/0.2/> ;
+                                           dcterms:contributor "Eva Blomqvist" ;
+                                           dcterms:created "2025-03-19" ;
+                                           dcterms:creator "Huanyu Li" ;
+                                           dcterms:description "A module the CEON ontology network, defining aspects of the location concept." ;
+                                           dcterms:issued "2025-06-30"^^xsd:date ;
+                                           dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+                                           dcterms:publisher "Onto-DESIDE" ;
+                                           dcterms:title "Circular Economy Ontology Network (CEON) - Location Module" ;
+                                           vann:preferredNamespacePrefix "ceon-location" ;
+                                           vann:preferredNamespaceUri "http://w3id.org/CEON/ontoloy/location/" ;
+                                           odp:coversRequirements "Covers the following requirements from Onto-DESIDE D3.2: CE3-3, C3-2, C13-4, E2-12." ;
+                                           rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the location concept." ;
+                                           rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+                                           owl:priorVersion 0.1 ;
+                                           owl:versionInfo 0.2 .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/contributor
+dcterms:contributor rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/publisher
+dcterms:publisher rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+###  http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#coversRequirements
+odp:coversRequirements rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+<http://www.w3.org/2004/02/skos/core#definition> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+<http://www.w3.org/2004/02/skos/core#prefLabel> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.opengis.net/ont/geosparql#geoJSONLiteral
+<http://www.opengis.net/ont/geosparql#geoJSONLiteral> rdf:type rdfs:Datatype .
+
+
+###  http://www.opengis.net/ont/geosparql#gmlLiteral
+<http://www.opengis.net/ont/geosparql#gmlLiteral> rdf:type rdfs:Datatype .
+
+
+###  http://www.opengis.net/ont/geosparql#wktLiteral
+<http://www.opengis.net/ont/geosparql#wktLiteral> rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#gMonthYear
+xsd:gMonthYear rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#gYear
+xsd:gYear rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/location/hasLocation
+:hasLocation rdf:type owl:ObjectProperty ;
+             rdfs:range :Location ;
+             rdfs:comment "Represents the location of an actor or resource." ;
+             rdfs:label "has location" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/location/hasCity
+:hasCity rdf:type owl:DatatypeProperty ;
+         rdfs:range xsd:string ;
+         rdfs:comment "Represents the name of a city." ;
+         rdfs:label "has city" .
+
+
+###  http://w3id.org/CEON/ontology/location/hasCountry
+:hasCountry rdf:type owl:DatatypeProperty ;
+            rdfs:range xsd:string ;
+            rdfs:comment "Represents the name of a country." ;
+            rdfs:label "has country" .
+
+
+###  http://w3id.org/CEON/ontology/location/hasCountryCode
+:hasCountryCode rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Represents the code of a country's name according to ISO 3166-1." ;
+                rdfs:label "has country code" ;
+                rdfs:seeAlso "ISO 3166-1 (Codes for the representation of names of countries and their subdivisions – Part 1: Country code)" .
+
+
+###  http://w3id.org/CEON/ontology/location/hasGlobalLocationNumber
+:hasGlobalLocationNumber rdf:type owl:DatatypeProperty ;
+                         rdfs:range xsd:string ;
+                         rdfs:comment "The Global Location Number (GLN) is part of the GS1 systems of standards." ;
+                         rdfs:label "has global location number" ;
+                         rdfs:seeAlso "https://www.gs1.org/standards/id-keys/gln" .
+
+
+###  http://w3id.org/CEON/ontology/location/hasPostalCode
+:hasPostalCode rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:string ;
+               rdfs:comment "Represent postal code" ;
+               rdfs:label "has postal code" ;
+               rdfs:seeAlso "Universal Postal Union (UPU) S42 standard" .
+
+
+###  http://w3id.org/CEON/ontology/location/hasStreetAddress
+:hasStreetAddress rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:string ;
+                  rdfs:comment "Represents address of a street, including e.g., street number and name." ;
+                  rdfs:label "has street address" .
+
+
+###  http://www.opengis.net/ont/geosparql#asGML
+<http://www.opengis.net/ont/geosparql#asGML> rdf:type owl:DatatypeProperty ;
+                                             rdfs:domain <http://www.opengis.net/ont/geosparql#Geometry> ;
+                                             rdfs:range <http://www.opengis.net/ont/geosparql#gmlLiteral> ;
+                                             rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-as-wkt-literal> ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "The GML serialization of a Geometry."@en ;
+                                             <http://www.w3.org/2004/02/skos/core#prefLabel> "as GML"@en .
+
+
+###  http://www.opengis.net/ont/geosparql#asGeoJSON
+<http://www.opengis.net/ont/geosparql#asGeoJSON> rdf:type owl:DatatypeProperty ;
+                                                 rdfs:domain <http://www.opengis.net/ont/geosparql#Geometry> ;
+                                                 rdfs:range <http://www.opengis.net/ont/geosparql#geoJSONLiteral> ;
+                                                 rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-as-wkt-literal> ;
+                                                 <http://www.w3.org/2004/02/skos/core#definition> "The GeoJSON serialization of a Geometry."@en ;
+                                                 <http://www.w3.org/2004/02/skos/core#prefLabel> "as GeoJSON"@en .
+
+
+###  http://www.opengis.net/ont/geosparql#asWKT
+<http://www.opengis.net/ont/geosparql#asWKT> rdf:type owl:DatatypeProperty ;
+                                             rdfs:domain <http://www.opengis.net/ont/geosparql#Geometry> ;
+                                             rdfs:range <http://www.opengis.net/ont/geosparql#wktLiteral> ;
+                                             rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-as-wkt-literal> ;
+                                             <http://www.w3.org/2004/02/skos/core#definition> "The WKT serialization of a Geometry."@en ;
+                                             <http://www.w3.org/2004/02/skos/core#prefLabel> "as WKT"@en .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#lat
+<http://www.w3.org/2003/01/geo/wgs84_pos#lat> rdf:type owl:DatatypeProperty .
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#long
+<http://www.w3.org/2003/01/geo/wgs84_pos#long> rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://w3id.org/CEON/ontology/location/Location
+:Location rdf:type owl:Class ;
+          rdfs:subClassOf <http://www.opengis.net/ont/geosparql#Geometry> ;
+          rdfs:comment "From geography perspecive, a location represents a region which can be geometry point, line or area on Earth." ;
+          rdfs:label "Location" .
+
+
+###  http://www.opengis.net/ont/geosparql#Geometry
+<http://www.opengis.net/ont/geosparql#Geometry> rdf:type owl:Class ;
+                                                <http://www.w3.org/2004/02/skos/core#definition> "A coherent set of direct positions in space. The positions are held within a Spatial Reference System (SRS)."@en ;
+                                                <http://www.w3.org/2004/02/skos/core#prefLabel> "Geometry"@en .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
