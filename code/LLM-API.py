@@ -6,16 +6,23 @@ To make API key save, we import it from another file, not here.
 from openai import AzureOpenAI
 import re,ast, os
 import openai
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
-def call_LLM_API(API, API_inputs, LLM, Prompt, **kwargs):
+
+def call_LLM_API(API, API_inputs, LLM, Prompt):
     if API == 'OpenAI':
         #anna sofia
         pass
     elif API == 'LiU_Azure':
         #javad
-        api_key = API_inputs['api_key']
-        api_version = API_inputs['api_version']
-        endpoint = API_inputs['endpoint']
+        api_key = os.getenv("API_KEY")
+        print(api_key)
+
+        #api_key = API_inputs['api_key']
+        #api_version = API_inputs['api_version']
+        #endpoint = API_inputs['endpoint']
         prompt = Prompt
         model = LLM if LLM else 'GPT-5'
 
@@ -31,3 +38,5 @@ def call_LLM_API(API, API_inputs, LLM, Prompt, **kwargs):
         return response.choices[0].message.content
 
     return 'not working'
+
+call_LLM_API('LiU_Azure', {}, LLM='GPT-5', Prompt='test')
