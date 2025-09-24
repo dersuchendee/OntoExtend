@@ -33,4 +33,4 @@ VECTOR_DIM = 384
 
 ### Optional: define LLM costs file
 
-LLM_COSTS_FILE = "./code/llm_costs.yaml"
+LLM_COSTS_FILE = "./llm_costs.yaml"

@@ -1,1 +1,11 @@
 .env
+.idea
+.vscode
+*/.vscode
+__pycache__
+*.pyc
+.DS_Store
+*.log
+uv.lock
+
+OntoExtend Script/helpers/*
