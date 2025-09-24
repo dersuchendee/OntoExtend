@@ -1,0 +1,377 @@
+@prefix : <http://w3id.org/CEON/ontology/material/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@base <http://w3id.org/CEON/ontology/material/> .
+
+<http://w3id.org/CEON/ontology/material/> rdf:type owl:Ontology ;
+                                           owl:versionIRI <http://w3id.org/CEON/ontology/material/0.4/> ;
+                                           owl:imports <http://w3id.org/CEON/ontology/resourceODP/0.5/> ;
+                                           dcterms:contributor "Eva Blomqvist" ,
+                                                               "Mikael Lindecrantz" ,
+                                                               "Robin Keskisärkkä" ;
+                                           dcterms:created "2025-03-20"^^xsd:date ;
+                                           dcterms:creator "Huanyu Li" ;
+                                           dcterms:description "The Material module of CEON (Circular Economy Ontology Network)." ;
+                                           dcterms:issued "2025-06-30"^^xsd:date ;
+                                           dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+                                           dcterms:publisher "Onto-DESIDE" ;
+                                           dcterms:title "Circular Economy Ontology Network (CEON) - Material Module" ;
+                                           vann:preferredNamespacePrefix "ceon-material" ;
+                                           vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/material/" ;
+                                           odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: CVN-Resource-2, CVN-ResourceType-4, C3-3, E1-3, E2-4, E5-2, T1-1, T10-2." ,
+                                                                  "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: CE5-2, C3-3, E1-1, E1-3, E1-11, E1-13, E2-4, E3-2, E3-5, E5-2, E5-4, E5-5, T1-1, T9-2, T10-2, T10-4, T22-2." ;
+                                           rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+                                           owl:priorVersion 0.3 ;
+                                           owl:versionInfo 0.4 .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/material/hasChemicalEntity
+:hasChemicalEntity rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Material ;
+                   rdfs:range :ChemicalEntity ;
+                   rdfs:comment "hasChemicalEntity intends to represent that a material can have a collection of chemical entities." ;
+                   rdfs:label "has chemical entity" .
+
+
+###  http://w3id.org/CEON/ontology/material/hasMaterialComponent
+:hasMaterialComponent rdf:type owl:ObjectProperty ;
+                      rdfs:domain :Material ;
+                      rdfs:range :MaterialComponent ;
+                      rdfs:comment "hasMaterialComponent intends to represent that a material can have a collection of components." ;
+                      rdfs:label "has material component" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/material/anonymousFormula
+:anonymousFormula rdf:type owl:DatatypeProperty ;
+                  rdfs:comment "anonymousFormula represents that a molecular entity has the anonymous formula in a string." ;
+                  rdfs:label "anonymous formula" ;
+                  rdfs:seeAlso "https://w3id.org/mdo/structure/AnonymousFormula" .
+
+
+###  http://w3id.org/CEON/ontology/material/descriptiveFormula
+:descriptiveFormula rdf:type owl:DatatypeProperty ;
+                    rdfs:comment "descriptiveFormula represents that a molecular entity has the descriptive formula in a string." ;
+                    rdfs:label "descriptive formula" ;
+                    rdfs:seeAlso "https://w3id.org/mdo/structure/DescriptiveFormula" .
+
+
+###  http://w3id.org/CEON/ontology/material/hillFormula
+:hillFormula rdf:type owl:DatatypeProperty ;
+             rdfs:comment "hillFormula represents that a composition has the hill formula in a string." ;
+             rdfs:label "hill formula" ;
+             rdfs:seeAlso "https://w3id.org/mdo/structure/HillFormula" .
+
+
+###  http://w3id.org/CEON/ontology/material/reducedChemicalFormula
+:reducedChemicalFormula rdf:type owl:DatatypeProperty ;
+                        rdfs:comment "reducedChemicalFormula represents that a molecular entity has the reduced chemical formula in a string." ;
+                        rdfs:label "reduced chemical formula" ;
+                        rdfs:seeAlso "https://w3id.org/mdo/structure/ReducedFormula" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://w3id.org/CEON/ontology/material/Aluminum
+:Aluminum rdf:type owl:Class ;
+          rdfs:subClassOf :ChemicalElement ;
+          rdfs:comment "Aluminum is a chemical element with the symbol Al and atomic number 13." ;
+          rdfs:label "Aluminum" .
+
+
+###  http://w3id.org/CEON/ontology/material/Boron
+:Boron rdf:type owl:Class ;
+       rdfs:subClassOf :ChemicalElement ;
+       rdfs:comment "Boron is a chemical element with the symbol B and atomic number 5." ;
+       rdfs:label "Boron" .
+
+
+###  http://w3id.org/CEON/ontology/material/Cellulose
+:Cellulose rdf:type owl:Class ;
+           rdfs:subClassOf :Material ;
+           rdfs:comment "Cellulose is an organic compound with chemical formula (C6H10O5)n." ;
+           rdfs:label "Cellulose" .
+
+
+###  http://w3id.org/CEON/ontology/material/Cerium
+:Cerium rdf:type owl:Class ;
+        rdfs:subClassOf :RareEarthElement ;
+        rdfs:comment "Cerium is a chemical element with the symbol Ce and atomic number 58." ;
+        rdfs:label "Cerium" .
+
+
+###  http://w3id.org/CEON/ontology/material/ChemicalElement
+:ChemicalElement rdf:type owl:Class ;
+                 rdfs:subClassOf :ChemicalSubstance ;
+                 rdfs:comment "A chemical element is a chemical substance whose atoms all have the same number of protons." ;
+                 rdfs:label "Chemical Element" .
+
+
+###  http://w3id.org/CEON/ontology/material/ChemicalEntity
+:ChemicalEntity rdf:type owl:Class ;
+                rdfs:subClassOf resourceODP:Matter ;
+                rdfs:comment "A chemical entity is an abstraction of entities that can compose matter. For instance, a chemical entity can be a molecular entity or a chemical substance." ;
+                rdfs:label "Chemical Entity" ;
+                rdfs:seeAlso "http://emmo.info/emmo#EMMO_47338839_6cca_4a8e_b565_3c4d5517e2c0" ,
+                             "http://purl.obolibrary.org/obo/chebi#24431" .
+
+
+###  http://w3id.org/CEON/ontology/material/ChemicalSubstance
+:ChemicalSubstance rdf:type owl:Class ;
+                   rdfs:subClassOf :ChemicalEntity ;
+                   rdfs:comment "A chemical substance is made up of a collection of molecular entities." ;
+                   rdfs:label "Chemical Substance" ;
+                   rdfs:seeAlso "http://emmo.info/emmo#EMMO_df96cbb6_b5ee_4222_8eab_b3675df24bea" ,
+                                "http://purl.obolibrary.org/obo/chebi#59999" .
+
+
+###  http://w3id.org/CEON/ontology/material/Chromium
+:Chromium rdf:type owl:Class ;
+          rdfs:subClassOf :ChemicalElement ;
+          rdfs:comment "Chromium is a chemical element with the symbol Cr and atomic number 24." ;
+          rdfs:label "Chromium" .
+
+
+###  http://w3id.org/CEON/ontology/material/Copper
+:Copper rdf:type owl:Class ;
+        rdfs:subClassOf :ChemicalElement ;
+        rdfs:comment "Copper is a chemical element with the symbol Cu and atomic number 29." ;
+        rdfs:label "Copper" .
+
+
+###  http://w3id.org/CEON/ontology/material/Dysprosium
+:Dysprosium rdf:type owl:Class ;
+            rdfs:subClassOf :RareEarthElement ;
+            rdfs:comment "Dysprosium is a chemical element with the symbol Dy and atomic number 66." ;
+            rdfs:label "Dysorisium" .
+
+
+###  http://w3id.org/CEON/ontology/material/Erbium
+:Erbium rdf:type owl:Class ;
+        rdfs:subClassOf :RareEarthElement ;
+        rdfs:comment "Erbium is a chemical element with the symbol Er and atomic number 68." ;
+        rdfs:label "Erbium" .
+
+
+###  http://w3id.org/CEON/ontology/material/Europium
+:Europium rdf:type owl:Class ;
+          rdfs:subClassOf :RareEarthElement ;
+          rdfs:comment "Europium is a chemical element with the symbol Eu and atomic number 63." ;
+          rdfs:label "Europium" .
+
+
+###  http://w3id.org/CEON/ontology/material/Gadolinium
+:Gadolinium rdf:type owl:Class ;
+            rdfs:subClassOf :RareEarthElement ;
+            rdfs:comment "Gadolinium is a chemical element with the symbol Gd and atomic number 64." ;
+            rdfs:label "Gadolinium" .
+
+
+###  http://w3id.org/CEON/ontology/material/Holmium
+:Holmium rdf:type owl:Class ;
+         rdfs:subClassOf :RareEarthElement ;
+         rdfs:comment "Holmium is a chemical element with the symbol Ho and atomic number 67." ;
+         rdfs:label "Holmium" .
+
+
+###  http://w3id.org/CEON/ontology/material/Iron
+:Iron rdf:type owl:Class ;
+      rdfs:subClassOf :ChemicalElement ;
+      rdfs:comment "Iron is a chemical element with the symbol Fe and atomic number 26." ;
+      rdfs:label "Iron" .
+
+
+###  http://w3id.org/CEON/ontology/material/Lanthanum
+:Lanthanum rdf:type owl:Class ;
+           rdfs:subClassOf :RareEarthElement ;
+           rdfs:comment "Lanthanum is a chemical element with the symbol Lal and atomic number 57." ;
+           rdfs:label "Lanthanum" .
+
+
+###  http://w3id.org/CEON/ontology/material/Lutetium
+:Lutetium rdf:type owl:Class ;
+          rdfs:subClassOf :RareEarthElement ;
+          rdfs:comment "Lutetium is a chemical element with the symbol Lu and atomic number 71." ;
+          rdfs:label "Lutetium" .
+
+
+###  http://w3id.org/CEON/ontology/material/Magnesium
+:Magnesium rdf:type owl:Class ;
+           rdfs:subClassOf :ChemicalElement ;
+           rdfs:comment "Magnesium is a chemical element with the symbol Mg and atomic number 12." ;
+           rdfs:label "Magnesium" .
+
+
+###  http://w3id.org/CEON/ontology/material/Manganese
+:Manganese rdf:type owl:Class ;
+           rdfs:subClassOf :ChemicalElement ;
+           rdfs:comment "Manganese is a chemical element with the symbol Mn and atomic number 25." ;
+           rdfs:label "Manganese" .
+
+
+###  http://w3id.org/CEON/ontology/material/Material
+:Material rdf:type owl:Class ;
+          rdfs:subClassOf resourceODP:Matter ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasChemicalEntity ;
+                            owl:someValuesFrom :ChemicalEntity
+                          ] ;
+          rdfs:comment "Material as a sub-concept of Matter, can be a substance or a collection of substance which a physical object is composed of." ;
+          rdfs:label "Material" ;
+          rdfs:seeAlso "http://emmo.info/emmo#EMMO_4207e895_8b83_4318_996a_72cfb32acd94" ,
+                       "https://w3id.org/mdo/core/Material" .
+
+
+###  http://w3id.org/CEON/ontology/material/MaterialComponent
+:MaterialComponent rdf:type owl:Class ;
+                   rdfs:subClassOf resourceODP:Constituent ;
+                   rdfs:comment "A material component is a part of a material." ;
+                   rdfs:label "Material Component" .
+
+
+###  http://w3id.org/CEON/ontology/material/MolecularEntity
+:MolecularEntity rdf:type owl:Class ;
+                 rdfs:subClassOf :ChemicalEntity ;
+                 rdfs:comment "A molecular entity means a singular/distinguishable entity. It can be for instance, atom, ion." ;
+                 rdfs:label "Molecular Entity" ;
+                 rdfs:seeAlso "http://emmo.info/emmo#EMMO_21205421_5783_4d3e_81e5_10c5d894a88a" ,
+                              "http://purl.obolibrary.org/obo/chebi#23367" .
+
+
+###  http://w3id.org/CEON/ontology/material/Neodymium
+:Neodymium rdf:type owl:Class ;
+           rdfs:subClassOf :RareEarthElement ;
+           rdfs:comment "Neodymium is a chemical element with the symbol Nd and atomic number 60." ;
+           rdfs:label "Neodymium" .
+
+
+###  http://w3id.org/CEON/ontology/material/Nickel
+:Nickel rdf:type owl:Class ;
+        rdfs:subClassOf :ChemicalElement ;
+        rdfs:comment "Nickel is a chemical element with the symbol Ni and atomic number 28." ;
+        rdfs:label "Nickel" .
+
+
+###  http://w3id.org/CEON/ontology/material/Niobium
+:Niobium rdf:type owl:Class ;
+         rdfs:subClassOf :ChemicalElement ;
+         rdfs:comment "Niobium is a chemical element with the symbol Nb and atomic number 41." ;
+         rdfs:label "Niobium" .
+
+
+###  http://w3id.org/CEON/ontology/material/Praseodymium
+:Praseodymium rdf:type owl:Class ;
+              rdfs:subClassOf :RareEarthElement ;
+              rdfs:comment "Praseodymium is a chemical element with the symbol Pr and atomic number 59." ;
+              rdfs:label "Praseodymium" .
+
+
+###  http://w3id.org/CEON/ontology/material/Promethium
+:Promethium rdf:type owl:Class ;
+            rdfs:subClassOf :RareEarthElement ;
+            rdfs:comment "Promethium is a chemical element with the symbol Pm and atomic number 61." ;
+            rdfs:label "Promethium" .
+
+
+###  http://w3id.org/CEON/ontology/material/RareEarthElement
+:RareEarthElement rdf:type owl:Class ;
+                  rdfs:subClassOf :ChemicalElement ;
+                  rdfs:comment "Rare earth elements is a set of 17 nearly indistinguishable lustrous silvery-white soft heavy metals." ;
+                  rdfs:label "Rare Earth Element" .
+
+
+###  http://w3id.org/CEON/ontology/material/Samarium
+:Samarium rdf:type owl:Class ;
+          rdfs:subClassOf :RareEarthElement ;
+          rdfs:comment "Samarium is a chemical element with the symbol Sm and atomic number 62." ;
+          rdfs:label "Samarium" .
+
+
+###  http://w3id.org/CEON/ontology/material/Scandium
+:Scandium rdf:type owl:Class ;
+          rdfs:subClassOf :RareEarthElement ;
+          rdfs:comment "Scandium is a chemical element with the symbol Sc and atomic number 21." ;
+          rdfs:label "Scandium" .
+
+
+###  http://w3id.org/CEON/ontology/material/Silicon
+:Silicon rdf:type owl:Class ;
+         rdfs:subClassOf :ChemicalElement ;
+         rdfs:comment "Silicon is a chemical element with the symbol Si and atomic number 14." ;
+         rdfs:label "Silicon" .
+
+
+###  http://w3id.org/CEON/ontology/material/Tantalum
+:Tantalum rdf:type owl:Class ;
+          rdfs:subClassOf :RareEarthElement ;
+          rdfs:comment "Tantalum is a chemical element with the symbol Ta and atomic number 73." ;
+          rdfs:label "Tantalum" .
+
+
+###  http://w3id.org/CEON/ontology/material/Terbium
+:Terbium rdf:type owl:Class ;
+         rdfs:subClassOf :RareEarthElement ;
+         rdfs:comment "Terbium is a chemical element with the symbol Tb and atomic number 65." ;
+         rdfs:label "Terbium" .
+
+
+###  http://w3id.org/CEON/ontology/material/Thulium
+:Thulium rdf:type owl:Class ;
+         rdfs:subClassOf :RareEarthElement ;
+         rdfs:comment "Thulium is a chemical element with the symbol Tm and atomic number 69." ;
+         rdfs:label "Thulium" .
+
+
+###  http://w3id.org/CEON/ontology/material/Titanium
+:Titanium rdf:type owl:Class ;
+          rdfs:subClassOf :ChemicalElement ;
+          rdfs:comment "Titanium is a chemical element with the symbol Ti and atomic number 22." ;
+          rdfs:label "Titanium" .
+
+
+###  http://w3id.org/CEON/ontology/material/Ytterbium
+:Ytterbium rdf:type owl:Class ;
+           rdfs:subClassOf :RareEarthElement ;
+           rdfs:comment "Yteerbium is a chemical element with the symbol Yb and atomic number 70." ;
+           rdfs:label "Ytterbium" .
+
+
+###  http://w3id.org/CEON/ontology/material/Yttrium
+:Yttrium rdf:type owl:Class ;
+         rdfs:subClassOf :RareEarthElement ;
+         rdfs:comment "Yttrium is a chemical element with the symbol Y and atomic number 39." ;
+         rdfs:label "Yttrium" .
+
+
+###  http://w3id.org/CEON/ontology/material/Zinc
+:Zinc rdf:type owl:Class ;
+      rdfs:subClassOf :ChemicalElement ;
+      rdfs:comment "Zinc is a chemical element with the symbol Zn and atomic number 30." ;
+      rdfs:label "Zinc" .
+
+
+###  http://w3id.org/CEON/ontology/resourceODP/Constituent
+resourceODP:Constituent rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/resourceODP/Matter
+resourceODP:Matter rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

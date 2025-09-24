@@ -1,0 +1,301 @@
+@prefix : <http://w3id.org/CEON/ontology/process/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix actor: <http://w3id.org/CEON/ontology/actor/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix processODP: <http://w3id.org/CEON/ontology/processODP/> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@base <http://w3id.org/CEON/ontology/process/> .
+
+<http://w3id.org/CEON/ontology/process/> rdf:type owl:Ontology ;
+                                          owl:versionIRI <http://w3id.org/CEON/ontology/process/0.5/> ;
+                                          owl:imports <http://w3id.org/CEON/ontology/processODP/0.5/> ;
+                                          dcterms:contributor "Eva Blomqvist" ,
+                                                              "Mikael Lindecrantz" ,
+                                                              "Robin Keskisärkkä" ;
+                                          dcterms:created "2025-05-21"^^xsd:date ;
+                                          dcterms:creator "Huanyu Li" ;
+                                          dcterms:description "The Process module of CEON (Circular Economy Ontology Network)." ;
+                                          dcterms:issued "2025-06-30"^^xsd:date ;
+                                          dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+                                          dcterms:publisher "Onto-DESIDE" ;
+                                          dcterms:title "Circular Economy Ontology Network (CEON) - Process Module" ;
+                                          vann:preferredNamespacePrefix "ceon-process" ;
+                                          vann:preferredNamespaceUri "https://w3id.org/CEON/ontology/process/" ;
+                                          odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: T8-2." ,
+                                                                 "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: T8-2." ;
+                                          rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+                                          owl:priorVersion 0.4 ;
+                                          owl:versionInfo 0.5 .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/process/affectsObject
+:affectsObject rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf processODP:isSettingFor ;
+               rdfs:domain :Transition ;
+               rdfs:comment "A certain transition may affect objects, e.g. material that changes its state from one situation to another." ;
+               rdfs:label "affects object" .
+
+
+###  http://w3id.org/CEON/ontology/process/needsEnergy
+:needsEnergy rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf processODP:hasInput ;
+             rdfs:range <http://w3id.org/CEON/ontology/energy/Energy> ;
+             rdfs:comment "The energy needed to perform a certain process." ;
+             rdfs:label "needs energy" .
+
+
+###  http://w3id.org/CEON/ontology/process/producesCO2
+:producesCO2 rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf processODP:hasOutput ;
+             rdfs:range :CO2Emission ;
+             rdfs:comment "The CO2 released or produced by the process." ;
+             rdfs:label "produces CO2" .
+
+
+###  http://w3id.org/CEON/ontology/process/resultingResource
+:resultingResource rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf processODP:hasOutput ;
+                   rdfs:range resourceODP:Resource ;
+                   rdfs:comment "The resource that is the output (product, i.e. what is produced) from a certain process." ;
+                   rdfs:label "resulting resource" .
+
+
+###  http://w3id.org/CEON/ontology/process/usesCatalyst
+:usesCatalyst rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf processODP:hasInput ;
+              rdfs:range :Catalyst ;
+              rdfs:comment "The catalyst used in a process." ;
+              rdfs:label "uses catalyst" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/hasInput
+processODP:hasInput rdf:type owl:ObjectProperty .
+
+
+###  http://w3id.org/CEON/ontology/processODP/hasOutput
+processODP:hasOutput rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://w3id.org/CEON/ontology/energy/Energy
+<http://w3id.org/CEON/ontology/energy/Energy> rdf:type owl:Class ;
+                                              rdfs:subClassOf resourceODP:Resource ;
+                                              rdfs:comment "An amount of energy." ;
+                                              rdfs:label "Energy" .
+
+
+###  http://w3id.org/CEON/ontology/process/AssemblingProcess
+:AssemblingProcess rdf:type owl:Class ;
+                   rdfs:subClassOf :TransformationProcess ;
+                   rdfs:comment "A process of assembling." ;
+                   rdfs:label "Assembling Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/BuyResourceProcess
+:BuyResourceProcess rdf:type owl:Class ;
+                    rdfs:subClassOf processODP:Process ;
+                    rdfs:comment "A process of buying a resource." ;
+                    rdfs:label "Buy Resource Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/CO2Emission
+:CO2Emission rdf:type owl:Class ;
+             rdfs:subClassOf resourceODP:Resource ;
+             rdfs:comment "An amount of CO2." ;
+             rdfs:label "CO2 emission" .
+
+
+###  http://w3id.org/CEON/ontology/process/Catalyst
+:Catalyst rdf:type owl:Class ;
+          rdfs:subClassOf resourceODP:Resource ;
+          rdfs:comment "A resource that is needed as a catalyst by a process, but that is not considered the direct input or output of it." ;
+          rdfs:label "Catalyst" .
+
+
+###  http://w3id.org/CEON/ontology/process/ChangeResourceProcess
+:ChangeResourceProcess rdf:type owl:Class ;
+                       rdfs:subClassOf :TransformationProcess ;
+                       rdfs:comment "A process of a changing resource." ;
+                       rdfs:label "Change Resource Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/ContactProcess
+:ContactProcess rdf:type owl:Class ;
+                rdfs:subClassOf processODP:Process ;
+                rdfs:comment "A contact process." ;
+                rdfs:label "Contact Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/DeconstructionProcess
+:DeconstructionProcess rdf:type owl:Class ;
+                       rdfs:subClassOf :TransformationProcess ;
+                       rdfs:comment "A process of deconstruction." ;
+                       rdfs:label "Deconstruction Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/DisassemblingProcess
+:DisassemblingProcess rdf:type owl:Class ;
+                      rdfs:subClassOf :TransformationProcess ;
+                      rdfs:comment "A process of disassembling." ;
+                      rdfs:label "Disassembling Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/DismantleProcess
+:DismantleProcess rdf:type owl:Class ;
+                  rdfs:subClassOf :TransformationProcess ;
+                  rdfs:comment "A process of dismantling." ;
+                  rdfs:label "Dismantle Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/EnsureClaimProcess
+:EnsureClaimProcess rdf:type owl:Class ;
+                    rdfs:subClassOf processODP:Process ;
+                    rdfs:comment "A process of ensuring a claim." ;
+                    rdfs:label "Ensure Claim Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/IssuingCertificateProcess
+:IssuingCertificateProcess rdf:type owl:Class ;
+                           rdfs:subClassOf :TransformationProcess ;
+                           rdfs:comment "A process of issuing a certificate." ;
+                           rdfs:label "Issuing Certificate Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/ManufacturingProcess
+:ManufacturingProcess rdf:type owl:Class ;
+                      rdfs:subClassOf :TransformationProcess ;
+                      rdfs:comment "A process of manufacturing." ;
+                      rdfs:label "Manufacturing Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/OffsetProcess
+:OffsetProcess rdf:type owl:Class ;
+               rdfs:subClassOf :TransformationProcess ;
+               rdfs:comment "A process of offsetting." ;
+               rdfs:label "Offset Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/ProductionProcess
+:ProductionProcess rdf:type owl:Class ;
+                   rdfs:subClassOf :TransformationProcess ;
+                   rdfs:comment "A process of production." ;
+                   rdfs:label "Production Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/RecycleProcess
+:RecycleProcess rdf:type owl:Class ;
+                rdfs:subClassOf :TransformationProcess ;
+                rdfs:comment "A process of recycling." ;
+                rdfs:label "Recycle Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/RefurbishmentProcess
+:RefurbishmentProcess rdf:type owl:Class ;
+                      rdfs:subClassOf :TransformationProcess ;
+                      rdfs:comment "A process of refurbishment." ;
+                      rdfs:label "Refurbishment Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/RemoveProcess
+:RemoveProcess rdf:type owl:Class ;
+               rdfs:subClassOf processODP:Process ;
+               rdfs:comment "A process of removing." ;
+               rdfs:label "Remove Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/RemoveResourceProcess
+:RemoveResourceProcess rdf:type owl:Class ;
+                       rdfs:subClassOf :TransformationProcess ;
+                       rdfs:comment "A process of removing a resource." ;
+                       rdfs:label "Remove Resource Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/RepairProcess
+:RepairProcess rdf:type owl:Class ;
+               rdfs:subClassOf :TransformationProcess ;
+               rdfs:comment "A process of repairing." ;
+               rdfs:label "Repair Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/ResellProcess
+:ResellProcess rdf:type owl:Class ;
+               rdfs:subClassOf processODP:Process ;
+               rdfs:comment "A process of reselling." ;
+               rdfs:label "Resell Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/ReuseProcess
+:ReuseProcess rdf:type owl:Class ;
+              rdfs:subClassOf processODP:Process ;
+              rdfs:comment "A process of reusing." ;
+              rdfs:label "Reuse Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/SellResourceProcess
+:SellResourceProcess rdf:type owl:Class ;
+                     rdfs:subClassOf processODP:Process ;
+                     rdfs:comment "A process of selling a resource." ;
+                     rdfs:label "Sell Resource Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/ServiceProcess
+:ServiceProcess rdf:type owl:Class ;
+                rdfs:subClassOf :TransformationProcess ;
+                rdfs:comment "A process of servicing." ;
+                rdfs:label "Service Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/ShareResourceProcess
+:ShareResourceProcess rdf:type owl:Class ;
+                      rdfs:subClassOf processODP:Process ;
+                      rdfs:comment "A process of sharing a resource." ;
+                      rdfs:label "Share Resource Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/TakeBackProcess
+:TakeBackProcess rdf:type owl:Class ;
+                 rdfs:subClassOf processODP:Process ;
+                 rdfs:comment "A process of taking back." ;
+                 rdfs:label "Take Back Process" .
+
+
+###  http://w3id.org/CEON/ontology/process/TransformationProcess
+:TransformationProcess rdf:type owl:Class ;
+                       rdfs:subClassOf processODP:Process ;
+                       rdfs:comment "Set of interrelated or interacting activities that transforms inputs into outputs."@en ;
+                       rdfs:isDefinedBy "ISO 59004:2024  - 3.5.5 process" ;
+                       rdfs:label "Transformation Process" ;
+                       rdfs:seeAlso "https://ref.gs1.org/epcis/Transformation" .
+
+
+###  http://w3id.org/CEON/ontology/process/Transition
+:Transition rdf:type owl:Class ;
+            rdfs:subClassOf processODP:Situation ;
+            rdfs:comment "A transition is a situation that creates a context for two additional different Situations, one Process, and at least one Object: one Situation is the state before the transition, the second Situation is the state after the transition, the Process is the invariance under some different transitions, in which at least one Object is situated. Finally, one or more time interval(s) may position the situations and the transitional event in time, and we may include the event that triggered the transition as well." ;
+            rdfs:label "Transition" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/Event
+processODP:Event rdf:type owl:Class ;
+                 rdfs:seeAlso "https://ref.gs1.org/epcis/EPCISEvent" .
+
+
+###  http://w3id.org/CEON/ontology/resourceODP/Resource
+resourceODP:Resource rdf:type owl:Class ;
+                     rdfs:comment "Some resources can be specifically associated with processes." .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

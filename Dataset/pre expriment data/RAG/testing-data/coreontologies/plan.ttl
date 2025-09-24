@@ -1,0 +1,156 @@
+@prefix : <http://w3id.org/CEON/ontology/plan/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix actor: <http://w3id.org/CEON/ontology/actor/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix processODP: <http://w3id.org/CEON/ontology/processODP/> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@base <http://w3id.org/CEON/ontology/plan/> .
+
+<http://w3id.org/CEON/ontology/plan/> rdf:type owl:Ontology ;
+                                       owl:versionIRI <http://w3id.org/CEON/ontology/plan/0.1/> ;
+                                       owl:imports <http://w3id.org/CEON/ontology/processODP/0.5/> ;
+                                       dcterms:contributor "Eva Blomqvist" ;
+                                       dcterms:created "2025-06-19"^^xsd:date ;
+                                       dcterms:creator "Huanyu Li" ;
+                                       dcterms:description "The Plan module of CEON (Circular Economy Ontology Network)." ;
+                                       dcterms:issued "2025-06-30"^^xsd:date ;
+                                       dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+                                       dcterms:publisher "Onto-DESIDE" ;
+                                       dcterms:title "Circular Economy Ontology Network (CEON) - Plan Module" ;
+                                       vann:preferredNamespacePrefix "ceon-plan" ;
+                                       vann:preferredNamespaceUri "https://w3id.org/CEON/ontology/plan/" ;
+                                       odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: T8-2." ,
+                                                              "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: T8-2." ;
+                                       rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+                                       owl:versionInfo 0.1 .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/plan/followsExecution
+:followsExecution rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf processODP:isSettingFor ;
+                  rdfs:domain :PlanExecution ;
+                  rdfs:comment "The situation after the execution takes place, i.e. the state of affairs after the process event, such as the product being assembled, or the material being recycled." ;
+                  rdfs:label "follows execution" .
+
+
+###  http://w3id.org/CEON/ontology/plan/hasPlanExecution
+:hasPlanExecution rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdfs:domain :Plan ;
+                  rdfs:range :PlanExecution ;
+                  rdfs:comment "A plan can have specific executions." ;
+                  rdfs:label "has plan exeution" .
+
+
+###  http://w3id.org/CEON/ontology/plan/precedesExecution
+:precedesExecution rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf processODP:isSettingFor ;
+                   rdfs:domain :PlanExecution ;
+                   rdfs:comment "The situation before the process event takes place, i.e. the state of affairs before the execution, such as the state of the set of components before they are assembled into a product item, or the material state before being recycled." ;
+                   rdfs:label "precedes execution" .
+
+
+###  http://w3id.org/CEON/ontology/plan/satisfiesPlan
+:satisfiesPlan rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain processODP:Situation ;
+               rdfs:range :Description ;
+               rdfs:comment "A relation between a Situation and a Description, e.g. the execution of a Plan satisfies that plan." ;
+               rdfs:label "satisfies plan" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/hasInput
+processODP:hasInput rdf:type owl:ObjectProperty .
+
+
+###  http://w3id.org/CEON/ontology/processODP/hasOutput
+processODP:hasOutput rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/plan/occursAtTime
+:occursAtTime rdf:type owl:DatatypeProperty ;
+              rdfs:domain :PlanExecution ;
+              rdfs:range xsd:dateTime ;
+              rdfs:comment "Represents the time at which something takes place." ;
+              rdfs:label "occurs at time" .
+
+
+###  http://w3id.org/CEON/ontology/processODP/occursAtTime
+processODP:occursAtTime rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://w3id.org/CEON/ontology/plan/Description
+:Description rdf:type owl:Class ;
+             rdfs:comment """A Description is a SocialObject that represents a conceptualization. 
+For example, a Plan is a Description of some actions to be executed by agents in a certain way, with certain parameters etc. Descriptions 'define' or 'use' concepts, and can be 'satisfied' by situations.""" ;
+             rdfs:label "Description" .
+
+
+###  http://w3id.org/CEON/ontology/plan/Plan
+:Plan rdf:type owl:Class ;
+      rdfs:subClassOf :Description ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty processODP:hasPart ;
+                        owl:someValuesFrom :Plan
+                      ] ;
+      rdfs:comment "A Description having an explicit goal, to be achieved by executing the plan." ;
+      rdfs:label "Plan" .
+
+
+###  http://w3id.org/CEON/ontology/plan/PlanExecution
+:PlanExecution rdf:type owl:Class ;
+               rdfs:subClassOf processODP:Situation ,
+                               [ rdf:type owl:Class ;
+                                 owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                 owl:onProperty processODP:duringTime ;
+                                                 owl:someValuesFrom processODP:TimeInterval
+                                               ]
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty processODP:occursAtTime ;
+                                                 owl:someValuesFrom xsd:dateTime
+                                               ]
+                                             )
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :followsExecution ;
+                                 owl:someValuesFrom processODP:Situation
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :precedesExecution ;
+                                 owl:someValuesFrom processODP:Situation
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :satisfiesPlan ;
+                                 owl:someValuesFrom :Plan
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty processODP:hasPart ;
+                                 owl:someValuesFrom :PlanExecution
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty processODP:isSettingFor ;
+                                 owl:someValuesFrom processODP:Process
+                               ] ;
+               rdfs:comment "Plan executions are situations that proactively satisfy a plan. Subplan executions are proper parts of the whole plan execution." ;
+               rdfs:label "Plan Execution" .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

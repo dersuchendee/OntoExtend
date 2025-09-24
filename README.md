@@ -2,7 +2,7 @@
 ![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-yellow.svg)
 
 <p align="center">
-  <img src="ontoextend@4x.png" alt="OntoExtend Logo" width="400"/>
+  <img src="Images/ontoextend@4x.png" alt="OntoExtend Logo" width="400"/>
 </p>
 
 ## Ontology Extension through Retrieval-Augmented Generation
@@ -10,7 +10,7 @@
 OntoExtend is a Python-based system that automatically generates ontology extensions from competency questions using retrieval-augmented generation (RAG). The system leverages existing ontology design patterns (ODPs) and core ontologies to create semantically consistent TTL/OWL fragments.
 
 
-![Ontology RAG Workflow](ontoextension-diagram.png)
+![Ontology RAG Workflow](Images/ontoextension-diagram.png)
 
 ## Quick Start
 

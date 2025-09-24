@@ -1,0 +1,276 @@
+@prefix : <http://w3id.org/CEON/ontology/value/> .
+@prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
+@base <http://w3id.org/CEON/ontology/value/> .
+
+<http://w3id.org/CEON/ontology/value/> rdf:type owl:Ontology ;
+                                        owl:versionIRI <http://w3id.org/CEON/ontology/value/0.3/> ;
+                                        owl:imports <http://w3id.org/CEON/ontology/actorODP/0.4/> ;
+                                        dcterms:contributor "Eva Blomqvist" ,
+                                                            "Mikael Lindecrantz" ,
+                                                            "Robin Keskisärkkä" ;
+                                        dcterms:created "2025-05-20"^^xsd:date ;
+                                        dcterms:creator "Huanyu Li" ;
+                                        dcterms:description "A core ODP of the CEON ontology network, defining aspects of the value concept." ;
+                                        dcterms:issued "2025-06-30"^^xsd:date ;
+                                        dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+                                        dcterms:publisher "Onto-DESIDE" ;
+                                        dcterms:title "Circular Economy Ontology Network (CEON) - Value Module" ;
+                                        vann:preferredNamespacePrefix "ceon-value" ;
+                                        vann:preferredNamespaceUri "https://w3id.org/CEON/ontoloy/value/" ;
+                                        odp:coversRequirements "Covers the following requirements from Onto-DESIDE D3.2: CE1-3, CE5-16, CE5-17, CE5-19, CE7-8, CE9-4, CE10-10, CE11-2, C2-1, C4-4, C4-6, C5-2." ;
+                                        rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the value concept." ;
+                                        rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+                                        owl:versionInfo 0.3 .
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#gMonthYear
+xsd:gMonthYear rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#gYear
+xsd:gYear rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://w3id.org/CEON/ontology/value/hasAimedValue
+:hasAimedValue rdf:type owl:ObjectProperty ;
+               rdfs:domain :ValueProposition ;
+               rdfs:range :Value ;
+               rdfs:comment "A value proposition has specific aimed values." ;
+               rdfs:label "has aimed value" .
+
+
+###  http://w3id.org/CEON/ontology/value/hasAssociatedValue
+:hasAssociatedValue rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf owl:topObjectProperty ;
+                    rdfs:domain :ValuePerception ;
+                    rdfs:range :Value ;
+                    rdfs:comment "A value perception about creating/destoring/missing some value." ;
+                    rdfs:label "has associated value" .
+
+
+###  http://w3id.org/CEON/ontology/value/hasPerception
+:hasPerception rdf:type owl:ObjectProperty ;
+               rdfs:domain [ rdf:type owl:Class ;
+                             owl:unionOf ( actorODP:Actor
+                                           :ValueProposition
+                                         )
+                           ] ;
+               rdfs:range :ValuePerception ;
+               rdfs:comment "An actor perceive specific values, or a value proposition is about specific values." ;
+               rdfs:label "has perception" .
+
+
+###  http://w3id.org/CEON/ontology/value/hasVPTargets
+:hasVPTargets rdf:type owl:ObjectProperty ;
+              rdfs:comment "A value proposition is proposed about specific actors, participations or resources." ;
+              rdfs:label "has value proposition targets" .
+
+
+###  http://w3id.org/CEON/ontology/value/hasValuableResource
+:hasValuableResource rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf owl:topObjectProperty ;
+                     rdfs:domain :ValueParticipation ;
+                     rdfs:range <http://w3id.org/CEON/ontology/resourceODP/Resource> ;
+                     rdfs:comment "A value participation has participating resources." ;
+                     rdfs:label "has valuable resource" .
+
+
+###  http://w3id.org/CEON/ontology/value/hasValueParticipantRole
+:hasValueParticipantRole rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf actorODP:participantRole ;
+                         rdfs:domain :ValueParticipation ;
+                         rdfs:range :ValueParticipationRole ;
+                         rdfs:comment "Holds the value of the role of the value participant in this value participation relation." ;
+                         rdfs:label "has value participant role" .
+
+
+###  http://w3id.org/CEON/ontology/value/onValueParticipation
+:onValueParticipation rdf:type owl:ObjectProperty ;
+                      rdfs:domain :ValuePerception ;
+                      rdfs:range :ValueParticipation ;
+                      rdfs:comment "A perception is on specific value participations." ;
+                      rdfs:label "on value participation" .
+
+
+###  http://w3id.org/CEON/ontology/value/proposedBy
+:proposedBy rdf:type owl:ObjectProperty ;
+            rdfs:domain :ValueProposition ;
+            rdfs:range actorODP:Actor ;
+            rdfs:comment "A value proposition is proposed by specific actors." ;
+            rdfs:label "proposed by" .
+
+
+###  http://w3id.org/CEON/ontology/value/targettingActor
+:targettingActor rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :hasVPTargets ;
+                 rdfs:domain :ValueProposition ;
+                 rdfs:range actorODP:Actor ;
+                 rdfs:comment "A value proposition is about some actors." ;
+                 rdfs:label "targetting actor" .
+
+
+###  http://w3id.org/CEON/ontology/value/targettingResource
+:targettingResource rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :hasVPTargets ;
+                    rdfs:domain :ValueProposition ;
+                    rdfs:range <http://w3id.org/CEON/ontology/resourceODP/Resource> ;
+                    rdfs:comment "A value proposition is about some resources." ;
+                    rdfs:label "targetting resource" .
+
+
+###  http://w3id.org/CEON/ontology/value/targettingValueParticipation
+:targettingValueParticipation rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf :hasVPTargets ;
+                              rdfs:domain :ValueProposition ;
+                              rdfs:range :ValueParticipation ;
+                              rdfs:comment "A value proposition is about some participation." ;
+                              rdfs:label "targetting value participation" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://w3id.org/CEON/ontology/resourceODP/Resource
+<http://w3id.org/CEON/ontology/resourceODP/Resource> rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/value/EconomicValue
+:EconomicValue rdf:type owl:Class ;
+               owl:equivalentClass :UseValue ;
+               rdfs:subClassOf :Value ;
+               rdfs:comment "Use/Economics value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances." ;
+               rdfs:label "Economic Value" .
+
+
+###  http://w3id.org/CEON/ontology/value/EnvironmentalValue
+:EnvironmentalValue rdf:type owl:Class ;
+                    rdfs:subClassOf :Value ;
+                    rdfs:comment "Environmental value represents how a thing (e.g., a product or service) match some environmental goals or needs of an actor under some circumstances." ;
+                    rdfs:label "Environmental Value" .
+
+
+###  http://w3id.org/CEON/ontology/value/ExchangeValue
+:ExchangeValue rdf:type owl:Class ;
+               rdfs:subClassOf :Value ;
+               rdfs:comment "Exchange value represents the worth of a product, resource, service in a exchange setting, i.e., a product, resource, service is traded or sold." ;
+               rdfs:label "Exchange Value" .
+
+
+###  http://w3id.org/CEON/ontology/value/SocialValue
+:SocialValue rdf:type owl:Class ;
+             rdfs:subClassOf :Value ;
+             rdfs:comment "Social value represents how a thing (e.g., a product or service) match some social goals or needs of an actor under some circumstances." ;
+             rdfs:label "Social Value" .
+
+
+###  http://w3id.org/CEON/ontology/value/UseValue
+:UseValue rdf:type owl:Class ;
+          rdfs:subClassOf :Value ;
+          rdfs:comment "Use/Economics value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances." ;
+          rdfs:label "Use Value" .
+
+
+###  http://w3id.org/CEON/ontology/value/Value
+:Value rdf:type owl:Class ;
+       rdfs:comment "Gain(s) or benefit(s) from satisfying needs and expectations,	in relation to the use	and conservation of resources. EXAMPLE: Revenue, savings, productivity, sustainability, satisfaction, empowerment, engagement, experience, public health, trust. Value is relative to, and determined by the perception of, those interested party(ies) able to capture it. Value can be financial or non-financial, e.g. social, environmental, other gains or benefits. Value is dynamic over time."@en ;
+       rdfs:isDefinedBy "ISO 59004:2024 - 3.1.7 value" ;
+       rdfs:label "Value" .
+
+
+###  http://w3id.org/CEON/ontology/value/ValueParticipation
+:ValueParticipation rdf:type owl:Class ;
+                    rdfs:subClassOf actorODP:Participation ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasAssociatedValue ;
+                                      owl:someValuesFrom :Value
+                                    ] ;
+                    rdfs:comment "A participation that may create/destory/miss value." ;
+                    rdfs:label "Value Participation" .
+
+
+###  http://w3id.org/CEON/ontology/value/ValueParticipationRole
+:ValueParticipationRole rdf:type owl:Class ;
+                        rdfs:subClassOf actorODP:Role ;
+                        rdfs:comment "A role that a value participant can take." ;
+                        rdfs:label "Value Participation Role" .
+
+
+###  http://w3id.org/CEON/ontology/value/ValuePerception
+:ValuePerception rdf:type owl:Class ;
+                 rdfs:comment "Value perception of an actor determines specifc values." ;
+                 rdfs:label "Value Perception" .
+
+
+###  http://w3id.org/CEON/ontology/value/ValueProposition
+:ValueProposition rdf:type owl:Class ;
+                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasAimedValue ;
+                                    owl:someValuesFrom :Value
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :targettingActor ;
+                                    owl:someValuesFrom actorODP:Actor
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :targettingValueParticipation ;
+                                    owl:someValuesFrom :ValueParticipation
+                                  ] ;
+                  rdfs:comment "Proposed or intended value outcome of some process, action or collaboration." ;
+                  rdfs:label "Value Proposition" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://w3id.org/CEON/ontology/value/ValueConsumer
+:ValueConsumer rdf:type owl:NamedIndividual ,
+                        :ValueParticipationRole .
+
+
+###  http://w3id.org/CEON/ontology/value/ValueContributor
+:ValueContributor rdf:type owl:NamedIndividual ,
+                           :ValueParticipationRole .
+
+
+###  http://w3id.org/CEON/ontology/value/ValueCreator
+:ValueCreator rdf:type owl:NamedIndividual ,
+                       :ValueParticipationRole .
+
+
+###  http://w3id.org/CEON/ontology/value/ValueDestroyer
+:ValueDestroyer rdf:type owl:NamedIndividual ,
+                         :ValueParticipationRole .
+
+
+###  http://w3id.org/CEON/ontology/value/ValueDistributor
+:ValueDistributor rdf:type owl:NamedIndividual ,
+                           :ValueParticipationRole .
+
+
+###  http://w3id.org/CEON/ontology/value/ValueEvaluator
+:ValueEvaluator rdf:type owl:NamedIndividual ,
+                         :ValueParticipationRole .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
