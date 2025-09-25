@@ -15,7 +15,7 @@ import faiss  # type: ignore
 import numpy as np
 import pandas as pd
 from pydantic import BaseModel, Field
-from rdflib import Graph, Literal, OWL, RDF, RDFS, URIRef
+from rdflib import Graph, Literal, OWL, RDF, RDFS, URIRef, BNode
 from rich import print
 from tiktoken import get_encoding
 from dotenv import load_dotenv
@@ -75,7 +75,13 @@ RELEVANT ONTOLOGY ELEMENTS (from {num_ontologies} reference ontologies):
 {relevant_elements}
 
 """
+def _last_uri(u: str) -> str:
+    if not u:
+        return ""
+    return u.split('#')[-1].split('/')[-1]
 
+def _tail(u: str) -> str:
+    return u.split('#')[-1].split('/')[-1]
 # ==========================
 # Paths & IO
 # ==========================
@@ -112,11 +118,54 @@ class Paths:
     def individual_dir(self) -> Path:
         return self.cache_dir / "individual_ontologies"
 
+    @property
+    def retrieval_log_csv(self) -> Path:
+        return self.cache_dir / "retrieval_log.csv"
+
 
 class RunLogger:
     def __init__(self, paths: Paths, tracker: TokenCostTracker) -> None:
         self.paths = paths
         self.tracker = tracker
+
+    def log_retrieval(
+            self,
+            cq_index: int,
+            cq: str,
+            model: str,
+            threshold: Optional[float],
+            topN: int,
+            pool_size: int,
+            rows: List[Dict[str, Any]],
+    ) -> None:
+        """
+        rows: list of dicts with keys:
+          uri, element_type, label, source_ontology, score, selected (bool), parent_included (bool)
+        """
+        self.paths.retrieval_log_csv.parent.mkdir(parents=True, exist_ok=True)
+        newfile = not self.paths.retrieval_log_csv.exists()
+        with self.paths.retrieval_log_csv.open("a", newline="", encoding="utf-8") as f:
+            w = csv.writer(f)
+            if newfile:
+                w.writerow([
+                    "timestamp", "cq_index", "cq", "model", "threshold", "topN", "pool_size",
+                    "uri", "last_uri", "element_type", "label", "source_ontology", "score", "selected",
+                    "parent_included",
+                ])
+            ts = datetime.now().isoformat()
+            cq_short = cq[:200] + ("..." if len(cq) > 200 else "")
+            for r in rows:
+                w.writerow([
+                    ts, cq_index, cq_short, model,
+                    (f"{threshold:.6f}" if threshold is not None else ""),
+                    topN, pool_size,
+                    r.get("uri", ""), _last_uri(r.get("uri", "")),
+                    r.get("element_type", ""), r.get("label", ""),
+                    Path(r.get("source_ontology", "")).name,
+                    f"{float(r.get('score', 0.0)):.6f}",
+                    bool(r.get("selected", False)),
+                    bool(r.get("parent_included", False)),
+                ])
 
     def log_elements(self, elements: List["OntologyElement"]) -> None:
         self.paths.elements_csv.parent.mkdir(parents=True, exist_ok=True)
@@ -238,6 +287,7 @@ class OntologyElement(BaseModel):
     range: Optional[List[str]] = Field(default_factory=list)
     super_classes: Optional[List[str]] = Field(default_factory=list)
     sub_classes: Optional[List[str]] = Field(default_factory=list)
+    restrictions: Optional[List[str]] = Field(default_factory=list)
 
     def get_searchable_text(self) -> str:
         parts: List[str] = []
@@ -372,12 +422,38 @@ class OntologyExtractor:
         return elements
 
     @staticmethod
-    def _extract_class_info(g: Graph, cls: URIRef, source_ontology: str) -> Optional[OntologyElement]:
+    def _extract_class_info(g: Graph, cls: URIRef, source_ontology: str) -> Optional["OntologyElement"]:
         try:
             label = OntologyExtractor._get_literal_value(g, cls, RDFS.label)
             comment = OntologyExtractor._get_literal_value(g, cls, RDFS.comment)
             super_classes = [str(sc) for sc in g.objects(cls, RDFS.subClassOf) if isinstance(sc, URIRef)]
             sub_classes = [str(sc) for sc in g.subjects(RDFS.subClassOf, cls) if isinstance(sc, URIRef)]
+
+            restrictions: List[str] = []
+            for sc in g.objects(cls, RDFS.subClassOf):
+                if isinstance(sc, BNode) and (sc, RDF.type, OWL.Restriction) in g:
+                    on_prop = next(g.objects(sc, OWL.onProperty), None)
+                    some = next(g.objects(sc, OWL.someValuesFrom), None)
+                    allv = next(g.objects(sc, OWL.allValuesFrom), None)
+                    hasv = next(g.objects(sc, OWL.hasValue), None)
+                    minc = next(g.objects(sc, OWL.minCardinality), None)
+                    maxc = next(g.objects(sc, OWL.maxCardinality), None)
+                    eqc = next(g.objects(sc, OWL.cardinality), None)
+
+                    prop_str = _tail(str(on_prop)) if on_prop else "<?>"
+                    if some:
+                        restrictions.append(f"∃ {prop_str} . {_tail(str(some))}")
+                    if allv:
+                        restrictions.append(f"∀ {prop_str} . {_tail(str(allv))}")
+                    if hasv:
+                        restrictions.append(f"{prop_str} hasValue {_tail(str(hasv))}")
+                    if minc:
+                        restrictions.append(f"minCardinality({prop_str}) = {str(minc)}")
+                    if maxc:
+                        restrictions.append(f"maxCardinality({prop_str}) = {str(maxc)}")
+                    if eqc:
+                        restrictions.append(f"cardinality({prop_str}) = {str(eqc)}")
+
             return OntologyElement(
                 uri=str(cls),
                 element_type='class',
@@ -386,6 +462,7 @@ class OntologyExtractor:
                 comment=comment,
                 super_classes=super_classes,
                 sub_classes=sub_classes,
+                restrictions=restrictions,
             )
         except Exception as e:
             print(f"[yellow] Error extracting class {cls}: {e}[/yellow]")
@@ -453,7 +530,11 @@ class PromptBuilder:
         for source, els in elements_by_source.items():
             parts.append(f"\n## From {source} ontology:")
             for e in els:
-                parts.append(f"- {e.get_searchable_text()}")
+                base = f"- {e.get_searchable_text()}"
+                if getattr(e, "restrictions", None):
+                    rs = "; ".join(e.restrictions[:6])
+                    base += f" | Restrictions: {rs}"
+                parts.append(base)
         return "\n".join(parts), len(elements_by_source)
 
     def build(self, cq: str, elements: List[OntologyElement]) -> str:
@@ -544,10 +625,10 @@ class OntologyRAG:
         print(f"[green]Indexed {len(self.store.elements)} ontology elements from {len(ontology_files)} ontologies[/green]")
         return prefix_block
 
-    async def _retrieve_relevant(self, cq: str, k: int = 20) -> List[OntologyElement]:
+    async def _retrieve_relevant(self, cq: str, k: int = 20) -> Tuple[List[OntologyElement], np.ndarray]:
         qvec = await self.embedder.embed_one(cq)
         results = self.store.search(qvec, k)
-        return [el for el, _ in results]
+        return [el for el, _ in results], qvec
 
     async def _generate_fragment(self, cq: str, relevant: List[OntologyElement], prefix_block: str) -> str:
         prompt = PromptBuilder(prefix_block).build(cq, relevant)
@@ -558,7 +639,29 @@ class OntologyRAG:
     async def run_single_cq(self, cq: str, ontology_files: List[str], top_k: int = 20) -> None:
         prefix_block = await self._build_store(ontology_files)
         before = self.tracker.snapshot()
-        relevant = await self._retrieve_relevant(cq, k=top_k)
+        relevant, qvec = await self._retrieve_relevant(cq, k=top_k)
+        pool = self.store.search(qvec, top_k)
+        selected_set = {e.uri for e in relevant}
+        rows = [{
+            "uri": el.uri,
+            "element_type": el.element_type,
+            "label": el.label or "",
+            "source_ontology": el.source_ontology,
+            "score": s,
+            "selected": (el.uri in selected_set),
+            "parent_included": False,
+        } for (el, s) in pool]
+
+        self.logger.log_retrieval(
+            cq_index=-1,
+            cq=cq,
+            model=EMBED_MODEL,
+            threshold=None,
+            topN=top_k,
+            pool_size=len(pool),
+            rows=rows,
+        )
+        print(f"[green]Retrieval details logged to: {self.paths.retrieval_log_csv}[/green]")
         fragment = await self._generate_fragment(cq, relevant, prefix_block)
         # validate & write
         if TurtleValidator.validate_ttl(fragment):
@@ -628,8 +731,29 @@ class OntologyRAG:
             cq_start = time.time()
 
             try:
-                relevant = await self._retrieve_relevant(cq, k=top_k)
-                # counts by source (for logging)
+                relevant, qvec = await self._retrieve_relevant(cq, k=top_k)
+                pool = self.store.search(qvec, top_k)
+                selected_set = {e.uri for e in relevant}
+                rows = [{
+                    "uri": el.uri,
+                    "element_type": el.element_type,
+                    "label": el.label or "",
+                    "source_ontology": el.source_ontology,
+                    "score": s,
+                    "selected": (el.uri in selected_set),
+                    "parent_included": False,
+                } for (el, s) in pool]
+
+                self.logger.log_retrieval(
+                    cq_index=idx,
+                    cq=cq,
+                    model=EMBED_MODEL,
+                    threshold=None,
+                    topN=top_k,
+                    pool_size=len(pool),
+                    rows=rows,
+                )
+
                 src_counts: Dict[str, int] = {}
                 for el in relevant:
                     src_counts[Path(el.source_ontology).stem] = src_counts.get(Path(el.source_ontology).stem, 0) + 1
