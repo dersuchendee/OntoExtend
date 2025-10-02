@@ -6,6 +6,10 @@ import faiss
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from OllamaEmbedder import OllamaEmbedderQWEN
 import time
+from owlready2 import *
+from rdflib import Graph, Namespace, URIRef, BNode, RDF, RDFS, OWL
+from rdflib.namespace import SKOS
+import sys
 
 
 def init_rag(batch_size = 20,core_ontology_path = '..\..\..\Dataset\OntoDESIDECoreOntology'):
@@ -71,67 +75,178 @@ def init_rag(batch_size = 20,core_ontology_path = '..\..\..\Dataset\OntoDESIDECo
     np.save('EmbeddingSystem/Prompts_full_info.npy', np.array([Prompts_classes_full_info, Prompts_OP_full_info, Prompts_DP_full_info], dtype=object))
 
 
-def RetriveComponents(Query_vector, class_count=15, op_count=5, dp_count=5):
-    def Retrive(Query_vector, top_k=5,type_str='Class'):
-        prompts_keys = {}
-        lines = open('EmbeddingSystem/'+type_str+'es_prompts.txt','r',encoding='utf-8').readlines()
-        for i in range(0,len(lines),2):
-            prompts_keys[int(lines[i].strip())] = lines[i+1].strip().replace('\t\t','\n')
-        data = {}
-        raw_data = open('EmbeddingSystem/'+type_str+'es_vecs.txt','r',encoding='utf-8').readlines()
-        for i in range(0,len(raw_data),2):
-            data[int(raw_data[i])] = [float(x) for x in raw_data[i+1].strip().split(',')]
-        data = {k:np.array(v,dtype=np.float32) for k,v in data.items()}
 
-        keys = list(data.keys())
-        vectors = np.stack(list(data.values()))  # shape: (num_items, dim)
-        
-        dim = vectors.shape[1]
-        index = faiss.IndexFlatIP(dim)  # Inner product
-        
 
-        index.add(vectors)
-        scores, indices = index.search(np.array(Query_vector,dtype=np.float32), top_k)#;print('hi1')
-        nearest_keys = [keys[i] for i in indices[0]]
-        return nearest_keys, scores[0],{k:prompts_keys[k] for k in nearest_keys}
-        
-    Class_nearest_keys, Class_scores, Class_info = Retrive(Query_vector, top_k=class_count,type_str='Class') 
-    OP_nearest_keys, OP_scores, OP_info = Retrive(Query_vector, top_k=op_count,type_str='ObjectProperty') 
-    DP_nearest_keys, DP_scores, DP_info = Retrive(Query_vector, top_k=dp_count,type_str='DataProperty')  
 
-    return Class_nearest_keys, Class_scores, Class_info, \
-           OP_nearest_keys, OP_scores, OP_info,\
-           DP_nearest_keys, DP_scores, DP_info
+
+
+def RAG_extract_URIs(Query,class_count=15, op_count=5, dp_count=5):
+
+    def RetriveComponents(Query_vector, class_count=15, op_count=5, dp_count=5):
+        def Retrive(Query_vector, top_k=5,type_str='Class'):
+            prompts_keys = {}
+            lines = open('EmbeddingSystem/'+type_str+'es_prompts.txt','r',encoding='utf-8').readlines()
+            for i in range(0,len(lines),2):
+                prompts_keys[int(lines[i].strip())] = lines[i+1].strip().replace('\t\t','\n')
+            data = {}
+            raw_data = open('EmbeddingSystem/'+type_str+'es_vecs.txt','r',encoding='utf-8').readlines()
+            for i in range(0,len(raw_data),2):
+                data[int(raw_data[i])] = [float(x) for x in raw_data[i+1].strip().split(',')]
+            data = {k:np.array(v,dtype=np.float32) for k,v in data.items()}
+
+            keys = list(data.keys())
+            vectors = np.stack(list(data.values()))  # shape: (num_items, dim)
+            
+            dim = vectors.shape[1]
+            index = faiss.IndexFlatIP(dim)  # Inner product
+            
+
+            index.add(vectors)
+            scores, indices = index.search(np.array(Query_vector,dtype=np.float32), top_k)#;print('hi1')
+            nearest_keys = [keys[i] for i in indices[0]]
+            return nearest_keys, scores[0],{k:prompts_keys[k] for k in nearest_keys}
+            
+        Class_nearest_keys, Class_scores, Class_info = Retrive(Query_vector, top_k=class_count,type_str='Class') 
+        OP_nearest_keys, OP_scores, OP_info = Retrive(Query_vector, top_k=op_count,type_str='ObjectProperty') 
+        DP_nearest_keys, DP_scores, DP_info = Retrive(Query_vector, top_k=dp_count,type_str='DataProperty')  
+
+        return Class_nearest_keys, Class_scores, Class_info, \
+            OP_nearest_keys, OP_scores, OP_info,\
+            DP_nearest_keys, DP_scores, DP_info
+
+
+    Query_vector = OllamaEmbedderQWEN([Query])
+
+
+    Class_nearest_keys, Class_scores, Class_info, \
+            OP_nearest_keys, OP_scores, OP_info,\
+            DP_nearest_keys, DP_scores, DP_info = RetriveComponents(Query_vector,class_count, op_count, dp_count)
+
+    RAG_return = [[Class_nearest_keys, Class_scores, Class_info],
+                [OP_nearest_keys, OP_scores, OP_info],
+                    [DP_nearest_keys, DP_scores, DP_info]]
+
+
+    # print(Query)
+
+    Prompts_classes, Prompts_OP, Prompts_DP = np.load('EmbeddingSystem/Prompts_full_info.npy', allow_pickle=True)
+    components = {}
+    components.update(Prompts_classes)
+    components.update(Prompts_OP)
+    components.update(Prompts_DP)
+    URIs = []
+    for item in RAG_return:
+        nearestClasses, nearestClassesScores, info = item
+        for k,v in info.items():
+            URIs.append(components[k]['URI'])
+    return URIs    
+  
+
+def extract_blank_node_triples(g, bnode, output_g, visited=None, uri_refs_to_add=None):
+    """
+    Recursively extract all triples related to a blank node.
+    Also collects URIs of properties referenced in OWL restrictions.
+    """
+    if visited is None:
+        visited = set()
+    if uri_refs_to_add is None:
+        uri_refs_to_add = set()
+    
+    if bnode in visited:
+        return uri_refs_to_add
+    visited.add(bnode)
+    
+    # Get all triples where the blank node is the subject
+    for s, p, o in g.triples((bnode, None, None)):
+        output_g.add((s, p, o))
+        
+        # If this is an OWL restriction with onProperty, collect the property URI
+        if p == OWL.onProperty and isinstance(o, URIRef):
+            uri_refs_to_add.add(o)
+        
+        # If the object is also a blank node, recurse
+        if isinstance(o, BNode):
+            extract_blank_node_triples(g, o, output_g, visited, uri_refs_to_add)
+    
+    # Get all triples where the blank node is the object
+    for s, p, o in g.triples((None, None, bnode)):
+        output_g.add((s, p, o))
+        # If the subject is also a blank node, recurse
+        if isinstance(s, BNode):
+            extract_blank_node_triples(g, s, output_g, visited, uri_refs_to_add)
+    
+    return uri_refs_to_add
+
+def extract_ontology(input_ttl, uri_list, output_ttl):
+    """
+    Extract specified URIs and their related triples from a turtle file
+    and create a new ontology.
+    
+    Args:
+        input_ttl: Path to input turtle file
+        uri_list: List of URIs to extract
+        output_ttl: Path to output turtle file
+    """
+    # Load the input turtle file using rdflib
+    g = Graph()
+    # print(f"Loading {input_ttl}...")
+    g.parse(input_ttl, format='turtle')
+    # print(f"Loaded {len(g)} triples")
+    
+    # Create a new graph for the output
+    output_g = Graph()
+    
+    # Copy namespace bindings
+    for prefix, namespace in g.namespaces():
+        output_g.bind(prefix, namespace)
+    
+    # Convert URI strings to URIRef objects
+    uri_refs = [URIRef(uri) if isinstance(uri, str) else uri for uri in uri_list]
+    
+    # Keep track of additional URIs to extract (from OWL restrictions)
+    additional_uris = set()
+    
+    # Extract triples for each URI
+    extracted_count = 0
+    for uri in uri_refs:
+        # print(f"Extracting triples for: {uri}")
+        
+        # ONLY get triples where the URI is the subject (its definition)
+        for s, p, o in g.triples((uri, None, None)):
+            output_g.add((s, p, o))
+            extracted_count += 1
+            # If object is a blank node, extract its triples too
+            if isinstance(o, BNode):
+                referenced_uris = extract_blank_node_triples(g, o, output_g)
+                additional_uris.update(referenced_uris)
+    
+    # Now extract the additional URIs (properties referenced in restrictions)
+    if additional_uris:
+        # print(f"\nExtracting {len(additional_uris)} additional properties referenced in OWL restrictions...")
+        for uri in additional_uris:
+            # print(f"  - {uri}")
+            for s, p, o in g.triples((uri, None, None)):
+                output_g.add((s, p, o))
+                extracted_count += 1
+                # Also handle blank nodes in these properties
+                if isinstance(o, BNode):
+                    extract_blank_node_triples(g, o, output_g)
+    
+    # print(f"Extracted {extracted_count} direct triples")
+    # print(f"Output graph contains {len(output_g)} total triples (including blank nodes)")
+    
+    # Serialize to turtle format with nice formatting
+    # print(f"Writing to {output_ttl}...")
+    output_g.serialize(destination=output_ttl, format='turtle', encoding='utf-8')
+    # print("Done!")
+
+
+
 
 # init_rag()
-
-
 Query = "What are the components of a product?"
-Query_vector = OllamaEmbedderQWEN([Query])
-
-
-Class_nearest_keys, Class_scores, Class_info, \
-           OP_nearest_keys, OP_scores, OP_info,\
-           DP_nearest_keys, DP_scores, DP_info = RetriveComponents(Query_vector)
-
-RAG_return = [[Class_nearest_keys, Class_scores, Class_info],
-              [OP_nearest_keys, OP_scores, OP_info],
-                [DP_nearest_keys, DP_scores, DP_info]]
-
-
-print(Query)
-
-Prompts_classes, Prompts_OP, Prompts_DP = np.load('EmbeddingSystem/Prompts_full_info.npy', allow_pickle=True)
-
-for item in RAG_return:
-    nearestClasses, nearestClassesScores, info = item
-    print('---')
-    print(nearestClasses)
-    print('---')
-    print(nearestClassesScores)
-    for k,v in info.items():
-        print(k,v)
-        print('---')
-        print()
-
+URIs = RAG_extract_URIs(Query,class_count=10, op_count=5, dp_count=3)
+input_file = "merged.ttl"
+output_file = "output.ttl"
+extract_ontology(input_file, URIs, output_file)
 
