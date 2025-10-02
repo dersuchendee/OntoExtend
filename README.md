@@ -14,6 +14,24 @@ OntoExtend is a Python-based system that automatically generates ontology extens
 
 ## Quick Start
 
+
+## RAG
+1- install ollama
+
+2- exit from its interface and make sure it is close
+
+3- run ollama serve (download using ollama pull <model name>)
+
+4- This code would work:
+
+```
+def OllamaEmbedderQWEN(text = []):
+    import time
+    import ollama
+    response = ollama.embed(model="qwen3-embedding:4b", input=text)#qwen3-embedding:4b
+    embedings = response['embeddings']
+    return embedings
+```
 ### Prerequisites
 
 ```bash
