@@ -23,7 +23,7 @@ class DecomposedPrompting:
         # Initial RAG call to set up core ontology
         if CoreOntology == '':
             try:
-                self.CoreOntology = self.CallRAGU.CallRAG(CQ=CQs[0],
+                self.CoreOntology = self.CallRAGU.CallRAG(CQ=CQs[0],# "core?"
                                                         topK=self.rag_topK,
                                                         searchK=self.rag_searchK)
             except:
