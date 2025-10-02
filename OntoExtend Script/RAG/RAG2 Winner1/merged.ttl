@@ -1890,11 +1890,7 @@ processODP:Event a owl:Class,
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty location:hasPostalCode ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty <http://w3id.org/CEON/ontology/product/countryOfProduction> ],
+            owl:onProperty <http://w3id.org/CEON/ontology/product/productionSite> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
@@ -1906,7 +1902,11 @@ processODP:Event a owl:Class,
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty <http://w3id.org/CEON/ontology/product/productionSite> ],
+            owl:onProperty location:hasPostalCode ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/countryOfProduction> ],
         location:Location .
 
 <http://w3id.org/CEON/ontology/product/Regulation> a owl:Class ;
@@ -1934,16 +1934,16 @@ resourceODP:SetOfObjects a owl:Class ;
     rdfs:comment "A set of objects is a set of physical objects (items) that can be of different types, i.e. different kinds of items."^^xsd:string ;
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty resourceODP:hasPhysicalObject ;
-                        owl:someValuesFrom resourceODP:PhysicalObject ] [ a owl:Restriction ;
-                        owl:allValuesFrom resourceODP:PhysicalObject ;
-                        owl:onProperty resourceODP:hasPhysicalObject ] ) ],
-        [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
                         owl:onProperty resourceODP:hasBatch ;
                         owl:someValuesFrom resourceODP:BatchOfObjects ] [ a owl:Restriction ;
                         owl:allValuesFrom resourceODP:BatchOfObjects ;
                         owl:onProperty resourceODP:hasBatch ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasPhysicalObject ;
+                        owl:someValuesFrom resourceODP:PhysicalObject ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:PhysicalObject ;
+                        owl:onProperty resourceODP:hasPhysicalObject ] ) ],
         resourceODP:Resource .
 
 resourceODP:hasBatch a owl:ObjectProperty ;
@@ -2060,11 +2060,11 @@ cvn:CVNBlueprint a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty location:hasCity ],
+            owl:onProperty location:hasStreetAddress ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty location:hasStreetAddress ],
+            owl:onProperty location:hasCity ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
@@ -2081,11 +2081,11 @@ cvn:CVNBlueprint a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty location:hasStreetAddress ],
+            owl:onProperty <http://w3id.org/CEON/ontology/product/countryOfManufacture> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty <http://w3id.org/CEON/ontology/product/countryOfManufacture> ],
+            owl:onProperty location:hasStreetAddress ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
@@ -2102,7 +2102,7 @@ cvn:CVNBlueprint a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty <http://w3id.org/CEON/ontology/product/countryOfOrigin> ],
+            owl:onProperty location:hasStreetAddress ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
@@ -2114,7 +2114,7 @@ cvn:CVNBlueprint a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty location:hasStreetAddress ],
+            owl:onProperty <http://w3id.org/CEON/ontology/product/countryOfOrigin> ],
         location:Location .
 
 resourceODP:ResourceCondition a owl:Class ;
@@ -2282,8 +2282,17 @@ location:hasLocation a owl:ObjectProperty,
     rdfs:label "Plan Execution"^^xsd:string ;
     rdfs:comment "Plan executions are situations that proactively satisfy a plan. Subplan executions are proper parts of the whole plan execution."^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <http://w3id.org/CEON/ontology/plan/satisfiesPlan> ;
+            owl:someValuesFrom <http://w3id.org/CEON/ontology/plan/Plan> ],
+        [ a owl:Restriction ;
             owl:onProperty processODP:isSettingFor ;
             owl:someValuesFrom processODP:Process ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://w3id.org/CEON/ontology/plan/followsExecution> ;
+            owl:someValuesFrom processODP:Situation ],
+        [ a owl:Restriction ;
+            owl:onProperty processODP:hasPart ;
+            owl:someValuesFrom <http://w3id.org/CEON/ontology/plan/PlanExecution> ],
         [ a owl:Class ;
             owl:unionOf ( [ a owl:Restriction ;
                         owl:onProperty processODP:duringTime ;
@@ -2291,17 +2300,8 @@ location:hasLocation a owl:ObjectProperty,
                         owl:onProperty processODP:occursAtTime ;
                         owl:someValuesFrom xsd:dateTime ] ) ],
         [ a owl:Restriction ;
-            owl:onProperty <http://w3id.org/CEON/ontology/plan/satisfiesPlan> ;
-            owl:someValuesFrom <http://w3id.org/CEON/ontology/plan/Plan> ],
-        [ a owl:Restriction ;
             owl:onProperty <http://w3id.org/CEON/ontology/plan/precedesExecution> ;
             owl:someValuesFrom processODP:Situation ],
-        [ a owl:Restriction ;
-            owl:onProperty <http://w3id.org/CEON/ontology/plan/followsExecution> ;
-            owl:someValuesFrom processODP:Situation ],
-        [ a owl:Restriction ;
-            owl:onProperty processODP:hasPart ;
-            owl:someValuesFrom <http://w3id.org/CEON/ontology/plan/PlanExecution> ],
         processODP:Situation .
 
 <http://w3id.org/CEON/ontology/quantity/hasProcessCost> a owl:ObjectProperty ;
@@ -2361,11 +2361,11 @@ value:ValueProposition a owl:Class,
     rdfs:label "Value Proposition"^^xsd:string ;
     rdfs:comment "Proposed or intended value outcome of some process, action or collaboration."^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty value:targettingValueParticipation ;
-            owl:someValuesFrom value:ValueParticipation ],
-        [ a owl:Restriction ;
             owl:onProperty value:targettingActor ;
             owl:someValuesFrom actorODP:Actor ],
+        [ a owl:Restriction ;
+            owl:onProperty value:targettingValueParticipation ;
+            owl:someValuesFrom value:ValueParticipation ],
         [ a owl:Restriction ;
             owl:onProperty value:hasAimedValue ;
             owl:someValuesFrom value:Value ] .
@@ -2489,20 +2489,20 @@ actor:ActorResourceRole a owl:Class ;
         "Represents the common sense notion of a product, i.e. the abstract notion of a product type, which is a model that is used for manufacturing items of that product."^^xsd:string ;
     rdfs:isDefinedBy "ISO 59004:2024 -3.2.2 product"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/hasComposition> ;
+            owl:someValuesFrom <http://w3id.org/CEON/ontology/product/ProductComposition> ],
+        [ a owl:Restriction ;
             owl:allValuesFrom <http://w3id.org/CEON/ontology/product/AssemblyLocation> ;
             owl:onProperty <http://w3id.org/CEON/ontology/product/hasAssemblyLocation> ],
         [ a owl:Restriction ;
             owl:onProperty <http://w3id.org/CEON/ontology/product/hasComposition> ;
             owl:someValuesFrom <http://w3id.org/CEON/ontology/product/MatterComposition> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <http://w3id.org/CEON/ontology/product/ManufactureLocation> ;
-            owl:onProperty <http://w3id.org/CEON/ontology/product/hasManufacturerLocation> ],
-        [ a owl:Restriction ;
-            owl:onProperty <http://w3id.org/CEON/ontology/product/hasComposition> ;
-            owl:someValuesFrom <http://w3id.org/CEON/ontology/product/ProductComposition> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom <http://w3id.org/CEON/ontology/product/OriginLocation> ;
             owl:onProperty <http://w3id.org/CEON/ontology/product/hasOriginLocation> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <http://w3id.org/CEON/ontology/product/ManufactureLocation> ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/hasManufacturerLocation> ],
         <http://w3id.org/CEON/ontology/product/Solution>,
         resourceODP:Resource .
 
@@ -2518,16 +2518,16 @@ processODP:Process a owl:Class,
         owl:Class ;
     rdfs:label "Process"^^xsd:string ;
     rdfs:comment "Something that takes place over a (longer) period of time and changes some state of affairs."@en ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom [ a owl:Class ;
-                    owl:unionOf ( processODP:Event processODP:Process ) ] ;
-            owl:onProperty processODP:hasPart ],
-        [ a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:onProperty processODP:hasInput ;
                         owl:someValuesFrom owl:Thing ] [ a owl:Restriction ;
                         owl:onProperty processODP:hasOutput ;
-                        owl:someValuesFrom owl:Thing ] ) ] .
+                        owl:someValuesFrom owl:Thing ] ) ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:unionOf ( processODP:Event processODP:Process ) ] ;
+            owl:onProperty processODP:hasPart ] .
 
 resourceODP:Resource a owl:Class,
         owl:Class,
@@ -2541,16 +2541,16 @@ resourceODP:Resource a owl:Class,
     rdfs:isDefinedBy "ISO 59004:2024 - 3.1.5 resource"^^xsd:string ;
     rdfs:subClassOf [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
-                        owl:onProperty resourceODP:hasResourceCondition ;
-                        owl:someValuesFrom resourceODP:ResourceCondition ] [ a owl:Restriction ;
-                        owl:allValuesFrom resourceODP:ResourceCondition ;
-                        owl:onProperty resourceODP:hasResourceCondition ] ) ],
-        [ a owl:Class ;
-            owl:intersectionOf ( [ a owl:Restriction ;
                         owl:onProperty resourceODP:hasResourceQuality ;
                         owl:someValuesFrom resourceODP:ResourceQuality ] [ a owl:Restriction ;
                         owl:allValuesFrom resourceODP:ResourceQuality ;
                         owl:onProperty resourceODP:hasResourceQuality ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceCondition ;
+                        owl:someValuesFrom resourceODP:ResourceCondition ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceCondition ;
+                        owl:onProperty resourceODP:hasResourceCondition ] ) ],
         [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:onProperty resourceODP:hasResourceProperty ;

@@ -93,26 +93,28 @@ def Fetch_components(owl_path = "../../merged.ttl"):
             'Type': entity_type or '',#class, object property, data property
             'Labels':", ".join(get_labels(uri)) or '',#all labels
             'Comments':", ".join(get_comments(uri)) or '',#all comments
-            'Parents':", ".join(get_parents(uri)) or "-",#all parents
+            'Parents':", ".join(get_parents(uri)) or "",#all parents
             'URI':str(uri) or '',#full URI
             'Domain':get_domains(uri) or "",#for properties
             'Range':get_ranges(uri) or "",#for properties
         }
         Result = {k:v for k,v in Result_temp.items() if v != ''}
         return Result
-
+    Results = []
     # 1) Classes
-    print("\n### CLASSES ###")
     for s in g.subjects(RDF.type, OWL.Class):
-        print_entity_info(s, "Class")
-
+        Results .append(print_entity_info(s, "Class"))
+    # print('len of classes:',len(Results))
     # 2) Object Properties
-    print("\n### OBJECT PROPERTIES ###")
     for s in g.subjects(RDF.type, OWL.ObjectProperty):
-        print_entity_info(s, "ObjectProperty")
+        Results .append(print_entity_info(s, "ObjectProperty"))
+    # print('len of classes:',len(Results))
 
     # 3) Data Properties
-    print("\n### DATA PROPERTIES ###")
     for s in g.subjects(RDF.type, OWL.DatatypeProperty):
-        print_entity_info(s, "DatatypeProperty")
+        Results .append(print_entity_info(s, "DatatypeProperty"))
+    # print('len of classes:',len(Results))
+
+    # print(Results)
+    return Results
 

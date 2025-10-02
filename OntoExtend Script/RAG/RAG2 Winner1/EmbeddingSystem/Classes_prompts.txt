@@ -1,0 +1,1332 @@
+0
+Buying resource		The relation where the role of the actor is the buyer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/BuyingResource		
+1
+n5603e7887b464381b9d8eaf9acc0b999b1		
+2
+Circular Value Network Participation		A participation-relation, that represents the participation of an actor in a CVN with a certain role. For instance, a specific company playing the role of recycler in a certain flow of a CVN. The participation may also be related to a certain time (or time interval).		n5603e7887b464381b9d8eaf9acc0b999b5, CollaborationParticipation		http://w3id.org/CEON/ontology/actor/CVNParticipation		
+3
+n5603e7887b464381b9d8eaf9acc0b999b5		
+4
+Consuming resource		The relation where the role of the actor is the consumer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/ConsumingResource		
+5
+n5603e7887b464381b9d8eaf9acc0b999b13		
+6
+Dismantling resource		The relation where the role of the actor is the dismantler of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/DismantlingResource		
+7
+n5603e7887b464381b9d8eaf9acc0b999b17		
+8
+Issuing resource		The relation where the role of the actor is the issuer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/IssuingResource		
+9
+n5603e7887b464381b9d8eaf9acc0b999b21		
+10
+Manufacturing resource		The relation where the role of the actor is the manufacturer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/ManufacturingResource		
+11
+n5603e7887b464381b9d8eaf9acc0b999b25		
+12
+Owning resource		The relation where the role of the actor is the owner of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/OwningResource		
+13
+n5603e7887b464381b9d8eaf9acc0b999b29		
+14
+Process Participation		Participation of a certain actor in a certain process, with a certain role. For instance, a certain department of a recycling company having the role of quality controllant, or material sorter, in a certain recycling process. The participation may also be given a time, e.g. a start and end time.		n5603e7887b464381b9d8eaf9acc0b999b33, CollaborationParticipation		http://w3id.org/CEON/ontology/actor/ProcessParticipation		
+15
+n5603e7887b464381b9d8eaf9acc0b999b33		
+16
+Producing resource		The relation where the role of the actor is the producer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/ProducingResource		
+17
+n5603e7887b464381b9d8eaf9acc0b999b41		
+18
+Providing resource		The relation where the role of the actor is the provider of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/ProvidingResource		
+19
+n5603e7887b464381b9d8eaf9acc0b999b45		
+20
+Recycling resource		The relation where the role of the actor is the recycler of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/RecyclingResource		
+21
+n5603e7887b464381b9d8eaf9acc0b999b49		
+22
+Repairing resource		The relation where the role of the actor is the repairer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/RepairingResource		
+23
+n5603e7887b464381b9d8eaf9acc0b999b53		
+24
+Reselling resource		The relation where the role of the actor is the reseller of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/ResellingResource		
+25
+n5603e7887b464381b9d8eaf9acc0b999b57		
+26
+Selling resource		The relation where the role of the actor is the seller of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/SellingResource		
+27
+n5603e7887b464381b9d8eaf9acc0b999b61		
+28
+Interested Party, Stakeholder		Person or organization that can affect, be affected by, or perceive itself to be affected by a decision or activity. To “perceive itself to be affected” means the perception has been made known to the organization.		n5603e7887b464381b9d8eaf9acc0b999b65		http://w3id.org/CEON/ontology/actor/Stakeholder		
+29
+n5603e7887b464381b9d8eaf9acc0b999b65		
+30
+Supplying resource		The relation where the role of the actor is the supplier of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/SupplyingResource		
+31
+n5603e7887b464381b9d8eaf9acc0b999b68		
+32
+Taking back resource, The relation where the role of the actor is the collector of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/TakingBackResource		
+33
+n5603e7887b464381b9d8eaf9acc0b999b72		
+34
+Updating resource		The relation where the role of the actor is the updater of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/UpdatingResource		
+35
+n5603e7887b464381b9d8eaf9acc0b999b76		
+36
+Using resource		The relation where the role of the actor is the user of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/UsingResource		
+37
+n5603e7887b464381b9d8eaf9acc0b999b80		
+38
+Viewing resource		The relation where the role of the actor is the viewer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/ViewingResource		
+39
+n5603e7887b464381b9d8eaf9acc0b999b84		
+40
+n5603e7887b464381b9d8eaf9acc0b999b88		
+41
+n5603e7887b464381b9d8eaf9acc0b999b96		
+42
+n5603e7887b464381b9d8eaf9acc0b999b99		
+43
+n5603e7887b464381b9d8eaf9acc0b999b102		
+44
+n5603e7887b464381b9d8eaf9acc0b999b105		
+45
+Biofuel		Biofuel is a fuel that is produced over a short time span from biomass.		Biomass		http://w3id.org/CEON/ontology/energy/Biofuel		
+46
+Biogass		Biogas represents an energy source that is produced from raw materials such as agricultural waste, manure, municipal waste, plant material, sewage, green waste, wastewater, and food waste.		Biomass		http://w3id.org/CEON/ontology/energy/Biogas		
+47
+Coal		Coal is a black or dark-brown combustible mineral substance consisting of carbonized vegetable matter.		FossilFuel		http://w3id.org/CEON/ontology/energy/Coal		
+48
+Energy Conversion		Energy Conversion is a process of transforming energy.		ResourceRelation		http://w3id.org/CEON/ontology/energy/EnergyConversion		
+49
+Energy Infrastructure		The infrastructures participating in various energy-related processes, including energy production, transmission or distribution.		Infrastructure		http://w3id.org/CEON/ontology/energy/EnergyInfrastructure		
+50
+Geothermal Energy Source		Geothermal Energy Source is the Earth's crust. Geothermal energy is thermal energy extracted from the Earth's crust. It combines energy from the formation of the planet and from radioactive decay.		EnergySource		http://w3id.org/CEON/ontology/energy/GeothermalEnergySource		
+51
+Hydropower		Hydropower is the use of falling or fast-running water to produce electricity or to power machines.		EnergySource		http://w3id.org/CEON/ontology/energy/Hydropower		
+52
+Natural Gas		Natural gas is a combustible gas that is naturally generated and stored under certain geological conditions by ancient animals and plants buried deep underground. It is a gaseous mixture of hydrocarbons and non-hydrocarbons, with methane as its main component.		FossilFuel		http://w3id.org/CEON/ontology/energy/NaturalGas		
+53
+Petroleum		Petroleum is a naturally occurring yellow-black liquid chemical mixture found in geological formations, consisting primarily of hydrocarbons.		FossilFuel		http://w3id.org/CEON/ontology/energy/Petroleum		
+54
+Solar Energy Source		Solar Energy Source is the Sun.		EnergySource		http://w3id.org/CEON/ontology/energy/SolarEnergySource		
+55
+Wind Energy Source		Wind Energy Source is the Wind.		EnergySource		http://w3id.org/CEON/ontology/energy/WindEnergySource		
+56
+n5603e7887b464381b9d8eaf9acc0b999b109		
+57
+n5603e7887b464381b9d8eaf9acc0b999b112		
+58
+Aluminum		Aluminum is a chemical element with the symbol Al and atomic number 13.		ChemicalElement		http://w3id.org/CEON/ontology/material/Aluminum		
+59
+Boron		Boron is a chemical element with the symbol B and atomic number 5.		ChemicalElement		http://w3id.org/CEON/ontology/material/Boron		
+60
+Cellulose		Cellulose is an organic compound with chemical formula (C6H10O5)n.		Material		http://w3id.org/CEON/ontology/material/Cellulose		
+61
+Cerium		Cerium is a chemical element with the symbol Ce and atomic number 58.		RareEarthElement		http://w3id.org/CEON/ontology/material/Cerium		
+62
+Chromium		Chromium is a chemical element with the symbol Cr and atomic number 24.		ChemicalElement		http://w3id.org/CEON/ontology/material/Chromium		
+63
+Copper		Copper is a chemical element with the symbol Cu and atomic number 29.		ChemicalElement		http://w3id.org/CEON/ontology/material/Copper		
+64
+Dysorisium		Dysprosium is a chemical element with the symbol Dy and atomic number 66.		RareEarthElement		http://w3id.org/CEON/ontology/material/Dysprosium		
+65
+Erbium		Erbium is a chemical element with the symbol Er and atomic number 68.		RareEarthElement		http://w3id.org/CEON/ontology/material/Erbium		
+66
+Europium		Europium is a chemical element with the symbol Eu and atomic number 63.		RareEarthElement		http://w3id.org/CEON/ontology/material/Europium		
+67
+Gadolinium		Gadolinium is a chemical element with the symbol Gd and atomic number 64.		RareEarthElement		http://w3id.org/CEON/ontology/material/Gadolinium		
+68
+Holmium		Holmium is a chemical element with the symbol Ho and atomic number 67.		RareEarthElement		http://w3id.org/CEON/ontology/material/Holmium		
+69
+Iron		Iron is a chemical element with the symbol Fe and atomic number 26.		ChemicalElement		http://w3id.org/CEON/ontology/material/Iron		
+70
+Lanthanum		Lanthanum is a chemical element with the symbol Lal and atomic number 57.		RareEarthElement		http://w3id.org/CEON/ontology/material/Lanthanum		
+71
+Lutetium		Lutetium is a chemical element with the symbol Lu and atomic number 71.		RareEarthElement		http://w3id.org/CEON/ontology/material/Lutetium		
+72
+Magnesium		Magnesium is a chemical element with the symbol Mg and atomic number 12.		ChemicalElement		http://w3id.org/CEON/ontology/material/Magnesium		
+73
+Manganese		Manganese is a chemical element with the symbol Mn and atomic number 25.		ChemicalElement		http://w3id.org/CEON/ontology/material/Manganese		
+74
+Molecular Entity		A molecular entity means a singular/distinguishable entity. It can be for instance, atom, ion.		ChemicalEntity		http://w3id.org/CEON/ontology/material/MolecularEntity		
+75
+Neodymium		Neodymium is a chemical element with the symbol Nd and atomic number 60.		RareEarthElement		http://w3id.org/CEON/ontology/material/Neodymium		
+76
+Nickel		Nickel is a chemical element with the symbol Ni and atomic number 28.		ChemicalElement		http://w3id.org/CEON/ontology/material/Nickel		
+77
+Niobium		Niobium is a chemical element with the symbol Nb and atomic number 41.		ChemicalElement		http://w3id.org/CEON/ontology/material/Niobium		
+78
+Praseodymium		Praseodymium is a chemical element with the symbol Pr and atomic number 59.		RareEarthElement		http://w3id.org/CEON/ontology/material/Praseodymium		
+79
+Promethium		Promethium is a chemical element with the symbol Pm and atomic number 61.		RareEarthElement		http://w3id.org/CEON/ontology/material/Promethium		
+80
+Samarium		Samarium is a chemical element with the symbol Sm and atomic number 62.		RareEarthElement		http://w3id.org/CEON/ontology/material/Samarium		
+81
+Scandium		Scandium is a chemical element with the symbol Sc and atomic number 21.		RareEarthElement		http://w3id.org/CEON/ontology/material/Scandium		
+82
+Silicon		Silicon is a chemical element with the symbol Si and atomic number 14.		ChemicalElement		http://w3id.org/CEON/ontology/material/Silicon		
+83
+Tantalum		Tantalum is a chemical element with the symbol Ta and atomic number 73.		RareEarthElement		http://w3id.org/CEON/ontology/material/Tantalum		
+84
+Terbium		Terbium is a chemical element with the symbol Tb and atomic number 65.		RareEarthElement		http://w3id.org/CEON/ontology/material/Terbium		
+85
+Thulium		Thulium is a chemical element with the symbol Tm and atomic number 69.		RareEarthElement		http://w3id.org/CEON/ontology/material/Thulium		
+86
+Titanium		Titanium is a chemical element with the symbol Ti and atomic number 22.		ChemicalElement		http://w3id.org/CEON/ontology/material/Titanium		
+87
+Ytterbium		Yteerbium is a chemical element with the symbol Yb and atomic number 70.		RareEarthElement		http://w3id.org/CEON/ontology/material/Ytterbium		
+88
+Yttrium		Yttrium is a chemical element with the symbol Y and atomic number 39.		RareEarthElement		http://w3id.org/CEON/ontology/material/Yttrium		
+89
+Zinc		Zinc is a chemical element with the symbol Zn and atomic number 30.		ChemicalElement		http://w3id.org/CEON/ontology/material/Zinc		
+90
+Assembling Process		A process of assembling.		TransformationProcess		http://w3id.org/CEON/ontology/process/AssemblingProcess		
+91
+Buy Resource Process		A process of buying a resource.		Process		http://w3id.org/CEON/ontology/process/BuyResourceProcess		
+92
+Change Resource Process		A process of a changing resource.		TransformationProcess		http://w3id.org/CEON/ontology/process/ChangeResourceProcess		
+93
+Contact Process		A contact process.		Process		http://w3id.org/CEON/ontology/process/ContactProcess		
+94
+Deconstruction Process		A process of deconstruction.		TransformationProcess		http://w3id.org/CEON/ontology/process/DeconstructionProcess		
+95
+Disassembling Process		A process of disassembling.		TransformationProcess		http://w3id.org/CEON/ontology/process/DisassemblingProcess		
+96
+Dismantle Process		A process of dismantling.		TransformationProcess		http://w3id.org/CEON/ontology/process/DismantleProcess		
+97
+Ensure Claim Process		A process of ensuring a claim.		Process		http://w3id.org/CEON/ontology/process/EnsureClaimProcess		
+98
+Issuing Certificate Process		A process of issuing a certificate.		TransformationProcess		http://w3id.org/CEON/ontology/process/IssuingCertificateProcess		
+99
+Manufacturing Process		A process of manufacturing.		TransformationProcess		http://w3id.org/CEON/ontology/process/ManufacturingProcess		
+100
+Offset Process		A process of offsetting.		TransformationProcess		http://w3id.org/CEON/ontology/process/OffsetProcess		
+101
+Production Process		A process of production.		TransformationProcess		http://w3id.org/CEON/ontology/process/ProductionProcess		
+102
+Recycle Process		A process of recycling.		TransformationProcess		http://w3id.org/CEON/ontology/process/RecycleProcess		
+103
+Refurbishment Process		A process of refurbishment.		TransformationProcess		http://w3id.org/CEON/ontology/process/RefurbishmentProcess		
+104
+Remove Process		A process of removing.		Process		http://w3id.org/CEON/ontology/process/RemoveProcess		
+105
+Remove Resource Process		A process of removing a resource.		TransformationProcess		http://w3id.org/CEON/ontology/process/RemoveResourceProcess		
+106
+Repair Process		A process of repairing.		TransformationProcess		http://w3id.org/CEON/ontology/process/RepairProcess		
+107
+Resell Process		A process of reselling.		Process		http://w3id.org/CEON/ontology/process/ResellProcess		
+108
+Reuse Process		A process of reusing.		Process		http://w3id.org/CEON/ontology/process/ReuseProcess		
+109
+Sell Resource Process		A process of selling a resource.		Process		http://w3id.org/CEON/ontology/process/SellResourceProcess		
+110
+Service Process		A process of servicing.		TransformationProcess		http://w3id.org/CEON/ontology/process/ServiceProcess		
+111
+Share Resource Process		A process of sharing a resource.		Process		http://w3id.org/CEON/ontology/process/ShareResourceProcess		
+112
+Take Back Process		A process of taking back.		Process		http://w3id.org/CEON/ontology/process/TakeBackProcess		
+113
+ISO Compliance		ISO compliance is a compliance issuing thay sth (e.g., organization's structure, business operations, practices or policies) follows a specific ISO standard.		Compliance		http://w3id.org/CEON/ontology/product/ISOCompliance		
+114
+REACH Compliance		REACH (Regulation on the registration, evaluation, authorisation and restriction of chemicals) compliance is a compliance issueing that the REACH regulation is satisfied.		Compliance		http://w3id.org/CEON/ontology/product/REACHCompliance		
+115
+RoHS Compliance		RoHS (Restriction of Hazardous Substances in Electrical and Electronic Equipment) compliance is a compliance issuing that RoHS objectives are satisfied.		Compliance		http://w3id.org/CEON/ontology/product/RoHSCompliance		
+116
+Supplier Location		The location of supplier of a product or item.		Location		http://w3id.org/CEON/ontology/product/SupplierLocation		
+117
+n5603e7887b464381b9d8eaf9acc0b999b117		
+118
+n5603e7887b464381b9d8eaf9acc0b999b121		
+119
+Digital object		A digital object, e.g. a computer file, that is located on some server, hard drive, or on the web. Most often the digital object is the realization of some piece of information.		Resource		http://w3id.org/CEON/ontology/resourceODP/DigitalObject		
+120
+Economic Value		Use/Economics value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances.		Value		http://w3id.org/CEON/ontology/value/EconomicValue		
+121
+Environmental Value		Environmental value represents how a thing (e.g., a product or service) match some environmental goals or needs of an actor under some circumstances.		Value		http://w3id.org/CEON/ontology/value/EnvironmentalValue		
+122
+Exchange Value		Exchange value represents the worth of a product, resource, service in a exchange setting, i.e., a product, resource, service is traded or sold.		Value		http://w3id.org/CEON/ontology/value/ExchangeValue		
+123
+Social Value		Social value represents how a thing (e.g., a product or service) match some social goals or needs of an actor under some circumstances.		Value		http://w3id.org/CEON/ontology/value/SocialValue		
+124
+n5603e7887b464381b9d8eaf9acc0b999b126		
+125
+Actor process role		The role(s) of an actor involved in a process.		ActorCollaborationRole		http://w3id.org/CEON/ontology/actor/ActorProcessRole		
+126
+Person		Actor		http://w3id.org/CEON/ontology/actor/Person		
+127
+Energy Composition		The relation representing the particpation of an energy as a resource.		ResourceParticipation		http://w3id.org/CEON/ontology/energy/EnergyComposition		
+128
+Chemical Substance		A chemical substance is made up of a collection of molecular entities.		ChemicalEntity		http://w3id.org/CEON/ontology/material/ChemicalSubstance		
+129
+Material Component		A material component is a part of a material.		Constituent		http://w3id.org/CEON/ontology/material/MaterialComponent		
+130
+CO2 emission		An amount of CO2.		Resource		http://w3id.org/CEON/ontology/process/CO2Emission		
+131
+Catalyst		A resource that is needed as a catalyst by a process, but that is not considered the direct input or output of it.		Resource		http://w3id.org/CEON/ontology/process/Catalyst		
+132
+Transition		A transition is a situation that creates a context for two additional different Situations, one Process, and at least one Object: one Situation is the state before the transition, the second Situation is the state after the transition, the Process is the invariance under some different transitions, in which at least one Object is situated. Finally, one or more time interval(s) may position the situations and the transitional event in time, and we may include the event that triggered the transition as well.		Situation		http://w3id.org/CEON/ontology/process/Transition		
+133
+Product Object Composition		A product object composition is the composed information of a product object in terms of a specific component, in which such a component is also a product object.		n5603e7887b464381b9d8eaf9acc0b999b139, Composition		http://w3id.org/CEON/ontology/product/ProductObjectComposition		
+134
+Solution		Product or service, or a combination thereof, that fulfils a need of an interested party.		http://w3id.org/CEON/ontology/product/Solution		
+135
+n5603e7887b464381b9d8eaf9acc0b999b140		
+136
+n5603e7887b464381b9d8eaf9acc0b999b143		
+137
+n5603e7887b464381b9d8eaf9acc0b999b146		
+138
+Use Value		Use/Economics value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances.		Value		http://w3id.org/CEON/ontology/value/UseValue		
+139
+Actor collaboration role		The roles of an actor involved in a collaboration.		Role		http://w3id.org/CEON/ontology/actor/ActorCollaborationRole		
+140
+n5603e7887b464381b9d8eaf9acc0b999b149		
+141
+Circular Strategy		A circular strategy, such as to reccycle, reuse or refurbish something.		http://w3id.org/CEON/ontology/cvn/CircularStrategy		
+142
+Collaboration		A collaboration between a set of actors.		http://w3id.org/CEON/ontology/cvn/Collaboration		
+143
+Biomass		Biomass represents matter from recently living (but now dead) organisms such as plants, algae and animals.		EnergySource		http://w3id.org/CEON/ontology/energy/Biomass		
+144
+NonReneable Energy		Nonrenewable energy represents energy that comes from such resources that cannot be replaced onew they are used up.		Energy		http://w3id.org/CEON/ontology/energy/NonRenewableEnergy		
+145
+Renewable Energy		Renewable energy represents energy that comes from renewable resources.		Energy		http://w3id.org/CEON/ontology/energy/RenewableEnergy		
+146
+Description		A Description is a SocialObject that represents a conceptualization. 		For example, a Plan is a Description of some actions to be executed by agents in a certain way, with certain parameters etc. Descriptions 'define' or 'use' concepts, and can be 'satisfied' by situations.		http://w3id.org/CEON/ontology/plan/Description		
+147
+Event		Something that happens within a given context or (short) timeframe.		n5603e7887b464381b9d8eaf9acc0b999b152, n5603e7887b464381b9d8eaf9acc0b999b153		http://w3id.org/CEON/ontology/processODP/Event		
+148
+n5603e7887b464381b9d8eaf9acc0b999b153		
+149
+Matter composition		A product composition is the composed information of a product in terms of a specific component, in which such a component is also a matter.		n5603e7887b464381b9d8eaf9acc0b999b158, Composition		http://w3id.org/CEON/ontology/product/MatterComposition		
+150
+Product composition		A product composition is the composed information of a product in terms of a specific component, in which such a component is also a product.		n5603e7887b464381b9d8eaf9acc0b999b159, Composition		http://w3id.org/CEON/ontology/product/ProductComposition		
+151
+Production Location		The production location of a physical object		n5603e7887b464381b9d8eaf9acc0b999b160, n5603e7887b464381b9d8eaf9acc0b999b161, n5603e7887b464381b9d8eaf9acc0b999b162, n5603e7887b464381b9d8eaf9acc0b999b163, n5603e7887b464381b9d8eaf9acc0b999b164, Location		http://w3id.org/CEON/ontology/product/ProductionLocation		
+152
+Regulation		The rules or restrictions made or maintained by authorities.		http://w3id.org/CEON/ontology/product/Regulation		
+153
+n5603e7887b464381b9d8eaf9acc0b999b165		
+154
+Asset		Asset is sth that is valuable and useful to be used in activities, or owned by actors.		http://w3id.org/CEON/ontology/resourceODP/Asset		
+155
+Set of objects		A set of objects is a set of physical objects (items) that can be of different types, i.e. different kinds of items.		n5603e7887b464381b9d8eaf9acc0b999b168, n5603e7887b464381b9d8eaf9acc0b999b173, Resource		http://w3id.org/CEON/ontology/resourceODP/SetOfObjects		
+156
+n5603e7887b464381b9d8eaf9acc0b999b168		
+157
+n5603e7887b464381b9d8eaf9acc0b999b173		
+158
+Organisation		Person or group of people that has its own functions with responsibilities, authorities, and relationships to achieve its objectives. The concept of organization includes, but is not limited to sole-trader, company, corporation, firm, enterprise, authority, partnership, charity or institution, or part or combination thereof, whether incorporated or not, public or private (e.g. foundation, union, association, agency, municipality, region, country, intergovernmental agencies). A group of organizations can also be considered as	an organization that has, alone or collectively,their own objectives.		n5603e7887b464381b9d8eaf9acc0b999b178, n5603e7887b464381b9d8eaf9acc0b999b179, Actor		http://w3id.org/CEON/ontology/actor/Organisation		
+159
+n5603e7887b464381b9d8eaf9acc0b999b179		
+160
+Organisation Location		Location of an organisation		Location		http://w3id.org/CEON/ontology/actor/OrganisationLocation		
+161
+Infrastructure		An infrastructure refers to facilities, services, or systems for participations to function.		http://w3id.org/CEON/ontology/actorODP/Infrastructure		
+162
+Circular Value Network Blueprint		A plan or a pattern of a CVN configuration that can then be filled with actual actors and processes. The blueprint can be used to capture a desired setup of a network, or for reusing patterns of CVNs.		http://w3id.org/CEON/ontology/cvn/CVNBlueprint		
+163
+Fossil Fuel		A fossil fuel is a carbon compound- or hydrocarbon-containing material[2] formed naturally in the Earth's crust from the buried remains of prehistoric organisms (animals, plants or planktons), a process that occurs within geological formations.		EnergySource		http://w3id.org/CEON/ontology/energy/FossilFuel		
+164
+Material		Material as a sub-concept of Matter, can be a substance or a collection of substance which a physical object is composed of.		n5603e7887b464381b9d8eaf9acc0b999b184, Matter		http://w3id.org/CEON/ontology/material/Material		
+165
+Plan		A Description having an explicit goal, to be achieved by executing the plan.		n5603e7887b464381b9d8eaf9acc0b999b185, Description		http://w3id.org/CEON/ontology/plan/Plan		
+166
+Assembly Location		The location where a physical object is assembled.		n5603e7887b464381b9d8eaf9acc0b999b186, n5603e7887b464381b9d8eaf9acc0b999b187, n5603e7887b464381b9d8eaf9acc0b999b188, n5603e7887b464381b9d8eaf9acc0b999b189, Location		http://w3id.org/CEON/ontology/product/AssemblyLocation		
+167
+Manufacture Location		The location where a physical object is manufactured.		n5603e7887b464381b9d8eaf9acc0b999b190, n5603e7887b464381b9d8eaf9acc0b999b191, n5603e7887b464381b9d8eaf9acc0b999b192, n5603e7887b464381b9d8eaf9acc0b999b193, Location		http://w3id.org/CEON/ontology/product/ManufactureLocation		
+168
+Origin Location		The origin location of a physical object		n5603e7887b464381b9d8eaf9acc0b999b194, n5603e7887b464381b9d8eaf9acc0b999b195, n5603e7887b464381b9d8eaf9acc0b999b196, n5603e7887b464381b9d8eaf9acc0b999b197, Location		http://w3id.org/CEON/ontology/product/OriginLocation		
+169
+Resource Condition		The status of a resource.		http://w3id.org/CEON/ontology/resourceODP/ResourceCondition		
+170
+Resource Property		The characteristics or attribuets of a resource.		http://w3id.org/CEON/ontology/resourceODP/ResourceProperty		
+171
+Resource Quality		Resource quality is derived based on assessments of resources considering the conditions and properties.		http://w3id.org/CEON/ontology/resourceODP/ResourceQuality		
+172
+Value Perception		Value perception of an actor determines specifc values.		http://w3id.org/CEON/ontology/value/ValuePerception		
+173
+Resource Participation		The generic relation representing the particpation of a resource in some relation. For example, it can be specialized to represent a reified version of an object or data property.		Participation		http://w3id.org/CEON/ontology/actorODP/ResourceParticipation		
+174
+Role		A role that an actor can take in a specific context. Applies both to roles in the context of resources, such as owner, manufacturer, reseller etc. of that resource, as well as roles in relation to a circular value network, such as recycler, dismantler, transporter etc., in relation to a material flow.		http://w3id.org/CEON/ontology/actorODP/Role		
+175
+Energy		An amount of energy., Energy is an ability or a property of matter or a system, to do work because of its motion, its mass, its electric charge, etc.		Resource		http://w3id.org/CEON/ontology/energy/Energy		
+176
+Chemical Entity		A chemical entity is an abstraction of entities that can compose matter. For instance, a chemical entity can be a molecular entity or a chemical substance.		Matter		http://w3id.org/CEON/ontology/material/ChemicalEntity		
+177
+Time Interval		A temporal entity has a starting time and an ending time.		http://w3id.org/CEON/ontology/processODP/TimeInterval		
+178
+Quantity Interval		Quantity interval is an interval with two quantity values.		http://w3id.org/CEON/ontology/quantity/QuantityInterval		
+179
+Constituent		A constituent is a component of object.		http://w3id.org/CEON/ontology/resourceODP/Constituent		
+180
+Information		Information is an abstract concept that represents any kind of interpretations. For instance, information can be data generated by software systems or data used by people for communications.		Asset		http://w3id.org/CEON/ontology/resourceODP/Information		
+181
+n5603e7887b464381b9d8eaf9acc0b999b198		
+182
+http://www.opengis.net/ont/geosparql#Geometry		
+183
+Capability		Something that the actor is capable of doing, e.g. perfomring a certain role in a process, based on some properties, such as access to infrastructure, resources and know-how.		http://w3id.org/CEON/ontology/actorODP/Capability		
+184
+Plan Execution		Plan executions are situations that proactively satisfy a plan. Subplan executions are proper parts of the whole plan execution.		n5603e7887b464381b9d8eaf9acc0b999b201, n5603e7887b464381b9d8eaf9acc0b999b202, n5603e7887b464381b9d8eaf9acc0b999b203, n5603e7887b464381b9d8eaf9acc0b999b204, n5603e7887b464381b9d8eaf9acc0b999b209, n5603e7887b464381b9d8eaf9acc0b999b210, Situation		http://w3id.org/CEON/ontology/plan/PlanExecution		
+185
+n5603e7887b464381b9d8eaf9acc0b999b204		
+186
+Value Participation		A participation that may create/destory/miss value.		n5603e7887b464381b9d8eaf9acc0b999b211, Participation		http://w3id.org/CEON/ontology/value/ValueParticipation		
+187
+Collaboration Participation		The relation involving the role of a certain actor with respect to a value network or a process in such a network, e.g. an organisation (actor) acting as the recycler (role) in a glass recycling value netowrk (network) at a specific point or period in time. Or an organisation (actor) acting as the dismantler (role) in a dismantling step of a building deconstruction process (process step) at a specific point or period in time.		Participation		http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation		
+188
+Situation		A situation that may involve some resources and actors, i.e. a state of affairs at a certain point in time.		n5603e7887b464381b9d8eaf9acc0b999b212		http://w3id.org/CEON/ontology/processODP/Situation		
+189
+Compliance		Represents that something is compliant with some standard or has a received a certain certification.		http://w3id.org/CEON/ontology/product/Compliance		
+190
+Composition		A relation that represents a composing relation.		ResourceParticipation		http://w3id.org/CEON/ontology/product/Composition		
+191
+Circular Value Network		A network of interlinked value chains and interested parties.		Collaboration		http://w3id.org/CEON/ontology/cvn/CVN		
+192
+Value Participation Role		A role that a value participant can take.		Role		http://w3id.org/CEON/ontology/value/ValueParticipationRole		
+193
+Value Proposition		Proposed or intended value outcome of some process, action or collaboration.		n5603e7887b464381b9d8eaf9acc0b999b213, n5603e7887b464381b9d8eaf9acc0b999b214, n5603e7887b464381b9d8eaf9acc0b999b215		http://w3id.org/CEON/ontology/value/ValueProposition		
+194
+Batch Of Objects		A batch of objects is a collection of physical objects that are of the same type, e.g. a set of items (product instances) adhering to the same product model.		n5603e7887b464381b9d8eaf9acc0b999b216, n5603e7887b464381b9d8eaf9acc0b999b217, n5603e7887b464381b9d8eaf9acc0b999b222, Resource		http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects		
+195
+n5603e7887b464381b9d8eaf9acc0b999b217		
+196
+Matter		A matter is a physical substance.		http://w3id.org/CEON/ontology/resourceODP/Matter		
+197
+Actor Circular Value Network role		The role(s) of an actor in a Circular Value Network, which is a specific type of collaboration.		ActorCollaborationRole		http://w3id.org/CEON/ontology/actor/ActorCVNRole		
+198
+Energy Source		An energy source is a resource or system that provides the energy.		http://w3id.org/CEON/ontology/energy/EnergySource		
+199
+Location		From geography perspecive, a location represents a region which can be geometry point, line or area on Earth.		Geometry		http://w3id.org/CEON/ontology/location/Location		
+200
+Physical object		A physical object is a collection of matter.		n5603e7887b464381b9d8eaf9acc0b999b223, n5603e7887b464381b9d8eaf9acc0b999b228, Resource		http://w3id.org/CEON/ontology/resourceODP/PhysicalObject		
+201
+n5603e7887b464381b9d8eaf9acc0b999b223		
+202
+n5603e7887b464381b9d8eaf9acc0b999b228		
+203
+Item		An item is a physical object put into a market for sale, i.e. corresponding to an individual of a product. The item can be a thing that grows naturally or produced through some chemical or manufacturing processes.		n5603e7887b464381b9d8eaf9acc0b999b233, PhysicalObject		http://w3id.org/CEON/ontology/product/Item		
+204
+Value		Gain(s) or benefit(s) from satisfying needs and expectations,	in relation to the use	and conservation of resources. EXAMPLE: Revenue, savings, productivity, sustainability, satisfaction, empowerment, engagement, experience, public health, trust. Value is relative to, and determined by the perception of, those interested party(ies) able to capture it. Value can be financial or non-financial, e.g. social, environmental, other gains or benefits. Value is dynamic over time.		http://w3id.org/CEON/ontology/value/Value		
+205
+Actor		An agent able to act in the context of a circular value network, e.g. an organisation, person.		http://w3id.org/CEON/ontology/actorODP/Actor		
+206
+Participation		Represents the participation of objects in some situation.		n5603e7887b464381b9d8eaf9acc0b999b234		http://w3id.org/CEON/ontology/actorODP/Participation		
+207
+n5603e7887b464381b9d8eaf9acc0b999b234		
+208
+Chemical Element		A chemical element is a chemical substance whose atoms all have the same number of protons.		ChemicalSubstance		http://w3id.org/CEON/ontology/material/ChemicalElement		
+209
+Actor resource role		The role(s) of an actor in relation to a resource.		Role		http://w3id.org/CEON/ontology/actor/ActorResourceRole		
+210
+Transformation Process		Set of interrelated or interacting activities that transforms inputs into outputs.		Process		http://w3id.org/CEON/ontology/process/TransformationProcess		
+211
+Product		Physical-based object designed for or utilized with a purpose. A product can be, for example: goods of any type; hardware (e.g. engine mechanical part, spare parts, consumables); electrical or electronic hardware devices or components (e.g. computers, communication equipment and sensors); processed materials (e.g. lubricant, cement)., Represents the common sense notion of a product, i.e. the abstract notion of a product type, which is a model that is used for manufacturing items of that product.		n5603e7887b464381b9d8eaf9acc0b999b239, n5603e7887b464381b9d8eaf9acc0b999b240, n5603e7887b464381b9d8eaf9acc0b999b241, n5603e7887b464381b9d8eaf9acc0b999b242, n5603e7887b464381b9d8eaf9acc0b999b243, Solution, Resource		http://w3id.org/CEON/ontology/product/Product		
+212
+Rare Earth Element		Rare earth elements is a set of 17 nearly indistinguishable lustrous silvery-white soft heavy metals.		ChemicalElement		http://w3id.org/CEON/ontology/material/RareEarthElement		
+213
+Process		Something that takes place over a (longer) period of time and changes some state of affairs.		n5603e7887b464381b9d8eaf9acc0b999b244, n5603e7887b464381b9d8eaf9acc0b999b248		http://w3id.org/CEON/ontology/processODP/Process		
+214
+n5603e7887b464381b9d8eaf9acc0b999b245		
+215
+n5603e7887b464381b9d8eaf9acc0b999b248		
+216
+Resource		Asset from which a solution is created or implemented. Depending on the context, reference to “resource” includes “raw material”, “feedstock”, “material” or “component”. Resource includes any energy type (e.g. the energy content or energy potential of materials). Note 4 to entry: Resources can be considered concerning both stocks and flows., Some resources can be specifically associated with processes.		n5603e7887b464381b9d8eaf9acc0b999b253, n5603e7887b464381b9d8eaf9acc0b999b258, n5603e7887b464381b9d8eaf9acc0b999b263, Asset		http://w3id.org/CEON/ontology/resourceODP/Resource		
+217
+n5603e7887b464381b9d8eaf9acc0b999b253		
+218
+n5603e7887b464381b9d8eaf9acc0b999b258		
+219
+n5603e7887b464381b9d8eaf9acc0b999b263		
+220
+Resource Relation		A relation between a resource, an actor, and the role the actor has in relation to the resource. For instance, the role of owner that a certain actor takes for a certain resource for a certain period of time. Or the seller of a certain resource, until that resource has been sold, and the actor no longer has that role in relation to the resource., The relation involving the role of a certain actor with respect to a certain resource, e.g. an organisation or individual (actor) owning (role) a specific product (resource) at a specific point or period in time.		n5603e7887b464381b9d8eaf9acc0b999b268, Participation		http://w3id.org/CEON/ontology/actorODP/ResourceRelation		
+221
+n5603e7887b464381b9d8eaf9acc0b999b268		
+0
+Buying resource		The relation where the role of the actor is the buyer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/BuyingResource		
+1
+n961531b827af4dbeb1e5821f8050b49ab1		
+2
+Circular Value Network Participation		A participation-relation, that represents the participation of an actor in a CVN with a certain role. For instance, a specific company playing the role of recycler in a certain flow of a CVN. The participation may also be related to a certain time (or time interval).		n961531b827af4dbeb1e5821f8050b49ab5, CollaborationParticipation		http://w3id.org/CEON/ontology/actor/CVNParticipation		
+3
+n961531b827af4dbeb1e5821f8050b49ab5		
+4
+Consuming resource		The relation where the role of the actor is the consumer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/ConsumingResource		
+5
+n961531b827af4dbeb1e5821f8050b49ab13		
+6
+Dismantling resource		The relation where the role of the actor is the dismantler of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/DismantlingResource		
+7
+n961531b827af4dbeb1e5821f8050b49ab17		
+8
+Issuing resource		The relation where the role of the actor is the issuer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/IssuingResource		
+9
+n961531b827af4dbeb1e5821f8050b49ab21		
+10
+Manufacturing resource		The relation where the role of the actor is the manufacturer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/ManufacturingResource		
+11
+n961531b827af4dbeb1e5821f8050b49ab25		
+12
+Owning resource		The relation where the role of the actor is the owner of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/OwningResource		
+13
+n961531b827af4dbeb1e5821f8050b49ab29		
+14
+Process Participation		Participation of a certain actor in a certain process, with a certain role. For instance, a certain department of a recycling company having the role of quality controllant, or material sorter, in a certain recycling process. The participation may also be given a time, e.g. a start and end time.		n961531b827af4dbeb1e5821f8050b49ab33, CollaborationParticipation		http://w3id.org/CEON/ontology/actor/ProcessParticipation		
+15
+n961531b827af4dbeb1e5821f8050b49ab33		
+16
+Producing resource		The relation where the role of the actor is the producer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/ProducingResource		
+17
+n961531b827af4dbeb1e5821f8050b49ab41		
+18
+Providing resource		The relation where the role of the actor is the provider of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/ProvidingResource		
+19
+n961531b827af4dbeb1e5821f8050b49ab45		
+20
+Recycling resource		The relation where the role of the actor is the recycler of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/RecyclingResource		
+21
+n961531b827af4dbeb1e5821f8050b49ab49		
+22
+Repairing resource		The relation where the role of the actor is the repairer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/RepairingResource		
+23
+n961531b827af4dbeb1e5821f8050b49ab53		
+24
+Reselling resource		The relation where the role of the actor is the reseller of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/ResellingResource		
+25
+n961531b827af4dbeb1e5821f8050b49ab57		
+26
+Selling resource		The relation where the role of the actor is the seller of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/SellingResource		
+27
+n961531b827af4dbeb1e5821f8050b49ab61		
+28
+Interested Party, Stakeholder		Person or organization that can affect, be affected by, or perceive itself to be affected by a decision or activity. To “perceive itself to be affected” means the perception has been made known to the organization.		n961531b827af4dbeb1e5821f8050b49ab65		http://w3id.org/CEON/ontology/actor/Stakeholder		
+29
+n961531b827af4dbeb1e5821f8050b49ab65		
+30
+Supplying resource		The relation where the role of the actor is the supplier of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/SupplyingResource		
+31
+n961531b827af4dbeb1e5821f8050b49ab68		
+32
+Taking back resource, The relation where the role of the actor is the collector of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/TakingBackResource		
+33
+n961531b827af4dbeb1e5821f8050b49ab72		
+34
+Updating resource		The relation where the role of the actor is the updater of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/UpdatingResource		
+35
+n961531b827af4dbeb1e5821f8050b49ab76		
+36
+Using resource		The relation where the role of the actor is the user of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/UsingResource		
+37
+n961531b827af4dbeb1e5821f8050b49ab80		
+38
+Viewing resource		The relation where the role of the actor is the viewer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/ViewingResource		
+39
+n961531b827af4dbeb1e5821f8050b49ab84		
+40
+n961531b827af4dbeb1e5821f8050b49ab88		
+41
+n961531b827af4dbeb1e5821f8050b49ab96		
+42
+n961531b827af4dbeb1e5821f8050b49ab99		
+43
+n961531b827af4dbeb1e5821f8050b49ab102		
+44
+n961531b827af4dbeb1e5821f8050b49ab105		
+45
+Biofuel		Biofuel is a fuel that is produced over a short time span from biomass.		Biomass		http://w3id.org/CEON/ontology/energy/Biofuel		
+46
+Biogass		Biogas represents an energy source that is produced from raw materials such as agricultural waste, manure, municipal waste, plant material, sewage, green waste, wastewater, and food waste.		Biomass		http://w3id.org/CEON/ontology/energy/Biogas		
+47
+Coal		Coal is a black or dark-brown combustible mineral substance consisting of carbonized vegetable matter.		FossilFuel		http://w3id.org/CEON/ontology/energy/Coal		
+48
+Energy Conversion		Energy Conversion is a process of transforming energy.		ResourceRelation		http://w3id.org/CEON/ontology/energy/EnergyConversion		
+49
+Energy Infrastructure		The infrastructures participating in various energy-related processes, including energy production, transmission or distribution.		Infrastructure		http://w3id.org/CEON/ontology/energy/EnergyInfrastructure		
+50
+Geothermal Energy Source		Geothermal Energy Source is the Earth's crust. Geothermal energy is thermal energy extracted from the Earth's crust. It combines energy from the formation of the planet and from radioactive decay.		EnergySource		http://w3id.org/CEON/ontology/energy/GeothermalEnergySource		
+51
+Hydropower		Hydropower is the use of falling or fast-running water to produce electricity or to power machines.		EnergySource		http://w3id.org/CEON/ontology/energy/Hydropower		
+52
+Natural Gas		Natural gas is a combustible gas that is naturally generated and stored under certain geological conditions by ancient animals and plants buried deep underground. It is a gaseous mixture of hydrocarbons and non-hydrocarbons, with methane as its main component.		FossilFuel		http://w3id.org/CEON/ontology/energy/NaturalGas		
+53
+Petroleum		Petroleum is a naturally occurring yellow-black liquid chemical mixture found in geological formations, consisting primarily of hydrocarbons.		FossilFuel		http://w3id.org/CEON/ontology/energy/Petroleum		
+54
+Solar Energy Source		Solar Energy Source is the Sun.		EnergySource		http://w3id.org/CEON/ontology/energy/SolarEnergySource		
+55
+Wind Energy Source		Wind Energy Source is the Wind.		EnergySource		http://w3id.org/CEON/ontology/energy/WindEnergySource		
+56
+n961531b827af4dbeb1e5821f8050b49ab109		
+57
+n961531b827af4dbeb1e5821f8050b49ab112		
+58
+Aluminum		Aluminum is a chemical element with the symbol Al and atomic number 13.		ChemicalElement		http://w3id.org/CEON/ontology/material/Aluminum		
+59
+Boron		Boron is a chemical element with the symbol B and atomic number 5.		ChemicalElement		http://w3id.org/CEON/ontology/material/Boron		
+60
+Cellulose		Cellulose is an organic compound with chemical formula (C6H10O5)n.		Material		http://w3id.org/CEON/ontology/material/Cellulose		
+61
+Cerium		Cerium is a chemical element with the symbol Ce and atomic number 58.		RareEarthElement		http://w3id.org/CEON/ontology/material/Cerium		
+62
+Chromium		Chromium is a chemical element with the symbol Cr and atomic number 24.		ChemicalElement		http://w3id.org/CEON/ontology/material/Chromium		
+63
+Copper		Copper is a chemical element with the symbol Cu and atomic number 29.		ChemicalElement		http://w3id.org/CEON/ontology/material/Copper		
+64
+Dysorisium		Dysprosium is a chemical element with the symbol Dy and atomic number 66.		RareEarthElement		http://w3id.org/CEON/ontology/material/Dysprosium		
+65
+Erbium		Erbium is a chemical element with the symbol Er and atomic number 68.		RareEarthElement		http://w3id.org/CEON/ontology/material/Erbium		
+66
+Europium		Europium is a chemical element with the symbol Eu and atomic number 63.		RareEarthElement		http://w3id.org/CEON/ontology/material/Europium		
+67
+Gadolinium		Gadolinium is a chemical element with the symbol Gd and atomic number 64.		RareEarthElement		http://w3id.org/CEON/ontology/material/Gadolinium		
+68
+Holmium		Holmium is a chemical element with the symbol Ho and atomic number 67.		RareEarthElement		http://w3id.org/CEON/ontology/material/Holmium		
+69
+Iron		Iron is a chemical element with the symbol Fe and atomic number 26.		ChemicalElement		http://w3id.org/CEON/ontology/material/Iron		
+70
+Lanthanum		Lanthanum is a chemical element with the symbol Lal and atomic number 57.		RareEarthElement		http://w3id.org/CEON/ontology/material/Lanthanum		
+71
+Lutetium		Lutetium is a chemical element with the symbol Lu and atomic number 71.		RareEarthElement		http://w3id.org/CEON/ontology/material/Lutetium		
+72
+Magnesium		Magnesium is a chemical element with the symbol Mg and atomic number 12.		ChemicalElement		http://w3id.org/CEON/ontology/material/Magnesium		
+73
+Manganese		Manganese is a chemical element with the symbol Mn and atomic number 25.		ChemicalElement		http://w3id.org/CEON/ontology/material/Manganese		
+74
+Molecular Entity		A molecular entity means a singular/distinguishable entity. It can be for instance, atom, ion.		ChemicalEntity		http://w3id.org/CEON/ontology/material/MolecularEntity		
+75
+Neodymium		Neodymium is a chemical element with the symbol Nd and atomic number 60.		RareEarthElement		http://w3id.org/CEON/ontology/material/Neodymium		
+76
+Nickel		Nickel is a chemical element with the symbol Ni and atomic number 28.		ChemicalElement		http://w3id.org/CEON/ontology/material/Nickel		
+77
+Niobium		Niobium is a chemical element with the symbol Nb and atomic number 41.		ChemicalElement		http://w3id.org/CEON/ontology/material/Niobium		
+78
+Praseodymium		Praseodymium is a chemical element with the symbol Pr and atomic number 59.		RareEarthElement		http://w3id.org/CEON/ontology/material/Praseodymium		
+79
+Promethium		Promethium is a chemical element with the symbol Pm and atomic number 61.		RareEarthElement		http://w3id.org/CEON/ontology/material/Promethium		
+80
+Samarium		Samarium is a chemical element with the symbol Sm and atomic number 62.		RareEarthElement		http://w3id.org/CEON/ontology/material/Samarium		
+81
+Scandium		Scandium is a chemical element with the symbol Sc and atomic number 21.		RareEarthElement		http://w3id.org/CEON/ontology/material/Scandium		
+82
+Silicon		Silicon is a chemical element with the symbol Si and atomic number 14.		ChemicalElement		http://w3id.org/CEON/ontology/material/Silicon		
+83
+Tantalum		Tantalum is a chemical element with the symbol Ta and atomic number 73.		RareEarthElement		http://w3id.org/CEON/ontology/material/Tantalum		
+84
+Terbium		Terbium is a chemical element with the symbol Tb and atomic number 65.		RareEarthElement		http://w3id.org/CEON/ontology/material/Terbium		
+85
+Thulium		Thulium is a chemical element with the symbol Tm and atomic number 69.		RareEarthElement		http://w3id.org/CEON/ontology/material/Thulium		
+86
+Titanium		Titanium is a chemical element with the symbol Ti and atomic number 22.		ChemicalElement		http://w3id.org/CEON/ontology/material/Titanium		
+87
+Ytterbium		Yteerbium is a chemical element with the symbol Yb and atomic number 70.		RareEarthElement		http://w3id.org/CEON/ontology/material/Ytterbium		
+88
+Yttrium		Yttrium is a chemical element with the symbol Y and atomic number 39.		RareEarthElement		http://w3id.org/CEON/ontology/material/Yttrium		
+89
+Zinc		Zinc is a chemical element with the symbol Zn and atomic number 30.		ChemicalElement		http://w3id.org/CEON/ontology/material/Zinc		
+90
+Assembling Process		A process of assembling.		TransformationProcess		http://w3id.org/CEON/ontology/process/AssemblingProcess		
+91
+Buy Resource Process		A process of buying a resource.		Process		http://w3id.org/CEON/ontology/process/BuyResourceProcess		
+92
+Change Resource Process		A process of a changing resource.		TransformationProcess		http://w3id.org/CEON/ontology/process/ChangeResourceProcess		
+93
+Contact Process		A contact process.		Process		http://w3id.org/CEON/ontology/process/ContactProcess		
+94
+Deconstruction Process		A process of deconstruction.		TransformationProcess		http://w3id.org/CEON/ontology/process/DeconstructionProcess		
+95
+Disassembling Process		A process of disassembling.		TransformationProcess		http://w3id.org/CEON/ontology/process/DisassemblingProcess		
+96
+Dismantle Process		A process of dismantling.		TransformationProcess		http://w3id.org/CEON/ontology/process/DismantleProcess		
+97
+Ensure Claim Process		A process of ensuring a claim.		Process		http://w3id.org/CEON/ontology/process/EnsureClaimProcess		
+98
+Issuing Certificate Process		A process of issuing a certificate.		TransformationProcess		http://w3id.org/CEON/ontology/process/IssuingCertificateProcess		
+99
+Manufacturing Process		A process of manufacturing.		TransformationProcess		http://w3id.org/CEON/ontology/process/ManufacturingProcess		
+100
+Offset Process		A process of offsetting.		TransformationProcess		http://w3id.org/CEON/ontology/process/OffsetProcess		
+101
+Production Process		A process of production.		TransformationProcess		http://w3id.org/CEON/ontology/process/ProductionProcess		
+102
+Recycle Process		A process of recycling.		TransformationProcess		http://w3id.org/CEON/ontology/process/RecycleProcess		
+103
+Refurbishment Process		A process of refurbishment.		TransformationProcess		http://w3id.org/CEON/ontology/process/RefurbishmentProcess		
+104
+Remove Process		A process of removing.		Process		http://w3id.org/CEON/ontology/process/RemoveProcess		
+105
+Remove Resource Process		A process of removing a resource.		TransformationProcess		http://w3id.org/CEON/ontology/process/RemoveResourceProcess		
+106
+Repair Process		A process of repairing.		TransformationProcess		http://w3id.org/CEON/ontology/process/RepairProcess		
+107
+Resell Process		A process of reselling.		Process		http://w3id.org/CEON/ontology/process/ResellProcess		
+108
+Reuse Process		A process of reusing.		Process		http://w3id.org/CEON/ontology/process/ReuseProcess		
+109
+Sell Resource Process		A process of selling a resource.		Process		http://w3id.org/CEON/ontology/process/SellResourceProcess		
+110
+Service Process		A process of servicing.		TransformationProcess		http://w3id.org/CEON/ontology/process/ServiceProcess		
+111
+Share Resource Process		A process of sharing a resource.		Process		http://w3id.org/CEON/ontology/process/ShareResourceProcess		
+112
+Take Back Process		A process of taking back.		Process		http://w3id.org/CEON/ontology/process/TakeBackProcess		
+113
+ISO Compliance		ISO compliance is a compliance issuing thay sth (e.g., organization's structure, business operations, practices or policies) follows a specific ISO standard.		Compliance		http://w3id.org/CEON/ontology/product/ISOCompliance		
+114
+REACH Compliance		REACH (Regulation on the registration, evaluation, authorisation and restriction of chemicals) compliance is a compliance issueing that the REACH regulation is satisfied.		Compliance		http://w3id.org/CEON/ontology/product/REACHCompliance		
+115
+RoHS Compliance		RoHS (Restriction of Hazardous Substances in Electrical and Electronic Equipment) compliance is a compliance issuing that RoHS objectives are satisfied.		Compliance		http://w3id.org/CEON/ontology/product/RoHSCompliance		
+116
+Supplier Location		The location of supplier of a product or item.		Location		http://w3id.org/CEON/ontology/product/SupplierLocation		
+117
+n961531b827af4dbeb1e5821f8050b49ab117		
+118
+n961531b827af4dbeb1e5821f8050b49ab121		
+119
+Digital object		A digital object, e.g. a computer file, that is located on some server, hard drive, or on the web. Most often the digital object is the realization of some piece of information.		Resource		http://w3id.org/CEON/ontology/resourceODP/DigitalObject		
+120
+Economic Value		Use/Economics value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances.		Value		http://w3id.org/CEON/ontology/value/EconomicValue		
+121
+Environmental Value		Environmental value represents how a thing (e.g., a product or service) match some environmental goals or needs of an actor under some circumstances.		Value		http://w3id.org/CEON/ontology/value/EnvironmentalValue		
+122
+Exchange Value		Exchange value represents the worth of a product, resource, service in a exchange setting, i.e., a product, resource, service is traded or sold.		Value		http://w3id.org/CEON/ontology/value/ExchangeValue		
+123
+Social Value		Social value represents how a thing (e.g., a product or service) match some social goals or needs of an actor under some circumstances.		Value		http://w3id.org/CEON/ontology/value/SocialValue		
+124
+n961531b827af4dbeb1e5821f8050b49ab126		
+125
+Actor process role		The role(s) of an actor involved in a process.		ActorCollaborationRole		http://w3id.org/CEON/ontology/actor/ActorProcessRole		
+126
+Person		Actor		http://w3id.org/CEON/ontology/actor/Person		
+127
+Energy Composition		The relation representing the particpation of an energy as a resource.		ResourceParticipation		http://w3id.org/CEON/ontology/energy/EnergyComposition		
+128
+Chemical Substance		A chemical substance is made up of a collection of molecular entities.		ChemicalEntity		http://w3id.org/CEON/ontology/material/ChemicalSubstance		
+129
+Material Component		A material component is a part of a material.		Constituent		http://w3id.org/CEON/ontology/material/MaterialComponent		
+130
+CO2 emission		An amount of CO2.		Resource		http://w3id.org/CEON/ontology/process/CO2Emission		
+131
+Catalyst		A resource that is needed as a catalyst by a process, but that is not considered the direct input or output of it.		Resource		http://w3id.org/CEON/ontology/process/Catalyst		
+132
+Transition		A transition is a situation that creates a context for two additional different Situations, one Process, and at least one Object: one Situation is the state before the transition, the second Situation is the state after the transition, the Process is the invariance under some different transitions, in which at least one Object is situated. Finally, one or more time interval(s) may position the situations and the transitional event in time, and we may include the event that triggered the transition as well.		Situation		http://w3id.org/CEON/ontology/process/Transition		
+133
+Product Object Composition		A product object composition is the composed information of a product object in terms of a specific component, in which such a component is also a product object.		n961531b827af4dbeb1e5821f8050b49ab139, Composition		http://w3id.org/CEON/ontology/product/ProductObjectComposition		
+134
+Solution		Product or service, or a combination thereof, that fulfils a need of an interested party.		http://w3id.org/CEON/ontology/product/Solution		
+135
+n961531b827af4dbeb1e5821f8050b49ab140		
+136
+n961531b827af4dbeb1e5821f8050b49ab143		
+137
+n961531b827af4dbeb1e5821f8050b49ab146		
+138
+Use Value		Use/Economics value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances.		Value		http://w3id.org/CEON/ontology/value/UseValue		
+139
+Actor collaboration role		The roles of an actor involved in a collaboration.		Role		http://w3id.org/CEON/ontology/actor/ActorCollaborationRole		
+140
+n961531b827af4dbeb1e5821f8050b49ab149		
+141
+Circular Strategy		A circular strategy, such as to reccycle, reuse or refurbish something.		http://w3id.org/CEON/ontology/cvn/CircularStrategy		
+142
+Collaboration		A collaboration between a set of actors.		http://w3id.org/CEON/ontology/cvn/Collaboration		
+143
+Biomass		Biomass represents matter from recently living (but now dead) organisms such as plants, algae and animals.		EnergySource		http://w3id.org/CEON/ontology/energy/Biomass		
+144
+NonReneable Energy		Nonrenewable energy represents energy that comes from such resources that cannot be replaced onew they are used up.		Energy		http://w3id.org/CEON/ontology/energy/NonRenewableEnergy		
+145
+Renewable Energy		Renewable energy represents energy that comes from renewable resources.		Energy		http://w3id.org/CEON/ontology/energy/RenewableEnergy		
+146
+Description		A Description is a SocialObject that represents a conceptualization. 		For example, a Plan is a Description of some actions to be executed by agents in a certain way, with certain parameters etc. Descriptions 'define' or 'use' concepts, and can be 'satisfied' by situations.		http://w3id.org/CEON/ontology/plan/Description		
+147
+Event		Something that happens within a given context or (short) timeframe.		n961531b827af4dbeb1e5821f8050b49ab152, n961531b827af4dbeb1e5821f8050b49ab153		http://w3id.org/CEON/ontology/processODP/Event		
+148
+n961531b827af4dbeb1e5821f8050b49ab153		
+149
+Matter composition		A product composition is the composed information of a product in terms of a specific component, in which such a component is also a matter.		n961531b827af4dbeb1e5821f8050b49ab158, Composition		http://w3id.org/CEON/ontology/product/MatterComposition		
+150
+Product composition		A product composition is the composed information of a product in terms of a specific component, in which such a component is also a product.		n961531b827af4dbeb1e5821f8050b49ab159, Composition		http://w3id.org/CEON/ontology/product/ProductComposition		
+151
+Production Location		The production location of a physical object		n961531b827af4dbeb1e5821f8050b49ab160, n961531b827af4dbeb1e5821f8050b49ab161, n961531b827af4dbeb1e5821f8050b49ab162, n961531b827af4dbeb1e5821f8050b49ab163, n961531b827af4dbeb1e5821f8050b49ab164, Location		http://w3id.org/CEON/ontology/product/ProductionLocation		
+152
+Regulation		The rules or restrictions made or maintained by authorities.		http://w3id.org/CEON/ontology/product/Regulation		
+153
+n961531b827af4dbeb1e5821f8050b49ab165		
+154
+Asset		Asset is sth that is valuable and useful to be used in activities, or owned by actors.		http://w3id.org/CEON/ontology/resourceODP/Asset		
+155
+Set of objects		A set of objects is a set of physical objects (items) that can be of different types, i.e. different kinds of items.		n961531b827af4dbeb1e5821f8050b49ab168, n961531b827af4dbeb1e5821f8050b49ab173, Resource		http://w3id.org/CEON/ontology/resourceODP/SetOfObjects		
+156
+n961531b827af4dbeb1e5821f8050b49ab168		
+157
+n961531b827af4dbeb1e5821f8050b49ab173		
+158
+Organisation		Person or group of people that has its own functions with responsibilities, authorities, and relationships to achieve its objectives. The concept of organization includes, but is not limited to sole-trader, company, corporation, firm, enterprise, authority, partnership, charity or institution, or part or combination thereof, whether incorporated or not, public or private (e.g. foundation, union, association, agency, municipality, region, country, intergovernmental agencies). A group of organizations can also be considered as	an organization that has, alone or collectively,their own objectives.		n961531b827af4dbeb1e5821f8050b49ab178, n961531b827af4dbeb1e5821f8050b49ab179, Actor		http://w3id.org/CEON/ontology/actor/Organisation		
+159
+n961531b827af4dbeb1e5821f8050b49ab179		
+160
+Organisation Location		Location of an organisation		Location		http://w3id.org/CEON/ontology/actor/OrganisationLocation		
+161
+Infrastructure		An infrastructure refers to facilities, services, or systems for participations to function.		http://w3id.org/CEON/ontology/actorODP/Infrastructure		
+162
+Circular Value Network Blueprint		A plan or a pattern of a CVN configuration that can then be filled with actual actors and processes. The blueprint can be used to capture a desired setup of a network, or for reusing patterns of CVNs.		http://w3id.org/CEON/ontology/cvn/CVNBlueprint		
+163
+Fossil Fuel		A fossil fuel is a carbon compound- or hydrocarbon-containing material[2] formed naturally in the Earth's crust from the buried remains of prehistoric organisms (animals, plants or planktons), a process that occurs within geological formations.		EnergySource		http://w3id.org/CEON/ontology/energy/FossilFuel		
+164
+Material		Material as a sub-concept of Matter, can be a substance or a collection of substance which a physical object is composed of.		n961531b827af4dbeb1e5821f8050b49ab184, Matter		http://w3id.org/CEON/ontology/material/Material		
+165
+Plan		A Description having an explicit goal, to be achieved by executing the plan.		n961531b827af4dbeb1e5821f8050b49ab185, Description		http://w3id.org/CEON/ontology/plan/Plan		
+166
+Assembly Location		The location where a physical object is assembled.		n961531b827af4dbeb1e5821f8050b49ab186, n961531b827af4dbeb1e5821f8050b49ab187, n961531b827af4dbeb1e5821f8050b49ab188, n961531b827af4dbeb1e5821f8050b49ab189, Location		http://w3id.org/CEON/ontology/product/AssemblyLocation		
+167
+Manufacture Location		The location where a physical object is manufactured.		n961531b827af4dbeb1e5821f8050b49ab190, n961531b827af4dbeb1e5821f8050b49ab191, n961531b827af4dbeb1e5821f8050b49ab192, n961531b827af4dbeb1e5821f8050b49ab193, Location		http://w3id.org/CEON/ontology/product/ManufactureLocation		
+168
+Origin Location		The origin location of a physical object		n961531b827af4dbeb1e5821f8050b49ab194, n961531b827af4dbeb1e5821f8050b49ab195, n961531b827af4dbeb1e5821f8050b49ab196, n961531b827af4dbeb1e5821f8050b49ab197, Location		http://w3id.org/CEON/ontology/product/OriginLocation		
+169
+Resource Condition		The status of a resource.		http://w3id.org/CEON/ontology/resourceODP/ResourceCondition		
+170
+Resource Property		The characteristics or attribuets of a resource.		http://w3id.org/CEON/ontology/resourceODP/ResourceProperty		
+171
+Resource Quality		Resource quality is derived based on assessments of resources considering the conditions and properties.		http://w3id.org/CEON/ontology/resourceODP/ResourceQuality		
+172
+Value Perception		Value perception of an actor determines specifc values.		http://w3id.org/CEON/ontology/value/ValuePerception		
+173
+Resource Participation		The generic relation representing the particpation of a resource in some relation. For example, it can be specialized to represent a reified version of an object or data property.		Participation		http://w3id.org/CEON/ontology/actorODP/ResourceParticipation		
+174
+Role		A role that an actor can take in a specific context. Applies both to roles in the context of resources, such as owner, manufacturer, reseller etc. of that resource, as well as roles in relation to a circular value network, such as recycler, dismantler, transporter etc., in relation to a material flow.		http://w3id.org/CEON/ontology/actorODP/Role		
+175
+Energy		An amount of energy., Energy is an ability or a property of matter or a system, to do work because of its motion, its mass, its electric charge, etc.		Resource		http://w3id.org/CEON/ontology/energy/Energy		
+176
+Chemical Entity		A chemical entity is an abstraction of entities that can compose matter. For instance, a chemical entity can be a molecular entity or a chemical substance.		Matter		http://w3id.org/CEON/ontology/material/ChemicalEntity		
+177
+Time Interval		A temporal entity has a starting time and an ending time.		http://w3id.org/CEON/ontology/processODP/TimeInterval		
+178
+Quantity Interval		Quantity interval is an interval with two quantity values.		http://w3id.org/CEON/ontology/quantity/QuantityInterval		
+179
+Constituent		A constituent is a component of object.		http://w3id.org/CEON/ontology/resourceODP/Constituent		
+180
+Information		Information is an abstract concept that represents any kind of interpretations. For instance, information can be data generated by software systems or data used by people for communications.		Asset		http://w3id.org/CEON/ontology/resourceODP/Information		
+181
+n961531b827af4dbeb1e5821f8050b49ab198		
+182
+http://www.opengis.net/ont/geosparql#Geometry		
+183
+Capability		Something that the actor is capable of doing, e.g. perfomring a certain role in a process, based on some properties, such as access to infrastructure, resources and know-how.		http://w3id.org/CEON/ontology/actorODP/Capability		
+184
+Plan Execution		Plan executions are situations that proactively satisfy a plan. Subplan executions are proper parts of the whole plan execution.		n961531b827af4dbeb1e5821f8050b49ab201, n961531b827af4dbeb1e5821f8050b49ab206, n961531b827af4dbeb1e5821f8050b49ab207, n961531b827af4dbeb1e5821f8050b49ab208, n961531b827af4dbeb1e5821f8050b49ab209, n961531b827af4dbeb1e5821f8050b49ab210, Situation		http://w3id.org/CEON/ontology/plan/PlanExecution		
+185
+n961531b827af4dbeb1e5821f8050b49ab201		
+186
+Value Participation		A participation that may create/destory/miss value.		n961531b827af4dbeb1e5821f8050b49ab211, Participation		http://w3id.org/CEON/ontology/value/ValueParticipation		
+187
+Collaboration Participation		The relation involving the role of a certain actor with respect to a value network or a process in such a network, e.g. an organisation (actor) acting as the recycler (role) in a glass recycling value netowrk (network) at a specific point or period in time. Or an organisation (actor) acting as the dismantler (role) in a dismantling step of a building deconstruction process (process step) at a specific point or period in time.		Participation		http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation		
+188
+Situation		A situation that may involve some resources and actors, i.e. a state of affairs at a certain point in time.		n961531b827af4dbeb1e5821f8050b49ab212		http://w3id.org/CEON/ontology/processODP/Situation		
+189
+Compliance		Represents that something is compliant with some standard or has a received a certain certification.		http://w3id.org/CEON/ontology/product/Compliance		
+190
+Composition		A relation that represents a composing relation.		ResourceParticipation		http://w3id.org/CEON/ontology/product/Composition		
+191
+Circular Value Network		A network of interlinked value chains and interested parties.		Collaboration		http://w3id.org/CEON/ontology/cvn/CVN		
+192
+Value Participation Role		A role that a value participant can take.		Role		http://w3id.org/CEON/ontology/value/ValueParticipationRole		
+193
+Value Proposition		Proposed or intended value outcome of some process, action or collaboration.		n961531b827af4dbeb1e5821f8050b49ab213, n961531b827af4dbeb1e5821f8050b49ab214, n961531b827af4dbeb1e5821f8050b49ab215		http://w3id.org/CEON/ontology/value/ValueProposition		
+194
+Batch Of Objects		A batch of objects is a collection of physical objects that are of the same type, e.g. a set of items (product instances) adhering to the same product model.		n961531b827af4dbeb1e5821f8050b49ab216, n961531b827af4dbeb1e5821f8050b49ab217, n961531b827af4dbeb1e5821f8050b49ab222, Resource		http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects		
+195
+n961531b827af4dbeb1e5821f8050b49ab217		
+196
+Matter		A matter is a physical substance.		http://w3id.org/CEON/ontology/resourceODP/Matter		
+197
+Actor Circular Value Network role		The role(s) of an actor in a Circular Value Network, which is a specific type of collaboration.		ActorCollaborationRole		http://w3id.org/CEON/ontology/actor/ActorCVNRole		
+198
+Energy Source		An energy source is a resource or system that provides the energy.		http://w3id.org/CEON/ontology/energy/EnergySource		
+199
+Location		From geography perspecive, a location represents a region which can be geometry point, line or area on Earth.		Geometry		http://w3id.org/CEON/ontology/location/Location		
+200
+Physical object		A physical object is a collection of matter.		n961531b827af4dbeb1e5821f8050b49ab223, n961531b827af4dbeb1e5821f8050b49ab228, Resource		http://w3id.org/CEON/ontology/resourceODP/PhysicalObject		
+201
+n961531b827af4dbeb1e5821f8050b49ab223		
+202
+n961531b827af4dbeb1e5821f8050b49ab228		
+203
+Item		An item is a physical object put into a market for sale, i.e. corresponding to an individual of a product. The item can be a thing that grows naturally or produced through some chemical or manufacturing processes.		n961531b827af4dbeb1e5821f8050b49ab233, PhysicalObject		http://w3id.org/CEON/ontology/product/Item		
+204
+Value		Gain(s) or benefit(s) from satisfying needs and expectations,	in relation to the use	and conservation of resources. EXAMPLE: Revenue, savings, productivity, sustainability, satisfaction, empowerment, engagement, experience, public health, trust. Value is relative to, and determined by the perception of, those interested party(ies) able to capture it. Value can be financial or non-financial, e.g. social, environmental, other gains or benefits. Value is dynamic over time.		http://w3id.org/CEON/ontology/value/Value		
+205
+Actor		An agent able to act in the context of a circular value network, e.g. an organisation, person.		http://w3id.org/CEON/ontology/actorODP/Actor		
+206
+Participation		Represents the participation of objects in some situation.		n961531b827af4dbeb1e5821f8050b49ab234		http://w3id.org/CEON/ontology/actorODP/Participation		
+207
+n961531b827af4dbeb1e5821f8050b49ab234		
+208
+Chemical Element		A chemical element is a chemical substance whose atoms all have the same number of protons.		ChemicalSubstance		http://w3id.org/CEON/ontology/material/ChemicalElement		
+209
+Actor resource role		The role(s) of an actor in relation to a resource.		Role		http://w3id.org/CEON/ontology/actor/ActorResourceRole		
+210
+Transformation Process		Set of interrelated or interacting activities that transforms inputs into outputs.		Process		http://w3id.org/CEON/ontology/process/TransformationProcess		
+211
+Product		Physical-based object designed for or utilized with a purpose. A product can be, for example: goods of any type; hardware (e.g. engine mechanical part, spare parts, consumables); electrical or electronic hardware devices or components (e.g. computers, communication equipment and sensors); processed materials (e.g. lubricant, cement)., Represents the common sense notion of a product, i.e. the abstract notion of a product type, which is a model that is used for manufacturing items of that product.		n961531b827af4dbeb1e5821f8050b49ab239, n961531b827af4dbeb1e5821f8050b49ab240, n961531b827af4dbeb1e5821f8050b49ab241, n961531b827af4dbeb1e5821f8050b49ab242, n961531b827af4dbeb1e5821f8050b49ab243, Solution, Resource		http://w3id.org/CEON/ontology/product/Product		
+212
+Rare Earth Element		Rare earth elements is a set of 17 nearly indistinguishable lustrous silvery-white soft heavy metals.		ChemicalElement		http://w3id.org/CEON/ontology/material/RareEarthElement		
+213
+Process		Something that takes place over a (longer) period of time and changes some state of affairs.		n961531b827af4dbeb1e5821f8050b49ab244, n961531b827af4dbeb1e5821f8050b49ab249		http://w3id.org/CEON/ontology/processODP/Process		
+214
+n961531b827af4dbeb1e5821f8050b49ab244		
+215
+n961531b827af4dbeb1e5821f8050b49ab250		
+216
+Resource		Asset from which a solution is created or implemented. Depending on the context, reference to “resource” includes “raw material”, “feedstock”, “material” or “component”. Resource includes any energy type (e.g. the energy content or energy potential of materials). Note 4 to entry: Resources can be considered concerning both stocks and flows., Some resources can be specifically associated with processes.		n961531b827af4dbeb1e5821f8050b49ab253, n961531b827af4dbeb1e5821f8050b49ab258, n961531b827af4dbeb1e5821f8050b49ab263, Asset		http://w3id.org/CEON/ontology/resourceODP/Resource		
+217
+n961531b827af4dbeb1e5821f8050b49ab253		
+218
+n961531b827af4dbeb1e5821f8050b49ab258		
+219
+n961531b827af4dbeb1e5821f8050b49ab263		
+220
+Resource Relation		A relation between a resource, an actor, and the role the actor has in relation to the resource. For instance, the role of owner that a certain actor takes for a certain resource for a certain period of time. Or the seller of a certain resource, until that resource has been sold, and the actor no longer has that role in relation to the resource., The relation involving the role of a certain actor with respect to a certain resource, e.g. an organisation or individual (actor) owning (role) a specific product (resource) at a specific point or period in time.		n961531b827af4dbeb1e5821f8050b49ab268, Participation		http://w3id.org/CEON/ontology/actorODP/ResourceRelation		
+221
+n961531b827af4dbeb1e5821f8050b49ab268		
+0
+Buying resource		The relation where the role of the actor is the buyer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/BuyingResource		
+1
+n4176b97232d749e5922faf1e05f9e163b1		
+2
+Circular Value Network Participation		A participation-relation, that represents the participation of an actor in a CVN with a certain role. For instance, a specific company playing the role of recycler in a certain flow of a CVN. The participation may also be related to a certain time (or time interval).		n4176b97232d749e5922faf1e05f9e163b5, CollaborationParticipation		http://w3id.org/CEON/ontology/actor/CVNParticipation		
+3
+n4176b97232d749e5922faf1e05f9e163b5		
+4
+Consuming resource		The relation where the role of the actor is the consumer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/ConsumingResource		
+5
+n4176b97232d749e5922faf1e05f9e163b13		
+6
+Dismantling resource		The relation where the role of the actor is the dismantler of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/DismantlingResource		
+7
+n4176b97232d749e5922faf1e05f9e163b17		
+8
+Issuing resource		The relation where the role of the actor is the issuer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/IssuingResource		
+9
+n4176b97232d749e5922faf1e05f9e163b21		
+10
+Manufacturing resource		The relation where the role of the actor is the manufacturer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/ManufacturingResource		
+11
+n4176b97232d749e5922faf1e05f9e163b25		
+12
+Owning resource		The relation where the role of the actor is the owner of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/OwningResource		
+13
+n4176b97232d749e5922faf1e05f9e163b29		
+14
+Process Participation		Participation of a certain actor in a certain process, with a certain role. For instance, a certain department of a recycling company having the role of quality controllant, or material sorter, in a certain recycling process. The participation may also be given a time, e.g. a start and end time.		n4176b97232d749e5922faf1e05f9e163b33, CollaborationParticipation		http://w3id.org/CEON/ontology/actor/ProcessParticipation		
+15
+n4176b97232d749e5922faf1e05f9e163b33		
+16
+Producing resource		The relation where the role of the actor is the producer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/ProducingResource		
+17
+n4176b97232d749e5922faf1e05f9e163b41		
+18
+Providing resource		The relation where the role of the actor is the provider of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/ProvidingResource		
+19
+n4176b97232d749e5922faf1e05f9e163b45		
+20
+Recycling resource		The relation where the role of the actor is the recycler of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/RecyclingResource		
+21
+n4176b97232d749e5922faf1e05f9e163b49		
+22
+Repairing resource		The relation where the role of the actor is the repairer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/RepairingResource		
+23
+n4176b97232d749e5922faf1e05f9e163b53		
+24
+Reselling resource		The relation where the role of the actor is the reseller of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/ResellingResource		
+25
+n4176b97232d749e5922faf1e05f9e163b57		
+26
+Selling resource		The relation where the role of the actor is the seller of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/SellingResource		
+27
+n4176b97232d749e5922faf1e05f9e163b61		
+28
+Interested Party, Stakeholder		Person or organization that can affect, be affected by, or perceive itself to be affected by a decision or activity. To “perceive itself to be affected” means the perception has been made known to the organization.		n4176b97232d749e5922faf1e05f9e163b65		http://w3id.org/CEON/ontology/actor/Stakeholder		
+29
+n4176b97232d749e5922faf1e05f9e163b65		
+30
+Supplying resource		The relation where the role of the actor is the supplier of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/SupplyingResource		
+31
+n4176b97232d749e5922faf1e05f9e163b68		
+32
+Taking back resource, The relation where the role of the actor is the collector of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/TakingBackResource		
+33
+n4176b97232d749e5922faf1e05f9e163b72		
+34
+Updating resource		The relation where the role of the actor is the updater of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/UpdatingResource		
+35
+n4176b97232d749e5922faf1e05f9e163b76		
+36
+Using resource		The relation where the role of the actor is the user of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/UsingResource		
+37
+n4176b97232d749e5922faf1e05f9e163b80		
+38
+Viewing resource		The relation where the role of the actor is the viewer of a certain resource.		ResourceRelation		http://w3id.org/CEON/ontology/actor/ViewingResource		
+39
+n4176b97232d749e5922faf1e05f9e163b84		
+40
+n4176b97232d749e5922faf1e05f9e163b88		
+41
+n4176b97232d749e5922faf1e05f9e163b96		
+42
+n4176b97232d749e5922faf1e05f9e163b99		
+43
+n4176b97232d749e5922faf1e05f9e163b102		
+44
+n4176b97232d749e5922faf1e05f9e163b105		
+45
+Biofuel		Biofuel is a fuel that is produced over a short time span from biomass.		Biomass		http://w3id.org/CEON/ontology/energy/Biofuel		
+46
+Biogass		Biogas represents an energy source that is produced from raw materials such as agricultural waste, manure, municipal waste, plant material, sewage, green waste, wastewater, and food waste.		Biomass		http://w3id.org/CEON/ontology/energy/Biogas		
+47
+Coal		Coal is a black or dark-brown combustible mineral substance consisting of carbonized vegetable matter.		FossilFuel		http://w3id.org/CEON/ontology/energy/Coal		
+48
+Energy Conversion		Energy Conversion is a process of transforming energy.		ResourceRelation		http://w3id.org/CEON/ontology/energy/EnergyConversion		
+49
+Energy Infrastructure		The infrastructures participating in various energy-related processes, including energy production, transmission or distribution.		Infrastructure		http://w3id.org/CEON/ontology/energy/EnergyInfrastructure		
+50
+Geothermal Energy Source		Geothermal Energy Source is the Earth's crust. Geothermal energy is thermal energy extracted from the Earth's crust. It combines energy from the formation of the planet and from radioactive decay.		EnergySource		http://w3id.org/CEON/ontology/energy/GeothermalEnergySource		
+51
+Hydropower		Hydropower is the use of falling or fast-running water to produce electricity or to power machines.		EnergySource		http://w3id.org/CEON/ontology/energy/Hydropower		
+52
+Natural Gas		Natural gas is a combustible gas that is naturally generated and stored under certain geological conditions by ancient animals and plants buried deep underground. It is a gaseous mixture of hydrocarbons and non-hydrocarbons, with methane as its main component.		FossilFuel		http://w3id.org/CEON/ontology/energy/NaturalGas		
+53
+Petroleum		Petroleum is a naturally occurring yellow-black liquid chemical mixture found in geological formations, consisting primarily of hydrocarbons.		FossilFuel		http://w3id.org/CEON/ontology/energy/Petroleum		
+54
+Solar Energy Source		Solar Energy Source is the Sun.		EnergySource		http://w3id.org/CEON/ontology/energy/SolarEnergySource		
+55
+Wind Energy Source		Wind Energy Source is the Wind.		EnergySource		http://w3id.org/CEON/ontology/energy/WindEnergySource		
+56
+n4176b97232d749e5922faf1e05f9e163b109		
+57
+n4176b97232d749e5922faf1e05f9e163b112		
+58
+Aluminum		Aluminum is a chemical element with the symbol Al and atomic number 13.		ChemicalElement		http://w3id.org/CEON/ontology/material/Aluminum		
+59
+Boron		Boron is a chemical element with the symbol B and atomic number 5.		ChemicalElement		http://w3id.org/CEON/ontology/material/Boron		
+60
+Cellulose		Cellulose is an organic compound with chemical formula (C6H10O5)n.		Material		http://w3id.org/CEON/ontology/material/Cellulose		
+61
+Cerium		Cerium is a chemical element with the symbol Ce and atomic number 58.		RareEarthElement		http://w3id.org/CEON/ontology/material/Cerium		
+62
+Chromium		Chromium is a chemical element with the symbol Cr and atomic number 24.		ChemicalElement		http://w3id.org/CEON/ontology/material/Chromium		
+63
+Copper		Copper is a chemical element with the symbol Cu and atomic number 29.		ChemicalElement		http://w3id.org/CEON/ontology/material/Copper		
+64
+Dysorisium		Dysprosium is a chemical element with the symbol Dy and atomic number 66.		RareEarthElement		http://w3id.org/CEON/ontology/material/Dysprosium		
+65
+Erbium		Erbium is a chemical element with the symbol Er and atomic number 68.		RareEarthElement		http://w3id.org/CEON/ontology/material/Erbium		
+66
+Europium		Europium is a chemical element with the symbol Eu and atomic number 63.		RareEarthElement		http://w3id.org/CEON/ontology/material/Europium		
+67
+Gadolinium		Gadolinium is a chemical element with the symbol Gd and atomic number 64.		RareEarthElement		http://w3id.org/CEON/ontology/material/Gadolinium		
+68
+Holmium		Holmium is a chemical element with the symbol Ho and atomic number 67.		RareEarthElement		http://w3id.org/CEON/ontology/material/Holmium		
+69
+Iron		Iron is a chemical element with the symbol Fe and atomic number 26.		ChemicalElement		http://w3id.org/CEON/ontology/material/Iron		
+70
+Lanthanum		Lanthanum is a chemical element with the symbol Lal and atomic number 57.		RareEarthElement		http://w3id.org/CEON/ontology/material/Lanthanum		
+71
+Lutetium		Lutetium is a chemical element with the symbol Lu and atomic number 71.		RareEarthElement		http://w3id.org/CEON/ontology/material/Lutetium		
+72
+Magnesium		Magnesium is a chemical element with the symbol Mg and atomic number 12.		ChemicalElement		http://w3id.org/CEON/ontology/material/Magnesium		
+73
+Manganese		Manganese is a chemical element with the symbol Mn and atomic number 25.		ChemicalElement		http://w3id.org/CEON/ontology/material/Manganese		
+74
+Molecular Entity		A molecular entity means a singular/distinguishable entity. It can be for instance, atom, ion.		ChemicalEntity		http://w3id.org/CEON/ontology/material/MolecularEntity		
+75
+Neodymium		Neodymium is a chemical element with the symbol Nd and atomic number 60.		RareEarthElement		http://w3id.org/CEON/ontology/material/Neodymium		
+76
+Nickel		Nickel is a chemical element with the symbol Ni and atomic number 28.		ChemicalElement		http://w3id.org/CEON/ontology/material/Nickel		
+77
+Niobium		Niobium is a chemical element with the symbol Nb and atomic number 41.		ChemicalElement		http://w3id.org/CEON/ontology/material/Niobium		
+78
+Praseodymium		Praseodymium is a chemical element with the symbol Pr and atomic number 59.		RareEarthElement		http://w3id.org/CEON/ontology/material/Praseodymium		
+79
+Promethium		Promethium is a chemical element with the symbol Pm and atomic number 61.		RareEarthElement		http://w3id.org/CEON/ontology/material/Promethium		
+80
+Samarium		Samarium is a chemical element with the symbol Sm and atomic number 62.		RareEarthElement		http://w3id.org/CEON/ontology/material/Samarium		
+81
+Scandium		Scandium is a chemical element with the symbol Sc and atomic number 21.		RareEarthElement		http://w3id.org/CEON/ontology/material/Scandium		
+82
+Silicon		Silicon is a chemical element with the symbol Si and atomic number 14.		ChemicalElement		http://w3id.org/CEON/ontology/material/Silicon		
+83
+Tantalum		Tantalum is a chemical element with the symbol Ta and atomic number 73.		RareEarthElement		http://w3id.org/CEON/ontology/material/Tantalum		
+84
+Terbium		Terbium is a chemical element with the symbol Tb and atomic number 65.		RareEarthElement		http://w3id.org/CEON/ontology/material/Terbium		
+85
+Thulium		Thulium is a chemical element with the symbol Tm and atomic number 69.		RareEarthElement		http://w3id.org/CEON/ontology/material/Thulium		
+86
+Titanium		Titanium is a chemical element with the symbol Ti and atomic number 22.		ChemicalElement		http://w3id.org/CEON/ontology/material/Titanium		
+87
+Ytterbium		Yteerbium is a chemical element with the symbol Yb and atomic number 70.		RareEarthElement		http://w3id.org/CEON/ontology/material/Ytterbium		
+88
+Yttrium		Yttrium is a chemical element with the symbol Y and atomic number 39.		RareEarthElement		http://w3id.org/CEON/ontology/material/Yttrium		
+89
+Zinc		Zinc is a chemical element with the symbol Zn and atomic number 30.		ChemicalElement		http://w3id.org/CEON/ontology/material/Zinc		
+90
+Assembling Process		A process of assembling.		TransformationProcess		http://w3id.org/CEON/ontology/process/AssemblingProcess		
+91
+Buy Resource Process		A process of buying a resource.		Process		http://w3id.org/CEON/ontology/process/BuyResourceProcess		
+92
+Change Resource Process		A process of a changing resource.		TransformationProcess		http://w3id.org/CEON/ontology/process/ChangeResourceProcess		
+93
+Contact Process		A contact process.		Process		http://w3id.org/CEON/ontology/process/ContactProcess		
+94
+Deconstruction Process		A process of deconstruction.		TransformationProcess		http://w3id.org/CEON/ontology/process/DeconstructionProcess		
+95
+Disassembling Process		A process of disassembling.		TransformationProcess		http://w3id.org/CEON/ontology/process/DisassemblingProcess		
+96
+Dismantle Process		A process of dismantling.		TransformationProcess		http://w3id.org/CEON/ontology/process/DismantleProcess		
+97
+Ensure Claim Process		A process of ensuring a claim.		Process		http://w3id.org/CEON/ontology/process/EnsureClaimProcess		
+98
+Issuing Certificate Process		A process of issuing a certificate.		TransformationProcess		http://w3id.org/CEON/ontology/process/IssuingCertificateProcess		
+99
+Manufacturing Process		A process of manufacturing.		TransformationProcess		http://w3id.org/CEON/ontology/process/ManufacturingProcess		
+100
+Offset Process		A process of offsetting.		TransformationProcess		http://w3id.org/CEON/ontology/process/OffsetProcess		
+101
+Production Process		A process of production.		TransformationProcess		http://w3id.org/CEON/ontology/process/ProductionProcess		
+102
+Recycle Process		A process of recycling.		TransformationProcess		http://w3id.org/CEON/ontology/process/RecycleProcess		
+103
+Refurbishment Process		A process of refurbishment.		TransformationProcess		http://w3id.org/CEON/ontology/process/RefurbishmentProcess		
+104
+Remove Process		A process of removing.		Process		http://w3id.org/CEON/ontology/process/RemoveProcess		
+105
+Remove Resource Process		A process of removing a resource.		TransformationProcess		http://w3id.org/CEON/ontology/process/RemoveResourceProcess		
+106
+Repair Process		A process of repairing.		TransformationProcess		http://w3id.org/CEON/ontology/process/RepairProcess		
+107
+Resell Process		A process of reselling.		Process		http://w3id.org/CEON/ontology/process/ResellProcess		
+108
+Reuse Process		A process of reusing.		Process		http://w3id.org/CEON/ontology/process/ReuseProcess		
+109
+Sell Resource Process		A process of selling a resource.		Process		http://w3id.org/CEON/ontology/process/SellResourceProcess		
+110
+Service Process		A process of servicing.		TransformationProcess		http://w3id.org/CEON/ontology/process/ServiceProcess		
+111
+Share Resource Process		A process of sharing a resource.		Process		http://w3id.org/CEON/ontology/process/ShareResourceProcess		
+112
+Take Back Process		A process of taking back.		Process		http://w3id.org/CEON/ontology/process/TakeBackProcess		
+113
+ISO Compliance		ISO compliance is a compliance issuing thay sth (e.g., organization's structure, business operations, practices or policies) follows a specific ISO standard.		Compliance		http://w3id.org/CEON/ontology/product/ISOCompliance		
+114
+REACH Compliance		REACH (Regulation on the registration, evaluation, authorisation and restriction of chemicals) compliance is a compliance issueing that the REACH regulation is satisfied.		Compliance		http://w3id.org/CEON/ontology/product/REACHCompliance		
+115
+RoHS Compliance		RoHS (Restriction of Hazardous Substances in Electrical and Electronic Equipment) compliance is a compliance issuing that RoHS objectives are satisfied.		Compliance		http://w3id.org/CEON/ontology/product/RoHSCompliance		
+116
+Supplier Location		The location of supplier of a product or item.		Location		http://w3id.org/CEON/ontology/product/SupplierLocation		
+117
+n4176b97232d749e5922faf1e05f9e163b117		
+118
+n4176b97232d749e5922faf1e05f9e163b121		
+119
+Digital object		A digital object, e.g. a computer file, that is located on some server, hard drive, or on the web. Most often the digital object is the realization of some piece of information.		Resource		http://w3id.org/CEON/ontology/resourceODP/DigitalObject		
+120
+Economic Value		Use/Economics value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances.		Value		http://w3id.org/CEON/ontology/value/EconomicValue		
+121
+Environmental Value		Environmental value represents how a thing (e.g., a product or service) match some environmental goals or needs of an actor under some circumstances.		Value		http://w3id.org/CEON/ontology/value/EnvironmentalValue		
+122
+Exchange Value		Exchange value represents the worth of a product, resource, service in a exchange setting, i.e., a product, resource, service is traded or sold.		Value		http://w3id.org/CEON/ontology/value/ExchangeValue		
+123
+Social Value		Social value represents how a thing (e.g., a product or service) match some social goals or needs of an actor under some circumstances.		Value		http://w3id.org/CEON/ontology/value/SocialValue		
+124
+n4176b97232d749e5922faf1e05f9e163b126		
+125
+Actor process role		The role(s) of an actor involved in a process.		ActorCollaborationRole		http://w3id.org/CEON/ontology/actor/ActorProcessRole		
+126
+Person		Actor		http://w3id.org/CEON/ontology/actor/Person		
+127
+Energy Composition		The relation representing the particpation of an energy as a resource.		ResourceParticipation		http://w3id.org/CEON/ontology/energy/EnergyComposition		
+128
+Chemical Substance		A chemical substance is made up of a collection of molecular entities.		ChemicalEntity		http://w3id.org/CEON/ontology/material/ChemicalSubstance		
+129
+Material Component		A material component is a part of a material.		Constituent		http://w3id.org/CEON/ontology/material/MaterialComponent		
+130
+CO2 emission		An amount of CO2.		Resource		http://w3id.org/CEON/ontology/process/CO2Emission		
+131
+Catalyst		A resource that is needed as a catalyst by a process, but that is not considered the direct input or output of it.		Resource		http://w3id.org/CEON/ontology/process/Catalyst		
+132
+Transition		A transition is a situation that creates a context for two additional different Situations, one Process, and at least one Object: one Situation is the state before the transition, the second Situation is the state after the transition, the Process is the invariance under some different transitions, in which at least one Object is situated. Finally, one or more time interval(s) may position the situations and the transitional event in time, and we may include the event that triggered the transition as well.		Situation		http://w3id.org/CEON/ontology/process/Transition		
+133
+Product Object Composition		A product object composition is the composed information of a product object in terms of a specific component, in which such a component is also a product object.		n4176b97232d749e5922faf1e05f9e163b139, Composition		http://w3id.org/CEON/ontology/product/ProductObjectComposition		
+134
+Solution		Product or service, or a combination thereof, that fulfils a need of an interested party.		http://w3id.org/CEON/ontology/product/Solution		
+135
+n4176b97232d749e5922faf1e05f9e163b140		
+136
+n4176b97232d749e5922faf1e05f9e163b143		
+137
+n4176b97232d749e5922faf1e05f9e163b146		
+138
+Use Value		Use/Economics value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances.		Value		http://w3id.org/CEON/ontology/value/UseValue		
+139
+Actor collaboration role		The roles of an actor involved in a collaboration.		Role		http://w3id.org/CEON/ontology/actor/ActorCollaborationRole		
+140
+n4176b97232d749e5922faf1e05f9e163b149		
+141
+Circular Strategy		A circular strategy, such as to reccycle, reuse or refurbish something.		http://w3id.org/CEON/ontology/cvn/CircularStrategy		
+142
+Collaboration		A collaboration between a set of actors.		http://w3id.org/CEON/ontology/cvn/Collaboration		
+143
+Biomass		Biomass represents matter from recently living (but now dead) organisms such as plants, algae and animals.		EnergySource		http://w3id.org/CEON/ontology/energy/Biomass		
+144
+NonReneable Energy		Nonrenewable energy represents energy that comes from such resources that cannot be replaced onew they are used up.		Energy		http://w3id.org/CEON/ontology/energy/NonRenewableEnergy		
+145
+Renewable Energy		Renewable energy represents energy that comes from renewable resources.		Energy		http://w3id.org/CEON/ontology/energy/RenewableEnergy		
+146
+Description		A Description is a SocialObject that represents a conceptualization. 		For example, a Plan is a Description of some actions to be executed by agents in a certain way, with certain parameters etc. Descriptions 'define' or 'use' concepts, and can be 'satisfied' by situations.		http://w3id.org/CEON/ontology/plan/Description		
+147
+Event		Something that happens within a given context or (short) timeframe.		n4176b97232d749e5922faf1e05f9e163b152, n4176b97232d749e5922faf1e05f9e163b153		http://w3id.org/CEON/ontology/processODP/Event		
+148
+n4176b97232d749e5922faf1e05f9e163b153		
+149
+Matter composition		A product composition is the composed information of a product in terms of a specific component, in which such a component is also a matter.		n4176b97232d749e5922faf1e05f9e163b158, Composition		http://w3id.org/CEON/ontology/product/MatterComposition		
+150
+Product composition		A product composition is the composed information of a product in terms of a specific component, in which such a component is also a product.		n4176b97232d749e5922faf1e05f9e163b159, Composition		http://w3id.org/CEON/ontology/product/ProductComposition		
+151
+Production Location		The production location of a physical object		n4176b97232d749e5922faf1e05f9e163b160, n4176b97232d749e5922faf1e05f9e163b161, n4176b97232d749e5922faf1e05f9e163b162, n4176b97232d749e5922faf1e05f9e163b163, n4176b97232d749e5922faf1e05f9e163b164, Location		http://w3id.org/CEON/ontology/product/ProductionLocation		
+152
+Regulation		The rules or restrictions made or maintained by authorities.		http://w3id.org/CEON/ontology/product/Regulation		
+153
+n4176b97232d749e5922faf1e05f9e163b165		
+154
+Asset		Asset is sth that is valuable and useful to be used in activities, or owned by actors.		http://w3id.org/CEON/ontology/resourceODP/Asset		
+155
+Set of objects		A set of objects is a set of physical objects (items) that can be of different types, i.e. different kinds of items.		n4176b97232d749e5922faf1e05f9e163b168, n4176b97232d749e5922faf1e05f9e163b173, Resource		http://w3id.org/CEON/ontology/resourceODP/SetOfObjects		
+156
+n4176b97232d749e5922faf1e05f9e163b168		
+157
+n4176b97232d749e5922faf1e05f9e163b173		
+158
+Organisation		Person or group of people that has its own functions with responsibilities, authorities, and relationships to achieve its objectives. The concept of organization includes, but is not limited to sole-trader, company, corporation, firm, enterprise, authority, partnership, charity or institution, or part or combination thereof, whether incorporated or not, public or private (e.g. foundation, union, association, agency, municipality, region, country, intergovernmental agencies). A group of organizations can also be considered as	an organization that has, alone or collectively,their own objectives.		n4176b97232d749e5922faf1e05f9e163b178, n4176b97232d749e5922faf1e05f9e163b179, Actor		http://w3id.org/CEON/ontology/actor/Organisation		
+159
+n4176b97232d749e5922faf1e05f9e163b179		
+160
+Organisation Location		Location of an organisation		Location		http://w3id.org/CEON/ontology/actor/OrganisationLocation		
+161
+Infrastructure		An infrastructure refers to facilities, services, or systems for participations to function.		http://w3id.org/CEON/ontology/actorODP/Infrastructure		
+162
+Circular Value Network Blueprint		A plan or a pattern of a CVN configuration that can then be filled with actual actors and processes. The blueprint can be used to capture a desired setup of a network, or for reusing patterns of CVNs.		http://w3id.org/CEON/ontology/cvn/CVNBlueprint		
+163
+Fossil Fuel		A fossil fuel is a carbon compound- or hydrocarbon-containing material[2] formed naturally in the Earth's crust from the buried remains of prehistoric organisms (animals, plants or planktons), a process that occurs within geological formations.		EnergySource		http://w3id.org/CEON/ontology/energy/FossilFuel		
+164
+Material		Material as a sub-concept of Matter, can be a substance or a collection of substance which a physical object is composed of.		n4176b97232d749e5922faf1e05f9e163b184, Matter		http://w3id.org/CEON/ontology/material/Material		
+165
+Plan		A Description having an explicit goal, to be achieved by executing the plan.		n4176b97232d749e5922faf1e05f9e163b185, Description		http://w3id.org/CEON/ontology/plan/Plan		
+166
+Assembly Location		The location where a physical object is assembled.		n4176b97232d749e5922faf1e05f9e163b186, n4176b97232d749e5922faf1e05f9e163b187, n4176b97232d749e5922faf1e05f9e163b188, n4176b97232d749e5922faf1e05f9e163b189, Location		http://w3id.org/CEON/ontology/product/AssemblyLocation		
+167
+Manufacture Location		The location where a physical object is manufactured.		n4176b97232d749e5922faf1e05f9e163b190, n4176b97232d749e5922faf1e05f9e163b191, n4176b97232d749e5922faf1e05f9e163b192, n4176b97232d749e5922faf1e05f9e163b193, Location		http://w3id.org/CEON/ontology/product/ManufactureLocation		
+168
+Origin Location		The origin location of a physical object		n4176b97232d749e5922faf1e05f9e163b194, n4176b97232d749e5922faf1e05f9e163b195, n4176b97232d749e5922faf1e05f9e163b196, n4176b97232d749e5922faf1e05f9e163b197, Location		http://w3id.org/CEON/ontology/product/OriginLocation		
+169
+Resource Condition		The status of a resource.		http://w3id.org/CEON/ontology/resourceODP/ResourceCondition		
+170
+Resource Property		The characteristics or attribuets of a resource.		http://w3id.org/CEON/ontology/resourceODP/ResourceProperty		
+171
+Resource Quality		Resource quality is derived based on assessments of resources considering the conditions and properties.		http://w3id.org/CEON/ontology/resourceODP/ResourceQuality		
+172
+Value Perception		Value perception of an actor determines specifc values.		http://w3id.org/CEON/ontology/value/ValuePerception		
+173
+Resource Participation		The generic relation representing the particpation of a resource in some relation. For example, it can be specialized to represent a reified version of an object or data property.		Participation		http://w3id.org/CEON/ontology/actorODP/ResourceParticipation		
+174
+Role		A role that an actor can take in a specific context. Applies both to roles in the context of resources, such as owner, manufacturer, reseller etc. of that resource, as well as roles in relation to a circular value network, such as recycler, dismantler, transporter etc., in relation to a material flow.		http://w3id.org/CEON/ontology/actorODP/Role		
+175
+Energy		An amount of energy., Energy is an ability or a property of matter or a system, to do work because of its motion, its mass, its electric charge, etc.		Resource		http://w3id.org/CEON/ontology/energy/Energy		
+176
+Chemical Entity		A chemical entity is an abstraction of entities that can compose matter. For instance, a chemical entity can be a molecular entity or a chemical substance.		Matter		http://w3id.org/CEON/ontology/material/ChemicalEntity		
+177
+Time Interval		A temporal entity has a starting time and an ending time.		http://w3id.org/CEON/ontology/processODP/TimeInterval		
+178
+Quantity Interval		Quantity interval is an interval with two quantity values.		http://w3id.org/CEON/ontology/quantity/QuantityInterval		
+179
+Constituent		A constituent is a component of object.		http://w3id.org/CEON/ontology/resourceODP/Constituent		
+180
+Information		Information is an abstract concept that represents any kind of interpretations. For instance, information can be data generated by software systems or data used by people for communications.		Asset		http://w3id.org/CEON/ontology/resourceODP/Information		
+181
+n4176b97232d749e5922faf1e05f9e163b198		
+182
+http://www.opengis.net/ont/geosparql#Geometry		
+183
+Capability		Something that the actor is capable of doing, e.g. perfomring a certain role in a process, based on some properties, such as access to infrastructure, resources and know-how.		http://w3id.org/CEON/ontology/actorODP/Capability		
+184
+Plan Execution		Plan executions are situations that proactively satisfy a plan. Subplan executions are proper parts of the whole plan execution.		n4176b97232d749e5922faf1e05f9e163b201, n4176b97232d749e5922faf1e05f9e163b202, n4176b97232d749e5922faf1e05f9e163b203, n4176b97232d749e5922faf1e05f9e163b204, n4176b97232d749e5922faf1e05f9e163b205, n4176b97232d749e5922faf1e05f9e163b210, Situation		http://w3id.org/CEON/ontology/plan/PlanExecution		
+185
+n4176b97232d749e5922faf1e05f9e163b205		
+186
+Value Participation		A participation that may create/destory/miss value.		n4176b97232d749e5922faf1e05f9e163b211, Participation		http://w3id.org/CEON/ontology/value/ValueParticipation		
+187
+Collaboration Participation		The relation involving the role of a certain actor with respect to a value network or a process in such a network, e.g. an organisation (actor) acting as the recycler (role) in a glass recycling value netowrk (network) at a specific point or period in time. Or an organisation (actor) acting as the dismantler (role) in a dismantling step of a building deconstruction process (process step) at a specific point or period in time.		Participation		http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation		
+188
+Situation		A situation that may involve some resources and actors, i.e. a state of affairs at a certain point in time.		n4176b97232d749e5922faf1e05f9e163b212		http://w3id.org/CEON/ontology/processODP/Situation		
+189
+Compliance		Represents that something is compliant with some standard or has a received a certain certification.		http://w3id.org/CEON/ontology/product/Compliance		
+190
+Composition		A relation that represents a composing relation.		ResourceParticipation		http://w3id.org/CEON/ontology/product/Composition		
+191
+Circular Value Network		A network of interlinked value chains and interested parties.		Collaboration		http://w3id.org/CEON/ontology/cvn/CVN		
+192
+Value Participation Role		A role that a value participant can take.		Role		http://w3id.org/CEON/ontology/value/ValueParticipationRole		
+193
+Value Proposition		Proposed or intended value outcome of some process, action or collaboration.		n4176b97232d749e5922faf1e05f9e163b213, n4176b97232d749e5922faf1e05f9e163b214, n4176b97232d749e5922faf1e05f9e163b215		http://w3id.org/CEON/ontology/value/ValueProposition		
+194
+Batch Of Objects		A batch of objects is a collection of physical objects that are of the same type, e.g. a set of items (product instances) adhering to the same product model.		n4176b97232d749e5922faf1e05f9e163b216, n4176b97232d749e5922faf1e05f9e163b217, n4176b97232d749e5922faf1e05f9e163b218, Resource		http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects		
+195
+n4176b97232d749e5922faf1e05f9e163b218		
+196
+Matter		A matter is a physical substance.		http://w3id.org/CEON/ontology/resourceODP/Matter		
+197
+Actor Circular Value Network role		The role(s) of an actor in a Circular Value Network, which is a specific type of collaboration.		ActorCollaborationRole		http://w3id.org/CEON/ontology/actor/ActorCVNRole		
+198
+Energy Source		An energy source is a resource or system that provides the energy.		http://w3id.org/CEON/ontology/energy/EnergySource		
+199
+Location		From geography perspecive, a location represents a region which can be geometry point, line or area on Earth.		Geometry		http://w3id.org/CEON/ontology/location/Location		
+200
+Physical object		A physical object is a collection of matter.		n4176b97232d749e5922faf1e05f9e163b223, n4176b97232d749e5922faf1e05f9e163b228, Resource		http://w3id.org/CEON/ontology/resourceODP/PhysicalObject		
+201
+n4176b97232d749e5922faf1e05f9e163b223		
+202
+n4176b97232d749e5922faf1e05f9e163b228		
+203
+Item		An item is a physical object put into a market for sale, i.e. corresponding to an individual of a product. The item can be a thing that grows naturally or produced through some chemical or manufacturing processes.		n4176b97232d749e5922faf1e05f9e163b233, PhysicalObject		http://w3id.org/CEON/ontology/product/Item		
+204
+Value		Gain(s) or benefit(s) from satisfying needs and expectations,	in relation to the use	and conservation of resources. EXAMPLE: Revenue, savings, productivity, sustainability, satisfaction, empowerment, engagement, experience, public health, trust. Value is relative to, and determined by the perception of, those interested party(ies) able to capture it. Value can be financial or non-financial, e.g. social, environmental, other gains or benefits. Value is dynamic over time.		http://w3id.org/CEON/ontology/value/Value		
+205
+Actor		An agent able to act in the context of a circular value network, e.g. an organisation, person.		http://w3id.org/CEON/ontology/actorODP/Actor		
+206
+Participation		Represents the participation of objects in some situation.		n4176b97232d749e5922faf1e05f9e163b234		http://w3id.org/CEON/ontology/actorODP/Participation		
+207
+n4176b97232d749e5922faf1e05f9e163b234		
+208
+Chemical Element		A chemical element is a chemical substance whose atoms all have the same number of protons.		ChemicalSubstance		http://w3id.org/CEON/ontology/material/ChemicalElement		
+209
+Actor resource role		The role(s) of an actor in relation to a resource.		Role		http://w3id.org/CEON/ontology/actor/ActorResourceRole		
+210
+Transformation Process		Set of interrelated or interacting activities that transforms inputs into outputs.		Process		http://w3id.org/CEON/ontology/process/TransformationProcess		
+211
+Product		Physical-based object designed for or utilized with a purpose. A product can be, for example: goods of any type; hardware (e.g. engine mechanical part, spare parts, consumables); electrical or electronic hardware devices or components (e.g. computers, communication equipment and sensors); processed materials (e.g. lubricant, cement)., Represents the common sense notion of a product, i.e. the abstract notion of a product type, which is a model that is used for manufacturing items of that product.		n4176b97232d749e5922faf1e05f9e163b239, n4176b97232d749e5922faf1e05f9e163b240, n4176b97232d749e5922faf1e05f9e163b241, n4176b97232d749e5922faf1e05f9e163b242, n4176b97232d749e5922faf1e05f9e163b243, Solution, Resource		http://w3id.org/CEON/ontology/product/Product		
+212
+Rare Earth Element		Rare earth elements is a set of 17 nearly indistinguishable lustrous silvery-white soft heavy metals.		ChemicalElement		http://w3id.org/CEON/ontology/material/RareEarthElement		
+213
+Process		Something that takes place over a (longer) period of time and changes some state of affairs.		n4176b97232d749e5922faf1e05f9e163b244, n4176b97232d749e5922faf1e05f9e163b249		http://w3id.org/CEON/ontology/processODP/Process		
+214
+n4176b97232d749e5922faf1e05f9e163b244		
+215
+n4176b97232d749e5922faf1e05f9e163b250		
+216
+Resource		Asset from which a solution is created or implemented. Depending on the context, reference to “resource” includes “raw material”, “feedstock”, “material” or “component”. Resource includes any energy type (e.g. the energy content or energy potential of materials). Note 4 to entry: Resources can be considered concerning both stocks and flows., Some resources can be specifically associated with processes.		n4176b97232d749e5922faf1e05f9e163b253, n4176b97232d749e5922faf1e05f9e163b258, n4176b97232d749e5922faf1e05f9e163b263, Asset		http://w3id.org/CEON/ontology/resourceODP/Resource		
+217
+n4176b97232d749e5922faf1e05f9e163b253		
+218
+n4176b97232d749e5922faf1e05f9e163b258		
+219
+n4176b97232d749e5922faf1e05f9e163b263		
+220
+Resource Relation		A relation between a resource, an actor, and the role the actor has in relation to the resource. For instance, the role of owner that a certain actor takes for a certain resource for a certain period of time. Or the seller of a certain resource, until that resource has been sold, and the actor no longer has that role in relation to the resource., The relation involving the role of a certain actor with respect to a certain resource, e.g. an organisation or individual (actor) owning (role) a specific product (resource) at a specific point or period in time.		n4176b97232d749e5922faf1e05f9e163b268, Participation		http://w3id.org/CEON/ontology/actorODP/ResourceRelation		
+221
+n4176b97232d749e5922faf1e05f9e163b268		
