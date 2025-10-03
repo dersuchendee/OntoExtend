@@ -1,0 +1,46 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage> a owl:DatatypeProperty ;
+    rdfs:label "has energy component percentage"^^xsd:string ;
+    rdfs:comment "hasEnergyComponentPercentage represents the percentage of a particular energy as a composition."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/energy/EnergyComposition> ;
+    rdfs:range xsd:double .
+
+<http://w3id.org/CEON/ontology/product/hasBrand> a owl:DatatypeProperty ;
+    rdfs:label "has brand"^^xsd:string ;
+    rdfs:comment "The brand name of a product."^^xsd:string ;
+    rdfs:range xsd:string .
+
+<http://w3id.org/CEON/ontology/quantity/hasHeight> a owl:ObjectProperty ;
+    rdfs:label "has height"^^xsd:string ;
+    rdfs:comment "hasHeight is used to describe the height of a product or product object."^^xsd:string ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity/hasDimension> .
+
+<http://w3id.org/CEON/ontology/quantity/hasThickness> a owl:ObjectProperty ;
+    rdfs:label "has thickness"^^xsd:string ;
+    rdfs:comment "hasThickness is used to describe the thickness of a product or product object."^^xsd:string ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity/hasDimension> .
+
+<http://w3id.org/CEON/ontology/quantity/hasWidth> a owl:ObjectProperty ;
+    rdfs:label "has width"^^xsd:string ;
+    rdfs:comment "hasWidth is used to describe the width of a product or product object."^^xsd:string ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity/hasDimension> .
+
+resourceODP:hasConstituent a owl:ObjectProperty ;
+    rdfs:label "has constituent"^^xsd:string ;
+    rdfs:comment "hasConstitutent intends to represent that a physical object can have a collection of composing components."^^xsd:string ;
+    rdfs:domain resourceODP:PhysicalObject ;
+    rdfs:range resourceODP:Constituent ;
+    rdfs:subPropertyOf resourceODP:hasPart .
+
+<http://www.w3.org/2003/01/geo/wgs84_pos#long> a owl:DatatypeProperty .
+
+<http://w3id.org/CEON/ontology/quantity/hasDimension> a owl:ObjectProperty ;
+    rdfs:label "has dimension"^^xsd:string ;
+    rdfs:comment "hasDimension is used to describe a dimension of a product or product object."^^xsd:string ;
+    rdfs:subPropertyOf qudt:quantityValue .
+

@@ -1,7 +1,9 @@
 import sys
 import os
 import numpy as np
+
 from EmbeddingSystem.ReadOntologies import merge_ontologies, Fetch_components
+
 import faiss
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from OllamaEmbedder import OllamaEmbedderQWEN
@@ -75,11 +77,6 @@ def init_rag(batch_size = 20,core_ontology_path = '..\..\..\Dataset\OntoDESIDECo
     np.save('EmbeddingSystem/Prompts_full_info.npy', np.array([Prompts_classes_full_info, Prompts_OP_full_info, Prompts_DP_full_info], dtype=object))
 
 
-
-
-
-
-
 def RAG_extract_URIs(Query,class_count=15, op_count=5, dp_count=5):
 
     def RetriveComponents(Query_vector, class_count=15, op_count=5, dp_count=5):
@@ -126,9 +123,6 @@ def RAG_extract_URIs(Query,class_count=15, op_count=5, dp_count=5):
                 [OP_nearest_keys, OP_scores, OP_info],
                     [DP_nearest_keys, DP_scores, DP_info]]
 
-
-    # print(Query)
-
     Prompts_classes, Prompts_OP, Prompts_DP = np.load('EmbeddingSystem/Prompts_full_info.npy', allow_pickle=True)
     components = {}
     components.update(Prompts_classes)
@@ -143,23 +137,16 @@ def RAG_extract_URIs(Query,class_count=15, op_count=5, dp_count=5):
   
 
 def extract_blank_node_triples(g, bnode, output_g, visited=None, uri_refs_to_add=None):
-    """
-    Recursively extract all triples related to a blank node.
-    Also collects URIs of properties referenced in OWL restrictions.
-    """
     if visited is None:
         visited = set()
     if uri_refs_to_add is None:
         uri_refs_to_add = set()
-    
     if bnode in visited:
         return uri_refs_to_add
     visited.add(bnode)
-    
     # Get all triples where the blank node is the subject
     for s, p, o in g.triples((bnode, None, None)):
         output_g.add((s, p, o))
-        
         # If this is an OWL restriction with onProperty, collect the property URI
         if p == OWL.onProperty and isinstance(o, URIRef):
             uri_refs_to_add.add(o)
@@ -178,22 +165,9 @@ def extract_blank_node_triples(g, bnode, output_g, visited=None, uri_refs_to_add
     return uri_refs_to_add
 
 def extract_ontology(input_ttl, uri_list, output_ttl):
-    """
-    Extract specified URIs and their related triples from a turtle file
-    and create a new ontology.
-    
-    Args:
-        input_ttl: Path to input turtle file
-        uri_list: List of URIs to extract
-        output_ttl: Path to output turtle file
-    """
-    # Load the input turtle file using rdflib
     g = Graph()
-    # print(f"Loading {input_ttl}...")
     g.parse(input_ttl, format='turtle')
-    # print(f"Loaded {len(g)} triples")
-    
-    # Create a new graph for the output
+
     output_g = Graph()
     
     # Copy namespace bindings
@@ -202,16 +176,10 @@ def extract_ontology(input_ttl, uri_list, output_ttl):
     
     # Convert URI strings to URIRef objects
     uri_refs = [URIRef(uri) if isinstance(uri, str) else uri for uri in uri_list]
-    
-    # Keep track of additional URIs to extract (from OWL restrictions)
     additional_uris = set()
-    
-    # Extract triples for each URI
+
     extracted_count = 0
     for uri in uri_refs:
-        # print(f"Extracting triples for: {uri}")
-        
-        # ONLY get triples where the URI is the subject (its definition)
         for s, p, o in g.triples((uri, None, None)):
             output_g.add((s, p, o))
             extracted_count += 1
@@ -219,10 +187,7 @@ def extract_ontology(input_ttl, uri_list, output_ttl):
             if isinstance(o, BNode):
                 referenced_uris = extract_blank_node_triples(g, o, output_g)
                 additional_uris.update(referenced_uris)
-    
-    # Now extract the additional URIs (properties referenced in restrictions)
     if additional_uris:
-        # print(f"\nExtracting {len(additional_uris)} additional properties referenced in OWL restrictions...")
         for uri in additional_uris:
             # print(f"  - {uri}")
             for s, p, o in g.triples((uri, None, None)):
@@ -231,22 +196,28 @@ def extract_ontology(input_ttl, uri_list, output_ttl):
                 # Also handle blank nodes in these properties
                 if isinstance(o, BNode):
                     extract_blank_node_triples(g, o, output_g)
-    
-    # print(f"Extracted {extracted_count} direct triples")
-    # print(f"Output graph contains {len(output_g)} total triples (including blank nodes)")
-    
-    # Serialize to turtle format with nice formatting
-    # print(f"Writing to {output_ttl}...")
     output_g.serialize(destination=output_ttl, format='turtle', encoding='utf-8')
-    # print("Done!")
 
 
 
+def RAG(Query="What are the components of a product?",init_rag=False,class_count=10, op_count=5, dp_count=3):
+    try:
+        Query = sys.argv[1]
+    except:
+        pass
 
-# init_rag()
-Query = "What are the components of a product?"
-URIs = RAG_extract_URIs(Query,class_count=10, op_count=5, dp_count=3)
-input_file = "merged.ttl"
-output_file = "output.ttl"
-extract_ontology(input_file, URIs, output_file)
 
+    if init_rag:
+        init_rag()
+    input_file = "merged.ttl"
+    
+
+    URIs = RAG_extract_URIs(Query,class_count, op_count, dp_count)
+
+    output_file = "output.ttl"
+    for uri in URIs:
+        print(uri)
+    extract_ontology(input_file, URIs, output_file)
+    return open(output_file, 'r', encoding='utf-8').read()
+
+RAG()
