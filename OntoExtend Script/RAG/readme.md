@@ -1,6 +1,8 @@
 # RAG2 Flask API — Quick Start
+You run the script, it reads the core ontology in the Dataset folder, and you get output.ttl, which is a subset of the core ontology wrt the CQ. If it is the first time running the script, put the start_rag flag on 'ture'
 
 
+Bug or feature?  It returns a certain number of Classes and properties, but if the scores are too low, it does not return classes.
 
 ## Prerequisites
 
@@ -34,5 +36,6 @@ curl -sS -X POST http://localhost:8000/run   -H "Content-Type: application/json"
     "dp_count": 5
   }' | jq
 ```
+
 
 
