@@ -1,0 +1,17 @@
+faiss_cpu==1.12.0
+Flask==2.2.2
+helpers==0.2.0
+langchain_huggingface==0.3.1
+numpy==2.3.3
+ollama==0.6.0
+openai==0.27.8
+owlready2==0.48
+pandas==1.5.3
+pydantic==2.12.0
+python-dotenv==1.1.1
+PyYAML==6.0
+PyYAML==6.0.3
+rdflib==7.2.1
+rich==14.1.0
+tiktoken==0.12.0
+tqdm==4.64.1
