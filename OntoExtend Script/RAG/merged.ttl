@@ -1,0 +1,2586 @@
+@prefix : <http://w3id.org/CEON/ontology/energy/> .
+@prefix actor: <http://w3id.org/CEON/ontology/actor/> .
+@prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
+@prefix cvn: <http://w3id.org/CEON/ontology/cvn/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix location: <http://w3id.org/CEON/ontology/location/> .
+@prefix odp: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix processODP: <http://w3id.org/CEON/ontology/processODP/> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix qudt-unit: <http://qudt.org/vocab/unit/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix value: <http://w3id.org/CEON/ontology/value/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://anonymous> a owl:Ontology .
+
+dcterms:contributor a owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty .
+
+dcterms:created a owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty .
+
+dcterms:creator a owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty .
+
+dcterms:description a owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty .
+
+dcterms:issued a owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty .
+
+dcterms:license a owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty .
+
+dcterms:publisher a owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty .
+
+dcterms:title a owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty .
+
+vann:preferredNamespacePrefix a owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty .
+
+vann:preferredNamespaceUri a owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty .
+
+qudt-unit:EURO-PER-KiloM a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Euro Per Kilometer"^^xsd:string ;
+    dcterms:description "Euro Per Kilometer (€/km) is a unit used to represent the cost or value associated with transporting a resource."^^rdf:HTML ;
+    qudt:symbol "€/km"^^xsd:string .
+
+qudt-unit:EURO-PER-M2 a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Euro Per Square Meter"^^xsd:string ;
+    dcterms:description "Euro Per Square Meter (€/km) is a unit used to represent the cost or value of resource per square meter."^^rdf:HTML ;
+    qudt:symbol "€/m²"^^xsd:string .
+
+actor: a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist"^^xsd:string,
+        "Mikael Lindecrantz"^^xsd:string,
+        "Robin Keskisärkkä"^^xsd:string ;
+    dcterms:created "2024-11-13"^^xsd:date ;
+    dcterms:creator "Huanyu Li"^^xsd:string ;
+    dcterms:description "The Actor module of CEON (Circular Economy Ontology Network)."^^xsd:string ;
+    dcterms:issued "2025-06-30"^^xsd:date ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+    dcterms:publisher "Onto-DESIDE"^^xsd:string ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Actor Module"^^xsd:string ;
+    vann:preferredNamespacePrefix "ceon-actor"^^xsd:string ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/actor/"^^xsd:string ;
+    odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: C0-1, C0-2, C3-4, T3-4."^^xsd:string,
+        "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: C0-1, C0-2, C3-4, T3-4."^^xsd:string ;
+    rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:imports <http://w3id.org/CEON/ontology/actorODP/0.4/> ;
+    owl:priorVersion 0.3 ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/actor/0.4/> ;
+    owl:versionInfo 0.4 .
+
+actor:BuyingResource a owl:Class ;
+    rdfs:label "Buying resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the buyer of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:buyer ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:CVNParticipation a owl:Class ;
+    rdfs:label "Circular Value Network Participation"^^xsd:string ;
+    rdfs:comment "A participation-relation, that represents the participation of an actor in a CVN with a certain role. For instance, a specific company playing the role of recycler in a certain flow of a CVN. The participation may also be related to a certain time (or time interval)."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( actorODP:CollaborationParticipation [ a owl:Restriction ;
+                        owl:onProperty actorODP:participantRole ;
+                        owl:someValuesFrom actor:ActorCVNRole ] [ a owl:Restriction ;
+                        owl:onProperty actorODP:participatingActor ;
+                        owl:someValuesFrom actorODP:Actor ] [ a owl:Restriction ;
+                        owl:onProperty actorODP:participationIn ;
+                        owl:someValuesFrom cvn:CVN ] ) ],
+        actorODP:CollaborationParticipation .
+
+actor:ConsumingResource a owl:Class ;
+    rdfs:label "Consuming resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the consumer of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:consumer ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:DismantlingResource a owl:Class ;
+    rdfs:label "Dismantling resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the dismantler of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:dismantler ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:IssuingResource a owl:Class ;
+    rdfs:label "Issuing resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the issuer of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:issuer ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:ManufacturingResource a owl:Class ;
+    rdfs:label "Manufacturing resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the manufacturer of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:manufacturer ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:OwningResource a owl:Class ;
+    rdfs:label "Owning resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the owner of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:owner ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:ProcessParticipation a owl:Class ;
+    rdfs:label "Process Participation"^^xsd:string ;
+    rdfs:comment "Participation of a certain actor in a certain process, with a certain role. For instance, a certain department of a recycling company having the role of quality controllant, or material sorter, in a certain recycling process. The participation may also be given a time, e.g. a start and end time."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( actorODP:CollaborationParticipation [ a owl:Restriction ;
+                        owl:onProperty actorODP:participantRole ;
+                        owl:someValuesFrom actor:ActorProcessRole ] [ a owl:Restriction ;
+                        owl:onProperty actorODP:participatingActor ;
+                        owl:someValuesFrom actorODP:Actor ] [ a owl:Restriction ;
+                        owl:onProperty actorODP:participationIn ;
+                        owl:someValuesFrom processODP:Process ] ) ],
+        actorODP:CollaborationParticipation .
+
+actor:ProducingResource a owl:Class ;
+    rdfs:label "Producing resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the producer of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:producer ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:ProvidingResource a owl:Class ;
+    rdfs:label "Providing resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the provider of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:provider ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:RecyclingResource a owl:Class ;
+    rdfs:label "Recycling resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the recycler of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:recycler ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:RepairingResource a owl:Class ;
+    rdfs:label "Repairing resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the repairer of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:repairer ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:ResellingResource a owl:Class ;
+    rdfs:label "Reselling resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the reseller of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:reseller ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:SellingResource a owl:Class ;
+    rdfs:label "Selling resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the seller of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:seller ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:Stakeholder a owl:Class ;
+    rdfs:label "Interested Party"^^xsd:string,
+        "Stakeholder"@en ;
+    rdfs:comment "Person or organization that can affect, be affected by, or perceive itself to be affected by a decision or activity. To “perceive itself to be affected” means the perception has been made known to the organization."@en ;
+    rdfs:isDefinedBy "ISO 59004:2024 - 3.4.2 interested party, stakeholder"^^xsd:string ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( actor:Organisation actor:Person ) ] .
+
+actor:SupplyingResource a owl:Class ;
+    rdfs:label "Supplying resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the supplier of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:supplier ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:TakingBackResource a owl:Class ;
+    rdfs:label "Taking back resource"^^xsd:string,
+        "The relation where the role of the actor is the collector of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:collector ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:UpdatingResource a owl:Class ;
+    rdfs:label "Updating resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the updater of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:updater ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:UsingResource a owl:Class ;
+    rdfs:label "Using resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the user of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:user ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:ViewingResource a owl:Class ;
+    rdfs:label "Viewing resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the viewer of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:viewer ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:capabilityExtent a owl:ObjectProperty ;
+    rdfs:label "capability extent"^^xsd:string ;
+    rdfs:comment "The extent of this capability, e.g. stating whether there are limist to the capability, such as a maximum amount or size of something."^^xsd:string ;
+    rdfs:domain actorODP:Capability ;
+    rdfs:subPropertyOf actorODP:capabilityProperty .
+
+actor:neededResourceRelation a owl:ObjectProperty ;
+    rdfs:label "needed resource relations"^^xsd:string ;
+    rdfs:comment "In order for an actor to have a capability, it needs to have certain resources, e.g. materials, infrastrucutre, know-how, information etc."^^xsd:string ;
+    rdfs:domain actorODP:Capability ;
+    rdfs:subPropertyOf actorODP:capabilityProperty .
+
+actorODP: a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist"^^xsd:string,
+        "Mikael Lindecrantz"^^xsd:string,
+        "Robin Keskisärkkä"^^xsd:string ;
+    dcterms:created "2025-05-20"^^xsd:date ;
+    dcterms:creator "Huanyu Li"^^xsd:string ;
+    dcterms:description "A core ODP of the CEON ontology network, defining aspects of the actor concept."^^xsd:string ;
+    dcterms:issued "2025-06-30"^^xsd:date ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+    dcterms:publisher "Onto-DESIDE"^^xsd:string ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Actor ODP"^^xsd:string ;
+    vann:preferredNamespacePrefix "ceon-actorODP"^^xsd:string ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontoloy/actorODP/"^^xsd:string ;
+    odp:coversRequirements "Covers the following requirements from Onto-DESIDE D3.1: CVN-Process-3, CVN-Actor-1,4,6,7, CVN-Competency-3, CVN-Information-4, C11-1, C11-3, E1-6,6,6,9, E4-10."^^xsd:string,
+        "Covers the following requirements from Onto-DESIDE D3.2: CE1-1, CE2-1, CE2-2, CE4-2, CE6-3, CE12-1, CE10-1, CE10-3, CE10-4, CE10-9, C3-6, C3-9, C11-1, C11-3, C13-8, C13-10, E1-6, E1-9, E4-10."^^xsd:string ;
+    rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the actor concept."^^xsd:string ;
+    rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:priorVersion 0.3 ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/actorODP/0.4/> ;
+    owl:versionInfo 0.4 .
+
+actorODP:basedOnCapability a owl:ObjectProperty ;
+    rdfs:label "based on capability"^^xsd:string ;
+    rdfs:comment "An actor participates in a collaboration based on that it has some capability that is useful for the collaboration."^^xsd:string ;
+    rdfs:domain actorODP:CollaborationParticipation ;
+    rdfs:range actorODP:Capability .
+
+actorODP:capabilityOf a owl:ObjectProperty ;
+    rdfs:label "capability of"^^xsd:string ;
+    rdfs:comment "Relates to the actor holding the capability."^^xsd:string ;
+    rdfs:domain actorODP:Capability ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( actorODP:Actor actorODP:Infrastructure ) ] .
+
+actorODP:participatingInfrastructure a owl:ObjectProperty ;
+    rdfs:label "participating infrastructure"^^xsd:string ;
+    rdfs:comment "Holds the value of the infrastructure involved in this participation relation."^^xsd:string ;
+    rdfs:domain actorODP:Participation ;
+    rdfs:range actorODP:Infrastructure .
+
+actorODP:participationEndTime a owl:DatatypeProperty ;
+    rdfs:label "participation end time"^^xsd:string ;
+    rdfs:comment "The end of a time interval."^^xsd:string ;
+    rdfs:domain actorODP:Participation ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:unionOf ( xsd:date xsd:dateTime xsd:gMonthYear xsd:gYear ) ] .
+
+cvn: a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist"^^xsd:string,
+        "Mikael Lindecrantz"^^xsd:string,
+        "Robin Keskisärkkä"^^xsd:string ;
+    dcterms:created "2025-05-22"^^xsd:date ;
+    dcterms:creator "Huanyu Li"^^xsd:string ;
+    dcterms:description "A core module of the CEON ontology network, defining aspects of the circular value network (CVN) itself."^^xsd:string ;
+    dcterms:issued "2025-06-30"^^xsd:date ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+    dcterms:publisher "Onto-DESIDE"^^xsd:string ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Circular Value Network Module"^^xsd:string ;
+    vann:preferredNamespacePrefix "ceon-cvn"^^xsd:string ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontoloy/cvn/"^^xsd:string ;
+    odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: CVN-CVN-1, CVN-Process-1,6, CVN-VP-1, CVN-Type-3, C0-1."^^xsd:string,
+        "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: CE1-1, CE2-1, CE3-1, CE3-2, CE4-1, CE5-16, C0-1."^^xsd:string ;
+    rdfs:comment "A core module of the CEON ontology network, defining aspects of the circular value network (CVN) itself."^^xsd:string ;
+    rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:imports <http://w3id.org/CEON/ontology/actor/0.4/> ;
+    owl:priorVersion 0.2 ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/cvn/0.3/> ;
+    owl:versionInfo 0.3 .
+
+cvn:aimsAtValue a owl:ObjectProperty ;
+    rdfs:label "aims at value"^^xsd:string ;
+    rdfs:comment "The value proposition that the planned abstract CVN configuration, or concrete network wants to achieve."^^xsd:string ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( cvn:CVN cvn:CVNBlueprint ) ] ;
+    rdfs:range value:ValueProposition .
+
+cvn:composedOf a owl:ObjectProperty ;
+    rdfs:label "composed of"^^xsd:string ;
+    rdfs:comment "Both a CVN and a process can be composed of other CVNs or processes."^^xsd:string ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( cvn:CVN processODP:Process ) ] ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( cvn:CVN processODP:Process ) ] .
+
+cvn:createsValue a owl:ObjectProperty ;
+    rdfs:label "creates value"^^xsd:string ;
+    rdfs:comment "Value creation can be captured at the actor level, i.e. value created by an actor's participation in a collaboration, or at the process or complete CVN level."^^xsd:string ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( actorODP:Participation cvn:CVN processODP:Process ) ] ;
+    rdfs:range value:Value .
+
+cvn:implementsBlueprint a owl:ObjectProperty ;
+    rdfs:label "implements blueprint"^^xsd:string ;
+    rdfs:comment "The blueprint (or plan) that this concrete CVN is an instance of."^^xsd:string ;
+    rdfs:domain cvn:CVN ;
+    rdfs:range cvn:CVNBlueprint .
+
+cvn:implementsStrategy a owl:ObjectProperty ;
+    rdfs:label "implements strategy"^^xsd:string ;
+    rdfs:comment "A strategy that is implemented by this CVN or CVN blueprint."^^xsd:string ;
+    rdfs:domain cvn:CVN ;
+    rdfs:range cvn:CircularStrategy ;
+    rdfs:subPropertyOf cvn:relatedStrategy .
+
+cvn:plansToImplementStrategy a owl:ObjectProperty ;
+    rdfs:label "plans to implement strategy"^^xsd:string ;
+    rdfs:comment "A strategy that is planned to be implemented by this CVN or CVN blueprint."^^xsd:string ;
+    rdfs:domain cvn:CVNBlueprint ;
+    rdfs:range cvn:CircularStrategy ;
+    rdfs:subPropertyOf cvn:relatedStrategy .
+
+: a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist"^^xsd:string ;
+    dcterms:created "2025-03-20"^^xsd:string ;
+    dcterms:creator "Huanyu Li"^^xsd:string ;
+    dcterms:description "A module of the CEON ontology network defining aspects of the energy concept."^^xsd:string ;
+    dcterms:issued "2025-06-30"^^xsd:date ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+    dcterms:publisher "Onto-DESIDE"^^xsd:string ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Energy Module"^^xsd:string ;
+    vann:preferredNamespacePrefix "ceon-energy"^^xsd:string ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/energy/"^^xsd:string ;
+    odp:coversRequirements "Covers the following requirements from Onto-DESIDE D3.2: CE1-2, CE4-3, CE6-3, CE7-4, CE7-4, CE8-2, CE9-2, CE10-7, CE10-9, CE11-6, CE12-5."^^xsd:string ;
+    rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:imports <http://w3id.org/CEON/ontology/actorODP/0.4/>,
+        <http://w3id.org/CEON/ontology/resourceODP/0.5/> ;
+    owl:priorVersion 0.1 ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/energy/0.2/> ;
+    owl:versionInfo 0.2 .
+
+:Biofuel a owl:Class ;
+    rdfs:label "Biofuel"^^xsd:string ;
+    rdfs:comment "Biofuel is a fuel that is produced over a short time span from biomass."^^xsd:string ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Biofuel"^^xsd:string ;
+    rdfs:subClassOf :Biomass .
+
+:Biogas a owl:Class ;
+    rdfs:label "Biogass"^^xsd:string ;
+    rdfs:comment "Biogas represents an energy source that is produced from raw materials such as agricultural waste, manure, municipal waste, plant material, sewage, green waste, wastewater, and food waste."^^xsd:string ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Biogas"^^xsd:string ;
+    rdfs:subClassOf :Biomass .
+
+:Coal a owl:Class ;
+    rdfs:label "Coal"^^xsd:string ;
+    rdfs:comment "Coal is a black or dark-brown combustible mineral substance consisting of carbonized vegetable matter."^^xsd:string ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Coal"^^xsd:string ;
+    rdfs:subClassOf :FossilFuel .
+
+:EnergyConversion a owl:Class ;
+    rdfs:label "Energy Conversion"^^xsd:string ;
+    rdfs:comment "Energy Conversion is a process of transforming energy."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation .
+
+:EnergyInfrastructure a owl:Class ;
+    rdfs:label "Energy Infrastructure"^^xsd:string ;
+    rdfs:comment "The infrastructures participating in various energy-related processes, including energy production, transmission or distribution."^^xsd:string ;
+    rdfs:subClassOf actorODP:Infrastructure .
+
+:GeothermalEnergySource a owl:Class ;
+    rdfs:label "Geothermal Energy Source"^^xsd:string ;
+    rdfs:comment "Geothermal Energy Source is the Earth's crust. Geothermal energy is thermal energy extracted from the Earth's crust. It combines energy from the formation of the planet and from radioactive decay."^^xsd:string ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Geothermal_energy"^^xsd:string ;
+    rdfs:subClassOf :EnergySource .
+
+:Hydropower a owl:Class ;
+    rdfs:label "Hydropower"^^xsd:string ;
+    rdfs:comment "Hydropower is the use of falling or fast-running water to produce electricity or to power machines."^^xsd:string ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Hydropower"^^xsd:string ;
+    rdfs:subClassOf :EnergySource .
+
+:NaturalGas a owl:Class ;
+    rdfs:label "Natural Gas"^^xsd:string ;
+    rdfs:comment "Natural gas is a combustible gas that is naturally generated and stored under certain geological conditions by ancient animals and plants buried deep underground. It is a gaseous mixture of hydrocarbons and non-hydrocarbons, with methane as its main component."^^xsd:string ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Natural_gas"^^xsd:string ;
+    rdfs:subClassOf :FossilFuel .
+
+:Petroleum a owl:Class ;
+    rdfs:label "Petroleum"^^xsd:string ;
+    rdfs:comment "Petroleum is a naturally occurring yellow-black liquid chemical mixture found in geological formations, consisting primarily of hydrocarbons."^^xsd:string ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Petroleum"^^xsd:string ;
+    rdfs:subClassOf :FossilFuel .
+
+:SolarEnergySource a owl:Class ;
+    rdfs:label "Solar Energy Source"^^xsd:string ;
+    rdfs:comment "Solar Energy Source is the Sun."^^xsd:string ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Solar_energy"^^xsd:string ;
+    rdfs:subClassOf :EnergySource .
+
+:WindEnergySource a owl:Class ;
+    rdfs:label "Wind Energy Source"^^xsd:string ;
+    rdfs:comment "Wind Energy Source is the Wind."^^xsd:string ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Wind_power"^^xsd:string ;
+    rdfs:subClassOf :EnergySource .
+
+:hasAnergy a owl:ObjectProperty ;
+    rdfs:label "has anergy"^^xsd:string ;
+    rdfs:comment "hasAnergy represents that energy has part of anergy."^^xsd:string ;
+    rdfs:subPropertyOf actorODP:participatingObject .
+
+:hasCarbonIntensity a owl:DatatypeProperty ;
+    rdfs:label "has carbon intensity"^^xsd:string ;
+    rdfs:comment "hasCarbonIntensity measures how intensive that the carbon is for an energy source."^^xsd:string ;
+    rdfs:domain :EnergySource ;
+    rdfs:range xsd:double .
+
+:hasConvertedEnergy a owl:ObjectProperty ;
+    rdfs:label "has converted energy"^^xsd:string ;
+    rdfs:comment "hasConvertedEnergy represents that an energy transformation process has its final energy."^^xsd:string ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( :NonRenewableEnergy :RenewableEnergy ) ] ;
+    rdfs:subPropertyOf actorODP:participatingResource .
+
+:hasEnergyComponentPercentage a owl:DatatypeProperty ;
+    rdfs:label "has energy component percentage"^^xsd:string ;
+    rdfs:comment "hasEnergyComponentPercentage represents the percentage of a particular energy as a composition."^^xsd:string ;
+    rdfs:domain :EnergyComposition ;
+    rdfs:range xsd:double .
+
+:hasEnergySource a owl:ObjectProperty ;
+    rdfs:label "has energy source"^^xsd:string ;
+    rdfs:comment "hasEnergySource represents that energy can have some energy sources."^^xsd:string ;
+    rdfs:domain :Energy ;
+    rdfs:range :EnergySource .
+
+:hasExergy a owl:ObjectProperty ;
+    rdfs:label "has exergy"^^xsd:string ;
+    rdfs:comment "hasExergy represents that energy has part of exergy."^^xsd:string ;
+    rdfs:subPropertyOf actorODP:participatingObject .
+
+:hasOriginalEnergy a owl:ObjectProperty ;
+    rdfs:label "has original energy"^^xsd:string ;
+    rdfs:comment "hasOriginalEnergy represents that an energy transformation process has its initial energy."^^xsd:string ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( :NonRenewableEnergy :RenewableEnergy ) ] ;
+    rdfs:subPropertyOf actorODP:participatingResource .
+
+:hasSustainability a owl:DatatypeProperty ;
+    rdfs:label "has sustainability"^^xsd:string ;
+    rdfs:comment "hasSustainability measures how sustainable an energy source is."^^xsd:string ;
+    rdfs:domain :EnergySource ;
+    rdfs:range xsd:double .
+
+:participatingEnergy a owl:ObjectProperty ;
+    rdfs:label "participating energy"^^xsd:string ;
+    rdfs:comment "participatingEnergy represents the energy in an energy composition."^^xsd:string ;
+    rdfs:subPropertyOf actorODP:participatingSubject .
+
+location: a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist"^^xsd:string ;
+    dcterms:created "2025-03-19"^^xsd:string ;
+    dcterms:creator "Huanyu Li"^^xsd:string ;
+    dcterms:description "A module the CEON ontology network, defining aspects of the location concept."^^xsd:string ;
+    dcterms:issued "2025-06-30"^^xsd:date ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+    dcterms:publisher "Onto-DESIDE"^^xsd:string ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Location Module"^^xsd:string ;
+    vann:preferredNamespacePrefix "ceon-location"^^xsd:string ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontoloy/location/"^^xsd:string ;
+    odp:coversRequirements "Covers the following requirements from Onto-DESIDE D3.2: CE3-3, C3-2, C13-4, E2-12."^^xsd:string ;
+    rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the location concept."^^xsd:string ;
+    rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:priorVersion 0.1 ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/location/0.2/> ;
+    owl:versionInfo 0.2 .
+
+location:hasCountryCode a owl:DatatypeProperty ;
+    rdfs:label "has country code"^^xsd:string ;
+    rdfs:comment "Represents the code of a country's name according to ISO 3166-1."^^xsd:string ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso "ISO 3166-1 (Codes for the representation of names of countries and their subdivisions – Part 1: Country code)"^^xsd:string .
+
+location:hasGlobalLocationNumber a owl:DatatypeProperty ;
+    rdfs:label "has global location number"^^xsd:string ;
+    rdfs:comment "The Global Location Number (GLN) is part of the GS1 systems of standards."^^xsd:string ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso "https://www.gs1.org/standards/id-keys/gln"^^xsd:string .
+
+<http://w3id.org/CEON/ontology/material/> a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist"^^xsd:string,
+        "Mikael Lindecrantz"^^xsd:string,
+        "Robin Keskisärkkä"^^xsd:string ;
+    dcterms:created "2025-03-20"^^xsd:date ;
+    dcterms:creator "Huanyu Li"^^xsd:string ;
+    dcterms:description "The Material module of CEON (Circular Economy Ontology Network)."^^xsd:string ;
+    dcterms:issued "2025-06-30"^^xsd:date ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+    dcterms:publisher "Onto-DESIDE"^^xsd:string ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Material Module"^^xsd:string ;
+    vann:preferredNamespacePrefix "ceon-material"^^xsd:string ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/material/"^^xsd:string ;
+    odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: CVN-Resource-2, CVN-ResourceType-4, C3-3, E1-3, E2-4, E5-2, T1-1, T10-2."^^xsd:string,
+        "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: CE5-2, C3-3, E1-1, E1-3, E1-11, E1-13, E2-4, E3-2, E3-5, E5-2, E5-4, E5-5, T1-1, T9-2, T10-2, T10-4, T22-2."^^xsd:string ;
+    rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:imports <http://w3id.org/CEON/ontology/resourceODP/0.5/> ;
+    owl:priorVersion 0.3 ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/material/0.4/> ;
+    owl:versionInfo 0.4 .
+
+<http://w3id.org/CEON/ontology/material/Aluminum> a owl:Class ;
+    rdfs:label "Aluminum"^^xsd:string ;
+    rdfs:comment "Aluminum is a chemical element with the symbol Al and atomic number 13."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/ChemicalElement> .
+
+<http://w3id.org/CEON/ontology/material/Boron> a owl:Class ;
+    rdfs:label "Boron"^^xsd:string ;
+    rdfs:comment "Boron is a chemical element with the symbol B and atomic number 5."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/ChemicalElement> .
+
+<http://w3id.org/CEON/ontology/material/Cellulose> a owl:Class ;
+    rdfs:label "Cellulose"^^xsd:string ;
+    rdfs:comment "Cellulose is an organic compound with chemical formula (C6H10O5)n."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+<http://w3id.org/CEON/ontology/material/Cerium> a owl:Class ;
+    rdfs:label "Cerium"^^xsd:string ;
+    rdfs:comment "Cerium is a chemical element with the symbol Ce and atomic number 58."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/RareEarthElement> .
+
+<http://w3id.org/CEON/ontology/material/Chromium> a owl:Class ;
+    rdfs:label "Chromium"^^xsd:string ;
+    rdfs:comment "Chromium is a chemical element with the symbol Cr and atomic number 24."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/ChemicalElement> .
+
+<http://w3id.org/CEON/ontology/material/Copper> a owl:Class ;
+    rdfs:label "Copper"^^xsd:string ;
+    rdfs:comment "Copper is a chemical element with the symbol Cu and atomic number 29."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/ChemicalElement> .
+
+<http://w3id.org/CEON/ontology/material/Dysprosium> a owl:Class ;
+    rdfs:label "Dysorisium"^^xsd:string ;
+    rdfs:comment "Dysprosium is a chemical element with the symbol Dy and atomic number 66."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/RareEarthElement> .
+
+<http://w3id.org/CEON/ontology/material/Erbium> a owl:Class ;
+    rdfs:label "Erbium"^^xsd:string ;
+    rdfs:comment "Erbium is a chemical element with the symbol Er and atomic number 68."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/RareEarthElement> .
+
+<http://w3id.org/CEON/ontology/material/Europium> a owl:Class ;
+    rdfs:label "Europium"^^xsd:string ;
+    rdfs:comment "Europium is a chemical element with the symbol Eu and atomic number 63."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/RareEarthElement> .
+
+<http://w3id.org/CEON/ontology/material/Gadolinium> a owl:Class ;
+    rdfs:label "Gadolinium"^^xsd:string ;
+    rdfs:comment "Gadolinium is a chemical element with the symbol Gd and atomic number 64."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/RareEarthElement> .
+
+<http://w3id.org/CEON/ontology/material/Holmium> a owl:Class ;
+    rdfs:label "Holmium"^^xsd:string ;
+    rdfs:comment "Holmium is a chemical element with the symbol Ho and atomic number 67."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/RareEarthElement> .
+
+<http://w3id.org/CEON/ontology/material/Iron> a owl:Class ;
+    rdfs:label "Iron"^^xsd:string ;
+    rdfs:comment "Iron is a chemical element with the symbol Fe and atomic number 26."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/ChemicalElement> .
+
+<http://w3id.org/CEON/ontology/material/Lanthanum> a owl:Class ;
+    rdfs:label "Lanthanum"^^xsd:string ;
+    rdfs:comment "Lanthanum is a chemical element with the symbol Lal and atomic number 57."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/RareEarthElement> .
+
+<http://w3id.org/CEON/ontology/material/Lutetium> a owl:Class ;
+    rdfs:label "Lutetium"^^xsd:string ;
+    rdfs:comment "Lutetium is a chemical element with the symbol Lu and atomic number 71."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/RareEarthElement> .
+
+<http://w3id.org/CEON/ontology/material/Magnesium> a owl:Class ;
+    rdfs:label "Magnesium"^^xsd:string ;
+    rdfs:comment "Magnesium is a chemical element with the symbol Mg and atomic number 12."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/ChemicalElement> .
+
+<http://w3id.org/CEON/ontology/material/Manganese> a owl:Class ;
+    rdfs:label "Manganese"^^xsd:string ;
+    rdfs:comment "Manganese is a chemical element with the symbol Mn and atomic number 25."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/ChemicalElement> .
+
+<http://w3id.org/CEON/ontology/material/MolecularEntity> a owl:Class ;
+    rdfs:label "Molecular Entity"^^xsd:string ;
+    rdfs:comment "A molecular entity means a singular/distinguishable entity. It can be for instance, atom, ion."^^xsd:string ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_21205421_5783_4d3e_81e5_10c5d894a88a"^^xsd:string,
+        "http://purl.obolibrary.org/obo/chebi#23367"^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/ChemicalEntity> .
+
+<http://w3id.org/CEON/ontology/material/Neodymium> a owl:Class ;
+    rdfs:label "Neodymium"^^xsd:string ;
+    rdfs:comment "Neodymium is a chemical element with the symbol Nd and atomic number 60."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/RareEarthElement> .
+
+<http://w3id.org/CEON/ontology/material/Nickel> a owl:Class ;
+    rdfs:label "Nickel"^^xsd:string ;
+    rdfs:comment "Nickel is a chemical element with the symbol Ni and atomic number 28."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/ChemicalElement> .
+
+<http://w3id.org/CEON/ontology/material/Niobium> a owl:Class ;
+    rdfs:label "Niobium"^^xsd:string ;
+    rdfs:comment "Niobium is a chemical element with the symbol Nb and atomic number 41."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/ChemicalElement> .
+
+<http://w3id.org/CEON/ontology/material/Praseodymium> a owl:Class ;
+    rdfs:label "Praseodymium"^^xsd:string ;
+    rdfs:comment "Praseodymium is a chemical element with the symbol Pr and atomic number 59."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/RareEarthElement> .
+
+<http://w3id.org/CEON/ontology/material/Promethium> a owl:Class ;
+    rdfs:label "Promethium"^^xsd:string ;
+    rdfs:comment "Promethium is a chemical element with the symbol Pm and atomic number 61."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/RareEarthElement> .
+
+<http://w3id.org/CEON/ontology/material/Samarium> a owl:Class ;
+    rdfs:label "Samarium"^^xsd:string ;
+    rdfs:comment "Samarium is a chemical element with the symbol Sm and atomic number 62."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/RareEarthElement> .
+
+<http://w3id.org/CEON/ontology/material/Scandium> a owl:Class ;
+    rdfs:label "Scandium"^^xsd:string ;
+    rdfs:comment "Scandium is a chemical element with the symbol Sc and atomic number 21."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/RareEarthElement> .
+
+<http://w3id.org/CEON/ontology/material/Silicon> a owl:Class ;
+    rdfs:label "Silicon"^^xsd:string ;
+    rdfs:comment "Silicon is a chemical element with the symbol Si and atomic number 14."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/ChemicalElement> .
+
+<http://w3id.org/CEON/ontology/material/Tantalum> a owl:Class ;
+    rdfs:label "Tantalum"^^xsd:string ;
+    rdfs:comment "Tantalum is a chemical element with the symbol Ta and atomic number 73."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/RareEarthElement> .
+
+<http://w3id.org/CEON/ontology/material/Terbium> a owl:Class ;
+    rdfs:label "Terbium"^^xsd:string ;
+    rdfs:comment "Terbium is a chemical element with the symbol Tb and atomic number 65."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/RareEarthElement> .
+
+<http://w3id.org/CEON/ontology/material/Thulium> a owl:Class ;
+    rdfs:label "Thulium"^^xsd:string ;
+    rdfs:comment "Thulium is a chemical element with the symbol Tm and atomic number 69."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/RareEarthElement> .
+
+<http://w3id.org/CEON/ontology/material/Titanium> a owl:Class ;
+    rdfs:label "Titanium"^^xsd:string ;
+    rdfs:comment "Titanium is a chemical element with the symbol Ti and atomic number 22."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/ChemicalElement> .
+
+<http://w3id.org/CEON/ontology/material/Ytterbium> a owl:Class ;
+    rdfs:label "Ytterbium"^^xsd:string ;
+    rdfs:comment "Yteerbium is a chemical element with the symbol Yb and atomic number 70."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/RareEarthElement> .
+
+<http://w3id.org/CEON/ontology/material/Yttrium> a owl:Class ;
+    rdfs:label "Yttrium"^^xsd:string ;
+    rdfs:comment "Yttrium is a chemical element with the symbol Y and atomic number 39."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/RareEarthElement> .
+
+<http://w3id.org/CEON/ontology/material/Zinc> a owl:Class ;
+    rdfs:label "Zinc"^^xsd:string ;
+    rdfs:comment "Zinc is a chemical element with the symbol Zn and atomic number 30."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/ChemicalElement> .
+
+<http://w3id.org/CEON/ontology/material/anonymousFormula> a owl:DatatypeProperty ;
+    rdfs:label "anonymous formula"^^xsd:string ;
+    rdfs:comment "anonymousFormula represents that a molecular entity has the anonymous formula in a string."^^xsd:string ;
+    rdfs:seeAlso "https://w3id.org/mdo/structure/AnonymousFormula"^^xsd:string .
+
+<http://w3id.org/CEON/ontology/material/descriptiveFormula> a owl:DatatypeProperty ;
+    rdfs:label "descriptive formula"^^xsd:string ;
+    rdfs:comment "descriptiveFormula represents that a molecular entity has the descriptive formula in a string."^^xsd:string ;
+    rdfs:seeAlso "https://w3id.org/mdo/structure/DescriptiveFormula"^^xsd:string .
+
+<http://w3id.org/CEON/ontology/material/hasMaterialComponent> a owl:ObjectProperty ;
+    rdfs:label "has material component"^^xsd:string ;
+    rdfs:comment "hasMaterialComponent intends to represent that a material can have a collection of components."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/material/Material> ;
+    rdfs:range <http://w3id.org/CEON/ontology/material/MaterialComponent> .
+
+<http://w3id.org/CEON/ontology/material/hillFormula> a owl:DatatypeProperty ;
+    rdfs:label "hill formula"^^xsd:string ;
+    rdfs:comment "hillFormula represents that a composition has the hill formula in a string."^^xsd:string ;
+    rdfs:seeAlso "https://w3id.org/mdo/structure/HillFormula"^^xsd:string .
+
+<http://w3id.org/CEON/ontology/material/reducedChemicalFormula> a owl:DatatypeProperty ;
+    rdfs:label "reduced chemical formula"^^xsd:string ;
+    rdfs:comment "reducedChemicalFormula represents that a molecular entity has the reduced chemical formula in a string."^^xsd:string ;
+    rdfs:seeAlso "https://w3id.org/mdo/structure/ReducedFormula"^^xsd:string .
+
+<http://w3id.org/CEON/ontology/plan/> a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist"^^xsd:string ;
+    dcterms:created "2025-06-19"^^xsd:date ;
+    dcterms:creator "Huanyu Li"^^xsd:string ;
+    dcterms:description "The Plan module of CEON (Circular Economy Ontology Network)."^^xsd:string ;
+    dcterms:issued "2025-06-30"^^xsd:date ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+    dcterms:publisher "Onto-DESIDE"^^xsd:string ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Plan Module"^^xsd:string ;
+    vann:preferredNamespacePrefix "ceon-plan"^^xsd:string ;
+    vann:preferredNamespaceUri "https://w3id.org/CEON/ontology/plan/"^^xsd:string ;
+    odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: T8-2."^^xsd:string,
+        "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: T8-2."^^xsd:string ;
+    rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:imports <http://w3id.org/CEON/ontology/processODP/0.5/> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/plan/0.1/> ;
+    owl:versionInfo 0.1 .
+
+<http://w3id.org/CEON/ontology/plan/hasPlanExecution> a owl:ObjectProperty ;
+    rdfs:label "has plan exeution"^^xsd:string ;
+    rdfs:comment "A plan can have specific executions."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/plan/Plan> ;
+    rdfs:range <http://w3id.org/CEON/ontology/plan/PlanExecution> ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+<http://w3id.org/CEON/ontology/plan/occursAtTime> a owl:DatatypeProperty ;
+    rdfs:label "occurs at time"^^xsd:string ;
+    rdfs:comment "Represents the time at which something takes place."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/plan/PlanExecution> ;
+    rdfs:range xsd:dateTime .
+
+<http://w3id.org/CEON/ontology/process/> a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist"^^xsd:string,
+        "Mikael Lindecrantz"^^xsd:string,
+        "Robin Keskisärkkä"^^xsd:string ;
+    dcterms:created "2025-05-21"^^xsd:date ;
+    dcterms:creator "Huanyu Li"^^xsd:string ;
+    dcterms:description "The Process module of CEON (Circular Economy Ontology Network)."^^xsd:string ;
+    dcterms:issued "2025-06-30"^^xsd:date ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+    dcterms:publisher "Onto-DESIDE"^^xsd:string ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Process Module"^^xsd:string ;
+    vann:preferredNamespacePrefix "ceon-process"^^xsd:string ;
+    vann:preferredNamespaceUri "https://w3id.org/CEON/ontology/process/"^^xsd:string ;
+    odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: T8-2."^^xsd:string,
+        "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: T8-2."^^xsd:string ;
+    rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:imports <http://w3id.org/CEON/ontology/processODP/0.5/> ;
+    owl:priorVersion 0.4 ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/process/0.5/> ;
+    owl:versionInfo 0.5 .
+
+<http://w3id.org/CEON/ontology/process/AssemblingProcess> a owl:Class ;
+    rdfs:label "Assembling Process"^^xsd:string ;
+    rdfs:comment "A process of assembling."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/process/TransformationProcess> .
+
+<http://w3id.org/CEON/ontology/process/BuyResourceProcess> a owl:Class ;
+    rdfs:label "Buy Resource Process"^^xsd:string ;
+    rdfs:comment "A process of buying a resource."^^xsd:string ;
+    rdfs:subClassOf processODP:Process .
+
+<http://w3id.org/CEON/ontology/process/ChangeResourceProcess> a owl:Class ;
+    rdfs:label "Change Resource Process"^^xsd:string ;
+    rdfs:comment "A process of a changing resource."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/process/TransformationProcess> .
+
+<http://w3id.org/CEON/ontology/process/ContactProcess> a owl:Class ;
+    rdfs:label "Contact Process"^^xsd:string ;
+    rdfs:comment "A contact process."^^xsd:string ;
+    rdfs:subClassOf processODP:Process .
+
+<http://w3id.org/CEON/ontology/process/DeconstructionProcess> a owl:Class ;
+    rdfs:label "Deconstruction Process"^^xsd:string ;
+    rdfs:comment "A process of deconstruction."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/process/TransformationProcess> .
+
+<http://w3id.org/CEON/ontology/process/DisassemblingProcess> a owl:Class ;
+    rdfs:label "Disassembling Process"^^xsd:string ;
+    rdfs:comment "A process of disassembling."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/process/TransformationProcess> .
+
+<http://w3id.org/CEON/ontology/process/DismantleProcess> a owl:Class ;
+    rdfs:label "Dismantle Process"^^xsd:string ;
+    rdfs:comment "A process of dismantling."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/process/TransformationProcess> .
+
+<http://w3id.org/CEON/ontology/process/EnsureClaimProcess> a owl:Class ;
+    rdfs:label "Ensure Claim Process"^^xsd:string ;
+    rdfs:comment "A process of ensuring a claim."^^xsd:string ;
+    rdfs:subClassOf processODP:Process .
+
+<http://w3id.org/CEON/ontology/process/IssuingCertificateProcess> a owl:Class ;
+    rdfs:label "Issuing Certificate Process"^^xsd:string ;
+    rdfs:comment "A process of issuing a certificate."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/process/TransformationProcess> .
+
+<http://w3id.org/CEON/ontology/process/ManufacturingProcess> a owl:Class ;
+    rdfs:label "Manufacturing Process"^^xsd:string ;
+    rdfs:comment "A process of manufacturing."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/process/TransformationProcess> .
+
+<http://w3id.org/CEON/ontology/process/OffsetProcess> a owl:Class ;
+    rdfs:label "Offset Process"^^xsd:string ;
+    rdfs:comment "A process of offsetting."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/process/TransformationProcess> .
+
+<http://w3id.org/CEON/ontology/process/ProductionProcess> a owl:Class ;
+    rdfs:label "Production Process"^^xsd:string ;
+    rdfs:comment "A process of production."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/process/TransformationProcess> .
+
+<http://w3id.org/CEON/ontology/process/RecycleProcess> a owl:Class ;
+    rdfs:label "Recycle Process"^^xsd:string ;
+    rdfs:comment "A process of recycling."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/process/TransformationProcess> .
+
+<http://w3id.org/CEON/ontology/process/RefurbishmentProcess> a owl:Class ;
+    rdfs:label "Refurbishment Process"^^xsd:string ;
+    rdfs:comment "A process of refurbishment."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/process/TransformationProcess> .
+
+<http://w3id.org/CEON/ontology/process/RemoveProcess> a owl:Class ;
+    rdfs:label "Remove Process"^^xsd:string ;
+    rdfs:comment "A process of removing."^^xsd:string ;
+    rdfs:subClassOf processODP:Process .
+
+<http://w3id.org/CEON/ontology/process/RemoveResourceProcess> a owl:Class ;
+    rdfs:label "Remove Resource Process"^^xsd:string ;
+    rdfs:comment "A process of removing a resource."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/process/TransformationProcess> .
+
+<http://w3id.org/CEON/ontology/process/RepairProcess> a owl:Class ;
+    rdfs:label "Repair Process"^^xsd:string ;
+    rdfs:comment "A process of repairing."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/process/TransformationProcess> .
+
+<http://w3id.org/CEON/ontology/process/ResellProcess> a owl:Class ;
+    rdfs:label "Resell Process"^^xsd:string ;
+    rdfs:comment "A process of reselling."^^xsd:string ;
+    rdfs:subClassOf processODP:Process .
+
+<http://w3id.org/CEON/ontology/process/ReuseProcess> a owl:Class ;
+    rdfs:label "Reuse Process"^^xsd:string ;
+    rdfs:comment "A process of reusing."^^xsd:string ;
+    rdfs:subClassOf processODP:Process .
+
+<http://w3id.org/CEON/ontology/process/SellResourceProcess> a owl:Class ;
+    rdfs:label "Sell Resource Process"^^xsd:string ;
+    rdfs:comment "A process of selling a resource."^^xsd:string ;
+    rdfs:subClassOf processODP:Process .
+
+<http://w3id.org/CEON/ontology/process/ServiceProcess> a owl:Class ;
+    rdfs:label "Service Process"^^xsd:string ;
+    rdfs:comment "A process of servicing."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/process/TransformationProcess> .
+
+<http://w3id.org/CEON/ontology/process/ShareResourceProcess> a owl:Class ;
+    rdfs:label "Share Resource Process"^^xsd:string ;
+    rdfs:comment "A process of sharing a resource."^^xsd:string ;
+    rdfs:subClassOf processODP:Process .
+
+<http://w3id.org/CEON/ontology/process/TakeBackProcess> a owl:Class ;
+    rdfs:label "Take Back Process"^^xsd:string ;
+    rdfs:comment "A process of taking back."^^xsd:string ;
+    rdfs:subClassOf processODP:Process .
+
+<http://w3id.org/CEON/ontology/process/affectsObject> a owl:ObjectProperty ;
+    rdfs:label "affects object"^^xsd:string ;
+    rdfs:comment "A certain transition may affect objects, e.g. material that changes its state from one situation to another."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/process/Transition> ;
+    rdfs:subPropertyOf processODP:isSettingFor .
+
+<http://w3id.org/CEON/ontology/process/needsEnergy> a owl:ObjectProperty ;
+    rdfs:label "needs energy"^^xsd:string ;
+    rdfs:comment "The energy needed to perform a certain process."^^xsd:string ;
+    rdfs:range :Energy ;
+    rdfs:subPropertyOf processODP:hasInput .
+
+<http://w3id.org/CEON/ontology/process/producesCO2> a owl:ObjectProperty ;
+    rdfs:label "produces CO2"^^xsd:string ;
+    rdfs:comment "The CO2 released or produced by the process."^^xsd:string ;
+    rdfs:range <http://w3id.org/CEON/ontology/process/CO2Emission> ;
+    rdfs:subPropertyOf processODP:hasOutput .
+
+<http://w3id.org/CEON/ontology/process/resultingResource> a owl:ObjectProperty ;
+    rdfs:label "resulting resource"^^xsd:string ;
+    rdfs:comment "The resource that is the output (product, i.e. what is produced) from a certain process."^^xsd:string ;
+    rdfs:range resourceODP:Resource ;
+    rdfs:subPropertyOf processODP:hasOutput .
+
+<http://w3id.org/CEON/ontology/process/usesCatalyst> a owl:ObjectProperty ;
+    rdfs:label "uses catalyst"^^xsd:string ;
+    rdfs:comment "The catalyst used in a process."^^xsd:string ;
+    rdfs:range <http://w3id.org/CEON/ontology/process/Catalyst> ;
+    rdfs:subPropertyOf processODP:hasInput .
+
+processODP: a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist"^^xsd:string,
+        "Mikael Lindecrantz"^^xsd:string,
+        "Robin Keskisärkkä"^^xsd:string ;
+    dcterms:created "2025-05-20"^^xsd:date ;
+    dcterms:creator "Huanyu Li"^^xsd:string ;
+    dcterms:description "A core ODP of the CEON ontology network, defining aspects of the process concept."^^xsd:string ;
+    dcterms:issued "2025-06-30"^^xsd:date ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+    dcterms:publisher "Onto-DESIDE"^^xsd:string ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Process ODP"^^xsd:string ;
+    vann:preferredNamespacePrefix "ceon-processODP"^^xsd:string ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/processODP/"^^xsd:string ;
+    odp:coversRequirements "Covers the following requirements from Onto-DESIDE D3.1: CVN-Process-3,4,5, C3-1, C4-2, C4-5, C4-7, C4-9, C13-2, E2-6"^^xsd:string,
+        "Covers the following requirements from Onto-DESIDE D3.2: CE1-1, CE3-5, CE7-4, CE7-5, CE8-2, CE10-7, CE12-1, C3-1, C4-2, C4-5, C4-7, C4-9, C13-2, E1-9, E2-6, E3-7, T10-1."^^xsd:string ;
+    rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the process concept."^^xsd:string ;
+    rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:priorVersion 0.4 ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/processODP/0.5/> ;
+    owl:versionInfo 0.5 .
+
+processODP:endTime a owl:DatatypeProperty ;
+    rdfs:label "end time"^^xsd:string ;
+    rdfs:comment "Represents the end time of a time interval."^^xsd:string ;
+    rdfs:domain processODP:TimeInterval ;
+    rdfs:range xsd:dateTime .
+
+processODP:occursAtLocation a owl:ObjectProperty ;
+    rdfs:label "occurs at location"^^xsd:string ;
+    rdfs:comment "The location in which something (e.g. an event or process) takes place, e.g. the factory location where something is manufactured."^^xsd:string ;
+    rdfs:range location:Location ;
+    rdfs:subPropertyOf processODP:isSettingFor .
+
+processODP:startTime a owl:DatatypeProperty ;
+    rdfs:label "start time"^^xsd:string ;
+    rdfs:comment "Represents the start time of a time interval."^^xsd:string ;
+    rdfs:domain processODP:TimeInterval ;
+    rdfs:range xsd:dateTime .
+
+<http://w3id.org/CEON/ontology/product/> a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist"^^xsd:string ;
+    dcterms:created "2025-03-19"^^xsd:date ;
+    dcterms:creator "Huanyu Li"^^xsd:string ;
+    dcterms:description "The Product module of CEON (Circular Economy Ontology Network)."^^xsd:string ;
+    dcterms:issued "2025-06-30"^^xsd:date ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+    dcterms:publisher "Onto-DESIDE"^^xsd:string ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Product Module"^^xsd:string ;
+    vann:preferredNamespacePrefix "ceon-product"^^xsd:string ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/product/"^^xsd:string ;
+    odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.1: CVN-Resource-2, CVN-ResrouceType-4, C11-2, C12-1, C13-3, E2-1, T8-3."^^xsd:string,
+        "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: CE5-2, C1-4, C2-5, C5-3, C11-2, C12-1, C13-3, C13-4, C13-9, E1-4, E1-5, E1-15, E2-1, E3-2, E3-5, E4-1, E4-2, E4-8, E4-9, E6-7, T4-3, T4-5, T6-1, T8-3, T9-2."^^xsd:string ;
+    rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:imports <http://w3id.org/CEON/ontology/actorODP/0.4/>,
+        <http://w3id.org/CEON/ontology/resourceODP/0.5/> ;
+    owl:priorVersion 0.4 ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/product/0.5/> ;
+    owl:versionInfo 0.5 .
+
+<http://w3id.org/CEON/ontology/product/ISOCompliance> a owl:Class ;
+    rdfs:label "ISO Compliance"^^xsd:string ;
+    rdfs:comment "ISO compliance is a compliance issuing thay sth (e.g., organization's structure, business operations, practices or policies) follows a specific ISO standard."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/product/Compliance> .
+
+<http://w3id.org/CEON/ontology/product/REACHCompliance> a owl:Class ;
+    rdfs:label "REACH Compliance"^^xsd:string ;
+    rdfs:comment "REACH (Regulation on the registration, evaluation, authorisation and restriction of chemicals) compliance is a compliance issueing that the REACH regulation is satisfied."^^xsd:string ;
+    rdfs:seeAlso "https://environment.ec.europa.eu/topics/chemicals/reach-regulation_en"^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/product/Compliance> ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue <http://w3id.org/CEON/ontology/product/REACH> ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/complianceWith> ] .
+
+<http://w3id.org/CEON/ontology/product/RoHSCompliance> a owl:Class ;
+    rdfs:label "RoHS Compliance"^^xsd:string ;
+    rdfs:comment "RoHS (Restriction of Hazardous Substances in Electrical and Electronic Equipment) compliance is a compliance issuing that RoHS objectives are satisfied."^^xsd:string ;
+    rdfs:seeAlso "https://environment.ec.europa.eu/topics/waste-and-recycling/rohs-directive_en"^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/product/Compliance> ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue <http://w3id.org/CEON/ontology/product/RoHS> ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/complianceWith> ] .
+
+<http://w3id.org/CEON/ontology/product/SupplierLocation> a owl:Class ;
+    rdfs:label "Supplier Location"^^xsd:string ;
+    rdfs:comment "The location of supplier of a product or item."^^xsd:string ;
+    rdfs:subClassOf location:Location .
+
+<http://w3id.org/CEON/ontology/product/compositionOf> a owl:ObjectProperty ;
+    rdfs:label "composition of"^^xsd:string ;
+    rdfs:comment "Represents what the composition is a composition of (i.e., the product, the product object or matter that is broken down into its components)."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/Composition> ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( <http://w3id.org/CEON/ontology/product/Item> <http://w3id.org/CEON/ontology/product/Product> resourceODP:Matter ) ] .
+
+<http://w3id.org/CEON/ontology/product/compositionQuantity> a owl:DatatypeProperty ;
+    rdfs:label "composition quantity"^^xsd:string ;
+    rdfs:comment "compositionQuantity represents the quantity of elements of a composition."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/Composition> ;
+    rdfs:range xsd:double .
+
+<http://w3id.org/CEON/ontology/product/hasBrand> a owl:DatatypeProperty ;
+    rdfs:label "has brand"^^xsd:string ;
+    rdfs:comment "The brand name of a product."^^xsd:string ;
+    rdfs:range xsd:string .
+
+<http://w3id.org/CEON/ontology/product/hasCertificate> a owl:DatatypeProperty ;
+    rdfs:label "has certificate"^^xsd:string ;
+    rdfs:comment "Link to the the certificate that certifies the compliance"^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/Compliance> .
+
+<http://w3id.org/CEON/ontology/product/hasCompliance> a owl:ObjectProperty ;
+    rdfs:label "has compliance"^^xsd:string ;
+    rdfs:comment "Used to link something (e.g., product or process) to a compliance."^^xsd:string ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( actorODP:Actor processODP:Process <http://w3id.org/CEON/ontology/product/Item> <http://w3id.org/CEON/ontology/product/Product> ) ] ;
+    rdfs:range <http://w3id.org/CEON/ontology/product/Compliance> .
+
+<http://w3id.org/CEON/ontology/product/hasGlobalTradeItemNumber> a owl:DatatypeProperty ;
+    rdfs:label "Global Trade Item Number (GTIN)"^^xsd:string ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso "https://www.gs1.org/standards/id-keys/gtin"^^xsd:string .
+
+<http://w3id.org/CEON/ontology/product/hasProductComponent> a owl:ObjectProperty ;
+    rdfs:label "has product component"^^xsd:string ;
+    rdfs:comment "hasProductComponent intends to represent that a product can have other product components."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/Product> ;
+    rdfs:range <http://w3id.org/CEON/ontology/product/Product> .
+
+<http://w3id.org/CEON/ontology/product/hasProductName> a owl:DatatypeProperty ;
+    rdfs:label "product name"^^xsd:string ;
+    rdfs:comment "The name of a product."^^xsd:string ;
+    rdfs:range xsd:string .
+
+<http://w3id.org/CEON/ontology/product/hasProductObjectComponent> a owl:ObjectProperty ;
+    rdfs:label "has product object component"^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/Item> ;
+    rdfs:range <http://w3id.org/CEON/ontology/product/Item> .
+
+<http://w3id.org/CEON/ontology/quantity/> a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist"^^xsd:string ;
+    dcterms:created "2024-12-31"^^xsd:date ;
+    dcterms:creator "Huanyu Li"^^xsd:string ;
+    dcterms:issued "2025-06-30"^^xsd:date ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+    dcterms:publisher "Onto-DESIDE"^^xsd:string ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Quantity Module"^^xsd:string ;
+    vann:preferredNamespacePrefix "ceon-quantity"^^xsd:string ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/quantity/"^^xsd:string ;
+    odp:coversRequirements "In addition to requirements covered by imported ODPs, covers the following requirements from Onto-DESIDE D3.2: C3-2, C13-1, C13-4, E3-1, E4-11, T6-1, T10-1."^^xsd:string ;
+    rdfs:comment "This module defines base properties to describe quantitites with standardized units."^^xsd:string ;
+    rdfs:seeAlso "https://github.com/LiUSemWeb/CEON"^^xsd:string ;
+    owl:imports <http://w3id.org/CEON/ontology/qudtunit/2.1/> ;
+    owl:priorVersion 0.1 ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/quantity/0.2/> ;
+    owl:versionInfo 0.2 .
+
+<http://w3id.org/CEON/ontology/quantity/Cost> a owl:NamedIndividual .
+
+<http://w3id.org/CEON/ontology/quantity/FloorPanel1> a owl:NamedIndividual .
+
+<http://w3id.org/CEON/ontology/quantity/HIGH_QUALITY> a owl:NamedIndividual .
+
+<http://w3id.org/CEON/ontology/quantity/LOW_QUALITY> a owl:NamedIndividual .
+
+<http://w3id.org/CEON/ontology/quantity/MEDIUM_QUALITY> a owl:NamedIndividual .
+
+<http://w3id.org/CEON/ontology/quantity/Value> a owl:NamedIndividual .
+
+<http://w3id.org/CEON/ontology/quantity/hasDismantlingCost> a owl:ObjectProperty ;
+    rdfs:label "has dismantling cost"^^xsd:string ;
+    rdfs:comment "The cost of dismantling, expressed as an amount of money with a currency unit."^^xsd:string ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity/hasProcessCost> .
+
+<http://w3id.org/CEON/ontology/quantity/hasHeight> a owl:ObjectProperty ;
+    rdfs:label "has height"^^xsd:string ;
+    rdfs:comment "hasHeight is used to describe the height of a product or product object."^^xsd:string ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity/hasDimension> .
+
+<http://w3id.org/CEON/ontology/quantity/hasLength> a owl:ObjectProperty ;
+    rdfs:label "has length"^^xsd:string ;
+    rdfs:comment "hasLength is used to describe the length of a product or product object."^^xsd:string ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity/hasDimension> .
+
+<http://w3id.org/CEON/ontology/quantity/hasMarketValue> a owl:ObjectProperty ;
+    rdfs:label "has market value"^^xsd:string ;
+    rdfs:comment "The market value, expressed as an amount of money with a currency unit."^^xsd:string ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+<http://w3id.org/CEON/ontology/quantity/hasMaximalValueIncludedOfInterval> a owl:ObjectProperty ;
+    rdfs:label "has maximal value included of interval"^^xsd:string ;
+    rdfs:comment "represents the maximum value (included) of an interval"^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/quantity/QuantityInterval> ;
+    rdfs:range qudt:QuantityValue ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+<http://w3id.org/CEON/ontology/quantity/hasMaximalValueNotIncludedOfInterval> a owl:ObjectProperty ;
+    rdfs:label "has maximal value not included of interval"^^xsd:string ;
+    rdfs:comment "represents the maximum value (not included) of an interval"^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/quantity/QuantityInterval> ;
+    rdfs:range qudt:QuantityValue ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+<http://w3id.org/CEON/ontology/quantity/hasMinimalValueIncludedOfInterval> a owl:ObjectProperty ;
+    rdfs:label "has minimal value included of interval"^^xsd:string ;
+    rdfs:comment "represents the minimal value (included) of an interval"^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/quantity/QuantityInterval> ;
+    rdfs:range qudt:QuantityValue ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+<http://w3id.org/CEON/ontology/quantity/hasMinimalValueNotIncludedOfInterval> a owl:ObjectProperty ;
+    rdfs:label "has minimal value not included of interval"^^xsd:string ;
+    rdfs:comment "represents the minimal value (not included) of an interval"^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/quantity/QuantityInterval> ;
+    rdfs:range qudt:QuantityValue ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+<http://w3id.org/CEON/ontology/quantity/hasPrice> a owl:ObjectProperty ;
+    rdfs:label "has price"^^xsd:string ;
+    rdfs:comment "represents that sth has a specific cost"^^xsd:string ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+<http://w3id.org/CEON/ontology/quantity/hasRecyclingCost> a owl:ObjectProperty ;
+    rdfs:label "has recycling cost"^^xsd:string ;
+    rdfs:comment "The cost of recycling, expressed as an amount of money with a currency unit."^^xsd:string ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity/hasProcessCost> .
+
+<http://w3id.org/CEON/ontology/quantity/hasRefurbishmentCost> a owl:ObjectProperty ;
+    rdfs:label "has refurbishment cost"^^xsd:string ;
+    rdfs:comment "The cost of refurbishment, expressed as an amount of money with a currency unit."^^xsd:string ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity/hasProcessCost> .
+
+<http://w3id.org/CEON/ontology/quantity/hasTestingCost> a owl:ObjectProperty ;
+    rdfs:label "has testing cost"^^xsd:string ;
+    rdfs:comment "The cost of testing, expressed as an amount of money with a currency unit."^^xsd:string ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity/hasProcessCost> .
+
+<http://w3id.org/CEON/ontology/quantity/hasThickness> a owl:ObjectProperty ;
+    rdfs:label "has thickness"^^xsd:string ;
+    rdfs:comment "hasThickness is used to describe the thickness of a product or product object."^^xsd:string ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity/hasDimension> .
+
+<http://w3id.org/CEON/ontology/quantity/hasTransportCost> a owl:ObjectProperty ;
+    rdfs:label "has transport cost"^^xsd:string ;
+    rdfs:comment "The cost of transportation, expressed as an amount of money with a currency unit."^^xsd:string ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity/hasProcessCost> .
+
+<http://w3id.org/CEON/ontology/quantity/hasVolume> a owl:ObjectProperty ;
+    rdfs:label "has volume"^^xsd:string ;
+    rdfs:comment "represents the volume of an object"^^xsd:string ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+<http://w3id.org/CEON/ontology/quantity/hasWeight> a owl:ObjectProperty ;
+    rdfs:label "has weight"^^xsd:string ;
+    rdfs:comment "represents the weight of an object"^^xsd:string ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+<http://w3id.org/CEON/ontology/quantity/hasWidth> a owl:ObjectProperty ;
+    rdfs:label "has width"^^xsd:string ;
+    rdfs:comment "hasWidth is used to describe the width of a product or product object."^^xsd:string ;
+    rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity/hasDimension> .
+
+<http://w3id.org/CEON/ontology/quantity/numericalMaxValue> a owl:DatatypeProperty ;
+    rdfs:label "numerical max value"^^xsd:string ;
+    rdfs:comment "represents the maximal value of a quantity"^^xsd:string ;
+    rdfs:range xsd:double .
+
+<http://w3id.org/CEON/ontology/quantity/numericalMinValue> a owl:DatatypeProperty ;
+    rdfs:label "numerical min value"^^xsd:string ;
+    rdfs:comment "represents the minimal value of a quantity"^^xsd:string ;
+    rdfs:range xsd:double ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+<http://w3id.org/CEON/ontology/quantity/objectValue> a owl:ObjectProperty ;
+    rdfs:label "object value"^^xsd:string ;
+    rdfs:comment "objectValue is analogous to qudt:numericalValue"^^xsd:string ;
+    rdfs:subPropertyOf qudt:hasQuantityKind .
+
+resourceODP: a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist"^^xsd:string ;
+    dcterms:created "2025-03-20"^^xsd:date ;
+    dcterms:creator "Huanyu Li"^^xsd:string ;
+    dcterms:description "A core ODP of the CEON ontology network defining aspects of the resource concept."^^xsd:string ;
+    dcterms:issued "2025-06-30"^^xsd:date ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+    dcterms:publisher "Onto-DESIDE"^^xsd:string ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Resource ODP"^^xsd:string ;
+    vann:preferredNamespacePrefix "ceon-resourceODP"^^xsd:string ;
+    vann:preferredNamespaceUri "http://w3id.org/CEON/ontology/resourceODP/"^^xsd:string ;
+    odp:coversRequirements "Covers the following requirements from Onto-DESIDE D3.1: CVN-Resource-1,3, CVN-Composition-1,2, CVN-ResrouceType-4, C7-3, E2-2, E4-6, E5-1, E6-3, T3-1."^^xsd:string,
+        "Covers the following requirements from Onto-DESIDE D3.2: CE1-2, CE3-3, CE4-3, CE5-2, CE9-1, CE10-1, CE11-8, CE12-2, CE12-4, C7-3, E2-2, E4-6, E5-1, E6-3, T3-1, T19-1, T20-1, T22-2."^^xsd:string ;
+    rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:priorVersion 0.4 ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/resourceODP/0.5/> ;
+    owl:versionInfo 0.5 .
+
+resourceODP:DigitalObject a owl:Class ;
+    rdfs:label "Digital object"^^xsd:string ;
+    rdfs:comment "A digital object, e.g. a computer file, that is located on some server, hard drive, or on the web. Most often the digital object is the realization of some piece of information."^^xsd:string ;
+    rdfs:subClassOf resourceODP:Resource .
+
+resourceODP:batchID a owl:DatatypeProperty ;
+    rdfs:label "batch ID"^^xsd:string ;
+    rdfs:comment "identifier for a batch"^^xsd:string ;
+    rdfs:domain resourceODP:BatchOfObjects ;
+    rdfs:range xsd:string .
+
+resourceODP:batchLabel a owl:DatatypeProperty ;
+    rdfs:label "batch label"^^xsd:string ;
+    rdfs:comment "label for a batch"^^xsd:string ;
+    rdfs:domain resourceODP:BatchOfObjects ;
+    rdfs:range xsd:string .
+
+resourceODP:containsInformation a owl:ObjectProperty ;
+    rdfs:label "contains information"^^xsd:string ;
+    rdfs:comment "Indicating that some piece of information is contained in a larger collection of information, e.g. a data sheet contains a statement about a certain parameter of a product."^^xsd:string ;
+    rdfs:domain resourceODP:Information ;
+    rdfs:range resourceODP:Information ;
+    rdfs:subPropertyOf resourceODP:hasPart .
+
+resourceODP:hasResourceLocation a owl:ObjectProperty ;
+    rdfs:label "has resource location"^^xsd:string ;
+    rdfs:comment "Defines the location of a resource."^^xsd:string ;
+    rdfs:domain resourceODP:Resource ;
+    rdfs:range location:Location ;
+    rdfs:subPropertyOf location:hasLocation .
+
+resourceODP:isAbout a owl:ObjectProperty ;
+    rdfs:label "is about"^^xsd:string ;
+    rdfs:comment "Connecting the information to the object (physical, virtual, imaginary) that the information is about."^^xsd:string ;
+    rdfs:domain resourceODP:Information .
+
+resourceODP:isRealizationOf a owl:ObjectProperty ;
+    rdfs:label "is realization of"^^xsd:string ;
+    rdfs:comment "Relates a thing, e.g. a digital object, or a physical object, to the information it is a realization of. C.f. a physical book that is the realization of a novel, or a pdf or Excel-file that is a realization of a certain data sheet."^^xsd:string ;
+    rdfs:range resourceODP:Information .
+
+value: a owl:Ontology ;
+    dcterms:contributor "Eva Blomqvist"^^xsd:string,
+        "Mikael Lindecrantz"^^xsd:string,
+        "Robin Keskisärkkä"^^xsd:string ;
+    dcterms:created "2025-05-20"^^xsd:date ;
+    dcterms:creator "Huanyu Li"^^xsd:string ;
+    dcterms:description "A core ODP of the CEON ontology network, defining aspects of the value concept."^^xsd:string ;
+    dcterms:issued "2025-06-30"^^xsd:date ;
+    dcterms:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:string ;
+    dcterms:publisher "Onto-DESIDE"^^xsd:string ;
+    dcterms:title "Circular Economy Ontology Network (CEON) - Value Module"^^xsd:string ;
+    vann:preferredNamespacePrefix "ceon-value"^^xsd:string ;
+    vann:preferredNamespaceUri "https://w3id.org/CEON/ontoloy/value/"^^xsd:string ;
+    odp:coversRequirements "Covers the following requirements from Onto-DESIDE D3.2: CE1-3, CE5-16, CE5-17, CE5-19, CE7-8, CE9-4, CE10-10, CE11-2, C2-1, C4-4, C4-6, C5-2."^^xsd:string ;
+    rdfs:comment "A core ODP of the CEON ontology network, defining aspects of the value concept."^^xsd:string ;
+    rdfs:seeAlso <https://github.com/LiUSemWeb/CEON> ;
+    owl:imports <http://w3id.org/CEON/ontology/actorODP/0.4/> ;
+    owl:versionIRI <http://w3id.org/CEON/ontology/value/0.3/> ;
+    owl:versionInfo 0.3 .
+
+value:EconomicValue a owl:Class ;
+    rdfs:label "Economic Value"^^xsd:string ;
+    rdfs:comment "Use/Economics value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances."^^xsd:string ;
+    rdfs:subClassOf value:Value ;
+    owl:equivalentClass value:UseValue .
+
+value:EnvironmentalValue a owl:Class ;
+    rdfs:label "Environmental Value"^^xsd:string ;
+    rdfs:comment "Environmental value represents how a thing (e.g., a product or service) match some environmental goals or needs of an actor under some circumstances."^^xsd:string ;
+    rdfs:subClassOf value:Value .
+
+value:ExchangeValue a owl:Class ;
+    rdfs:label "Exchange Value"^^xsd:string ;
+    rdfs:comment "Exchange value represents the worth of a product, resource, service in a exchange setting, i.e., a product, resource, service is traded or sold."^^xsd:string ;
+    rdfs:subClassOf value:Value .
+
+value:SocialValue a owl:Class ;
+    rdfs:label "Social Value"^^xsd:string ;
+    rdfs:comment "Social value represents how a thing (e.g., a product or service) match some social goals or needs of an actor under some circumstances."^^xsd:string ;
+    rdfs:subClassOf value:Value .
+
+value:ValueConsumer a value:ValueParticipationRole,
+        owl:NamedIndividual .
+
+value:ValueContributor a value:ValueParticipationRole,
+        owl:NamedIndividual .
+
+value:ValueCreator a value:ValueParticipationRole,
+        owl:NamedIndividual .
+
+value:ValueDestroyer a value:ValueParticipationRole,
+        owl:NamedIndividual .
+
+value:ValueDistributor a value:ValueParticipationRole,
+        owl:NamedIndividual .
+
+value:ValueEvaluator a value:ValueParticipationRole,
+        owl:NamedIndividual .
+
+value:hasPerception a owl:ObjectProperty ;
+    rdfs:label "has perception"^^xsd:string ;
+    rdfs:comment "An actor perceive specific values, or a value proposition is about specific values."^^xsd:string ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( actorODP:Actor value:ValueProposition ) ] ;
+    rdfs:range value:ValuePerception .
+
+value:hasValuableResource a owl:ObjectProperty ;
+    rdfs:label "has valuable resource"^^xsd:string ;
+    rdfs:comment "A value participation has participating resources."^^xsd:string ;
+    rdfs:domain value:ValueParticipation ;
+    rdfs:range resourceODP:Resource ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+value:hasValueParticipantRole a owl:ObjectProperty ;
+    rdfs:label "has value participant role"^^xsd:string ;
+    rdfs:comment "Holds the value of the role of the value participant in this value participation relation."^^xsd:string ;
+    rdfs:domain value:ValueParticipation ;
+    rdfs:range value:ValueParticipationRole ;
+    rdfs:subPropertyOf actorODP:participantRole .
+
+value:onValueParticipation a owl:ObjectProperty ;
+    rdfs:label "on value participation"^^xsd:string ;
+    rdfs:comment "A perception is on specific value participations."^^xsd:string ;
+    rdfs:domain value:ValuePerception ;
+    rdfs:range value:ValueParticipation .
+
+value:proposedBy a owl:ObjectProperty ;
+    rdfs:label "proposed by"^^xsd:string ;
+    rdfs:comment "A value proposition is proposed by specific actors."^^xsd:string ;
+    rdfs:domain value:ValueProposition ;
+    rdfs:range actorODP:Actor .
+
+value:targettingResource a owl:ObjectProperty ;
+    rdfs:label "targetting resource"^^xsd:string ;
+    rdfs:comment "A value proposition is about some resources."^^xsd:string ;
+    rdfs:domain value:ValueProposition ;
+    rdfs:range resourceODP:Resource ;
+    rdfs:subPropertyOf value:hasVPTargets .
+
+odp:coversRequirements a owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty,
+        owl:AnnotationProperty .
+
+geo:asGML a owl:DatatypeProperty ;
+    rdfs:domain geo:Geometry ;
+    rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-as-wkt-literal> ;
+    rdfs:range geo:gmlLiteral ;
+    skos:definition "The GML serialization of a Geometry."@en ;
+    skos:prefLabel "as GML"@en .
+
+geo:asGeoJSON a owl:DatatypeProperty ;
+    rdfs:domain geo:Geometry ;
+    rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-as-wkt-literal> ;
+    rdfs:range geo:geoJSONLiteral ;
+    skos:definition "The GeoJSON serialization of a Geometry."@en ;
+    skos:prefLabel "as GeoJSON"@en .
+
+geo:asWKT a owl:DatatypeProperty ;
+    rdfs:domain geo:Geometry ;
+    rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-as-wkt-literal> ;
+    rdfs:range geo:wktLiteral ;
+    skos:definition "The WKT serialization of a Geometry."@en ;
+    skos:prefLabel "as WKT"@en .
+
+<http://www.w3.org/2003/01/geo/wgs84_pos#lat> a owl:DatatypeProperty .
+
+<http://www.w3.org/2003/01/geo/wgs84_pos#long> a owl:DatatypeProperty .
+
+skos:definition a owl:AnnotationProperty .
+
+skos:prefLabel a owl:AnnotationProperty .
+
+actor:ActorProcessRole a owl:Class ;
+    rdfs:label "Actor process role"^^xsd:string ;
+    rdfs:comment "The role(s) of an actor involved in a process."^^xsd:string ;
+    rdfs:subClassOf actor:ActorCollaborationRole .
+
+actor:Person a owl:Class ;
+    rdfs:label "Person"@en ;
+    rdfs:subClassOf actorODP:Actor .
+
+actor:buyer a actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:collector a actor:ActorCVNRole,
+        owl:NamedIndividual .
+
+actor:consumer a actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:dismantler a actor:ActorCVNRole,
+        owl:NamedIndividual .
+
+actor:hasOrganisationName a owl:DatatypeProperty ;
+    rdfs:label "Represent name of an organisation."^^xsd:string,
+        "has organisation name"^^xsd:string ;
+    rdfs:domain actor:Organisation ;
+    rdfs:range xsd:string .
+
+actor:issuer a actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:manufacturer a actor:ActorCVNRole,
+        owl:NamedIndividual .
+
+actor:owner a actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:producer a actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:provider a actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:recycler a actor:ActorCVNRole,
+        owl:NamedIndividual .
+
+actor:repairer a actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:reseller a actor:ActorCVNRole,
+        actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:seller a actor:ActorCVNRole,
+        actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:supplier a actor:ActorCVNRole,
+        actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:updater a actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:user a actor:ActorCVNRole,
+        actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actor:viewer a actor:ActorResourceRole,
+        owl:NamedIndividual .
+
+actorODP:participatingSubject a owl:ObjectProperty ;
+    rdfs:label "participating subject"^^xsd:string ;
+    rdfs:comment "Participating subject in a resource participation. This is part of a resource participation that can be a directional relation, and the participating subject is the starting point of the relation."^^xsd:string ;
+    rdfs:domain actorODP:ResourceParticipation ;
+    rdfs:range resourceODP:Resource .
+
+actorODP:participationStartTime a owl:DatatypeProperty ;
+    rdfs:label "participation start time"^^xsd:string ;
+    rdfs:comment "The start of a time interval."^^xsd:string ;
+    rdfs:domain actorODP:Participation ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:unionOf ( xsd:date xsd:dateTime xsd:gMonthYear xsd:gYear ) ] .
+
+actorODP:participationTimePoint a owl:DatatypeProperty ;
+    rdfs:label "participation time point"^^xsd:string ;
+    rdfs:comment "The point in time when something took place or was valid."^^xsd:string ;
+    rdfs:domain actorODP:Participation ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:unionOf ( xsd:date xsd:dateTime xsd:gMonthYear xsd:gYear ) ] .
+
+:EnergyComposition a owl:Class ;
+    rdfs:label "Energy Composition"^^xsd:string ;
+    rdfs:comment "The relation representing the particpation of an energy as a resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceParticipation .
+
+<http://w3id.org/CEON/ontology/material/ChemicalSubstance> a owl:Class ;
+    rdfs:label "Chemical Substance"^^xsd:string ;
+    rdfs:comment "A chemical substance is made up of a collection of molecular entities."^^xsd:string ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_df96cbb6_b5ee_4222_8eab_b3675df24bea"^^xsd:string,
+        "http://purl.obolibrary.org/obo/chebi#59999"^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/ChemicalEntity> .
+
+<http://w3id.org/CEON/ontology/material/MaterialComponent> a owl:Class ;
+    rdfs:label "Material Component"^^xsd:string ;
+    rdfs:comment "A material component is a part of a material."^^xsd:string ;
+    rdfs:subClassOf resourceODP:Constituent .
+
+<http://w3id.org/CEON/ontology/material/hasChemicalEntity> a owl:ObjectProperty ;
+    rdfs:label "has chemical entity"^^xsd:string ;
+    rdfs:comment "hasChemicalEntity intends to represent that a material can have a collection of chemical entities."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/material/Material> ;
+    rdfs:range <http://w3id.org/CEON/ontology/material/ChemicalEntity> .
+
+<http://w3id.org/CEON/ontology/plan/followsExecution> a owl:ObjectProperty ;
+    rdfs:label "follows execution"^^xsd:string ;
+    rdfs:comment "The situation after the execution takes place, i.e. the state of affairs after the process event, such as the product being assembled, or the material being recycled."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/plan/PlanExecution> ;
+    rdfs:subPropertyOf processODP:isSettingFor .
+
+<http://w3id.org/CEON/ontology/plan/precedesExecution> a owl:ObjectProperty ;
+    rdfs:label "precedes execution"^^xsd:string ;
+    rdfs:comment "The situation before the process event takes place, i.e. the state of affairs before the execution, such as the state of the set of components before they are assembled into a product item, or the material state before being recycled."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/plan/PlanExecution> ;
+    rdfs:subPropertyOf processODP:isSettingFor .
+
+<http://w3id.org/CEON/ontology/plan/satisfiesPlan> a owl:ObjectProperty ;
+    rdfs:label "satisfies plan"^^xsd:string ;
+    rdfs:comment "A relation between a Situation and a Description, e.g. the execution of a Plan satisfies that plan."^^xsd:string ;
+    rdfs:domain processODP:Situation ;
+    rdfs:range <http://w3id.org/CEON/ontology/plan/Description> ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+<http://w3id.org/CEON/ontology/process/CO2Emission> a owl:Class ;
+    rdfs:label "CO2 emission"^^xsd:string ;
+    rdfs:comment "An amount of CO2."^^xsd:string ;
+    rdfs:subClassOf resourceODP:Resource .
+
+<http://w3id.org/CEON/ontology/process/Catalyst> a owl:Class ;
+    rdfs:label "Catalyst"^^xsd:string ;
+    rdfs:comment "A resource that is needed as a catalyst by a process, but that is not considered the direct input or output of it."^^xsd:string ;
+    rdfs:subClassOf resourceODP:Resource .
+
+<http://w3id.org/CEON/ontology/process/Transition> a owl:Class ;
+    rdfs:label "Transition"^^xsd:string ;
+    rdfs:comment "A transition is a situation that creates a context for two additional different Situations, one Process, and at least one Object: one Situation is the state before the transition, the second Situation is the state after the transition, the Process is the invariance under some different transitions, in which at least one Object is situated. Finally, one or more time interval(s) may position the situations and the transitional event in time, and we may include the event that triggered the transition as well."^^xsd:string ;
+    rdfs:subClassOf processODP:Situation .
+
+processODP:duringTime a owl:ObjectProperty ;
+    rdfs:label "during time"^^xsd:string ;
+    rdfs:comment "The time interval during which something, e.g. a process or event, takes place."^^xsd:string ;
+    rdfs:range processODP:TimeInterval .
+
+processODP:occursAtTime a owl:DatatypeProperty .
+
+<http://w3id.org/CEON/ontology/product/ProductObjectComposition> a owl:Class ;
+    rdfs:label "Product Object Composition"^^xsd:string ;
+    rdfs:comment "A product object composition is the composed information of a product object in terms of a specific component, in which such a component is also a product object."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass <http://w3id.org/CEON/ontology/product/Item> ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/associatedWithProductObject> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        <http://w3id.org/CEON/ontology/product/Composition> .
+
+<http://w3id.org/CEON/ontology/product/REACH> a <http://w3id.org/CEON/ontology/product/Regulation>,
+        owl:NamedIndividual .
+
+<http://w3id.org/CEON/ontology/product/RoHS> a <http://w3id.org/CEON/ontology/product/Regulation>,
+        owl:NamedIndividual .
+
+<http://w3id.org/CEON/ontology/product/Solution> a owl:Class ;
+    rdfs:label "Solution"^^xsd:string ;
+    rdfs:comment "Product or service, or a combination thereof, that fulfils a need of an interested party."^^xsd:string ;
+    rdfs:isDefinedBy "ISO 59004:2024 - 3.2.1 solution"^^xsd:string .
+
+<http://w3id.org/CEON/ontology/product/associatedWithMatter> a owl:ObjectProperty ;
+    rdfs:label "associated with matter"^^xsd:string ;
+    rdfs:comment "associatedWithMatter intends to represent the matter to which a matter compopsition information regards to."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/MatterComposition> ;
+    rdfs:range resourceODP:Matter .
+
+<http://w3id.org/CEON/ontology/product/associatedWithProductModel> a owl:ObjectProperty ;
+    rdfs:label "associated with product model"^^xsd:string ;
+    rdfs:comment "associatedWithProductModel intends to represent the product model to which a product compopsition information regards to."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/ProductComposition> ;
+    rdfs:range <http://w3id.org/CEON/ontology/product/Product> .
+
+<http://w3id.org/CEON/ontology/product/associatedWithProductObject> a owl:ObjectProperty ;
+    rdfs:label "associated with product object"^^xsd:string ;
+    rdfs:comment "associatedWithProductObject intends to represent the item (product object) to which a product object compopsition information regards to."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/ProductObjectComposition> ;
+    rdfs:range <http://w3id.org/CEON/ontology/product/Item> ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+<http://w3id.org/CEON/ontology/product/batchOfProduct> a owl:ObjectProperty ;
+    rdfs:label "batch of products"^^xsd:string ;
+    rdfs:comment "batchOfProduct intends to represent what is the model product of a batch of objects."^^xsd:string ;
+    rdfs:domain resourceODP:BatchOfObjects ;
+    rdfs:range <http://w3id.org/CEON/ontology/product/Product> .
+
+<http://w3id.org/CEON/ontology/product/countryOfAssembly> a owl:DatatypeProperty ;
+    rdfs:label "Country of assembly"^^xsd:string ;
+    rdfs:comment "Used to represent the country of assembly of a product or product object (item)."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/AssemblyLocation> ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf location:hasCountry .
+
+<http://w3id.org/CEON/ontology/product/countryOfManufacture> a owl:DatatypeProperty ;
+    rdfs:label "Country of manufacture"^^xsd:string ;
+    rdfs:comment "Used to represent the country of manufacture of a product or product object (item)."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/ManufactureLocation> ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf location:hasCountry .
+
+<http://w3id.org/CEON/ontology/product/countryOfOrigin> a owl:DatatypeProperty ;
+    rdfs:label "Country of origin"^^xsd:string ;
+    rdfs:comment "Used to represent the country of origin of a product or product object (item)."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/OriginLocation> ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf location:hasCountry .
+
+<http://w3id.org/CEON/ontology/product/countryOfProduction> a owl:DatatypeProperty ;
+    rdfs:label "Country of production"^^xsd:string ;
+    rdfs:comment "Used to represent the country of production of a product or product object (item)."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/ProductionLocation> ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf location:hasCountry .
+
+<http://w3id.org/CEON/ontology/product/hasAssemblyLocation> a owl:ObjectProperty ;
+    rdfs:label "has assembly location"^^xsd:string ;
+    rdfs:comment "Used to represent the location of assembly of a product or product object (item)."^^xsd:string ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( <http://w3id.org/CEON/ontology/product/Item> <http://w3id.org/CEON/ontology/product/Product> ) ] ;
+    rdfs:range <http://w3id.org/CEON/ontology/product/AssemblyLocation> ;
+    rdfs:subPropertyOf location:hasLocation .
+
+<http://w3id.org/CEON/ontology/product/hasManufacturerLocation> a owl:ObjectProperty ;
+    rdfs:label "has manufacture location"^^xsd:string ;
+    rdfs:comment "Used to represent the location of manufacturer of a product or product object (item)."^^xsd:string ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( <http://w3id.org/CEON/ontology/product/Item> <http://w3id.org/CEON/ontology/product/Product> ) ] ;
+    rdfs:range <http://w3id.org/CEON/ontology/product/ManufactureLocation> ;
+    rdfs:subPropertyOf location:hasLocation .
+
+<http://w3id.org/CEON/ontology/product/hasOriginLocation> a owl:ObjectProperty ;
+    rdfs:label "has origin location"^^xsd:string ;
+    rdfs:comment "Used to represent the location of origin of a product or product object (item)."^^xsd:string ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( <http://w3id.org/CEON/ontology/product/Item> <http://w3id.org/CEON/ontology/product/Product> ) ] ;
+    rdfs:range <http://w3id.org/CEON/ontology/product/OriginLocation> ;
+    rdfs:subPropertyOf location:hasLocation .
+
+<http://w3id.org/CEON/ontology/product/modelledBy> a owl:ObjectProperty ;
+    rdfs:label "modelled by"^^xsd:string ;
+    rdfs:comment "modelledBy intends to represent that product objects follow particular product models."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/Item> ;
+    rdfs:range <http://w3id.org/CEON/ontology/product/Product> .
+
+<http://w3id.org/CEON/ontology/product/productionSite> a owl:DatatypeProperty ;
+    rdfs:label "production site"^^xsd:string ;
+    rdfs:comment "The name of a production site location"^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/ProductionLocation> ;
+    rdfs:range xsd:string .
+
+resourceODP:batchSize a owl:DatatypeProperty ;
+    rdfs:label "batch size"^^xsd:string ;
+    rdfs:comment "batchSize intends to repsent how many physical objects are belong to a batch of objects."^^xsd:string ;
+    rdfs:domain resourceODP:BatchOfObjects ;
+    rdfs:range xsd:nonNegativeInteger .
+
+value:UseValue a owl:Class ;
+    rdfs:label "Use Value"^^xsd:string ;
+    rdfs:comment "Use/Economics value represents how a thing (e.g., a product or service) match some goals or needs of an actor under some circumstances."^^xsd:string ;
+    rdfs:subClassOf value:Value .
+
+value:hasAimedValue a owl:ObjectProperty ;
+    rdfs:label "has aimed value"^^xsd:string ;
+    rdfs:comment "A value proposition has specific aimed values."^^xsd:string ;
+    rdfs:domain value:ValueProposition ;
+    rdfs:range value:Value .
+
+value:hasAssociatedValue a owl:ObjectProperty ;
+    rdfs:label "has associated value"^^xsd:string ;
+    rdfs:comment "A value perception about creating/destoring/missing some value."^^xsd:string ;
+    rdfs:domain value:ValuePerception ;
+    rdfs:range value:Value ;
+    rdfs:subPropertyOf owl:topObjectProperty .
+
+value:targettingActor a owl:ObjectProperty ;
+    rdfs:label "targetting actor"^^xsd:string ;
+    rdfs:comment "A value proposition is about some actors."^^xsd:string ;
+    rdfs:domain value:ValueProposition ;
+    rdfs:range actorODP:Actor ;
+    rdfs:subPropertyOf value:hasVPTargets .
+
+value:targettingValueParticipation a owl:ObjectProperty ;
+    rdfs:label "targetting value participation"^^xsd:string ;
+    rdfs:comment "A value proposition is about some participation."^^xsd:string ;
+    rdfs:domain value:ValueProposition ;
+    rdfs:range value:ValueParticipation ;
+    rdfs:subPropertyOf value:hasVPTargets .
+
+geo:geoJSONLiteral a rdfs:Datatype,
+        rdfs:Datatype,
+        rdfs:Datatype,
+        rdfs:Datatype .
+
+geo:gmlLiteral a rdfs:Datatype,
+        rdfs:Datatype,
+        rdfs:Datatype,
+        rdfs:Datatype .
+
+geo:wktLiteral a rdfs:Datatype,
+        rdfs:Datatype,
+        rdfs:Datatype,
+        rdfs:Datatype .
+
+actor:ActorCollaborationRole a owl:Class ;
+    rdfs:label "Actor collaboration role"^^xsd:string ;
+    rdfs:comment "The roles of an actor involved in a collaboration."^^xsd:string ;
+    rdfs:subClassOf actorODP:Role .
+
+actor:hasOrganisationLocation a owl:ObjectProperty ;
+    rdfs:label "has organisation location"^^xsd:string ;
+    rdfs:comment "Represent that an organisation has some locations."^^xsd:string ;
+    rdfs:domain actor:Organisation ;
+    rdfs:range actor:OrganisationLocation ;
+    rdfs:subPropertyOf location:hasLocation .
+
+actorODP:capabilityProperty a owl:ObjectProperty,
+        owl:ObjectProperty ;
+    rdfs:label "capability property"^^xsd:string ;
+    rdfs:comment "Relates some properties to the capability, such as the parameters of it, or the needed resources."^^xsd:string ;
+    rdfs:domain actorODP:Capability .
+
+actorODP:participatingObject a owl:ObjectProperty ;
+    rdfs:label "participating object"^^xsd:string ;
+    rdfs:comment "Participating object in a resource participation. This is part of a resource participation that can be a directional relation, and the participating object is the end point of the relation."^^xsd:string ;
+    rdfs:domain actorODP:ResourceParticipation ;
+    rdfs:range resourceODP:Resource .
+
+actorODP:participationIn a owl:ObjectProperty,
+        owl:ObjectProperty ;
+    rdfs:label "participation in"^^xsd:string ;
+    rdfs:comment "The collaboration or process that this participation relates to."^^xsd:string ;
+    rdfs:domain actorODP:CollaborationParticipation ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( cvn:Collaboration processODP:Process ) ] .
+
+cvn:CircularStrategy a owl:Class ;
+    rdfs:label "Circular Strategy"^^xsd:string ;
+    rdfs:comment "A circular strategy, such as to reccycle, reuse or refurbish something."^^xsd:string .
+
+cvn:Collaboration a owl:Class,
+        owl:Class ;
+    rdfs:label "Collaboration"^^xsd:string ;
+    rdfs:comment "A collaboration between a set of actors."^^xsd:string .
+
+cvn:relatedStrategy a owl:ObjectProperty ;
+    rdfs:label "related strategy"^^xsd:string ;
+    rdfs:comment "A strategy that is targeted by this CVN or CVN blueprint."^^xsd:string .
+
+:Biomass a owl:Class ;
+    rdfs:label "Biomass"^^xsd:string ;
+    rdfs:comment "Biomass represents matter from recently living (but now dead) organisms such as plants, algae and animals."^^xsd:string ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Biomass"^^xsd:string ;
+    rdfs:subClassOf :EnergySource .
+
+:NonRenewableEnergy a owl:Class ;
+    rdfs:label "NonReneable Energy"^^xsd:string ;
+    rdfs:comment "Nonrenewable energy represents energy that comes from such resources that cannot be replaced onew they are used up."^^xsd:string ;
+    rdfs:subClassOf :Energy .
+
+:RenewableEnergy a owl:Class ;
+    rdfs:label "Renewable Energy"^^xsd:string ;
+    rdfs:comment "Renewable energy represents energy that comes from renewable resources."^^xsd:string ;
+    rdfs:subClassOf :Energy .
+
+<http://w3id.org/CEON/ontology/plan/Description> a owl:Class ;
+    rdfs:label "Description"^^xsd:string ;
+    rdfs:comment """A Description is a SocialObject that represents a conceptualization. 
+For example, a Plan is a Description of some actions to be executed by agents in a certain way, with certain parameters etc. Descriptions 'define' or 'use' concepts, and can be 'satisfied' by situations."""^^xsd:string .
+
+processODP:Event a owl:Class,
+        owl:Class ;
+    rdfs:label "Event"^^xsd:string ;
+    rdfs:comment "Something that happens within a given context or (short) timeframe."^^xsd:string ;
+    rdfs:seeAlso "https://ref.gs1.org/epcis/EPCISEvent"^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom processODP:Event ;
+            owl:onProperty processODP:hasPart ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty processODP:hasInput ;
+                        owl:someValuesFrom owl:Thing ] [ a owl:Restriction ;
+                        owl:onProperty processODP:hasOutput ;
+                        owl:someValuesFrom owl:Thing ] ) ] .
+
+<http://w3id.org/CEON/ontology/product/MatterComposition> a owl:Class ;
+    rdfs:label "Matter composition"^^xsd:string ;
+    rdfs:comment "A product composition is the composed information of a product in terms of a specific component, in which such a component is also a matter."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass resourceODP:Matter ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/associatedWithMatter> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        <http://w3id.org/CEON/ontology/product/Composition> .
+
+<http://w3id.org/CEON/ontology/product/ProductComposition> a owl:Class ;
+    rdfs:label "Product composition"^^xsd:string ;
+    rdfs:comment "A product composition is the composed information of a product in terms of a specific component, in which such a component is also a product."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass <http://w3id.org/CEON/ontology/product/Product> ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/associatedWithProductModel> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        <http://w3id.org/CEON/ontology/product/Composition> .
+
+<http://w3id.org/CEON/ontology/product/ProductionLocation> a owl:Class ;
+    rdfs:label "Production Location"^^xsd:string ;
+    rdfs:comment "The production location of a physical object"^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasCity ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasPostalCode ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasStreetAddress ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/productionSite> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/countryOfProduction> ],
+        location:Location .
+
+<http://w3id.org/CEON/ontology/product/Regulation> a owl:Class ;
+    rdfs:label "Regulation"^^xsd:string ;
+    rdfs:comment "The rules or restrictions made or maintained by authorities."^^xsd:string .
+
+<http://w3id.org/CEON/ontology/product/complianceWith> a owl:ObjectProperty ;
+    rdfs:label "compliance with"^^xsd:string ;
+    rdfs:comment "Represents what the compliance is compliant with (e.g. a standard or regulation)."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/Compliance> .
+
+<http://w3id.org/CEON/ontology/product/hasComposition> a owl:ObjectProperty ;
+    rdfs:label "has composition"^^xsd:string ;
+    rdfs:comment "hasComposition intends to represent that a product model or physical object can have compostition information."^^xsd:string ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( <http://w3id.org/CEON/ontology/product/Product> resourceODP:PhysicalObject ) ] ;
+    rdfs:range <http://w3id.org/CEON/ontology/product/Composition> .
+
+resourceODP:Asset a owl:Class ;
+    rdfs:label "Asset"^^xsd:string ;
+    rdfs:comment "Asset is sth that is valuable and useful to be used in activities, or owned by actors."^^xsd:string .
+
+resourceODP:SetOfObjects a owl:Class ;
+    rdfs:label "Set of objects"^^xsd:string ;
+    rdfs:comment "A set of objects is a set of physical objects (items) that can be of different types, i.e. different kinds of items."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasBatch ;
+                        owl:someValuesFrom resourceODP:BatchOfObjects ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:BatchOfObjects ;
+                        owl:onProperty resourceODP:hasBatch ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasPhysicalObject ;
+                        owl:someValuesFrom resourceODP:PhysicalObject ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:PhysicalObject ;
+                        owl:onProperty resourceODP:hasPhysicalObject ] ) ],
+        resourceODP:Resource .
+
+resourceODP:hasBatch a owl:ObjectProperty ;
+    rdfs:label "has batch"^^xsd:string ;
+    rdfs:comment "hasBatch intends to represent that a set of objects can be captured by a number of batches where each batch contains a number of physical objects."^^xsd:string ;
+    rdfs:domain resourceODP:SetOfObjects ;
+    rdfs:range resourceODP:BatchOfObjects .
+
+resourceODP:hasConstituent a owl:ObjectProperty ;
+    rdfs:label "has constituent"^^xsd:string ;
+    rdfs:comment "hasConstitutent intends to represent that a physical object can have a collection of composing components."^^xsd:string ;
+    rdfs:domain resourceODP:PhysicalObject ;
+    rdfs:range resourceODP:Constituent ;
+    rdfs:subPropertyOf resourceODP:hasPart .
+
+resourceODP:hasMatter a owl:ObjectProperty ;
+    rdfs:label "has matter"^^xsd:string ;
+    rdfs:comment "hasMatter intends to represent that a physical object can have a collection of matter."^^xsd:string ;
+    rdfs:domain resourceODP:PhysicalObject ;
+    rdfs:range resourceODP:Matter .
+
+resourceODP:hasPart a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "has part"^^xsd:string ;
+    rdfs:comment "Indicating that something is part of or is contained by something else."^^xsd:string .
+
+resourceODP:hasResourceCondition a owl:ObjectProperty ;
+    rdfs:label "has resource condition"^^xsd:string ;
+    rdfs:comment "A resource can has specifc conditions."^^xsd:string ;
+    rdfs:domain resourceODP:Resource ;
+    rdfs:range resourceODP:ResourceCondition .
+
+resourceODP:hasResourceProperty a owl:ObjectProperty ;
+    rdfs:label "has resource property"^^xsd:string ;
+    rdfs:comment "A resource can has specifc properties."^^xsd:string ;
+    rdfs:domain resourceODP:Resource ;
+    rdfs:range resourceODP:ResourceProperty .
+
+resourceODP:hasResourceQuality a owl:ObjectProperty ;
+    rdfs:label "has resource quality"^^xsd:string ;
+    rdfs:comment "A resource can has specifc qualities."^^xsd:string ;
+    rdfs:domain resourceODP:Resource ;
+    rdfs:range resourceODP:ResourceQuality .
+
+actor:Organisation a owl:Class ;
+    rdfs:label "Organisation"@en ;
+    rdfs:comment "Person or group of people that has its own functions with responsibilities, authorities, and relationships to achieve its objectives. The concept of organization includes, but is not limited to sole-trader, company, corporation, firm, enterprise, authority, partnership, charity or institution, or part or combination thereof, whether incorporated or not, public or private (e.g. foundation, union, association, agency, municipality, region, country, intergovernmental agencies). A group of organizations can also be considered as	an organization that has, alone or collectively,their own objectives."@en ;
+    rdfs:isDefinedBy "ISO 59004:2024 - 3.4.1 organization"^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty actor:hasOrganisationName ;
+            owl:someValuesFrom xsd:string ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty actor:hasOrganisationLocation ;
+                        owl:someValuesFrom actor:OrganisationLocation ] [ a owl:Restriction ;
+                        owl:allValuesFrom actor:OrganisationLocation ;
+                        owl:onProperty actor:hasOrganisationLocation ] ) ],
+        actorODP:Actor .
+
+actor:OrganisationLocation a owl:Class ;
+    rdfs:label "Organisation Location"^^xsd:string ;
+    rdfs:comment "Location of an organisation"^^xsd:string ;
+    rdfs:subClassOf location:Location .
+
+actorODP:Infrastructure a owl:Class ;
+    rdfs:label "Infrastructure"^^xsd:string ;
+    rdfs:comment "An infrastructure refers to facilities, services, or systems for participations to function."^^xsd:string .
+
+actorODP:participatingActor a owl:ObjectProperty,
+        owl:ObjectProperty ;
+    rdfs:label "participating actor"^^xsd:string ;
+    rdfs:comment "Holds the value of the actor involved in this participation relation."^^xsd:string ;
+    rdfs:domain actorODP:Participation ;
+    rdfs:range actorODP:Actor .
+
+actorODP:participatingResource a owl:ObjectProperty,
+        owl:ObjectProperty ;
+    rdfs:label "participating resource"^^xsd:string ;
+    rdfs:comment "The resource that this participation relation relates to, i.e. for which the actor holds the specified role."^^xsd:string ;
+    rdfs:domain actorODP:ResourceRelation ;
+    rdfs:range resourceODP:Resource .
+
+cvn:CVNBlueprint a owl:Class ;
+    rdfs:label "Circular Value Network Blueprint"^^xsd:string ;
+    rdfs:comment "A plan or a pattern of a CVN configuration that can then be filled with actual actors and processes. The blueprint can be used to capture a desired setup of a network, or for reusing patterns of CVNs."^^xsd:string .
+
+:FossilFuel a owl:Class ;
+    rdfs:label "Fossil Fuel"^^xsd:string ;
+    rdfs:comment "A fossil fuel is a carbon compound- or hydrocarbon-containing material[2] formed naturally in the Earth's crust from the buried remains of prehistoric organisms (animals, plants or planktons), a process that occurs within geological formations."^^xsd:string ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Fossil_fuel"^^xsd:string ;
+    rdfs:subClassOf :EnergySource .
+
+<http://w3id.org/CEON/ontology/material/Material> a owl:Class ;
+    rdfs:label "Material"^^xsd:string ;
+    rdfs:comment "Material as a sub-concept of Matter, can be a substance or a collection of substance which a physical object is composed of."^^xsd:string ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_4207e895_8b83_4318_996a_72cfb32acd94"^^xsd:string,
+        "https://w3id.org/mdo/core/Material"^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <http://w3id.org/CEON/ontology/material/hasChemicalEntity> ;
+            owl:someValuesFrom <http://w3id.org/CEON/ontology/material/ChemicalEntity> ],
+        resourceODP:Matter .
+
+<http://w3id.org/CEON/ontology/plan/Plan> a owl:Class ;
+    rdfs:label "Plan"^^xsd:string ;
+    rdfs:comment "A Description having an explicit goal, to be achieved by executing the plan."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty processODP:hasPart ;
+            owl:someValuesFrom <http://w3id.org/CEON/ontology/plan/Plan> ],
+        <http://w3id.org/CEON/ontology/plan/Description> .
+
+<http://w3id.org/CEON/ontology/product/AssemblyLocation> a owl:Class ;
+    rdfs:label "Assembly Location"^^xsd:string ;
+    rdfs:comment "The location where a physical object is assembled."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasCity ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/countryOfAssembly> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasPostalCode ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasStreetAddress ],
+        location:Location .
+
+<http://w3id.org/CEON/ontology/product/ManufactureLocation> a owl:Class ;
+    rdfs:label "Manufacture Location"^^xsd:string ;
+    rdfs:comment "The location where a physical object is manufactured."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasStreetAddress ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasCity ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/countryOfManufacture> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasPostalCode ],
+        location:Location .
+
+<http://w3id.org/CEON/ontology/product/OriginLocation> a owl:Class ;
+    rdfs:label "Origin Location"^^xsd:string ;
+    rdfs:comment "The origin location of a physical object"^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasStreetAddress ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasCity ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasPostalCode ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/countryOfOrigin> ],
+        location:Location .
+
+resourceODP:ResourceCondition a owl:Class ;
+    rdfs:label "Resource Condition"^^xsd:string ;
+    rdfs:comment "The status of a resource."^^xsd:string .
+
+resourceODP:ResourceProperty a owl:Class ;
+    rdfs:label "Resource Property"^^xsd:string ;
+    rdfs:comment "The characteristics or attribuets of a resource."^^xsd:string .
+
+resourceODP:ResourceQuality a owl:Class ;
+    rdfs:label "Resource Quality"^^xsd:string ;
+    rdfs:comment "Resource quality is derived based on assessments of resources considering the conditions and properties."^^xsd:string .
+
+value:ValuePerception a owl:Class ;
+    rdfs:label "Value Perception"^^xsd:string ;
+    rdfs:comment "Value perception of an actor determines specifc values."^^xsd:string .
+
+value:hasVPTargets a owl:ObjectProperty ;
+    rdfs:label "has value proposition targets"^^xsd:string ;
+    rdfs:comment "A value proposition is proposed about specific actors, participations or resources."^^xsd:string .
+
+xsd:date a rdfs:Datatype,
+        rdfs:Datatype,
+        rdfs:Datatype,
+        rdfs:Datatype,
+        rdfs:Datatype,
+        rdfs:Datatype,
+        rdfs:Datatype .
+
+xsd:gMonthYear a rdfs:Datatype,
+        rdfs:Datatype,
+        rdfs:Datatype,
+        rdfs:Datatype .
+
+xsd:gYear a rdfs:Datatype,
+        rdfs:Datatype,
+        rdfs:Datatype,
+        rdfs:Datatype .
+
+actorODP:ResourceParticipation a owl:Class ;
+    rdfs:label "Resource Participation"^^xsd:string ;
+    rdfs:comment "The generic relation representing the particpation of a resource in some relation. For example, it can be specialized to represent a reified version of an object or data property."^^xsd:string ;
+    rdfs:subClassOf actorODP:Participation .
+
+actorODP:Role a owl:Class,
+        owl:Class ;
+    rdfs:label "Role"^^xsd:string ;
+    rdfs:comment "A role that an actor can take in a specific context. Applies both to roles in the context of resources, such as owner, manufacturer, reseller etc. of that resource, as well as roles in relation to a circular value network, such as recycler, dismantler, transporter etc., in relation to a material flow."^^xsd:string .
+
+:Energy a owl:Class,
+        owl:Class ;
+    rdfs:label "Energy"^^xsd:string,
+        "Energy"^^xsd:string ;
+    rdfs:comment "An amount of energy."^^xsd:string,
+        "Energy is an ability or a property of matter or a system, to do work because of its motion, its mass, its electric charge, etc."^^xsd:string ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_31ec09ba_1713_42cb_83c7_b38bf6f9ced2"^^xsd:string ;
+    rdfs:subClassOf resourceODP:Resource,
+        resourceODP:Resource .
+
+location:hasCity a owl:DatatypeProperty,
+        owl:DatatypeProperty ;
+    rdfs:label "has city"^^xsd:string ;
+    rdfs:comment "Represents the name of a city."^^xsd:string ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+location:hasCountry a owl:DatatypeProperty,
+        owl:DatatypeProperty ;
+    rdfs:label "has country"^^xsd:string ;
+    rdfs:comment "Represents the name of a country."^^xsd:string ;
+    rdfs:range xsd:string .
+
+location:hasPostalCode a owl:DatatypeProperty,
+        owl:DatatypeProperty ;
+    rdfs:label "has postal code"^^xsd:string ;
+    rdfs:comment "Represent postal code"^^xsd:string ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso "Universal Postal Union (UPU) S42 standard"^^xsd:string ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+location:hasStreetAddress a owl:DatatypeProperty,
+        owl:DatatypeProperty ;
+    rdfs:label "has street address"^^xsd:string ;
+    rdfs:comment "Represents address of a street, including e.g., street number and name."^^xsd:string ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+<http://w3id.org/CEON/ontology/material/ChemicalEntity> a owl:Class ;
+    rdfs:label "Chemical Entity"^^xsd:string ;
+    rdfs:comment "A chemical entity is an abstraction of entities that can compose matter. For instance, a chemical entity can be a molecular entity or a chemical substance."^^xsd:string ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_47338839_6cca_4a8e_b565_3c4d5517e2c0"^^xsd:string,
+        "http://purl.obolibrary.org/obo/chebi#24431"^^xsd:string ;
+    rdfs:subClassOf resourceODP:Matter .
+
+processODP:TimeInterval a owl:Class ;
+    rdfs:label "Time Interval"^^xsd:string ;
+    rdfs:comment "A temporal entity has a starting time and an ending time."^^xsd:string .
+
+processODP:hasInput a owl:ObjectProperty,
+        owl:ObjectProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has input"^^xsd:string ;
+    rdfs:comment "The inputs to a process or event."^^xsd:string ;
+    rdfs:domain processODP:Process .
+
+processODP:hasOutput a owl:ObjectProperty,
+        owl:ObjectProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has output"^^xsd:string ;
+    rdfs:comment "The output of a process or event."^^xsd:string ;
+    rdfs:domain processODP:Process .
+
+processODP:hasPart a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "has part"^^xsd:string ;
+    rdfs:comment "A process or event can consist of several parts, which are sub-processes (e.g. steps) or events."^^xsd:string .
+
+<http://w3id.org/CEON/ontology/quantity/QuantityInterval> a owl:Class ;
+    rdfs:label "Quantity Interval"^^xsd:string ;
+    rdfs:comment "Quantity interval is an interval with two quantity values."^^xsd:string .
+
+<http://w3id.org/CEON/ontology/quantity/hasDimension> a owl:ObjectProperty ;
+    rdfs:label "has dimension"^^xsd:string ;
+    rdfs:comment "hasDimension is used to describe a dimension of a product or product object."^^xsd:string ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+resourceODP:Constituent a owl:Class,
+        owl:Class ;
+    rdfs:label "Constituent"^^xsd:string ;
+    rdfs:comment "A constituent is a component of object."^^xsd:string ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_ceaaf9f7_fd11_424b_8fda_9afa186af186"^^xsd:string .
+
+resourceODP:Information a owl:Class ;
+    rdfs:label "Information"^^xsd:string ;
+    rdfs:comment "Information is an abstract concept that represents any kind of interpretations. For instance, information can be data generated by software systems or data used by people for communications."^^xsd:string ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_64c72d00_7582_44ea_a0b5_3a14e50acc36"^^xsd:string ;
+    rdfs:subClassOf resourceODP:Asset .
+
+resourceODP:hasPhysicalObject a owl:ObjectProperty ;
+    rdfs:label "has physical object"^^xsd:string ;
+    rdfs:comment "hasPhysicalObject intends to represent that a batch of objects or a set of objects can have composing components of physical objects."^^xsd:string ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( resourceODP:BatchOfObjects resourceODP:SetOfObjects ) ] ;
+    rdfs:range resourceODP:PhysicalObject .
+
+geo:Geometry a owl:Class ;
+    skos:definition "A coherent set of direct positions in space. The positions are held within a Spatial Reference System (SRS)."@en ;
+    skos:prefLabel "Geometry"@en .
+
+actorODP:Capability a owl:Class,
+        owl:Class ;
+    rdfs:label "Capability"^^xsd:string ;
+    rdfs:comment "Something that the actor is capable of doing, e.g. perfomring a certain role in a process, based on some properties, such as access to infrastructure, resources and know-how."^^xsd:string .
+
+location:hasLocation a owl:ObjectProperty,
+        owl:ObjectProperty,
+        owl:ObjectProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has location"^^xsd:string ;
+    rdfs:comment "Represents the location of an actor or resource."^^xsd:string ;
+    rdfs:range location:Location .
+
+<http://w3id.org/CEON/ontology/plan/PlanExecution> a owl:Class ;
+    rdfs:label "Plan Execution"^^xsd:string ;
+    rdfs:comment "Plan executions are situations that proactively satisfy a plan. Subplan executions are proper parts of the whole plan execution."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <http://w3id.org/CEON/ontology/plan/precedesExecution> ;
+            owl:someValuesFrom processODP:Situation ],
+        [ a owl:Restriction ;
+            owl:onProperty processODP:isSettingFor ;
+            owl:someValuesFrom processODP:Process ],
+        [ a owl:Restriction ;
+            owl:onProperty processODP:hasPart ;
+            owl:someValuesFrom <http://w3id.org/CEON/ontology/plan/PlanExecution> ],
+        [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:onProperty processODP:duringTime ;
+                        owl:someValuesFrom processODP:TimeInterval ] [ a owl:Restriction ;
+                        owl:onProperty processODP:occursAtTime ;
+                        owl:someValuesFrom xsd:dateTime ] ) ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://w3id.org/CEON/ontology/plan/satisfiesPlan> ;
+            owl:someValuesFrom <http://w3id.org/CEON/ontology/plan/Plan> ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://w3id.org/CEON/ontology/plan/followsExecution> ;
+            owl:someValuesFrom processODP:Situation ],
+        processODP:Situation .
+
+<http://w3id.org/CEON/ontology/quantity/hasProcessCost> a owl:ObjectProperty ;
+    rdfs:label "has process cost"^^xsd:string ;
+    rdfs:comment "represents that a process can have a cost"^^xsd:string ;
+    rdfs:subPropertyOf qudt:quantityValue .
+
+value:ValueParticipation a owl:Class ;
+    rdfs:label "Value Participation"^^xsd:string ;
+    rdfs:comment "A participation that may create/destory/miss value."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty value:hasAssociatedValue ;
+            owl:someValuesFrom value:Value ],
+        actorODP:Participation .
+
+actorODP:CollaborationParticipation a owl:Class,
+        owl:Class ;
+    rdfs:label "Collaboration Participation"^^xsd:string ;
+    rdfs:comment "The relation involving the role of a certain actor with respect to a value network or a process in such a network, e.g. an organisation (actor) acting as the recycler (role) in a glass recycling value netowrk (network) at a specific point or period in time. Or an organisation (actor) acting as the dismantler (role) in a dismantling step of a building deconstruction process (process step) at a specific point or period in time."^^xsd:string ;
+    rdfs:subClassOf actorODP:Participation .
+
+processODP:Situation a owl:Class ;
+    rdfs:label "Situation"^^xsd:string ;
+    rdfs:comment "A situation that may involve some resources and actors, i.e. a state of affairs at a certain point in time."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty processODP:isSettingFor ;
+            owl:someValuesFrom owl:Thing ] .
+
+processODP:isSettingFor a owl:ObjectProperty ;
+    rdfs:label "is the setting for"^^xsd:string ;
+    rdfs:comment "The thing(s) that this situation is the setting for, e.g. a resource that is in a certain state."^^xsd:string ;
+    rdfs:domain processODP:Situation .
+
+<http://w3id.org/CEON/ontology/product/Compliance> a owl:Class ;
+    rdfs:label "Compliance"^^xsd:string ;
+    rdfs:comment "Represents that something is compliant with some standard or has a received a certain certification."^^xsd:string .
+
+<http://w3id.org/CEON/ontology/product/Composition> a owl:Class ;
+    rdfs:label "Composition"^^xsd:string ;
+    rdfs:comment "A relation that represents a composing relation."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceParticipation .
+
+cvn:CVN a owl:Class,
+        owl:Class ;
+    rdfs:label "Circular Value Network"^^xsd:string ;
+    rdfs:comment "A network of interlinked value chains and interested parties."@en ;
+    rdfs:isDefinedBy "ISO 59004:2024 - 3.5.3 value network"^^xsd:string ;
+    rdfs:subClassOf cvn:Collaboration .
+
+value:ValueParticipationRole a owl:Class ;
+    rdfs:label "Value Participation Role"^^xsd:string ;
+    rdfs:comment "A role that a value participant can take."^^xsd:string ;
+    rdfs:subClassOf actorODP:Role .
+
+value:ValueProposition a owl:Class,
+        owl:Class ;
+    rdfs:label "Value Proposition"^^xsd:string ;
+    rdfs:comment "Proposed or intended value outcome of some process, action or collaboration."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty value:targettingValueParticipation ;
+            owl:someValuesFrom value:ValueParticipation ],
+        [ a owl:Restriction ;
+            owl:onProperty value:hasAimedValue ;
+            owl:someValuesFrom value:Value ],
+        [ a owl:Restriction ;
+            owl:onProperty value:targettingActor ;
+            owl:someValuesFrom actorODP:Actor ] .
+
+resourceODP:BatchOfObjects a owl:Class,
+        owl:Class ;
+    rdfs:label "Batch Of Objects"^^xsd:string ;
+    rdfs:comment "A batch of objects is a collection of physical objects that are of the same type, e.g. a set of items (product instances) adhering to the same product model."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:nonNegativeInteger ;
+            owl:onProperty resourceODP:batchSize ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasPhysicalObject ;
+                        owl:someValuesFrom resourceODP:PhysicalObject ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:PhysicalObject ;
+                        owl:onProperty resourceODP:hasPhysicalObject ] ) ],
+        [ a owl:Restriction ;
+            owl:onClass <http://w3id.org/CEON/ontology/product/Product> ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/batchOfProduct> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        resourceODP:Resource .
+
+resourceODP:Matter a owl:Class,
+        owl:Class,
+        owl:Class ;
+    rdfs:label "Matter"^^xsd:string ;
+    rdfs:comment "A matter is a physical substance."^^xsd:string ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_5b2222df_4da6_442f_8244_96e9e45887d1"^^xsd:string .
+
+actor:ActorCVNRole a owl:Class ;
+    rdfs:label "Actor Circular Value Network role"^^xsd:string ;
+    rdfs:comment "The role(s) of an actor in a Circular Value Network, which is a specific type of collaboration."^^xsd:string ;
+    rdfs:subClassOf actor:ActorCollaborationRole .
+
+:EnergySource a owl:Class ;
+    rdfs:label "Energy Source"^^xsd:string ;
+    rdfs:comment "An energy source is a resource or system that provides the energy."^^xsd:string .
+
+location:Location a owl:Class,
+        owl:Class,
+        owl:Class,
+        owl:Class,
+        owl:Class ;
+    rdfs:label "Location"^^xsd:string ;
+    rdfs:comment "From geography perspecive, a location represents a region which can be geometry point, line or area on Earth."^^xsd:string ;
+    rdfs:subClassOf geo:Geometry .
+
+resourceODP:PhysicalObject a owl:Class,
+        owl:Class ;
+    rdfs:label "Physical object"^^xsd:string ;
+    rdfs:comment "A physical object is a collection of matter."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasConstituent ;
+                        owl:someValuesFrom resourceODP:Constituent ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:Constituent ;
+                        owl:onProperty resourceODP:hasConstituent ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasMatter ;
+                        owl:someValuesFrom resourceODP:Matter ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:Matter ;
+                        owl:onProperty resourceODP:hasMatter ] ) ],
+        resourceODP:Resource .
+
+<http://w3id.org/CEON/ontology/product/Item> a owl:Class ;
+    rdfs:label "Item"^^xsd:string ;
+    rdfs:comment "An item is a physical object put into a market for sale, i.e. corresponding to an individual of a product. The item can be a thing that grows naturally or produced through some chemical or manufacturing processes."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass <http://w3id.org/CEON/ontology/product/Product> ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/modelledBy> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        resourceODP:PhysicalObject .
+
+value:Value a owl:Class,
+        owl:Class ;
+    rdfs:label "Value"^^xsd:string ;
+    rdfs:comment "Gain(s) or benefit(s) from satisfying needs and expectations,	in relation to the use	and conservation of resources. EXAMPLE: Revenue, savings, productivity, sustainability, satisfaction, empowerment, engagement, experience, public health, trust. Value is relative to, and determined by the perception of, those interested party(ies) able to capture it. Value can be financial or non-financial, e.g. social, environmental, other gains or benefits. Value is dynamic over time."@en ;
+    rdfs:isDefinedBy "ISO 59004:2024 - 3.1.7 value"^^xsd:string .
+
+actorODP:Actor a owl:Class,
+        owl:Class,
+        owl:Class ;
+    rdfs:label "Actor"^^xsd:string ;
+    rdfs:comment "An agent able to act in the context of a circular value network, e.g. an organisation, person."^^xsd:string .
+
+actorODP:Participation a owl:Class,
+        owl:Class,
+        owl:Class ;
+    rdfs:label "Participation"^^xsd:string ;
+    rdfs:comment "Represents the participation of objects in some situation."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:unionOf ( [ a owl:Restriction ;
+                        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onProperty actorODP:participationStartTime ] [ a owl:Restriction ;
+                        owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                        owl:onProperty actorODP:participationTimePoint ] ) ] .
+
+<http://w3id.org/CEON/ontology/material/ChemicalElement> a owl:Class ;
+    rdfs:label "Chemical Element"^^xsd:string ;
+    rdfs:comment "A chemical element is a chemical substance whose atoms all have the same number of protons."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/ChemicalSubstance> .
+
+actor:ActorResourceRole a owl:Class ;
+    rdfs:label "Actor resource role"^^xsd:string ;
+    rdfs:comment "The role(s) of an actor in relation to a resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:Role .
+
+<http://w3id.org/CEON/ontology/process/TransformationProcess> a owl:Class ;
+    rdfs:label "Transformation Process"^^xsd:string ;
+    rdfs:comment "Set of interrelated or interacting activities that transforms inputs into outputs."@en ;
+    rdfs:isDefinedBy "ISO 59004:2024  - 3.5.5 process"^^xsd:string ;
+    rdfs:seeAlso "https://ref.gs1.org/epcis/Transformation"^^xsd:string ;
+    rdfs:subClassOf processODP:Process .
+
+<http://w3id.org/CEON/ontology/product/Product> a owl:Class ;
+    rdfs:label "Product"^^xsd:string ;
+    rdfs:comment "Physical-based object designed for or utilized with a purpose. A product can be, for example: goods of any type; hardware (e.g. engine mechanical part, spare parts, consumables); electrical or electronic hardware devices or components (e.g. computers, communication equipment and sensors); processed materials (e.g. lubricant, cement)."^^xsd:string,
+        "Represents the common sense notion of a product, i.e. the abstract notion of a product type, which is a model that is used for manufacturing items of that product."^^xsd:string ;
+    rdfs:isDefinedBy "ISO 59004:2024 -3.2.2 product"^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/hasComposition> ;
+            owl:someValuesFrom <http://w3id.org/CEON/ontology/product/MatterComposition> ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/hasComposition> ;
+            owl:someValuesFrom <http://w3id.org/CEON/ontology/product/ProductComposition> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <http://w3id.org/CEON/ontology/product/AssemblyLocation> ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/hasAssemblyLocation> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <http://w3id.org/CEON/ontology/product/OriginLocation> ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/hasOriginLocation> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <http://w3id.org/CEON/ontology/product/ManufactureLocation> ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/hasManufacturerLocation> ],
+        <http://w3id.org/CEON/ontology/product/Solution>,
+        resourceODP:Resource .
+
+<http://w3id.org/CEON/ontology/material/RareEarthElement> a owl:Class ;
+    rdfs:label "Rare Earth Element"^^xsd:string ;
+    rdfs:comment "Rare earth elements is a set of 17 nearly indistinguishable lustrous silvery-white soft heavy metals."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/ChemicalElement> .
+
+processODP:Process a owl:Class,
+        owl:Class,
+        owl:Class,
+        owl:Class,
+        owl:Class ;
+    rdfs:label "Process"^^xsd:string ;
+    rdfs:comment "Something that takes place over a (longer) period of time and changes some state of affairs."@en ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty processODP:hasInput ;
+                        owl:someValuesFrom owl:Thing ] [ a owl:Restriction ;
+                        owl:onProperty processODP:hasOutput ;
+                        owl:someValuesFrom owl:Thing ] ) ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:unionOf ( processODP:Event processODP:Process ) ] ;
+            owl:onProperty processODP:hasPart ] .
+
+resourceODP:Resource a owl:Class,
+        owl:Class,
+        owl:Class,
+        owl:Class,
+        owl:Class,
+        owl:Class ;
+    rdfs:label "Resource"^^xsd:string ;
+    rdfs:comment "Asset from which a solution is created or implemented. Depending on the context, reference to “resource” includes “raw material”, “feedstock”, “material” or “component”. Resource includes any energy type (e.g. the energy content or energy potential of materials). Note 4 to entry: Resources can be considered concerning both stocks and flows."^^xsd:string,
+        "Some resources can be specifically associated with processes."^^xsd:string ;
+    rdfs:isDefinedBy "ISO 59004:2024 - 3.1.5 resource"^^xsd:string ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceCondition ;
+                        owl:someValuesFrom resourceODP:ResourceCondition ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceCondition ;
+                        owl:onProperty resourceODP:hasResourceCondition ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceProperty ;
+                        owl:someValuesFrom resourceODP:ResourceProperty ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceProperty ;
+                        owl:onProperty resourceODP:hasResourceProperty ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceQuality ;
+                        owl:someValuesFrom resourceODP:ResourceQuality ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceQuality ;
+                        owl:onProperty resourceODP:hasResourceQuality ] ) ],
+        resourceODP:Asset .
+
+actorODP:participantRole a owl:ObjectProperty,
+        owl:ObjectProperty ;
+    rdfs:label "participant role"^^xsd:string ;
+    rdfs:comment "Holds the value of the role of the participant in this participation relation."^^xsd:string ;
+    rdfs:domain actorODP:Participation ;
+    rdfs:range actorODP:Role .
+
+actorODP:ResourceRelation a owl:Class,
+        owl:Class,
+        owl:Class ;
+    rdfs:label "Resource Relation"^^xsd:string,
+        "Resource Relation"^^xsd:string ;
+    rdfs:comment "A relation between a resource, an actor, and the role the actor has in relation to the resource. For instance, the role of owner that a certain actor takes for a certain resource for a certain period of time. Or the seller of a certain resource, until that resource has been sold, and the actor no longer has that role in relation to the resource."^^xsd:string,
+        "The relation involving the role of a certain actor with respect to a certain resource, e.g. an organisation or individual (actor) owning (role) a specific product (resource) at a specific point or period in time."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( actorODP:Participation [ a owl:Restriction ;
+                        owl:onProperty actorODP:participantRole ;
+                        owl:someValuesFrom actor:ActorResourceRole ] [ a owl:Restriction ;
+                        owl:onProperty actorODP:participatingActor ;
+                        owl:someValuesFrom actorODP:Actor ] [ a owl:Restriction ;
+                        owl:onProperty actorODP:participatingResource ;
+                        owl:someValuesFrom resourceODP:Resource ] ) ],
+        actorODP:Participation .
+

@@ -1,0 +1,202 @@
+222
+capability extent		The extent of this capability, e.g. stating whether there are limist to the capability, such as a maximum amount or size of something.		http://w3id.org/CEON/ontology/actor/capabilityExtent		Capability		
+223
+needed resource relations		In order for an actor to have a capability, it needs to have certain resources, e.g. materials, infrastrucutre, know-how, information etc.		http://w3id.org/CEON/ontology/actor/neededResourceRelation		Capability		
+224
+based on capability		An actor participates in a collaboration based on that it has some capability that is useful for the collaboration.		http://w3id.org/CEON/ontology/actorODP/basedOnCapability		CollaborationParticipation		Capability		
+225
+capability of		Relates to the actor holding the capability.		http://w3id.org/CEON/ontology/actorODP/capabilityOf		Capability		nd527c0478834433ba14154e35fc5f4d8b88		
+226
+participating infrastructure		Holds the value of the infrastructure involved in this participation relation.		http://w3id.org/CEON/ontology/actorODP/participatingInfrastructure		Participation		Infrastructure		
+227
+aims at value		The value proposition that the planned abstract CVN configuration, or concrete network wants to achieve.		http://w3id.org/CEON/ontology/cvn/aimsAtValue		nd527c0478834433ba14154e35fc5f4d8b96		ValueProposition		
+228
+composed of		Both a CVN and a process can be composed of other CVNs or processes.		http://w3id.org/CEON/ontology/cvn/composedOf		nd527c0478834433ba14154e35fc5f4d8b99		nd527c0478834433ba14154e35fc5f4d8b102		
+229
+creates value		Value creation can be captured at the actor level, i.e. value created by an actor's participation in a collaboration, or at the process or complete CVN level.		http://w3id.org/CEON/ontology/cvn/createsValue		nd527c0478834433ba14154e35fc5f4d8b105		Value		
+230
+implements blueprint		The blueprint (or plan) that this concrete CVN is an instance of.		http://w3id.org/CEON/ontology/cvn/implementsBlueprint		CVN		CVNBlueprint		
+231
+implements strategy		A strategy that is implemented by this CVN or CVN blueprint.		http://w3id.org/CEON/ontology/cvn/implementsStrategy		CVN		CircularStrategy		
+232
+plans to implement strategy		A strategy that is planned to be implemented by this CVN or CVN blueprint.		http://w3id.org/CEON/ontology/cvn/plansToImplementStrategy		CVNBlueprint		CircularStrategy		
+233
+has anergy		hasAnergy represents that energy has part of anergy.		http://w3id.org/CEON/ontology/energy/hasAnergy		
+234
+has converted energy		hasConvertedEnergy represents that an energy transformation process has its final energy.		http://w3id.org/CEON/ontology/energy/hasConvertedEnergy		nd527c0478834433ba14154e35fc5f4d8b109		
+235
+has energy source		hasEnergySource represents that energy can have some energy sources.		http://w3id.org/CEON/ontology/energy/hasEnergySource		Energy		EnergySource		
+236
+has exergy		hasExergy represents that energy has part of exergy.		http://w3id.org/CEON/ontology/energy/hasExergy		
+237
+has original energy		hasOriginalEnergy represents that an energy transformation process has its initial energy.		http://w3id.org/CEON/ontology/energy/hasOriginalEnergy		nd527c0478834433ba14154e35fc5f4d8b112		
+238
+participating energy		participatingEnergy represents the energy in an energy composition.		http://w3id.org/CEON/ontology/energy/participatingEnergy		
+239
+has material component		hasMaterialComponent intends to represent that a material can have a collection of components.		http://w3id.org/CEON/ontology/material/hasMaterialComponent		Material		MaterialComponent		
+240
+has plan exeution		A plan can have specific executions.		http://w3id.org/CEON/ontology/plan/hasPlanExecution		Plan		PlanExecution		
+241
+affects object		A certain transition may affect objects, e.g. material that changes its state from one situation to another.		http://w3id.org/CEON/ontology/process/affectsObject		Transition		
+242
+needs energy		The energy needed to perform a certain process.		http://w3id.org/CEON/ontology/process/needsEnergy		Energy		
+243
+produces CO2		The CO2 released or produced by the process.		http://w3id.org/CEON/ontology/process/producesCO2		CO2Emission		
+244
+resulting resource		The resource that is the output (product, i.e. what is produced) from a certain process.		http://w3id.org/CEON/ontology/process/resultingResource		Resource		
+245
+uses catalyst		The catalyst used in a process.		http://w3id.org/CEON/ontology/process/usesCatalyst		Catalyst		
+246
+occurs at location		The location in which something (e.g. an event or process) takes place, e.g. the factory location where something is manufactured.		http://w3id.org/CEON/ontology/processODP/occursAtLocation		Location		
+247
+composition of		Represents what the composition is a composition of (i.e., the product, the product object or matter that is broken down into its components).		http://w3id.org/CEON/ontology/product/compositionOf		Composition		nd527c0478834433ba14154e35fc5f4d8b117		
+248
+has compliance		Used to link something (e.g., product or process) to a compliance.		http://w3id.org/CEON/ontology/product/hasCompliance		nd527c0478834433ba14154e35fc5f4d8b121		Compliance		
+249
+has product component		hasProductComponent intends to represent that a product can have other product components.		http://w3id.org/CEON/ontology/product/hasProductComponent		Product		Product		
+250
+has product object component		http://w3id.org/CEON/ontology/product/hasProductObjectComponent		Item		Item		
+251
+has dismantling cost		The cost of dismantling, expressed as an amount of money with a currency unit.		http://w3id.org/CEON/ontology/quantity/hasDismantlingCost		
+252
+has height		hasHeight is used to describe the height of a product or product object.		http://w3id.org/CEON/ontology/quantity/hasHeight		
+253
+has length		hasLength is used to describe the length of a product or product object.		http://w3id.org/CEON/ontology/quantity/hasLength		
+254
+has market value		The market value, expressed as an amount of money with a currency unit.		http://w3id.org/CEON/ontology/quantity/hasMarketValue		
+255
+has maximal value included of interval		represents the maximum value (included) of an interval		http://w3id.org/CEON/ontology/quantity/hasMaximalValueIncludedOfInterval		QuantityInterval		QuantityValue		
+256
+has maximal value not included of interval		represents the maximum value (not included) of an interval		http://w3id.org/CEON/ontology/quantity/hasMaximalValueNotIncludedOfInterval		QuantityInterval		QuantityValue		
+257
+has minimal value included of interval		represents the minimal value (included) of an interval		http://w3id.org/CEON/ontology/quantity/hasMinimalValueIncludedOfInterval		QuantityInterval		QuantityValue		
+258
+has minimal value not included of interval		represents the minimal value (not included) of an interval		http://w3id.org/CEON/ontology/quantity/hasMinimalValueNotIncludedOfInterval		QuantityInterval		QuantityValue		
+259
+has price		represents that sth has a specific cost		http://w3id.org/CEON/ontology/quantity/hasPrice		
+260
+has recycling cost		The cost of recycling, expressed as an amount of money with a currency unit.		http://w3id.org/CEON/ontology/quantity/hasRecyclingCost		
+261
+has refurbishment cost		The cost of refurbishment, expressed as an amount of money with a currency unit.		http://w3id.org/CEON/ontology/quantity/hasRefurbishmentCost		
+262
+has testing cost		The cost of testing, expressed as an amount of money with a currency unit.		http://w3id.org/CEON/ontology/quantity/hasTestingCost		
+263
+has thickness		hasThickness is used to describe the thickness of a product or product object.		http://w3id.org/CEON/ontology/quantity/hasThickness		
+264
+has transport cost		The cost of transportation, expressed as an amount of money with a currency unit.		http://w3id.org/CEON/ontology/quantity/hasTransportCost		
+265
+has volume		represents the volume of an object		http://w3id.org/CEON/ontology/quantity/hasVolume		
+266
+has weight		represents the weight of an object		http://w3id.org/CEON/ontology/quantity/hasWeight		
+267
+has width		hasWidth is used to describe the width of a product or product object.		http://w3id.org/CEON/ontology/quantity/hasWidth		
+268
+object value		objectValue is analogous to qudt:numericalValue		http://w3id.org/CEON/ontology/quantity/objectValue		
+269
+contains information		Indicating that some piece of information is contained in a larger collection of information, e.g. a data sheet contains a statement about a certain parameter of a product.		http://w3id.org/CEON/ontology/resourceODP/containsInformation		Information		Information		
+270
+has resource location		Defines the location of a resource.		http://w3id.org/CEON/ontology/resourceODP/hasResourceLocation		Resource		Location		
+271
+is about		Connecting the information to the object (physical, virtual, imaginary) that the information is about.		http://w3id.org/CEON/ontology/resourceODP/isAbout		Information		
+272
+is realization of		Relates a thing, e.g. a digital object, or a physical object, to the information it is a realization of. C.f. a physical book that is the realization of a novel, or a pdf or Excel-file that is a realization of a certain data sheet.		http://w3id.org/CEON/ontology/resourceODP/isRealizationOf		Information		
+273
+has perception		An actor perceive specific values, or a value proposition is about specific values.		http://w3id.org/CEON/ontology/value/hasPerception		nd527c0478834433ba14154e35fc5f4d8b126		ValuePerception		
+274
+has valuable resource		A value participation has participating resources.		http://w3id.org/CEON/ontology/value/hasValuableResource		ValueParticipation		Resource		
+275
+has value participant role		Holds the value of the role of the value participant in this value participation relation.		http://w3id.org/CEON/ontology/value/hasValueParticipantRole		ValueParticipation		ValueParticipationRole		
+276
+on value participation		A perception is on specific value participations.		http://w3id.org/CEON/ontology/value/onValueParticipation		ValuePerception		ValueParticipation		
+277
+proposed by		A value proposition is proposed by specific actors.		http://w3id.org/CEON/ontology/value/proposedBy		ValueProposition		Actor		
+278
+targetting resource		A value proposition is about some resources.		http://w3id.org/CEON/ontology/value/targettingResource		ValueProposition		Resource		
+279
+participating subject		Participating subject in a resource participation. This is part of a resource participation that can be a directional relation, and the participating subject is the starting point of the relation.		http://w3id.org/CEON/ontology/actorODP/participatingSubject		ResourceParticipation		Resource		
+280
+has chemical entity		hasChemicalEntity intends to represent that a material can have a collection of chemical entities.		http://w3id.org/CEON/ontology/material/hasChemicalEntity		Material		ChemicalEntity		
+281
+follows execution		The situation after the execution takes place, i.e. the state of affairs after the process event, such as the product being assembled, or the material being recycled.		http://w3id.org/CEON/ontology/plan/followsExecution		PlanExecution		
+282
+precedes execution		The situation before the process event takes place, i.e. the state of affairs before the execution, such as the state of the set of components before they are assembled into a product item, or the material state before being recycled.		http://w3id.org/CEON/ontology/plan/precedesExecution		PlanExecution		
+283
+satisfies plan		A relation between a Situation and a Description, e.g. the execution of a Plan satisfies that plan.		http://w3id.org/CEON/ontology/plan/satisfiesPlan		Situation		Description		
+284
+during time		The time interval during which something, e.g. a process or event, takes place.		http://w3id.org/CEON/ontology/processODP/duringTime		TimeInterval		
+285
+associated with matter		associatedWithMatter intends to represent the matter to which a matter compopsition information regards to.		http://w3id.org/CEON/ontology/product/associatedWithMatter		MatterComposition		Matter		
+286
+associated with product model		associatedWithProductModel intends to represent the product model to which a product compopsition information regards to.		http://w3id.org/CEON/ontology/product/associatedWithProductModel		ProductComposition		Product		
+287
+associated with product object		associatedWithProductObject intends to represent the item (product object) to which a product object compopsition information regards to.		http://w3id.org/CEON/ontology/product/associatedWithProductObject		ProductObjectComposition		Item		
+288
+batch of products		batchOfProduct intends to represent what is the model product of a batch of objects.		http://w3id.org/CEON/ontology/product/batchOfProduct		BatchOfObjects		Product		
+289
+has assembly location		Used to represent the location of assembly of a product or product object (item).		http://w3id.org/CEON/ontology/product/hasAssemblyLocation		nd527c0478834433ba14154e35fc5f4d8b140		AssemblyLocation		
+290
+has manufacture location		Used to represent the location of manufacturer of a product or product object (item).		http://w3id.org/CEON/ontology/product/hasManufacturerLocation		nd527c0478834433ba14154e35fc5f4d8b143		ManufactureLocation		
+291
+has origin location		Used to represent the location of origin of a product or product object (item).		http://w3id.org/CEON/ontology/product/hasOriginLocation		nd527c0478834433ba14154e35fc5f4d8b146		OriginLocation		
+292
+modelled by		modelledBy intends to represent that product objects follow particular product models.		http://w3id.org/CEON/ontology/product/modelledBy		Item		Product		
+293
+has aimed value		A value proposition has specific aimed values.		http://w3id.org/CEON/ontology/value/hasAimedValue		ValueProposition		Value		
+294
+has associated value		A value perception about creating/destoring/missing some value.		http://w3id.org/CEON/ontology/value/hasAssociatedValue		ValuePerception		Value		
+295
+targetting actor		A value proposition is about some actors.		http://w3id.org/CEON/ontology/value/targettingActor		ValueProposition		Actor		
+296
+targetting value participation		A value proposition is about some participation.		http://w3id.org/CEON/ontology/value/targettingValueParticipation		ValueProposition		ValueParticipation		
+297
+has organisation location		Represent that an organisation has some locations.		http://w3id.org/CEON/ontology/actor/hasOrganisationLocation		Organisation		OrganisationLocation		
+298
+capability property		Relates some properties to the capability, such as the parameters of it, or the needed resources.		http://w3id.org/CEON/ontology/actorODP/capabilityProperty		Capability		
+299
+participating object		Participating object in a resource participation. This is part of a resource participation that can be a directional relation, and the participating object is the end point of the relation.		http://w3id.org/CEON/ontology/actorODP/participatingObject		ResourceParticipation		Resource		
+300
+participation in		The collaboration or process that this participation relates to.		http://w3id.org/CEON/ontology/actorODP/participationIn		CollaborationParticipation		nd527c0478834433ba14154e35fc5f4d8b149		
+301
+related strategy		A strategy that is targeted by this CVN or CVN blueprint.		http://w3id.org/CEON/ontology/cvn/relatedStrategy		
+302
+compliance with		Represents what the compliance is compliant with (e.g. a standard or regulation).		http://w3id.org/CEON/ontology/product/complianceWith		Compliance		
+303
+has composition		hasComposition intends to represent that a product model or physical object can have compostition information.		http://w3id.org/CEON/ontology/product/hasComposition		nd527c0478834433ba14154e35fc5f4d8b165		Composition		
+304
+has batch		hasBatch intends to represent that a set of objects can be captured by a number of batches where each batch contains a number of physical objects.		http://w3id.org/CEON/ontology/resourceODP/hasBatch		SetOfObjects		BatchOfObjects		
+305
+has constituent		hasConstitutent intends to represent that a physical object can have a collection of composing components.		http://w3id.org/CEON/ontology/resourceODP/hasConstituent		PhysicalObject		Constituent		
+306
+has matter		hasMatter intends to represent that a physical object can have a collection of matter.		http://w3id.org/CEON/ontology/resourceODP/hasMatter		PhysicalObject		Matter		
+307
+has part		Indicating that something is part of or is contained by something else.		http://w3id.org/CEON/ontology/resourceODP/hasPart		
+308
+has resource condition		A resource can has specifc conditions.		http://w3id.org/CEON/ontology/resourceODP/hasResourceCondition		Resource		ResourceCondition		
+309
+has resource property		A resource can has specifc properties.		http://w3id.org/CEON/ontology/resourceODP/hasResourceProperty		Resource		ResourceProperty		
+310
+has resource quality		A resource can has specifc qualities.		http://w3id.org/CEON/ontology/resourceODP/hasResourceQuality		Resource		ResourceQuality		
+311
+participating actor		Holds the value of the actor involved in this participation relation.		http://w3id.org/CEON/ontology/actorODP/participatingActor		Participation		Actor		
+312
+participating resource		The resource that this participation relation relates to, i.e. for which the actor holds the specified role.		http://w3id.org/CEON/ontology/actorODP/participatingResource		ResourceRelation		Resource		
+313
+has value proposition targets		A value proposition is proposed about specific actors, participations or resources.		http://w3id.org/CEON/ontology/value/hasVPTargets		
+314
+has input		The inputs to a process or event.		http://w3id.org/CEON/ontology/processODP/hasInput		Process		
+315
+has output		The output of a process or event.		http://w3id.org/CEON/ontology/processODP/hasOutput		Process		
+316
+has part		A process or event can consist of several parts, which are sub-processes (e.g. steps) or events.		http://w3id.org/CEON/ontology/processODP/hasPart		
+317
+has dimension		hasDimension is used to describe a dimension of a product or product object.		http://w3id.org/CEON/ontology/quantity/hasDimension		
+318
+has physical object		hasPhysicalObject intends to represent that a batch of objects or a set of objects can have composing components of physical objects.		http://w3id.org/CEON/ontology/resourceODP/hasPhysicalObject		nd527c0478834433ba14154e35fc5f4d8b198		PhysicalObject		
+319
+has location		Represents the location of an actor or resource.		http://w3id.org/CEON/ontology/location/hasLocation		Location		
+320
+has process cost		represents that a process can have a cost		http://w3id.org/CEON/ontology/quantity/hasProcessCost		
+321
+is the setting for		The thing(s) that this situation is the setting for, e.g. a resource that is in a certain state.		http://w3id.org/CEON/ontology/processODP/isSettingFor		Situation		
+322
+participant role		Holds the value of the role of the participant in this participation relation.		http://w3id.org/CEON/ontology/actorODP/participantRole		Participation		Role		
