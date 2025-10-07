@@ -20,6 +20,7 @@ from parent directory install:
 `python service.py`
 
 `pip install gunicorn`
+
 `gunicorn -w 1 -b 0.0.0.0:8000 app_preload:app`
 
 ## Test the api in the third terminal:
@@ -32,3 +33,4 @@ from parent directory install:
     "dp_count": 5
   }' | jq
 ```
+
