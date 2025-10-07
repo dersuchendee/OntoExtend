@@ -14,8 +14,6 @@ from rdflib.namespace import SKOS
 import sys
 
 
-dataset_path = ''
-# dataset_path = '..\..\Dataset\OntoDESIDECoreOntology'
 
 
 
@@ -23,7 +21,7 @@ dataset_path = ''
 
 
 
-def init_rag(batch_size = 20,core_ontology_path = dataset_path):
+def init_rag(core_ontology_path,batch_size = 20,):
     merged_ttl_content = merge_ontologies(core_ontology_path)
     def make_prompt(comp):
         Prompt = ''
@@ -33,7 +31,7 @@ def init_rag(batch_size = 20,core_ontology_path = dataset_path):
             Prompt += value + '\n'
         return Prompt
 
-    components = Fetch_components('merged.ttl')
+    components = Fetch_components('RAG2/merged.ttl')
     Prompts_classes = {}
     Prompts_classes_full_info = {}
     Prompts_OP = {}
@@ -210,25 +208,13 @@ def extract_ontology(input_ttl, uri_list, output_ttl):
 
 
 def RAG(Query="What are the components of a product?",init_rag_flag=False,class_count=10, op_count=5, dp_count=3,core='OntoDESIDECoreOntology'):
-    current_path = os.getcwd()
-
-# Print the absolute path from the root
-    two_up = os.path.abspath(os.path.join(current_path, '..', '..','Dataset'))
-
-    print(two_up)
-    # dataset_path = '..\..\..\Dataset\\'+core
     dataset_path = '../../Dataset/'+core
-    try:
-        Query = sys.argv[1]
-    except:
-        pass
-
 
     if init_rag_flag:
         init_rag(core_ontology_path = dataset_path)
+
     input_file = "RAG2/merged.ttl"
     
-
     URIs = RAG_extract_URIs(Query,class_count, op_count, dp_count)
 
     output_file = "output.ttl"

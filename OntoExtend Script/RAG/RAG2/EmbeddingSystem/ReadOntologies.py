@@ -42,12 +42,12 @@ def merge_ontologies(input_dir = "..\..\..\..\Dataset\OntoDESIDECoreOntology"):
         merged_graph.bind(prefix, ns)
 
     # Step 4: Save merged graph as Turtle
-    merged_graph.serialize(destination="merged.ttl", format="turtle")
-    return open("merged.ttl", "r",encoding= 'UTF-8').read()  # Ensure newline at end of file
+    merged_graph.serialize(destination="RAG2/merged.ttl", format="turtle")
+    return open("RAG2/merged.ttl", "r",encoding= 'UTF-8').read()  # Ensure newline at end of file
 
 
-def Fetch_components(owl_path = "../../merged.ttl"):
-
+def Fetch_components(owl_path = "RAG2/merged.ttl"):
+    print(owl_path)
     # Path to your TTL
     
 

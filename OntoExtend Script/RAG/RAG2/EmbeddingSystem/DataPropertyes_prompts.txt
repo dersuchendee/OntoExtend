@@ -1,82 +1,82 @@
-323
-participation end time		The end of a time interval.		http://w3id.org/CEON/ontology/actorODP/participationEndTime		Participation		nd527c0478834433ba14154e35fc5f4d8b91		
-324
+425
+participation end time		The end of a time interval.		http://w3id.org/CEON/ontology/actorODP/participationEndTime		Participation		n723c76be6fda4f749a825de0e6f5e592b271 AND n723c76be6fda4f749a825de0e6f5e592b276 AND n723c76be6fda4f749a825de0e6f5e592b281		
+426
 has carbon intensity		hasCarbonIntensity measures how intensive that the carbon is for an energy source.		http://w3id.org/CEON/ontology/energy/hasCarbonIntensity		EnergySource		double		
-325
+427
 has energy component percentage		hasEnergyComponentPercentage represents the percentage of a particular energy as a composition.		http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage		EnergyComposition		double		
-326
+428
 has sustainability		hasSustainability measures how sustainable an energy source is.		http://w3id.org/CEON/ontology/energy/hasSustainability		EnergySource		double		
-327
+429
 has country code		Represents the code of a country's name according to ISO 3166-1.		http://w3id.org/CEON/ontology/location/hasCountryCode		string		
-328
+430
 has global location number		The Global Location Number (GLN) is part of the GS1 systems of standards.		http://w3id.org/CEON/ontology/location/hasGlobalLocationNumber		string		
-329
+431
 anonymous formula		anonymousFormula represents that a molecular entity has the anonymous formula in a string.		http://w3id.org/CEON/ontology/material/anonymousFormula		
-330
+432
 descriptive formula		descriptiveFormula represents that a molecular entity has the descriptive formula in a string.		http://w3id.org/CEON/ontology/material/descriptiveFormula		
-331
+433
 hill formula		hillFormula represents that a composition has the hill formula in a string.		http://w3id.org/CEON/ontology/material/hillFormula		
-332
+434
 reduced chemical formula		reducedChemicalFormula represents that a molecular entity has the reduced chemical formula in a string.		http://w3id.org/CEON/ontology/material/reducedChemicalFormula		
-333
+435
 occurs at time		Represents the time at which something takes place.		http://w3id.org/CEON/ontology/plan/occursAtTime		PlanExecution		dateTime		
-334
+436
 end time		Represents the end time of a time interval.		http://w3id.org/CEON/ontology/processODP/endTime		TimeInterval		dateTime		
-335
+437
 start time		Represents the start time of a time interval.		http://w3id.org/CEON/ontology/processODP/startTime		TimeInterval		dateTime		
-336
+438
 composition quantity		compositionQuantity represents the quantity of elements of a composition.		http://w3id.org/CEON/ontology/product/compositionQuantity		Composition		double		
-337
+439
 has brand		The brand name of a product.		http://w3id.org/CEON/ontology/product/hasBrand		string		
-338
+440
 has certificate		Link to the the certificate that certifies the compliance		http://w3id.org/CEON/ontology/product/hasCertificate		Compliance		
-339
+441
 Global Trade Item Number (GTIN)		http://w3id.org/CEON/ontology/product/hasGlobalTradeItemNumber		string		
-340
+442
 product name		The name of a product.		http://w3id.org/CEON/ontology/product/hasProductName		string		
-341
+443
 numerical max value		represents the maximal value of a quantity		http://w3id.org/CEON/ontology/quantity/numericalMaxValue		double		
-342
+444
 numerical min value		represents the minimal value of a quantity		http://w3id.org/CEON/ontology/quantity/numericalMinValue		double		
-343
+445
 batch ID		identifier for a batch		http://w3id.org/CEON/ontology/resourceODP/batchID		BatchOfObjects		string		
-344
+446
 batch label		label for a batch		http://w3id.org/CEON/ontology/resourceODP/batchLabel		BatchOfObjects		string		
-345
+447
 http://www.opengis.net/ont/geosparql#asGML		Geometry		gmlLiteral		
-346
+448
 http://www.opengis.net/ont/geosparql#asGeoJSON		Geometry		geoJSONLiteral		
-347
+449
 http://www.opengis.net/ont/geosparql#asWKT		Geometry		wktLiteral		
-348
+450
 http://www.w3.org/2003/01/geo/wgs84_pos#lat		
-349
+451
 http://www.w3.org/2003/01/geo/wgs84_pos#long		
-350
+452
 Represent name of an organisation., has organisation name		http://w3id.org/CEON/ontology/actor/hasOrganisationName		Organisation		string		
-351
-participation start time		The start of a time interval.		http://w3id.org/CEON/ontology/actorODP/participationStartTime		Participation		nd527c0478834433ba14154e35fc5f4d8b129		
-352
-participation time point		The point in time when something took place or was valid.		http://w3id.org/CEON/ontology/actorODP/participationTimePoint		Participation		nd527c0478834433ba14154e35fc5f4d8b134		
-353
+453
+participation start time		The start of a time interval.		http://w3id.org/CEON/ontology/actorODP/participationStartTime		Participation		n723c76be6fda4f749a825de0e6f5e592b385 AND n723c76be6fda4f749a825de0e6f5e592b390 AND n723c76be6fda4f749a825de0e6f5e592b395		
+454
+participation time point		The point in time when something took place or was valid.		http://w3id.org/CEON/ontology/actorODP/participationTimePoint		Participation		n723c76be6fda4f749a825de0e6f5e592b400 AND n723c76be6fda4f749a825de0e6f5e592b405 AND n723c76be6fda4f749a825de0e6f5e592b410		
+455
 http://w3id.org/CEON/ontology/processODP/occursAtTime		
-354
+456
 Country of assembly		Used to represent the country of assembly of a product or product object (item).		http://w3id.org/CEON/ontology/product/countryOfAssembly		AssemblyLocation		string		
-355
+457
 Country of manufacture		Used to represent the country of manufacture of a product or product object (item).		http://w3id.org/CEON/ontology/product/countryOfManufacture		ManufactureLocation		string		
-356
+458
 Country of origin		Used to represent the country of origin of a product or product object (item).		http://w3id.org/CEON/ontology/product/countryOfOrigin		OriginLocation		string		
-357
+459
 Country of production		Used to represent the country of production of a product or product object (item).		http://w3id.org/CEON/ontology/product/countryOfProduction		ProductionLocation		string		
-358
+460
 production site		The name of a production site location		http://w3id.org/CEON/ontology/product/productionSite		ProductionLocation		string		
-359
+461
 batch size		batchSize intends to repsent how many physical objects are belong to a batch of objects.		http://w3id.org/CEON/ontology/resourceODP/batchSize		BatchOfObjects		nonNegativeInteger		
-360
+462
 has city		Represents the name of a city.		http://w3id.org/CEON/ontology/location/hasCity		string		
-361
+463
 has country		Represents the name of a country.		http://w3id.org/CEON/ontology/location/hasCountry		string		
-362
+464
 has postal code		Represent postal code		http://w3id.org/CEON/ontology/location/hasPostalCode		string		
-363
+465
 has street address		Represents address of a street, including e.g., street number and name.		http://w3id.org/CEON/ontology/location/hasStreetAddress		string		
