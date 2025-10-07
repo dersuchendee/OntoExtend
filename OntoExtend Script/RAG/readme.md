@@ -24,7 +24,8 @@ from parent directory install:
 `gunicorn -w 1 -b 0.0.0.0:8000 app_preload:app`
 
 ## Test the api in the third terminal:
-```curl -sS -X POST http://localhost:8000/run   -H "Content-Type: application/json"   -d '{
+```
+curl -sS -X POST http://localhost:8000/run   -H "Content-Type: application/json"   -d '{
     "cq":"Who owns a product?",
     "start_rag": true,
     "core": "OntoDESIDECoreOntology",
@@ -33,4 +34,5 @@ from parent directory install:
     "dp_count": 5
   }' | jq
 ```
+
 
