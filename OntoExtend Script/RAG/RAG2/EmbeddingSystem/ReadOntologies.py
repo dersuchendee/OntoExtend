@@ -47,7 +47,7 @@ def merge_ontologies(input_dir = "..\..\..\..\Dataset\OntoDESIDECoreOntology"):
 
 
 def Fetch_components(owl_path = "RAG2/merged.ttl"):
-    print(owl_path)
+    # print(owl_path)
     # Path to your TTL
     
 

@@ -6,7 +6,7 @@ from RAG2.EmbeddingSystem.ReadOntologies import merge_ontologies, Fetch_componen
 
 import faiss
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
-from OllamaEmbedder import OllamaEmbedderQWEN
+from JavadEmbedder import OllamaEmbedderQWEN
 import time
 from owlready2 import *
 from rdflib import Graph, Namespace, URIRef, BNode, RDF, RDFS, OWL
@@ -21,14 +21,17 @@ import sys
 
 
 
-def init_rag(core_ontology_path,batch_size = 20,):
+def init_rag(core_ontology_path,batch_size = 20,llm='qwen3-embedding:4b',prompt='newline'):
     merged_ttl_content = merge_ontologies(core_ontology_path)
-    def make_prompt(comp):
+    def make_prompt(comp,prompt):
         Prompt = ''
         for key, value in comp.items():
             if key == 'Internal_RAG_ID' or key == 'Type':
                 continue
-            Prompt += value + '\n'
+            if prompt == 'newline':
+                Prompt += value + '\n'
+            if prompt == 'pipe':
+                Prompt += value + ' |'
         return Prompt
 
     components = Fetch_components('RAG2/merged.ttl')
@@ -41,13 +44,13 @@ def init_rag(core_ontology_path,batch_size = 20,):
     Internal_RAG_ID = 0
     for comp in components:
         if comp['Type'] == 'Class':
-            Prompts_classes[Internal_RAG_ID] = make_prompt(comp)
+            Prompts_classes[Internal_RAG_ID] = make_prompt(comp,prompt)
             Prompts_classes_full_info[Internal_RAG_ID] = comp
         elif comp['Type'] == 'ObjectProperty':
-            Prompts_OP[Internal_RAG_ID] = make_prompt(comp)
+            Prompts_OP[Internal_RAG_ID] = make_prompt(comp,prompt)
             Prompts_OP_full_info[Internal_RAG_ID] = comp
         elif comp['Type'] == 'DatatypeProperty':
-            Prompts_DP[Internal_RAG_ID] = make_prompt(comp)
+            Prompts_DP[Internal_RAG_ID] = make_prompt(comp,prompt)
             Prompts_DP_full_info[Internal_RAG_ID] = comp
         else:
             continue
@@ -207,11 +210,12 @@ def extract_ontology(input_ttl, uri_list, output_ttl):
 
 
 
-def RAG(Query="What are the components of a product?",init_rag_flag=False,class_count=10, op_count=5, dp_count=3,core='OntoDESIDECoreOntology'):
+def RAG(Query="What are the components of a product?",init_rag_flag=False,class_count=10, op_count=5,
+         dp_count=3,core='OntoDESIDECoreOntology',llm='qwen3-embedding:4b',prompt='newline'):
     dataset_path = '../../Dataset/'+core
 
     if init_rag_flag:
-        init_rag(core_ontology_path = dataset_path)
+        init_rag(core_ontology_path = dataset_path,llm=llm,prompt=prompt)
 
     input_file = "RAG2/merged.ttl"
     

@@ -1,0 +1,230 @@
+@prefix actor: <http://w3id.org/CEON/ontology/actor/> .
+@prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
+@prefix location: <http://w3id.org/CEON/ontology/location/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+actor:BuyingResource a owl:Class ;
+    rdfs:label "Buying resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the buyer of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:buyer ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:ManufacturingResource a owl:Class ;
+    rdfs:label "Manufacturing resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the manufacturer of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:manufacturer ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:OwningResource a owl:Class ;
+    rdfs:label "Owning resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the owner of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:owner ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:ProducingResource a owl:Class ;
+    rdfs:label "Producing resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the producer of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:producer ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:SellingResource a owl:Class ;
+    rdfs:label "Selling resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the seller of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:seller ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+actor:UsingResource a owl:Class ;
+    rdfs:label "Using resource"^^xsd:string ;
+    rdfs:comment "The relation where the role of the actor is the user of a certain resource."^^xsd:string ;
+    rdfs:subClassOf actorODP:ResourceRelation ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
+                        owl:hasValue actor:user ;
+                        owl:onProperty actorODP:participantRole ] ) ] .
+
+<http://w3id.org/CEON/ontology/product/Compliance> a owl:Class ;
+    rdfs:label "Compliance"^^xsd:string ;
+    rdfs:comment "Represents that something is compliant with some standard or has a received a certain certification."^^xsd:string .
+
+<http://w3id.org/CEON/ontology/product/Solution> a owl:Class ;
+    rdfs:label "Solution"^^xsd:string ;
+    rdfs:comment "Product or service, or a combination thereof, that fulfils a need of an interested party."^^xsd:string ;
+    rdfs:isDefinedBy "ISO 59004:2024 - 3.2.1 solution"^^xsd:string .
+
+<http://w3id.org/CEON/ontology/product/SupplierLocation> a owl:Class ;
+    rdfs:label "Supplier Location"^^xsd:string ;
+    rdfs:comment "The location of supplier of a product or item."^^xsd:string ;
+    rdfs:subClassOf location:Location .
+
+<http://w3id.org/CEON/ontology/product/hasBrand> a owl:DatatypeProperty ;
+    rdfs:label "has brand"^^xsd:string ;
+    rdfs:comment "The brand name of a product."^^xsd:string ;
+    rdfs:range xsd:string .
+
+<http://w3id.org/CEON/ontology/product/hasOriginLocation> a owl:ObjectProperty ;
+    rdfs:label "has origin location"^^xsd:string ;
+    rdfs:comment "Used to represent the location of origin of a product or product object (item)."^^xsd:string ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( <http://w3id.org/CEON/ontology/product/Item> <http://w3id.org/CEON/ontology/product/Product> ) ] ;
+    rdfs:range <http://w3id.org/CEON/ontology/product/OriginLocation> ;
+    rdfs:subPropertyOf location:hasLocation .
+
+<http://w3id.org/CEON/ontology/product/hasProductComponent> a owl:ObjectProperty ;
+    rdfs:label "has product component"^^xsd:string ;
+    rdfs:comment "hasProductComponent intends to represent that a product can have other product components."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/Product> ;
+    rdfs:range <http://w3id.org/CEON/ontology/product/Product> .
+
+<http://w3id.org/CEON/ontology/product/hasProductName> a owl:DatatypeProperty ;
+    rdfs:label "product name"^^xsd:string ;
+    rdfs:comment "The name of a product."^^xsd:string ;
+    rdfs:range xsd:string .
+
+<http://w3id.org/CEON/ontology/product/hasProductObjectComponent> a owl:ObjectProperty ;
+    rdfs:label "has product object component"^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/Item> ;
+    rdfs:range <http://w3id.org/CEON/ontology/product/Item> .
+
+<http://w3id.org/CEON/ontology/product/modelledBy> a owl:ObjectProperty ;
+    rdfs:label "modelled by"^^xsd:string ;
+    rdfs:comment "modelledBy intends to represent that product objects follow particular product models."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/Item> ;
+    rdfs:range <http://w3id.org/CEON/ontology/product/Product> .
+
+<http://w3id.org/CEON/ontology/product/ManufactureLocation> a owl:Class ;
+    rdfs:label "Manufacture Location"^^xsd:string ;
+    rdfs:comment "The location where a physical object is manufactured."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasPostalCode ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/countryOfManufacture> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasCity ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasStreetAddress ],
+        location:Location .
+
+<http://w3id.org/CEON/ontology/product/countryOfManufacture> a owl:DatatypeProperty ;
+    rdfs:label "Country of manufacture"^^xsd:string ;
+    rdfs:comment "Used to represent the country of manufacture of a product or product object (item)."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/ManufactureLocation> ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf location:hasCountry .
+
+<http://w3id.org/CEON/ontology/product/countryOfOrigin> a owl:DatatypeProperty ;
+    rdfs:label "Country of origin"^^xsd:string ;
+    rdfs:comment "Used to represent the country of origin of a product or product object (item)."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/OriginLocation> ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf location:hasCountry .
+
+<http://w3id.org/CEON/ontology/product/countryOfProduction> a owl:DatatypeProperty ;
+    rdfs:label "Country of production"^^xsd:string ;
+    rdfs:comment "Used to represent the country of production of a product or product object (item)."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/ProductionLocation> ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf location:hasCountry .
+
+<http://w3id.org/CEON/ontology/product/productionSite> a owl:DatatypeProperty ;
+    rdfs:label "production site"^^xsd:string ;
+    rdfs:comment "The name of a production site location"^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/ProductionLocation> ;
+    rdfs:range xsd:string .
+
+<http://w3id.org/CEON/ontology/product/OriginLocation> a owl:Class ;
+    rdfs:label "Origin Location"^^xsd:string ;
+    rdfs:comment "The origin location of a physical object"^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasPostalCode ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasCity ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasStreetAddress ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/countryOfOrigin> ],
+        location:Location .
+
+<http://w3id.org/CEON/ontology/product/ProductionLocation> a owl:Class ;
+    rdfs:label "Production Location"^^xsd:string ;
+    rdfs:comment "The production location of a physical object"^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/productionSite> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasStreetAddress ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/countryOfProduction> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasCity ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasPostalCode ],
+        location:Location .
+
+location:hasCity a owl:DatatypeProperty ;
+    rdfs:label "has city"^^xsd:string ;
+    rdfs:comment "Represents the name of a city."^^xsd:string ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+location:hasPostalCode a owl:DatatypeProperty ;
+    rdfs:label "has postal code"^^xsd:string ;
+    rdfs:comment "Represent postal code"^^xsd:string ;
+    rdfs:range xsd:string ;
+    rdfs:seeAlso "Universal Postal Union (UPU) S42 standard"^^xsd:string ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+location:hasStreetAddress a owl:DatatypeProperty ;
+    rdfs:label "has street address"^^xsd:string ;
+    rdfs:comment "Represents address of a street, including e.g., street number and name."^^xsd:string ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+actorODP:participantRole a owl:ObjectProperty ;
+    rdfs:label "participant role"^^xsd:string ;
+    rdfs:comment "Holds the value of the role of the participant in this participation relation."^^xsd:string ;
+    rdfs:domain actorODP:Participation ;
+    rdfs:range actorODP:Role .
+

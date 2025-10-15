@@ -50,6 +50,17 @@ if __name__ == "__main__":
         help="number of object properties that RAG returns to you, 4-8 is a good number"
     )
 
+    parser.add_argument(
+        "-llm",# "--core",
+        default=" ",
+        help="qwen3-embedding:4b"
+    )
+    parser.add_argument(
+        "-prompt",# "--core",
+        default="newline",
+        help=""
+    )
+
     args = parser.parse_args()
     print(args)
     core = args.core
@@ -58,7 +69,9 @@ if __name__ == "__main__":
     class_count = args.class_count
     op_count = args.op_count
     dp_count = args.dp_count
+    llm = args.llm
+    prompt=args.prompt
 
     RAG.RAG(Query=competency_question,init_rag_flag=start_rag,
-        class_count=class_count, op_count=op_count, dp_count=dp_count,core=core)
+        class_count=class_count, op_count=op_count, dp_count=dp_count,core=core,llm=llm,prompt=prompt)
 
