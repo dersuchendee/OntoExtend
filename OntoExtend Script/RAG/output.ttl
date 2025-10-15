@@ -2,8 +2,10 @@
 @prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
 @prefix location: <http://w3id.org/CEON/ontology/location/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix processODP: <http://w3id.org/CEON/ontology/processODP/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 actor:BuyingResource a owl:Class ;
@@ -60,6 +62,11 @@ actor:UsingResource a owl:Class ;
                         owl:hasValue actor:user ;
                         owl:onProperty actorODP:participantRole ] ) ] .
 
+<http://w3id.org/CEON/ontology/process/BuyResourceProcess> a owl:Class ;
+    rdfs:label "Buy Resource Process"^^xsd:string ;
+    rdfs:comment "A process of buying a resource."^^xsd:string ;
+    rdfs:subClassOf processODP:Process .
+
 <http://w3id.org/CEON/ontology/product/Compliance> a owl:Class ;
     rdfs:label "Compliance"^^xsd:string ;
     rdfs:comment "Represents that something is compliant with some standard or has a received a certain certification."^^xsd:string .
@@ -109,6 +116,22 @@ actor:UsingResource a owl:Class ;
     rdfs:domain <http://w3id.org/CEON/ontology/product/Item> ;
     rdfs:range <http://w3id.org/CEON/ontology/product/Product> .
 
+actorODP:Role a owl:Class ;
+    rdfs:label "Role"^^xsd:string ;
+    rdfs:comment "A role that an actor can take in a specific context. Applies both to roles in the context of resources, such as owner, manufacturer, reseller etc. of that resource, as well as roles in relation to a circular value network, such as recycler, dismantler, transporter etc., in relation to a material flow."^^xsd:string .
+
+actorODP:participatingActor a owl:ObjectProperty ;
+    rdfs:label "participating actor"^^xsd:string ;
+    rdfs:comment "Holds the value of the actor involved in this participation relation."^^xsd:string ;
+    rdfs:domain actorODP:Participation ;
+    rdfs:range actorODP:Actor .
+
+actorODP:participatingResource a owl:ObjectProperty ;
+    rdfs:label "participating resource"^^xsd:string ;
+    rdfs:comment "The resource that this participation relation relates to, i.e. for which the actor holds the specified role."^^xsd:string ;
+    rdfs:domain actorODP:ResourceRelation ;
+    rdfs:range resourceODP:Resource .
+
 <http://w3id.org/CEON/ontology/product/ManufactureLocation> a owl:Class ;
     rdfs:label "Manufacture Location"^^xsd:string ;
     rdfs:comment "The location where a physical object is manufactured."^^xsd:string ;
@@ -119,15 +142,15 @@ actor:UsingResource a owl:Class ;
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
+            owl:onProperty location:hasStreetAddress ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
             owl:onProperty <http://w3id.org/CEON/ontology/product/countryOfManufacture> ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty location:hasCity ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty location:hasStreetAddress ],
         location:Location .
 
 <http://w3id.org/CEON/ontology/product/countryOfManufacture> a owl:DatatypeProperty ;
@@ -163,25 +186,29 @@ actor:UsingResource a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
-            owl:onProperty location:hasPostalCode ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty location:hasCity ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
             owl:onProperty location:hasStreetAddress ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty <http://w3id.org/CEON/ontology/product/countryOfOrigin> ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasPostalCode ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasCity ],
         location:Location .
 
 <http://w3id.org/CEON/ontology/product/ProductionLocation> a owl:Class ;
     rdfs:label "Production Location"^^xsd:string ;
     rdfs:comment "The production location of a physical object"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty location:hasPostalCode ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty <http://w3id.org/CEON/ontology/product/productionSite> ],
@@ -197,10 +224,6 @@ actor:UsingResource a owl:Class ;
             owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onDataRange xsd:string ;
             owl:onProperty location:hasCity ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty location:hasPostalCode ],
         location:Location .
 
 location:hasCity a owl:DatatypeProperty ;
@@ -227,4 +250,18 @@ actorODP:participantRole a owl:ObjectProperty ;
     rdfs:comment "Holds the value of the role of the participant in this participation relation."^^xsd:string ;
     rdfs:domain actorODP:Participation ;
     rdfs:range actorODP:Role .
+
+actorODP:ResourceRelation a owl:Class ;
+    rdfs:label "Resource Relation"^^xsd:string ;
+    rdfs:comment "A relation between a resource, an actor, and the role the actor has in relation to the resource. For instance, the role of owner that a certain actor takes for a certain resource for a certain period of time. Or the seller of a certain resource, until that resource has been sold, and the actor no longer has that role in relation to the resource."^^xsd:string,
+        "The relation involving the role of a certain actor with respect to a certain resource, e.g. an organisation or individual (actor) owning (role) a specific product (resource) at a specific point or period in time."^^xsd:string ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( actorODP:Participation [ a owl:Restriction ;
+                        owl:onProperty actorODP:participantRole ;
+                        owl:someValuesFrom actor:ActorResourceRole ] [ a owl:Restriction ;
+                        owl:onProperty actorODP:participatingActor ;
+                        owl:someValuesFrom actorODP:Actor ] [ a owl:Restriction ;
+                        owl:onProperty actorODP:participatingResource ;
+                        owl:someValuesFrom resourceODP:Resource ] ) ],
+        actorODP:Participation .
 

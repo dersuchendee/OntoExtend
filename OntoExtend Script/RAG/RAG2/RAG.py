@@ -1,12 +1,14 @@
 import sys
 import os
 import numpy as np
-
+import pandas as pd
+import os
 from RAG2.EmbeddingSystem.ReadOntologies import merge_ontologies, Fetch_components
-
+from pathlib import Path
+import re
 import faiss
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
-from JavadEmbedder import OllamaEmbedderQWEN
+from JavadEmbedders import OllamaEmbedderQWEN,LiUAzureEmbedder
 import time
 from owlready2 import *
 from rdflib import Graph, Namespace, URIRef, BNode, RDF, RDFS, OWL
@@ -21,7 +23,7 @@ import sys
 
 
 
-def init_rag(core_ontology_path,batch_size = 20,llm='qwen3-embedding:4b',prompt='newline'):
+def init_rag(core_ontology_path,batch_size = 40,llm='qwen3-embedding:4b',prompt='newline'):
     merged_ttl_content = merge_ontologies(core_ontology_path)
     def make_prompt(comp,prompt):
         Prompt = ''
@@ -56,7 +58,7 @@ def init_rag(core_ontology_path,batch_size = 20,llm='qwen3-embedding:4b',prompt=
             continue
         Internal_RAG_ID += 1
 
-    def CreateEmbeddingSpace(Prompts_dict,type_str): #embeds all classes and properties and save to files
+    def CreateEmbeddingSpace(Prompts_dict,type_str,llm): #embeds all classes and properties and save to files
         keys = list(Prompts_dict.keys())
         values = list(Prompts_dict.values())
         for i in range(len(keys)):
@@ -68,7 +70,15 @@ def init_rag(core_ontology_path,batch_size = 20,llm='qwen3-embedding:4b',prompt=
             print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), f" Processing batch {i//batch_size + 1} / {(len(keys)-1)//batch_size + 1}")
             batch_keys = keys[i:i+batch_size]
             batch_values = values[i:i+batch_size]
-            embeddings = OllamaEmbedderQWEN(batch_values)
+
+            # if llm == 'qwen3-embedding:4b':
+            #     embeddings = OllamaEmbedderQWEN(batch_values)
+            if 'text-embedding' in llm:
+                embeddings = LiUAzureEmbedder(batch_values,llm)
+            else:
+                embeddings = OllamaEmbedderQWEN(batch_values,llm=llm)
+
+   
             try:
                 prev_embeddings = open('RAG2/EmbeddingSystem/'+type_str+'es_vecs.txt','r',encoding='utf-8').readlines()
             except:
@@ -80,14 +90,14 @@ def init_rag(core_ontology_path,batch_size = 20,llm='qwen3-embedding:4b',prompt=
                 f.write(str(batch_keys[j]) + '\n')
                 f.write(','.join([str(x) for x in embeddings[j]]) + '\n')
 
-    CreateEmbeddingSpace(Prompts_classes,'Class')
-    CreateEmbeddingSpace(Prompts_OP,'ObjectProperty')
-    CreateEmbeddingSpace(Prompts_DP,'DataProperty')
+    CreateEmbeddingSpace(Prompts_classes,'Class',llm=llm)
+    CreateEmbeddingSpace(Prompts_OP,'ObjectProperty',llm=llm)
+    CreateEmbeddingSpace(Prompts_DP,'DataProperty',llm=llm)
 
     np.save('RAG2/EmbeddingSystem/Prompts_full_info.npy', np.array([Prompts_classes_full_info, Prompts_OP_full_info, Prompts_DP_full_info], dtype=object))
 
 
-def RAG_extract_URIs(Query,class_count=15, op_count=5, dp_count=5):
+def RAG_extract_URIs(Query,class_count=15, op_count=5, dp_count=5,llm='qwen3-embedding:4b'):
 
     def RetriveComponents(Query_vector, class_count=15, op_count=5, dp_count=5):
         def Retrive(Query_vector, top_k=5,type_str='Class'):
@@ -109,6 +119,8 @@ def RAG_extract_URIs(Query,class_count=15, op_count=5, dp_count=5):
             
 
             index.add(vectors)
+            if Query_vector.ndim == 1:
+                Query_vector = Query_vector.reshape(1, -1)
             scores, indices = index.search(np.array(Query_vector,dtype=np.float32), top_k)#;print('hi1')
             nearest_keys = [keys[i] for i in indices[0]]
             return nearest_keys, scores[0],{k:prompts_keys[k] for k in nearest_keys}
@@ -121,8 +133,12 @@ def RAG_extract_URIs(Query,class_count=15, op_count=5, dp_count=5):
             OP_nearest_keys, OP_scores, OP_info,\
             DP_nearest_keys, DP_scores, DP_info
 
-
-    Query_vector = OllamaEmbedderQWEN([Query])
+    # if llm == 'qwen3-embedding:4b':
+    #     Query_vector = OllamaEmbedderQWEN([Query])[0]
+    if  'text-embedding' in llm:
+        Query_vector = LiUAzureEmbedder([Query],llm)[0]
+    else:
+        Query_vector = OllamaEmbedderQWEN([Query],llm=llm)[0]
 
 
     Class_nearest_keys, Class_scores, Class_info, \
@@ -143,7 +159,17 @@ def RAG_extract_URIs(Query,class_count=15, op_count=5, dp_count=5):
         nearestClasses, nearestClassesScores, info = item
         for k,v in info.items():
             URIs.append(components[k]['URI'])
-    return URIs    
+
+    labels,comments = [],[]
+    for item in RAG_return:
+        nearestClasses, nearestClassesScores, info = item
+        for k,v in info.items():
+            lbl = '' if 'Labels' not in components[k] else components[k]['Labels']
+            cms = '' if 'Comments' not in components[k] else components[k]['Comments']
+            labels.append(lbl)
+            comments.append(cms)
+
+    return URIs ,RAG_return,labels,comments
   
 
 def extract_blank_node_triples(g, bnode, output_g, visited=None, uri_refs_to_add=None):
@@ -215,13 +241,56 @@ def RAG(Query="What are the components of a product?",init_rag_flag=False,class_
     dataset_path = '../../Dataset/'+core
 
     if init_rag_flag:
+        directory = Path("RAG2/EmbeddingSystem")
+
+        # Regex pattern
+        pattern = re.compile(r".*\.(txt|npy)$")
+
+        # Loop through files and delete
+        for file_path in directory.iterdir():
+            if pattern.match(file_path.name):
+                file_path.unlink()  # deletes the file
+                print(f"Deleted: {file_path}")
         init_rag(core_ontology_path = dataset_path,llm=llm,prompt=prompt)
 
     input_file = "RAG2/merged.ttl"
-    
-    URIs = RAG_extract_URIs(Query,class_count, op_count, dp_count)
+    #RAG_return = [[Class_nearest_keys, Class_scores, Class_info],
+                #[OP_nearest_keys, OP_scores, OP_info],
+                 #   [DP_nearest_keys, DP_scores, DP_info]]
+
+
+
+    URIs , RAG_return,labels,comments = RAG_extract_URIs(Query, class_count,
+                                                          op_count, dp_count,llm=llm)
+
+    # print('URIs',URIs)
+    import datetime
+    log  = {
+    'TimeStamp' : [datetime.datetime.now() for i in range(len(URIs))],
+    "CQ": [Query for i in range(len(URIs))],
+    "LLM": [llm for i in range(len(URIs))],
+    'Entity URI':URIs,
+    'Entity Type':  ['Class' for i in range(len(RAG_return[0][1]))]+\
+                    ['ObjectProperty' for i in range(len(RAG_return[1][1]))]+\
+                    ['DataProperty' for i in range(len(RAG_return[2][1]))],
+    'Similarity Score':list(RAG_return[0][1])+list(RAG_return[1][1])+list(RAG_return[2][1]),
+    'PromptType':[prompt for i in range(len(URIs))],
+    }
+    # print('printing log size')
+    # for k,v in log.items():
+    #     print(k,len(v))
+    df = pd.DataFrame(log)
+    filename = "Log.csv"
+    if os.path.isfile(filename):
+        df.to_csv(filename, mode='a', index=False, header=False)
+    else:
+        df.to_csv(filename, index=False)
 
     output_file = "output.ttl"
+
+
+
+
     for uri in URIs:
         print(uri)
     extract_ontology(input_file, URIs, output_file)

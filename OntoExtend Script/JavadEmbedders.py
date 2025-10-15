@@ -1,36 +1,44 @@
-def OllamaEmbedderQWEN(text = []):
+def OllamaEmbedderQWEN(text = [],llm = 'qwen3-embedding:4b'):
     import time
     import ollama
-    response = ollama.embed(model="qwen3-embedding:4b", input=text)#qwen3-embedding:4b
+    import numpy as np
+    response = ollama.embed(model=llm, input=text)#qwen3-embedding:4b
     embedings = response['embeddings']
-    return embedings
+    return np.array(embedings)
 
 
-import os
-from openai import AzureOpenAI
+def LiUAzureEmbedder(prompt_text,llm= 'text-embedding-3-small'):
+    from dotenv import load_dotenv, find_dotenv
 
-endpoint = "https://liu-ida-kmacs-gpt4-oai.openai.azure.com/"
-model_name = "text-embedding-3-small"
-deployment = "text-embedding-3-small"
+    load_dotenv(find_dotenv())
 
-api_version = "2024-02-01"
 
-client = AzureOpenAI(
-    api_version="2024-12-01-preview",
-    endpoint=endpoint,
-    credential=AzureKeyCredential("<API_KEY>")
-)
+    import re,ast, os
+    import numpy as np
+    import openai
+    from openai import AzureOpenAI
 
-response = client.embeddings.create(
-    input=["first phrase","second phrase","third phrase"],
-    model=deployment
-)
+    endpoint = "https://liu-ida-kmacs-gpt4-oai.openai.azure.com/"
+    api_key = os.environ.get('APIKEY_Embedder')
 
-for item in response.data:
-    length = len(item.embedding)
-    print(
-        f"data[{item.index}]: length={length}, "
-        f"[{item.embedding[0]}, {item.embedding[1]}, "
-        f"..., {item.embedding[length-2]}, {item.embedding[length-1]}]"
+    client = AzureOpenAI(
+    azure_endpoint = endpoint,
+    api_version="2025-03-01-preview",
+    api_key=api_key # Add the api_key parameter here
     )
-print(response.usage)
+    def embedder(prompt_text):
+
+        response = client.embeddings.create(
+        model=  llm,
+        input = prompt_text
+        )
+        return response.data#[0].message.content # Access the content attribute
+
+    res = embedder(prompt_text)
+    return np.array([res[i].embedding for i in range(len(res)) ])
+
+
+
+if __name__ == "__main__":
+    print(OllamaEmbedderQWEN(['Hi this is a test']).shape)
+    print(LiUAzureEmbedder(['Hi this is a test'],llm= 'text-embedding-3-small').shape)
