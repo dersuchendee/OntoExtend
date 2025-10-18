@@ -1,267 +1,402 @@
-@prefix actor: <http://w3id.org/CEON/ontology/actor/> .
-@prefix actorODP: <http://w3id.org/CEON/ontology/actorODP/> .
-@prefix location: <http://w3id.org/CEON/ontology/location/> .
+@prefix : <http://w3id.org/CEON/ontology/energy/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix processODP: <http://w3id.org/CEON/ontology/processODP/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix resourceODP: <http://w3id.org/CEON/ontology/resourceODP/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-actor:BuyingResource a owl:Class ;
-    rdfs:label "Buying resource"^^xsd:string ;
-    rdfs:comment "The relation where the role of the actor is the buyer of a certain resource."^^xsd:string ;
-    rdfs:subClassOf actorODP:ResourceRelation ;
-    owl:equivalentClass [ a owl:Class ;
-            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
-                        owl:hasValue actor:buyer ;
-                        owl:onProperty actorODP:participantRole ] ) ] .
+:Biomass a owl:Class ;
+    rdfs:label "Biomass"^^xsd:string ;
+    rdfs:comment "Biomass represents matter from recently living (but now dead) organisms such as plants, algae and animals."^^xsd:string ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Biomass"^^xsd:string ;
+    rdfs:subClassOf :EnergySource .
 
-actor:ManufacturingResource a owl:Class ;
-    rdfs:label "Manufacturing resource"^^xsd:string ;
-    rdfs:comment "The relation where the role of the actor is the manufacturer of a certain resource."^^xsd:string ;
-    rdfs:subClassOf actorODP:ResourceRelation ;
-    owl:equivalentClass [ a owl:Class ;
-            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
-                        owl:hasValue actor:manufacturer ;
-                        owl:onProperty actorODP:participantRole ] ) ] .
+:Coal a owl:Class ;
+    rdfs:label "Coal"^^xsd:string ;
+    rdfs:comment "Coal is a black or dark-brown combustible mineral substance consisting of carbonized vegetable matter."^^xsd:string ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Coal"^^xsd:string ;
+    rdfs:subClassOf :FossilFuel .
 
-actor:OwningResource a owl:Class ;
-    rdfs:label "Owning resource"^^xsd:string ;
-    rdfs:comment "The relation where the role of the actor is the owner of a certain resource."^^xsd:string ;
-    rdfs:subClassOf actorODP:ResourceRelation ;
-    owl:equivalentClass [ a owl:Class ;
-            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
-                        owl:hasValue actor:owner ;
-                        owl:onProperty actorODP:participantRole ] ) ] .
+:NaturalGas a owl:Class ;
+    rdfs:label "Natural Gas"^^xsd:string ;
+    rdfs:comment "Natural gas is a combustible gas that is naturally generated and stored under certain geological conditions by ancient animals and plants buried deep underground. It is a gaseous mixture of hydrocarbons and non-hydrocarbons, with methane as its main component."^^xsd:string ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Natural_gas"^^xsd:string ;
+    rdfs:subClassOf :FossilFuel .
 
-actor:ProducingResource a owl:Class ;
-    rdfs:label "Producing resource"^^xsd:string ;
-    rdfs:comment "The relation where the role of the actor is the producer of a certain resource."^^xsd:string ;
-    rdfs:subClassOf actorODP:ResourceRelation ;
-    owl:equivalentClass [ a owl:Class ;
-            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
-                        owl:hasValue actor:producer ;
-                        owl:onProperty actorODP:participantRole ] ) ] .
+:Petroleum a owl:Class ;
+    rdfs:label "Petroleum"^^xsd:string ;
+    rdfs:comment "Petroleum is a naturally occurring yellow-black liquid chemical mixture found in geological formations, consisting primarily of hydrocarbons."^^xsd:string ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Petroleum"^^xsd:string ;
+    rdfs:subClassOf :FossilFuel .
 
-actor:SellingResource a owl:Class ;
-    rdfs:label "Selling resource"^^xsd:string ;
-    rdfs:comment "The relation where the role of the actor is the seller of a certain resource."^^xsd:string ;
-    rdfs:subClassOf actorODP:ResourceRelation ;
-    owl:equivalentClass [ a owl:Class ;
-            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
-                        owl:hasValue actor:seller ;
-                        owl:onProperty actorODP:participantRole ] ) ] .
+:hasEnergyComponentPercentage a owl:DatatypeProperty ;
+    rdfs:label "has energy component percentage"^^xsd:string ;
+    rdfs:comment "hasEnergyComponentPercentage represents the percentage of a particular energy as a composition."^^xsd:string ;
+    rdfs:domain :EnergyComposition ;
+    rdfs:range xsd:double .
 
-actor:UsingResource a owl:Class ;
-    rdfs:label "Using resource"^^xsd:string ;
-    rdfs:comment "The relation where the role of the actor is the user of a certain resource."^^xsd:string ;
-    rdfs:subClassOf actorODP:ResourceRelation ;
-    owl:equivalentClass [ a owl:Class ;
-            owl:intersectionOf ( actorODP:ResourceRelation [ a owl:Restriction ;
-                        owl:hasValue actor:user ;
-                        owl:onProperty actorODP:participantRole ] ) ] .
+<http://w3id.org/CEON/ontology/material/Cellulose> a owl:Class ;
+    rdfs:label "Cellulose"^^xsd:string ;
+    rdfs:comment "Cellulose is an organic compound with chemical formula (C6H10O5)n."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
 
-<http://w3id.org/CEON/ontology/process/BuyResourceProcess> a owl:Class ;
-    rdfs:label "Buy Resource Process"^^xsd:string ;
-    rdfs:comment "A process of buying a resource."^^xsd:string ;
-    rdfs:subClassOf processODP:Process .
+<http://w3id.org/CEON/ontology/material/ChemicalSubstance> a owl:Class ;
+    rdfs:label "Chemical Substance"^^xsd:string ;
+    rdfs:comment "A chemical substance is made up of a collection of molecular entities."^^xsd:string ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_df96cbb6_b5ee_4222_8eab_b3675df24bea"^^xsd:string,
+        "http://purl.obolibrary.org/obo/chebi#59999"^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/ChemicalEntity> .
 
-<http://w3id.org/CEON/ontology/product/Compliance> a owl:Class ;
-    rdfs:label "Compliance"^^xsd:string ;
-    rdfs:comment "Represents that something is compliant with some standard or has a received a certain certification."^^xsd:string .
+<http://w3id.org/CEON/ontology/material/Iron> a owl:Class ;
+    rdfs:label "Iron"^^xsd:string ;
+    rdfs:comment "Iron is a chemical element with the symbol Fe and atomic number 26."^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/ChemicalElement> .
 
-<http://w3id.org/CEON/ontology/product/Solution> a owl:Class ;
-    rdfs:label "Solution"^^xsd:string ;
-    rdfs:comment "Product or service, or a combination thereof, that fulfils a need of an interested party."^^xsd:string ;
-    rdfs:isDefinedBy "ISO 59004:2024 - 3.2.1 solution"^^xsd:string .
+<http://w3id.org/CEON/ontology/material/MolecularEntity> a owl:Class ;
+    rdfs:label "Molecular Entity"^^xsd:string ;
+    rdfs:comment "A molecular entity means a singular/distinguishable entity. It can be for instance, atom, ion."^^xsd:string ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_21205421_5783_4d3e_81e5_10c5d894a88a"^^xsd:string,
+        "http://purl.obolibrary.org/obo/chebi#23367"^^xsd:string ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/material/ChemicalEntity> .
 
-<http://w3id.org/CEON/ontology/product/SupplierLocation> a owl:Class ;
-    rdfs:label "Supplier Location"^^xsd:string ;
-    rdfs:comment "The location of supplier of a product or item."^^xsd:string ;
-    rdfs:subClassOf location:Location .
+<http://w3id.org/CEON/ontology/material/anonymousFormula> a owl:DatatypeProperty ;
+    rdfs:label "anonymous formula"^^xsd:string ;
+    rdfs:comment "anonymousFormula represents that a molecular entity has the anonymous formula in a string."^^xsd:string ;
+    rdfs:seeAlso "https://w3id.org/mdo/structure/AnonymousFormula"^^xsd:string .
 
-<http://w3id.org/CEON/ontology/product/hasBrand> a owl:DatatypeProperty ;
-    rdfs:label "has brand"^^xsd:string ;
-    rdfs:comment "The brand name of a product."^^xsd:string ;
-    rdfs:range xsd:string .
+<http://w3id.org/CEON/ontology/material/descriptiveFormula> a owl:DatatypeProperty ;
+    rdfs:label "descriptive formula"^^xsd:string ;
+    rdfs:comment "descriptiveFormula represents that a molecular entity has the descriptive formula in a string."^^xsd:string ;
+    rdfs:seeAlso "https://w3id.org/mdo/structure/DescriptiveFormula"^^xsd:string .
 
-<http://w3id.org/CEON/ontology/product/hasOriginLocation> a owl:ObjectProperty ;
-    rdfs:label "has origin location"^^xsd:string ;
-    rdfs:comment "Used to represent the location of origin of a product or product object (item)."^^xsd:string ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( <http://w3id.org/CEON/ontology/product/Item> <http://w3id.org/CEON/ontology/product/Product> ) ] ;
-    rdfs:range <http://w3id.org/CEON/ontology/product/OriginLocation> ;
-    rdfs:subPropertyOf location:hasLocation .
+<http://w3id.org/CEON/ontology/material/hasMaterialComponent> a owl:ObjectProperty ;
+    rdfs:label "has material component"^^xsd:string ;
+    rdfs:comment "hasMaterialComponent intends to represent that a material can have a collection of components."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/material/Material> ;
+    rdfs:range <http://w3id.org/CEON/ontology/material/MaterialComponent> .
 
-<http://w3id.org/CEON/ontology/product/hasProductComponent> a owl:ObjectProperty ;
-    rdfs:label "has product component"^^xsd:string ;
-    rdfs:comment "hasProductComponent intends to represent that a product can have other product components."^^xsd:string ;
-    rdfs:domain <http://w3id.org/CEON/ontology/product/Product> ;
-    rdfs:range <http://w3id.org/CEON/ontology/product/Product> .
+<http://w3id.org/CEON/ontology/material/hillFormula> a owl:DatatypeProperty ;
+    rdfs:label "hill formula"^^xsd:string ;
+    rdfs:comment "hillFormula represents that a composition has the hill formula in a string."^^xsd:string ;
+    rdfs:seeAlso "https://w3id.org/mdo/structure/HillFormula"^^xsd:string .
 
-<http://w3id.org/CEON/ontology/product/hasProductName> a owl:DatatypeProperty ;
-    rdfs:label "product name"^^xsd:string ;
-    rdfs:comment "The name of a product."^^xsd:string ;
-    rdfs:range xsd:string .
+<http://w3id.org/CEON/ontology/material/reducedChemicalFormula> a owl:DatatypeProperty ;
+    rdfs:label "reduced chemical formula"^^xsd:string ;
+    rdfs:comment "reducedChemicalFormula represents that a molecular entity has the reduced chemical formula in a string."^^xsd:string ;
+    rdfs:seeAlso "https://w3id.org/mdo/structure/ReducedFormula"^^xsd:string .
 
-<http://w3id.org/CEON/ontology/product/hasProductObjectComponent> a owl:ObjectProperty ;
-    rdfs:label "has product object component"^^xsd:string ;
-    rdfs:domain <http://w3id.org/CEON/ontology/product/Item> ;
-    rdfs:range <http://w3id.org/CEON/ontology/product/Item> .
+resourceODP:containsInformation a owl:ObjectProperty ;
+    rdfs:label "contains information"^^xsd:string ;
+    rdfs:comment "Indicating that some piece of information is contained in a larger collection of information, e.g. a data sheet contains a statement about a certain parameter of a product."^^xsd:string ;
+    rdfs:domain resourceODP:Information ;
+    rdfs:range resourceODP:Information ;
+    rdfs:subPropertyOf resourceODP:hasPart .
 
-<http://w3id.org/CEON/ontology/product/modelledBy> a owl:ObjectProperty ;
-    rdfs:label "modelled by"^^xsd:string ;
-    rdfs:comment "modelledBy intends to represent that product objects follow particular product models."^^xsd:string ;
-    rdfs:domain <http://w3id.org/CEON/ontology/product/Item> ;
-    rdfs:range <http://w3id.org/CEON/ontology/product/Product> .
+<http://w3id.org/CEON/ontology/material/MaterialComponent> a owl:Class ;
+    rdfs:label "Material Component"^^xsd:string ;
+    rdfs:comment "A material component is a part of a material."^^xsd:string ;
+    rdfs:subClassOf resourceODP:Constituent .
 
-actorODP:Role a owl:Class ;
-    rdfs:label "Role"^^xsd:string ;
-    rdfs:comment "A role that an actor can take in a specific context. Applies both to roles in the context of resources, such as owner, manufacturer, reseller etc. of that resource, as well as roles in relation to a circular value network, such as recycler, dismantler, transporter etc., in relation to a material flow."^^xsd:string .
-
-actorODP:participatingActor a owl:ObjectProperty ;
-    rdfs:label "participating actor"^^xsd:string ;
-    rdfs:comment "Holds the value of the actor involved in this participation relation."^^xsd:string ;
-    rdfs:domain actorODP:Participation ;
-    rdfs:range actorODP:Actor .
-
-actorODP:participatingResource a owl:ObjectProperty ;
-    rdfs:label "participating resource"^^xsd:string ;
-    rdfs:comment "The resource that this participation relation relates to, i.e. for which the actor holds the specified role."^^xsd:string ;
-    rdfs:domain actorODP:ResourceRelation ;
-    rdfs:range resourceODP:Resource .
-
-<http://w3id.org/CEON/ontology/product/ManufactureLocation> a owl:Class ;
-    rdfs:label "Manufacture Location"^^xsd:string ;
-    rdfs:comment "The location where a physical object is manufactured."^^xsd:string ;
+<http://w3id.org/CEON/ontology/product/MatterComposition> a owl:Class ;
+    rdfs:label "Matter composition"^^xsd:string ;
+    rdfs:comment "A product composition is the composed information of a product in terms of a specific component, in which such a component is also a matter."^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty location:hasPostalCode ],
+            owl:onClass resourceODP:Matter ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/associatedWithMatter> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty location:hasStreetAddress ],
+            owl:onClass resourceODP:Matter ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/associatedWithMatter> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty <http://w3id.org/CEON/ontology/product/countryOfManufacture> ],
+            owl:onClass resourceODP:Matter ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/associatedWithMatter> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty location:hasCity ],
-        location:Location .
+            owl:onClass resourceODP:Matter ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/associatedWithMatter> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass resourceODP:Matter ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/associatedWithMatter> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass resourceODP:Matter ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/associatedWithMatter> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass resourceODP:Matter ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/associatedWithMatter> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass resourceODP:Matter ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/associatedWithMatter> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        <http://w3id.org/CEON/ontology/product/Composition> .
 
-<http://w3id.org/CEON/ontology/product/countryOfManufacture> a owl:DatatypeProperty ;
-    rdfs:label "Country of manufacture"^^xsd:string ;
-    rdfs:comment "Used to represent the country of manufacture of a product or product object (item)."^^xsd:string ;
-    rdfs:domain <http://w3id.org/CEON/ontology/product/ManufactureLocation> ;
-    rdfs:range xsd:string ;
-    rdfs:subPropertyOf location:hasCountry .
-
-<http://w3id.org/CEON/ontology/product/countryOfOrigin> a owl:DatatypeProperty ;
-    rdfs:label "Country of origin"^^xsd:string ;
-    rdfs:comment "Used to represent the country of origin of a product or product object (item)."^^xsd:string ;
-    rdfs:domain <http://w3id.org/CEON/ontology/product/OriginLocation> ;
-    rdfs:range xsd:string ;
-    rdfs:subPropertyOf location:hasCountry .
-
-<http://w3id.org/CEON/ontology/product/countryOfProduction> a owl:DatatypeProperty ;
-    rdfs:label "Country of production"^^xsd:string ;
-    rdfs:comment "Used to represent the country of production of a product or product object (item)."^^xsd:string ;
-    rdfs:domain <http://w3id.org/CEON/ontology/product/ProductionLocation> ;
-    rdfs:range xsd:string ;
-    rdfs:subPropertyOf location:hasCountry .
-
-<http://w3id.org/CEON/ontology/product/productionSite> a owl:DatatypeProperty ;
-    rdfs:label "production site"^^xsd:string ;
-    rdfs:comment "The name of a production site location"^^xsd:string ;
-    rdfs:domain <http://w3id.org/CEON/ontology/product/ProductionLocation> ;
-    rdfs:range xsd:string .
-
-<http://w3id.org/CEON/ontology/product/OriginLocation> a owl:Class ;
-    rdfs:label "Origin Location"^^xsd:string ;
-    rdfs:comment "The origin location of a physical object"^^xsd:string ;
+<http://w3id.org/CEON/ontology/product/ProductComposition> a owl:Class ;
+    rdfs:label "Product composition"^^xsd:string ;
+    rdfs:comment "A product composition is the composed information of a product in terms of a specific component, in which such a component is also a product."^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty location:hasStreetAddress ],
+            owl:onClass <http://w3id.org/CEON/ontology/product/Product> ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/associatedWithProductModel> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty <http://w3id.org/CEON/ontology/product/countryOfOrigin> ],
+            owl:onClass <http://w3id.org/CEON/ontology/product/Product> ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/associatedWithProductModel> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty location:hasPostalCode ],
+            owl:onClass <http://w3id.org/CEON/ontology/product/Product> ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/associatedWithProductModel> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty location:hasCity ],
-        location:Location .
+            owl:onClass <http://w3id.org/CEON/ontology/product/Product> ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/associatedWithProductModel> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass <http://w3id.org/CEON/ontology/product/Product> ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/associatedWithProductModel> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass <http://w3id.org/CEON/ontology/product/Product> ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/associatedWithProductModel> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass <http://w3id.org/CEON/ontology/product/Product> ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/associatedWithProductModel> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass <http://w3id.org/CEON/ontology/product/Product> ;
+            owl:onProperty <http://w3id.org/CEON/ontology/product/associatedWithProductModel> ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        <http://w3id.org/CEON/ontology/product/Composition> .
 
-<http://w3id.org/CEON/ontology/product/ProductionLocation> a owl:Class ;
-    rdfs:label "Production Location"^^xsd:string ;
-    rdfs:comment "The production location of a physical object"^^xsd:string ;
+:FossilFuel a owl:Class ;
+    rdfs:label "Fossil Fuel"^^xsd:string ;
+    rdfs:comment "A fossil fuel is a carbon compound- or hydrocarbon-containing material[2] formed naturally in the Earth's crust from the buried remains of prehistoric organisms (animals, plants or planktons), a process that occurs within geological formations."^^xsd:string ;
+    rdfs:seeAlso "https://en.wikipedia.org/wiki/Fossil_fuel"^^xsd:string ;
+    rdfs:subClassOf :EnergySource .
+
+<http://w3id.org/CEON/ontology/material/Material> a owl:Class ;
+    rdfs:label "Material"^^xsd:string ;
+    rdfs:comment "Material as a sub-concept of Matter, can be a substance or a collection of substance which a physical object is composed of."^^xsd:string ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_4207e895_8b83_4318_996a_72cfb32acd94"^^xsd:string,
+        "https://w3id.org/mdo/core/Material"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty location:hasPostalCode ],
+            owl:onProperty <http://w3id.org/CEON/ontology/material/hasChemicalEntity> ;
+            owl:someValuesFrom <http://w3id.org/CEON/ontology/material/ChemicalEntity> ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty <http://w3id.org/CEON/ontology/product/productionSite> ],
+            owl:onProperty <http://w3id.org/CEON/ontology/material/hasChemicalEntity> ;
+            owl:someValuesFrom <http://w3id.org/CEON/ontology/material/ChemicalEntity> ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty location:hasStreetAddress ],
+            owl:onProperty <http://w3id.org/CEON/ontology/material/hasChemicalEntity> ;
+            owl:someValuesFrom <http://w3id.org/CEON/ontology/material/ChemicalEntity> ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty <http://w3id.org/CEON/ontology/product/countryOfProduction> ],
+            owl:onProperty <http://w3id.org/CEON/ontology/material/hasChemicalEntity> ;
+            owl:someValuesFrom <http://w3id.org/CEON/ontology/material/ChemicalEntity> ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onDataRange xsd:string ;
-            owl:onProperty location:hasCity ],
-        location:Location .
+            owl:onProperty <http://w3id.org/CEON/ontology/material/hasChemicalEntity> ;
+            owl:someValuesFrom <http://w3id.org/CEON/ontology/material/ChemicalEntity> ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://w3id.org/CEON/ontology/material/hasChemicalEntity> ;
+            owl:someValuesFrom <http://w3id.org/CEON/ontology/material/ChemicalEntity> ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://w3id.org/CEON/ontology/material/hasChemicalEntity> ;
+            owl:someValuesFrom <http://w3id.org/CEON/ontology/material/ChemicalEntity> ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://w3id.org/CEON/ontology/material/hasChemicalEntity> ;
+            owl:someValuesFrom <http://w3id.org/CEON/ontology/material/ChemicalEntity> ],
+        resourceODP:Matter .
 
-location:hasCity a owl:DatatypeProperty ;
-    rdfs:label "has city"^^xsd:string ;
-    rdfs:comment "Represents the name of a city."^^xsd:string ;
-    rdfs:range xsd:string ;
-    rdfs:subPropertyOf owl:topDataProperty .
-
-location:hasPostalCode a owl:DatatypeProperty ;
-    rdfs:label "has postal code"^^xsd:string ;
-    rdfs:comment "Represent postal code"^^xsd:string ;
-    rdfs:range xsd:string ;
-    rdfs:seeAlso "Universal Postal Union (UPU) S42 standard"^^xsd:string ;
-    rdfs:subPropertyOf owl:topDataProperty .
-
-location:hasStreetAddress a owl:DatatypeProperty ;
-    rdfs:label "has street address"^^xsd:string ;
-    rdfs:comment "Represents address of a street, including e.g., street number and name."^^xsd:string ;
-    rdfs:range xsd:string ;
-    rdfs:subPropertyOf owl:topDataProperty .
-
-actorODP:participantRole a owl:ObjectProperty ;
-    rdfs:label "participant role"^^xsd:string ;
-    rdfs:comment "Holds the value of the role of the participant in this participation relation."^^xsd:string ;
-    rdfs:domain actorODP:Participation ;
-    rdfs:range actorODP:Role .
-
-actorODP:ResourceRelation a owl:Class ;
-    rdfs:label "Resource Relation"^^xsd:string ;
-    rdfs:comment "A relation between a resource, an actor, and the role the actor has in relation to the resource. For instance, the role of owner that a certain actor takes for a certain resource for a certain period of time. Or the seller of a certain resource, until that resource has been sold, and the actor no longer has that role in relation to the resource."^^xsd:string,
-        "The relation involving the role of a certain actor with respect to a certain resource, e.g. an organisation or individual (actor) owning (role) a specific product (resource) at a specific point or period in time."^^xsd:string ;
+resourceODP:Resource a owl:Class ;
+    rdfs:label "Resource"^^xsd:string ;
+    rdfs:comment "Asset from which a solution is created or implemented. Depending on the context, reference to “resource” includes “raw material”, “feedstock”, “material” or “component”. Resource includes any energy type (e.g. the energy content or energy potential of materials). Note 4 to entry: Resources can be considered concerning both stocks and flows."^^xsd:string,
+        "Some resources can be specifically associated with processes."^^xsd:string ;
+    rdfs:isDefinedBy "ISO 59004:2024 - 3.1.5 resource"^^xsd:string ;
     rdfs:subClassOf [ a owl:Class ;
-            owl:intersectionOf ( actorODP:Participation [ a owl:Restriction ;
-                        owl:onProperty actorODP:participantRole ;
-                        owl:someValuesFrom actor:ActorResourceRole ] [ a owl:Restriction ;
-                        owl:onProperty actorODP:participatingActor ;
-                        owl:someValuesFrom actorODP:Actor ] [ a owl:Restriction ;
-                        owl:onProperty actorODP:participatingResource ;
-                        owl:someValuesFrom resourceODP:Resource ] ) ],
-        actorODP:Participation .
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceCondition ;
+                        owl:someValuesFrom resourceODP:ResourceCondition ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceCondition ;
+                        owl:onProperty resourceODP:hasResourceCondition ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceQuality ;
+                        owl:someValuesFrom resourceODP:ResourceQuality ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceQuality ;
+                        owl:onProperty resourceODP:hasResourceQuality ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceProperty ;
+                        owl:someValuesFrom resourceODP:ResourceProperty ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceProperty ;
+                        owl:onProperty resourceODP:hasResourceProperty ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceCondition ;
+                        owl:someValuesFrom resourceODP:ResourceCondition ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceCondition ;
+                        owl:onProperty resourceODP:hasResourceCondition ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceQuality ;
+                        owl:someValuesFrom resourceODP:ResourceQuality ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceQuality ;
+                        owl:onProperty resourceODP:hasResourceQuality ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceProperty ;
+                        owl:someValuesFrom resourceODP:ResourceProperty ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceProperty ;
+                        owl:onProperty resourceODP:hasResourceProperty ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceQuality ;
+                        owl:someValuesFrom resourceODP:ResourceQuality ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceQuality ;
+                        owl:onProperty resourceODP:hasResourceQuality ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceProperty ;
+                        owl:someValuesFrom resourceODP:ResourceProperty ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceProperty ;
+                        owl:onProperty resourceODP:hasResourceProperty ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceCondition ;
+                        owl:someValuesFrom resourceODP:ResourceCondition ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceCondition ;
+                        owl:onProperty resourceODP:hasResourceCondition ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceCondition ;
+                        owl:someValuesFrom resourceODP:ResourceCondition ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceCondition ;
+                        owl:onProperty resourceODP:hasResourceCondition ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceQuality ;
+                        owl:someValuesFrom resourceODP:ResourceQuality ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceQuality ;
+                        owl:onProperty resourceODP:hasResourceQuality ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceProperty ;
+                        owl:someValuesFrom resourceODP:ResourceProperty ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceProperty ;
+                        owl:onProperty resourceODP:hasResourceProperty ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceCondition ;
+                        owl:someValuesFrom resourceODP:ResourceCondition ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceCondition ;
+                        owl:onProperty resourceODP:hasResourceCondition ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceQuality ;
+                        owl:someValuesFrom resourceODP:ResourceQuality ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceQuality ;
+                        owl:onProperty resourceODP:hasResourceQuality ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceProperty ;
+                        owl:someValuesFrom resourceODP:ResourceProperty ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceProperty ;
+                        owl:onProperty resourceODP:hasResourceProperty ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceProperty ;
+                        owl:someValuesFrom resourceODP:ResourceProperty ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceProperty ;
+                        owl:onProperty resourceODP:hasResourceProperty ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceQuality ;
+                        owl:someValuesFrom resourceODP:ResourceQuality ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceQuality ;
+                        owl:onProperty resourceODP:hasResourceQuality ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceCondition ;
+                        owl:someValuesFrom resourceODP:ResourceCondition ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceCondition ;
+                        owl:onProperty resourceODP:hasResourceCondition ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceCondition ;
+                        owl:someValuesFrom resourceODP:ResourceCondition ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceCondition ;
+                        owl:onProperty resourceODP:hasResourceCondition ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceQuality ;
+                        owl:someValuesFrom resourceODP:ResourceQuality ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceQuality ;
+                        owl:onProperty resourceODP:hasResourceQuality ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceProperty ;
+                        owl:someValuesFrom resourceODP:ResourceProperty ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceProperty ;
+                        owl:onProperty resourceODP:hasResourceProperty ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceCondition ;
+                        owl:someValuesFrom resourceODP:ResourceCondition ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceCondition ;
+                        owl:onProperty resourceODP:hasResourceCondition ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceQuality ;
+                        owl:someValuesFrom resourceODP:ResourceQuality ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceQuality ;
+                        owl:onProperty resourceODP:hasResourceQuality ] ) ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty resourceODP:hasResourceProperty ;
+                        owl:someValuesFrom resourceODP:ResourceProperty ] [ a owl:Restriction ;
+                        owl:allValuesFrom resourceODP:ResourceProperty ;
+                        owl:onProperty resourceODP:hasResourceProperty ] ) ],
+        resourceODP:Asset .
+
+<http://w3id.org/CEON/ontology/material/hasChemicalEntity> a owl:ObjectProperty ;
+    rdfs:label "has chemical entity"^^xsd:string ;
+    rdfs:comment "hasChemicalEntity intends to represent that a material can have a collection of chemical entities."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/material/Material> ;
+    rdfs:range <http://w3id.org/CEON/ontology/material/ChemicalEntity> .
+
+<http://w3id.org/CEON/ontology/product/associatedWithMatter> a owl:ObjectProperty ;
+    rdfs:label "associated with matter"^^xsd:string ;
+    rdfs:comment "associatedWithMatter intends to represent the matter to which a matter compopsition information regards to."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/MatterComposition> ;
+    rdfs:range resourceODP:Matter .
+
+<http://w3id.org/CEON/ontology/product/associatedWithProductModel> a owl:ObjectProperty ;
+    rdfs:label "associated with product model"^^xsd:string ;
+    rdfs:comment "associatedWithProductModel intends to represent the product model to which a product compopsition information regards to."^^xsd:string ;
+    rdfs:domain <http://w3id.org/CEON/ontology/product/ProductComposition> ;
+    rdfs:range <http://w3id.org/CEON/ontology/product/Product> .
+
+resourceODP:Matter a owl:Class ;
+    rdfs:label "Matter"^^xsd:string ;
+    rdfs:comment "A matter is a physical substance."^^xsd:string ;
+    rdfs:seeAlso "http://emmo.info/emmo#EMMO_5b2222df_4da6_442f_8244_96e9e45887d1"^^xsd:string .
+
+resourceODP:hasResourceCondition a owl:ObjectProperty ;
+    rdfs:label "has resource condition"^^xsd:string ;
+    rdfs:comment "A resource can has specifc conditions."^^xsd:string ;
+    rdfs:domain resourceODP:Resource ;
+    rdfs:range resourceODP:ResourceCondition .
+
+resourceODP:hasResourceProperty a owl:ObjectProperty ;
+    rdfs:label "has resource property"^^xsd:string ;
+    rdfs:comment "A resource can has specifc properties."^^xsd:string ;
+    rdfs:domain resourceODP:Resource ;
+    rdfs:range resourceODP:ResourceProperty .
+
+resourceODP:hasResourceQuality a owl:ObjectProperty ;
+    rdfs:label "has resource quality"^^xsd:string ;
+    rdfs:comment "A resource can has specifc qualities."^^xsd:string ;
+    rdfs:domain resourceODP:Resource ;
+    rdfs:range resourceODP:ResourceQuality .
 

@@ -29,6 +29,10 @@ def run_rag():
     competency_question = payload.get("cq", "What are the components of a product?")
     start_rag = _to_bool(payload.get("start_rag", True), default=True)
     core = payload.get("core", " ")
+    
+    llm = str(payload.get("llm", ''))
+    prompt = str(payload.get("prompt", ''))
+
     try:
         class_count = int(payload.get("class_count", 15))
         op_count = int(payload.get("op_count", 3))
@@ -45,7 +49,9 @@ def run_rag():
             class_count=class_count,
             op_count=op_count,
             dp_count=dp_count,
-            core=core
+            core=core,
+            prompt=prompt,
+            llm = llm
         )
         return jsonify({"ok": True, "result": result})
     except Exception as e:

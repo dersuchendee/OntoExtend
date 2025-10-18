@@ -40,5 +40,5 @@ def LiUAzureEmbedder(prompt_text,llm= 'text-embedding-3-small'):
 
 
 if __name__ == "__main__":
-    print(OllamaEmbedderQWEN(['Hi this is a test']).shape)
+    print(OllamaEmbedderQWEN(['''Europium		Europium is a chemical element with the symbol Eu and atomic number 63.		RareEarthElement		http://w3id.org/CEON/ontology/material/Europium	'''],llm='snowflake-arctic-embed:22m').shape)
     print(LiUAzureEmbedder(['Hi this is a test'],llm= 'text-embedding-3-small').shape)

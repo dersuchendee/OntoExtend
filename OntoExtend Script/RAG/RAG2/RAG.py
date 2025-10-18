@@ -61,6 +61,11 @@ def init_rag(core_ontology_path,batch_size = 40,llm='qwen3-embedding:4b',prompt=
     def CreateEmbeddingSpace(Prompts_dict,type_str,llm): #embeds all classes and properties and save to files
         keys = list(Prompts_dict.keys())
         values = list(Prompts_dict.values())
+        print('Length of the keys: ', len(keys))
+        # open('loglog.txt','a').write('\n'.join(values))
+        # print(keys)
+        
+        # print(values)
         for i in range(len(keys)):
             f = open('RAG2/EmbeddingSystem/'+type_str+'es_prompts.txt','a',encoding='utf-8')
             f.write(str(keys[i]) + '\n')
@@ -87,8 +92,24 @@ def init_rag(core_ontology_path,batch_size = 40,llm='qwen3-embedding:4b',prompt=
             for prev_line in prev_embeddings:
                 f.write(prev_line)
             for j in range(len(batch_keys)):
-                f.write(str(batch_keys[j]) + '\n')
-                f.write(','.join([str(x) for x in embeddings[j]]) + '\n')
+                # try:
+                    temp = [str(x) for x in embeddings[j]]
+                    f.write(str(batch_keys[j]) + '\n')
+                    f.write(','.join(temp) + '\n')
+                # except:
+                #     if type_str == 'Class':
+                #         prompt_temp = Prompts_classes[j]
+                #     if type_str == 'DataProperty':
+                #         prompt_temp = Prompts_DP[j]
+                #     if type_str == 'ObjectProperty':
+                #         prompt_temp = Prompts_OP[j]
+                #     if 'text-embedding' in llm:
+                #         temp = LiUAzureEmbedder(prompt_temp,llm)[0]
+                #     else:
+                #         temp = OllamaEmbedderQWEN(prompt_temp,llm=llm)[0]
+
+                #     f.write(str(batch_keys[j]) + '\n')
+                #     f.write(','.join(temp) + '\n')
 
     CreateEmbeddingSpace(Prompts_classes,'Class',llm=llm)
     CreateEmbeddingSpace(Prompts_OP,'ObjectProperty',llm=llm)
@@ -251,6 +272,18 @@ def RAG(Query="What are the components of a product?",init_rag_flag=False,class_
             if pattern.match(file_path.name):
                 file_path.unlink()  # deletes the file
                 print(f"Deleted: {file_path}")
+        file_path = 'output.ttl'
+        if os.path.exists(file_path):
+            os.remove(file_path)
+            print("output removed.")
+        else:
+            print("output does not exist.")
+        file_path = 'RAG2/merged.ttl'
+        if os.path.exists(file_path):
+            os.remove(file_path)
+            print("merged removed.")
+        else:
+            print("merged does not exist.")
         init_rag(core_ontology_path = dataset_path,llm=llm,prompt=prompt)
 
     input_file = "RAG2/merged.ttl"

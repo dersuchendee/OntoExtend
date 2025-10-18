@@ -1,0 +1,960 @@
+2025-10-18 02:43:22.461760,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/RecycleProcess,Class,0.7915094,newline
+2025-10-18 02:43:22.461763,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Material,Class,0.78119123,newline
+2025-10-18 02:43:22.461764,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/actor/RecyclingResource,Class,0.77860916,newline
+2025-10-18 02:43:22.461764,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/Biomass,Class,0.7670986,newline
+2025-10-18 02:43:22.461765,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/ReuseProcess,Class,0.76432884,newline
+2025-10-18 02:43:22.461765,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/Biogas,Class,0.76366955,newline
+2025-10-18 02:43:22.461765,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.7576575,newline
+2025-10-18 02:43:22.461765,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.7559788,newline
+2025-10-18 02:43:22.461766,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/cvn/CircularStrategy,Class,0.75593764,newline
+2025-10-18 02:43:22.461766,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/Matter,Class,0.7506452,newline
+2025-10-18 02:43:22.461766,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/RoHSCompliance,Class,0.7496261,newline
+2025-10-18 02:43:22.461766,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Cellulose,Class,0.74922,newline
+2025-10-18 02:43:22.461767,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/Resource,Class,0.74908125,newline
+2025-10-18 02:43:22.461767,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/RenewableEnergy,Class,0.7481794,newline
+2025-10-18 02:43:22.461767,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/FossilFuel,Class,0.74617183,newline
+2025-10-18 02:43:22.461768,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/quantity/hasRecyclingCost,ObjectProperty,0.79819024,newline
+2025-10-18 02:43:22.461768,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.7572982,newline
+2025-10-18 02:43:22.461768,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/hasChemicalEntity,ObjectProperty,0.7468373,newline
+2025-10-18 02:43:22.461768,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/hasMatter,ObjectProperty,0.7429696,newline
+2025-10-18 02:43:22.461769,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/hasSustainability,DataProperty,0.7425898,newline
+2025-10-18 02:43:22.461769,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/countryOfManufacture,DataProperty,0.73761207,newline
+2025-10-18 02:43:22.461769,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/reducedChemicalFormula,DataProperty,0.7352024,newline
+2025-10-18 02:43:22.461769,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/hasCertificate,DataProperty,0.73257774,newline
+2025-10-18 02:43:22.461770,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/countryOfProduction,DataProperty,0.7305518,newline
+2025-10-18 02:43:22.999327,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.8569014,newline
+2025-10-18 02:43:22.999332,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.84389895,newline
+2025-10-18 02:43:22.999333,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.838516,newline
+2025-10-18 02:43:22.999333,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/Product,Class,0.8374046,newline
+2025-10-18 02:43:22.999333,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.81835854,newline
+2025-10-18 02:43:22.999334,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/Item,Class,0.80719304,newline
+2025-10-18 02:43:22.999334,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/Solution,Class,0.7955218,newline
+2025-10-18 02:43:22.999334,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Material,Class,0.78928226,newline
+2025-10-18 02:43:22.999334,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/Constituent,Class,0.78577846,newline
+2025-10-18 02:43:22.999335,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/ProductionLocation,Class,0.7760447,newline
+2025-10-18 02:43:22.999335,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/ManufacturingProcess,Class,0.77596176,newline
+2025-10-18 02:43:22.999335,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/ProductionProcess,Class,0.77525026,newline
+2025-10-18 02:43:22.999336,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/ManufactureLocation,Class,0.7715461,newline
+2025-10-18 02:43:22.999336,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/ChemicalElement,Class,0.7706212,newline
+2025-10-18 02:43:22.999336,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/ChemicalSubstance,Class,0.7687234,newline
+2025-10-18 02:43:22.999336,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/hasProductObjectComponent,ObjectProperty,0.8296953,newline
+2025-10-18 02:43:22.999337,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/hasProductComponent,ObjectProperty,0.81560093,newline
+2025-10-18 02:43:22.999337,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.7937762,newline
+2025-10-18 02:43:22.999337,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/hasComposition,ObjectProperty,0.784449,newline
+2025-10-18 02:43:22.999337,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/hasProductName,DataProperty,0.78451514,newline
+2025-10-18 02:43:22.999338,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/countryOfManufacture,DataProperty,0.76647174,newline
+2025-10-18 02:43:22.999338,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.7619995,newline
+2025-10-18 02:43:22.999338,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/countryOfProduction,DataProperty,0.7618655,newline
+2025-10-18 02:43:22.999338,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/productionSite,DataProperty,0.75435925,newline
+2025-10-18 02:43:23.748147,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.87156737,newline
+2025-10-18 02:43:23.748150,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Material,Class,0.8525555,newline
+2025-10-18 02:43:23.748151,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.83886784,newline
+2025-10-18 02:43:23.748151,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.82634306,newline
+2025-10-18 02:43:23.748151,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.8162191,newline
+2025-10-18 02:43:23.748152,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/ChemicalSubstance,Class,0.8127088,newline
+2025-10-18 02:43:23.748152,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/Matter,Class,0.809898,newline
+2025-10-18 02:43:23.748152,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/ChemicalEntity,Class,0.79887253,newline
+2025-10-18 02:43:23.748152,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/ChemicalElement,Class,0.7967561,newline
+2025-10-18 02:43:23.748153,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Cellulose,Class,0.7964031,newline
+2025-10-18 02:43:23.748153,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Silicon,Class,0.7863375,newline
+2025-10-18 02:43:23.748153,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Iron,Class,0.78060913,newline
+2025-10-18 02:43:23.748154,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Aluminum,Class,0.78031373,newline
+2025-10-18 02:43:23.748154,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Titanium,Class,0.77993745,newline
+2025-10-18 02:43:23.748154,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Manganese,Class,0.77511156,newline
+2025-10-18 02:43:23.748154,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.8228966,newline
+2025-10-18 02:43:23.748155,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/hasComposition,ObjectProperty,0.804419,newline
+2025-10-18 02:43:23.748155,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.7967208,newline
+2025-10-18 02:43:23.748155,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/associatedWithMatter,ObjectProperty,0.7897594,newline
+2025-10-18 02:43:23.748155,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.80618024,newline
+2025-10-18 02:43:23.748156,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/hillFormula,DataProperty,0.7912751,newline
+2025-10-18 02:43:23.748156,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage,DataProperty,0.74077106,newline
+2025-10-18 02:43:23.748156,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/reducedChemicalFormula,DataProperty,0.74032146,newline
+2025-10-18 02:43:23.748156,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/descriptiveFormula,DataProperty,0.7327149,newline
+2025-10-18 02:43:24.162304,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/DisassemblingProcess,Class,0.8100935,newline
+2025-10-18 02:43:24.162307,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/DismantleProcess,Class,0.78020644,newline
+2025-10-18 02:43:24.162307,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/DeconstructionProcess,Class,0.76268566,newline
+2025-10-18 02:43:24.162307,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/AssemblingProcess,Class,0.75313187,newline
+2025-10-18 02:43:24.162308,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/actor/DismantlingResource,Class,0.7295474,newline
+2025-10-18 02:43:24.162308,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/RoHSCompliance,Class,0.7280046,newline
+2025-10-18 02:43:24.162308,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/RefurbishmentProcess,Class,0.72782224,newline
+2025-10-18 02:43:24.162309,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/ManufacturingProcess,Class,0.7261032,newline
+2025-10-18 02:43:24.162309,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/AssemblyLocation,Class,0.7224662,newline
+2025-10-18 02:43:24.162309,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/RepairProcess,Class,0.72101223,newline
+2025-10-18 02:43:24.162309,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/TakeBackProcess,Class,0.72024244,newline
+2025-10-18 02:43:24.162310,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/RemoveProcess,Class,0.7184074,newline
+2025-10-18 02:43:24.162310,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.71698356,newline
+2025-10-18 02:43:24.162310,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/ServiceProcess,Class,0.71639615,newline
+2025-10-18 02:43:24.162310,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/RecycleProcess,Class,0.7160351,newline
+2025-10-18 02:43:24.162311,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/quantity/hasDismantlingCost,ObjectProperty,0.7389077,newline
+2025-10-18 02:43:24.162311,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/hasAssemblyLocation,ObjectProperty,0.7129957,newline
+2025-10-18 02:43:24.162311,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.7117859,newline
+2025-10-18 02:43:24.162311,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/processODP/hasPart,ObjectProperty,0.7094925,newline
+2025-10-18 02:43:24.162312,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/countryOfAssembly,DataProperty,0.72374296,newline
+2025-10-18 02:43:24.162312,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/countryOfManufacture,DataProperty,0.69873744,newline
+2025-10-18 02:43:24.162312,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/processODP/occursAtTime,DataProperty,0.6898183,newline
+2025-10-18 02:43:24.162312,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/hasCertificate,DataProperty,0.6869351,newline
+2025-10-18 02:43:24.162313,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/batchID,DataProperty,0.68584347,newline
+2025-10-18 02:43:24.566880,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Cellulose,Class,0.7810372,newline
+2025-10-18 02:43:24.566884,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Material,Class,0.778858,newline
+2025-10-18 02:43:24.566885,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.7572143,newline
+2025-10-18 02:43:24.566885,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.7547056,newline
+2025-10-18 02:43:24.566885,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/Matter,Class,0.749287,newline
+2025-10-18 02:43:24.566886,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/Coal,Class,0.7465989,newline
+2025-10-18 02:43:24.566886,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/Biomass,Class,0.7460444,newline
+2025-10-18 02:43:24.566886,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/FossilFuel,Class,0.7459329,newline
+2025-10-18 02:43:24.566887,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/ChemicalSubstance,Class,0.74564564,newline
+2025-10-18 02:43:24.566887,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Iron,Class,0.73321885,newline
+2025-10-18 02:43:24.566887,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.73064435,newline
+2025-10-18 02:43:24.566888,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Manganese,Class,0.7279587,newline
+2025-10-18 02:43:24.566888,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/Biogas,Class,0.7276293,newline
+2025-10-18 02:43:24.566888,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Scandium,Class,0.7239033,newline
+2025-10-18 02:43:24.566888,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/Biofuel,Class,0.7233625,newline
+2025-10-18 02:43:24.566889,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.74222505,newline
+2025-10-18 02:43:24.566889,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/containsInformation,ObjectProperty,0.73508495,newline
+2025-10-18 02:43:24.566889,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/hasChemicalEntity,ObjectProperty,0.727861,newline
+2025-10-18 02:43:24.566890,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/hasMatter,ObjectProperty,0.72756845,newline
+2025-10-18 02:43:24.566890,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/hillFormula,DataProperty,0.7145446,newline
+2025-10-18 02:43:24.566890,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.70507264,newline
+2025-10-18 02:43:24.566890,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/reducedChemicalFormula,DataProperty,0.7036888,newline
+2025-10-18 02:43:24.566891,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/hasCertificate,DataProperty,0.7013478,newline
+2025-10-18 02:43:24.566891,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/countryOfManufacture,DataProperty,0.6982859,newline
+2025-10-18 02:43:32.702246,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/RecycleProcess,Class,0.80561733,pipe
+2025-10-18 02:43:32.702250,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/actor/RecyclingResource,Class,0.7895263,pipe
+2025-10-18 02:43:32.702250,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/ReuseProcess,Class,0.78418154,pipe
+2025-10-18 02:43:32.702251,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Material,Class,0.77869284,pipe
+2025-10-18 02:43:32.702251,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/Biomass,Class,0.76597923,pipe
+2025-10-18 02:43:32.702252,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.76296645,pipe
+2025-10-18 02:43:32.702252,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/Biogas,Class,0.7593573,pipe
+2025-10-18 02:43:32.702252,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.75783056,pipe
+2025-10-18 02:43:32.702252,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/Resource,Class,0.75716114,pipe
+2025-10-18 02:43:32.702253,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/cvn/CircularStrategy,Class,0.7563672,pipe
+2025-10-18 02:43:32.702253,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/Matter,Class,0.7545491,pipe
+2025-10-18 02:43:32.702253,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/RenewableEnergy,Class,0.75382,pipe
+2025-10-18 02:43:32.702254,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/actor/ManufacturingResource,Class,0.7462393,pipe
+2025-10-18 02:43:32.702254,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/ResourceQuality,Class,0.74615467,pipe
+2025-10-18 02:43:32.702254,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/RoHSCompliance,Class,0.7458749,pipe
+2025-10-18 02:43:32.702254,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/quantity/hasRecyclingCost,ObjectProperty,0.80866283,pipe
+2025-10-18 02:43:32.702255,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.76610065,pipe
+2025-10-18 02:43:32.702255,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/hasResourceQuality,ObjectProperty,0.7525966,pipe
+2025-10-18 02:43:32.702255,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/hasChemicalEntity,ObjectProperty,0.7524836,pipe
+2025-10-18 02:43:32.702255,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/hasSustainability,DataProperty,0.759792,pipe
+2025-10-18 02:43:32.702256,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/countryOfManufacture,DataProperty,0.74588376,pipe
+2025-10-18 02:43:32.702256,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/reducedChemicalFormula,DataProperty,0.7426463,pipe
+2025-10-18 02:43:32.702256,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/hillFormula,DataProperty,0.7413394,pipe
+2025-10-18 02:43:32.702257,Is a material recognized as a recycled material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/countryOfProduction,DataProperty,0.73792315,pipe
+2025-10-18 02:43:33.168105,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.8573906,pipe
+2025-10-18 02:43:33.168108,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.84731793,pipe
+2025-10-18 02:43:33.168108,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.8468963,pipe
+2025-10-18 02:43:33.168109,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/Product,Class,0.84394586,pipe
+2025-10-18 02:43:33.168109,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.82906204,pipe
+2025-10-18 02:43:33.168109,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/Item,Class,0.8115846,pipe
+2025-10-18 02:43:33.168110,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/Solution,Class,0.8022452,pipe
+2025-10-18 02:43:33.168110,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/Constituent,Class,0.7957414,pipe
+2025-10-18 02:43:33.168110,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Material,Class,0.7885845,pipe
+2025-10-18 02:43:33.168110,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/ProductionProcess,Class,0.7869866,pipe
+2025-10-18 02:43:33.168111,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/ProductionLocation,Class,0.78468716,pipe
+2025-10-18 02:43:33.168111,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/ManufacturingProcess,Class,0.78230023,pipe
+2025-10-18 02:43:33.168111,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/ManufactureLocation,Class,0.7801371,pipe
+2025-10-18 02:43:33.168112,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/Composition,Class,0.7795909,pipe
+2025-10-18 02:43:33.168112,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/ChemicalSubstance,Class,0.77377796,pipe
+2025-10-18 02:43:33.168112,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/hasProductObjectComponent,ObjectProperty,0.83650637,pipe
+2025-10-18 02:43:33.168112,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/hasProductComponent,ObjectProperty,0.82206035,pipe
+2025-10-18 02:43:33.168113,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.8076843,pipe
+2025-10-18 02:43:33.168113,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/hasComposition,ObjectProperty,0.79440653,pipe
+2025-10-18 02:43:33.168113,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/hasProductName,DataProperty,0.79814637,pipe
+2025-10-18 02:43:33.168113,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/countryOfManufacture,DataProperty,0.7744622,pipe
+2025-10-18 02:43:33.168114,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/hasBrand,DataProperty,0.77444875,pipe
+2025-10-18 02:43:33.168114,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.7733414,pipe
+2025-10-18 02:43:33.168114,What are the components of a product?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/countryOfProduction,DataProperty,0.7714238,pipe
+2025-10-18 02:43:33.638331,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.87470806,pipe
+2025-10-18 02:43:33.638334,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Material,Class,0.8525929,pipe
+2025-10-18 02:43:33.638335,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.84135914,pipe
+2025-10-18 02:43:33.638335,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.8387873,pipe
+2025-10-18 02:43:33.638335,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.81955504,pipe
+2025-10-18 02:43:33.638336,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/Matter,Class,0.81608284,pipe
+2025-10-18 02:43:33.638336,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/ChemicalSubstance,Class,0.8158905,pipe
+2025-10-18 02:43:33.638336,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/ChemicalEntity,Class,0.80090785,pipe
+2025-10-18 02:43:33.638337,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/ChemicalElement,Class,0.7997446,pipe
+2025-10-18 02:43:33.638337,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/Composition,Class,0.7972464,pipe
+2025-10-18 02:43:33.638337,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Cellulose,Class,0.79509777,pipe
+2025-10-18 02:43:33.638337,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/EnergyComposition,Class,0.78474325,pipe
+2025-10-18 02:43:33.638338,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Iron,Class,0.78299516,pipe
+2025-10-18 02:43:33.638338,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Silicon,Class,0.7829624,pipe
+2025-10-18 02:43:33.638338,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Titanium,Class,0.78194326,pipe
+2025-10-18 02:43:33.638339,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.83836067,pipe
+2025-10-18 02:43:33.638339,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/hasComposition,ObjectProperty,0.8114718,pipe
+2025-10-18 02:43:33.638339,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.80243564,pipe
+2025-10-18 02:43:33.638339,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/associatedWithMatter,ObjectProperty,0.79868525,pipe
+2025-10-18 02:43:33.638340,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.81905514,pipe
+2025-10-18 02:43:33.638340,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/hillFormula,DataProperty,0.81845754,pipe
+2025-10-18 02:43:33.638340,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage,DataProperty,0.7645303,pipe
+2025-10-18 02:43:33.638340,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/reducedChemicalFormula,DataProperty,0.7546351,pipe
+2025-10-18 02:43:33.638341,What is the composition of a material?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/descriptiveFormula,DataProperty,0.75044966,pipe
+2025-10-18 02:43:34.104012,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/DisassemblingProcess,Class,0.8232702,pipe
+2025-10-18 02:43:34.104016,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/DismantleProcess,Class,0.79211736,pipe
+2025-10-18 02:43:34.104016,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/DeconstructionProcess,Class,0.77163976,pipe
+2025-10-18 02:43:34.104017,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/AssemblingProcess,Class,0.76309645,pipe
+2025-10-18 02:43:34.104017,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/actor/DismantlingResource,Class,0.7454283,pipe
+2025-10-18 02:43:34.104017,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/RefurbishmentProcess,Class,0.74006677,pipe
+2025-10-18 02:43:34.104018,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/RepairProcess,Class,0.73827934,pipe
+2025-10-18 02:43:34.104018,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/ManufacturingProcess,Class,0.73696005,pipe
+2025-10-18 02:43:34.104018,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/AssemblyLocation,Class,0.7356909,pipe
+2025-10-18 02:43:34.104018,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/RemoveProcess,Class,0.7355534,pipe
+2025-10-18 02:43:34.104019,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/RoHSCompliance,Class,0.73330915,pipe
+2025-10-18 02:43:34.104019,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/RecycleProcess,Class,0.7328715,pipe
+2025-10-18 02:43:34.104019,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/TakeBackProcess,Class,0.72791773,pipe
+2025-10-18 02:43:34.104020,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/ReuseProcess,Class,0.7272733,pipe
+2025-10-18 02:43:34.104020,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/process/ServiceProcess,Class,0.72569823,pipe
+2025-10-18 02:43:34.104020,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/quantity/hasDismantlingCost,ObjectProperty,0.76423067,pipe
+2025-10-18 02:43:34.104020,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/hasAssemblyLocation,ObjectProperty,0.7418691,pipe
+2025-10-18 02:43:34.104021,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.72999763,pipe
+2025-10-18 02:43:34.104021,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/processODP/hasPart,ObjectProperty,0.72552323,pipe
+2025-10-18 02:43:34.104021,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/countryOfAssembly,DataProperty,0.7392744,pipe
+2025-10-18 02:43:34.104021,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/countryOfManufacture,DataProperty,0.71057814,pipe
+2025-10-18 02:43:34.104022,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/hasCertificate,DataProperty,0.7098462,pipe
+2025-10-18 02:43:34.104022,What is the guidance of of disassembly method?,text-embedding-ada-002,http://w3id.org/CEON/ontology/processODP/occursAtTime,DataProperty,0.7048614,pipe
+2025-10-18 02:43:34.104022,What is the guidance of of disassembly method?,text-embedding-ada-002,http://www.w3.org/2003/01/geo/wgs84_pos#long,DataProperty,0.70026314,pipe
+2025-10-18 02:43:34.579024,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Material,Class,0.78411585,pipe
+2025-10-18 02:43:34.579028,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Cellulose,Class,0.7763343,pipe
+2025-10-18 02:43:34.579028,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.7669715,pipe
+2025-10-18 02:43:34.579029,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.76209325,pipe
+2025-10-18 02:43:34.579029,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/Matter,Class,0.75320375,pipe
+2025-10-18 02:43:34.579029,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/Biomass,Class,0.75131506,pipe
+2025-10-18 02:43:34.579030,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/ChemicalSubstance,Class,0.7490271,pipe
+2025-10-18 02:43:34.579030,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/Coal,Class,0.7445853,pipe
+2025-10-18 02:43:34.579030,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/FossilFuel,Class,0.7424226,pipe
+2025-10-18 02:43:34.579031,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/Iron,Class,0.73415107,pipe
+2025-10-18 02:43:34.579031,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.73373854,pipe
+2025-10-18 02:43:34.579031,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/Resource,Class,0.73044425,pipe
+2025-10-18 02:43:34.579031,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/Biogas,Class,0.7262441,pipe
+2025-10-18 02:43:34.579032,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/Constituent,Class,0.72435105,pipe
+2025-10-18 02:43:34.579032,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/ChemicalEntity,Class,0.7237868,pipe
+2025-10-18 02:43:34.579032,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.75114906,pipe
+2025-10-18 02:43:34.579033,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/containsInformation,ObjectProperty,0.7466964,pipe
+2025-10-18 02:43:34.579033,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/resourceODP/hasMatter,ObjectProperty,0.73640454,pipe
+2025-10-18 02:43:34.579033,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/hasChemicalEntity,ObjectProperty,0.73379725,pipe
+2025-10-18 02:43:34.579033,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/hillFormula,DataProperty,0.7365603,pipe
+2025-10-18 02:43:34.579034,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.71973693,pipe
+2025-10-18 02:43:34.579034,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/energy/hasSustainability,DataProperty,0.715032,pipe
+2025-10-18 02:43:34.579034,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/product/hasCertificate,DataProperty,0.71418536,pipe
+2025-10-18 02:43:34.579035,What materials does a fibre contain?,text-embedding-ada-002,http://w3id.org/CEON/ontology/material/reducedChemicalFormula,DataProperty,0.7138548,pipe
+2025-10-18 02:45:05.092075,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/actor/RecyclingResource,Class,0.60002244,newline
+2025-10-18 02:45:05.092079,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/RecycleProcess,Class,0.5783309,newline
+2025-10-18 02:45:05.092079,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/ReuseProcess,Class,0.5493641,newline
+2025-10-18 02:45:05.092080,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.541385,newline
+2025-10-18 02:45:05.092080,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/Material,Class,0.5358983,newline
+2025-10-18 02:45:05.092080,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Matter,Class,0.47235954,newline
+2025-10-18 02:45:05.092080,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/cvn/CircularStrategy,Class,0.46652064,newline
+2025-10-18 02:45:05.092081,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/PhysicalObject,Class,0.45807338,newline
+2025-10-18 02:45:05.092081,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Resource,Class,0.44115704,newline
+2025-10-18 02:45:05.092081,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/actor/DismantlingResource,Class,0.428248,newline
+2025-10-18 02:45:05.092082,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects,Class,0.42214638,newline
+2025-10-18 02:45:05.092082,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.421486,newline
+2025-10-18 02:45:05.092082,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/Catalyst,Class,0.4199013,newline
+2025-10-18 02:45:05.092082,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/Compliance,Class,0.41876376,newline
+2025-10-18 02:45:05.092083,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/actorODP/Role,Class,0.41449526,newline
+2025-10-18 02:45:05.092083,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/quantity/hasRecyclingCost,ObjectProperty,0.6041423,newline
+2025-10-18 02:45:05.092083,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.5944464,newline
+2025-10-18 02:45:05.092084,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/hasMatter,ObjectProperty,0.54622555,newline
+2025-10-18 02:45:05.092084,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/associatedWithMatter,ObjectProperty,0.5308055,newline
+2025-10-18 02:45:05.092084,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/reducedChemicalFormula,DataProperty,0.41852108,newline
+2025-10-18 02:45:05.092084,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasCertificate,DataProperty,0.41770232,newline
+2025-10-18 02:45:05.092085,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasBrand,DataProperty,0.41250378,newline
+2025-10-18 02:45:05.092085,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/energy/hasSustainability,DataProperty,0.4083828,newline
+2025-10-18 02:45:05.092085,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.40687612,newline
+2025-10-18 02:45:05.488016,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.76430213,newline
+2025-10-18 02:45:05.488020,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.7167193,newline
+2025-10-18 02:45:05.488020,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.70612013,newline
+2025-10-18 02:45:05.488020,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/Product,Class,0.64760536,newline
+2025-10-18 02:45:05.488021,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.62977934,newline
+2025-10-18 02:45:05.488021,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/Solution,Class,0.6225025,newline
+2025-10-18 02:45:05.488021,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Constituent,Class,0.5805629,newline
+2025-10-18 02:45:05.488022,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/Composition,Class,0.571933,newline
+2025-10-18 02:45:05.488022,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/SupplierLocation,Class,0.52132475,newline
+2025-10-18 02:45:05.488022,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/BatchOfObjects,Class,0.5096802,newline
+2025-10-18 02:45:05.488022,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/energy/EnergyComposition,Class,0.5093317,newline
+2025-10-18 02:45:05.488023,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/ManufactureLocation,Class,0.50658447,newline
+2025-10-18 02:45:05.488023,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/Compliance,Class,0.5045306,newline
+2025-10-18 02:45:05.488023,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/actor/ManufacturingResource,Class,0.50238395,newline
+2025-10-18 02:45:05.488023,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/Item,Class,0.5009984,newline
+2025-10-18 02:45:05.488024,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasProductComponent,ObjectProperty,0.8420535,newline
+2025-10-18 02:45:05.488024,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasProductObjectComponent,ObjectProperty,0.8013678,newline
+2025-10-18 02:45:05.488024,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.73757046,newline
+2025-10-18 02:45:05.488025,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasComposition,ObjectProperty,0.7238836,newline
+2025-10-18 02:45:05.488025,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.624964,newline
+2025-10-18 02:45:05.488025,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasProductName,DataProperty,0.6209609,newline
+2025-10-18 02:45:05.488025,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasBrand,DataProperty,0.6072156,newline
+2025-10-18 02:45:05.488026,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/countryOfAssembly,DataProperty,0.5860375,newline
+2025-10-18 02:45:05.488026,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/countryOfProduction,DataProperty,0.55743366,newline
+2025-10-18 02:45:05.881063,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.7402941,newline
+2025-10-18 02:45:05.881067,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.694184,newline
+2025-10-18 02:45:05.881067,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/Material,Class,0.66185856,newline
+2025-10-18 02:45:05.881068,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.6000812,newline
+2025-10-18 02:45:05.881068,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.5808256,newline
+2025-10-18 02:45:05.881068,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/Composition,Class,0.571802,newline
+2025-10-18 02:45:05.881069,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Constituent,Class,0.5477271,newline
+2025-10-18 02:45:05.881069,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/energy/EnergyComposition,Class,0.52577555,newline
+2025-10-18 02:45:05.881069,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/ChemicalSubstance,Class,0.5246717,newline
+2025-10-18 02:45:05.881070,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/ChemicalEntity,Class,0.52249235,newline
+2025-10-18 02:45:05.881070,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Matter,Class,0.5127884,newline
+2025-10-18 02:45:05.881070,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Resource,Class,0.48864904,newline
+2025-10-18 02:45:05.881070,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/PhysicalObject,Class,0.4806037,newline
+2025-10-18 02:45:05.881071,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/ChemicalElement,Class,0.46035534,newline
+2025-10-18 02:45:05.881071,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/AssemblyLocation,Class,0.43924624,newline
+2025-10-18 02:45:05.881071,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.7512996,newline
+2025-10-18 02:45:05.881071,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/associatedWithMatter,ObjectProperty,0.7239975,newline
+2025-10-18 02:45:05.881072,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasComposition,ObjectProperty,0.6803056,newline
+2025-10-18 02:45:05.881072,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/hasChemicalEntity,ObjectProperty,0.6361376,newline
+2025-10-18 02:45:05.881072,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.62621176,newline
+2025-10-18 02:45:05.881073,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/hillFormula,DataProperty,0.5730934,newline
+2025-10-18 02:45:05.881073,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage,DataProperty,0.5346974,newline
+2025-10-18 02:45:05.881073,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/reducedChemicalFormula,DataProperty,0.4940093,newline
+2025-10-18 02:45:05.881073,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/descriptiveFormula,DataProperty,0.48595905,newline
+2025-10-18 02:45:06.284879,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/DisassemblingProcess,Class,0.66006535,newline
+2025-10-18 02:45:06.284883,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/actor/DismantlingResource,Class,0.58503604,newline
+2025-10-18 02:45:06.284883,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/DismantleProcess,Class,0.5532487,newline
+2025-10-18 02:45:06.284883,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/RemoveProcess,Class,0.476188,newline
+2025-10-18 02:45:06.284884,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/AssemblingProcess,Class,0.47419593,newline
+2025-10-18 02:45:06.284884,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/DeconstructionProcess,Class,0.46302515,newline
+2025-10-18 02:45:06.284884,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/RemoveResourceProcess,Class,0.45543772,newline
+2025-10-18 02:45:06.284885,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/AssemblyLocation,Class,0.44339874,newline
+2025-10-18 02:45:06.284885,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/ReuseProcess,Class,0.41844147,newline
+2025-10-18 02:45:06.284885,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/RecycleProcess,Class,0.41784295,newline
+2025-10-18 02:45:06.284885,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/actor/RepairingResource,Class,0.41559055,newline
+2025-10-18 02:45:06.284886,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/RepairProcess,Class,0.41115758,newline
+2025-10-18 02:45:06.284886,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/plan/Plan,Class,0.41099975,newline
+2025-10-18 02:45:06.284886,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/actor/RecyclingResource,Class,0.4055478,newline
+2025-10-18 02:45:06.284887,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation,Class,0.39706287,newline
+2025-10-18 02:45:06.284887,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/quantity/hasDismantlingCost,ObjectProperty,0.64078665,newline
+2025-10-18 02:45:06.284887,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasAssemblyLocation,ObjectProperty,0.48080397,newline
+2025-10-18 02:45:06.284887,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/quantity/hasRecyclingCost,ObjectProperty,0.4748025,newline
+2025-10-18 02:45:06.284888,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/hasConstituent,ObjectProperty,0.4645509,newline
+2025-10-18 02:45:06.284888,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/countryOfAssembly,DataProperty,0.44184297,newline
+2025-10-18 02:45:06.284888,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.42123634,newline
+2025-10-18 02:45:06.284888,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage,DataProperty,0.3978262,newline
+2025-10-18 02:45:06.284889,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasCertificate,DataProperty,0.37795466,newline
+2025-10-18 02:45:06.284889,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/energy/hasSustainability,DataProperty,0.3778769,newline
+2025-10-18 02:45:06.692386,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.52539593,newline
+2025-10-18 02:45:06.692390,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/Material,Class,0.4632686,newline
+2025-10-18 02:45:06.692390,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.45277667,newline
+2025-10-18 02:45:06.692391,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Resource,Class,0.42298347,newline
+2025-10-18 02:45:06.692391,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/Cellulose,Class,0.41680557,newline
+2025-10-18 02:45:06.692391,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/energy/EnergyComposition,Class,0.40060565,newline
+2025-10-18 02:45:06.692392,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Matter,Class,0.40041065,newline
+2025-10-18 02:45:06.692392,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/ChemicalSubstance,Class,0.3975137,newline
+2025-10-18 02:45:06.692392,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Constituent,Class,0.39456937,newline
+2025-10-18 02:45:06.692393,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/energy/Biomass,Class,0.3842849,newline
+2025-10-18 02:45:06.692393,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.38386506,newline
+2025-10-18 02:45:06.692393,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/PhysicalObject,Class,0.3804396,newline
+2025-10-18 02:45:06.692393,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.37800324,newline
+2025-10-18 02:45:06.692394,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Asset,Class,0.3729131,newline
+2025-10-18 02:45:06.692394,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/Composition,Class,0.36563295,newline
+2025-10-18 02:45:06.692394,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.58595794,newline
+2025-10-18 02:45:06.692395,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/associatedWithMatter,ObjectProperty,0.5281955,newline
+2025-10-18 02:45:06.692395,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/hasChemicalEntity,ObjectProperty,0.5130478,newline
+2025-10-18 02:45:06.692395,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasComposition,ObjectProperty,0.49635077,newline
+2025-10-18 02:45:06.692396,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.45448518,newline
+2025-10-18 02:45:06.692396,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage,DataProperty,0.44712862,newline
+2025-10-18 02:45:06.692396,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/hillFormula,DataProperty,0.43538195,newline
+2025-10-18 02:45:06.692396,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/anonymousFormula,DataProperty,0.42517185,newline
+2025-10-18 02:45:06.692397,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/reducedChemicalFormula,DataProperty,0.41627315,newline
+2025-10-18 02:46:20.392236,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/Material,Class,0.6021085,pipe
+2025-10-18 02:46:20.392240,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.5756913,pipe
+2025-10-18 02:46:20.392241,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/actor/RecyclingResource,Class,0.5717715,pipe
+2025-10-18 02:46:20.392241,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/RecycleProcess,Class,0.5629108,pipe
+2025-10-18 02:46:20.392241,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Resource,Class,0.53130543,pipe
+2025-10-18 02:46:20.392242,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/cvn/CircularStrategy,Class,0.5241066,pipe
+2025-10-18 02:46:20.392242,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/ReuseProcess,Class,0.51976806,pipe
+2025-10-18 02:46:20.392242,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/PhysicalObject,Class,0.4880882,pipe
+2025-10-18 02:46:20.392243,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/REACHCompliance,Class,0.48664796,pipe
+2025-10-18 02:46:20.392243,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Matter,Class,0.48492044,pipe
+2025-10-18 02:46:20.392243,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.47221363,pipe
+2025-10-18 02:46:20.392243,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/ResourceQuality,Class,0.46936494,pipe
+2025-10-18 02:46:20.392244,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/RoHSCompliance,Class,0.46562266,pipe
+2025-10-18 02:46:20.392244,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/Product,Class,0.46160078,pipe
+2025-10-18 02:46:20.392244,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/actor/TakingBackResource,Class,0.4574622,pipe
+2025-10-18 02:46:20.392244,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.6144629,pipe
+2025-10-18 02:46:20.392245,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/quantity/hasRecyclingCost,ObjectProperty,0.60718346,pipe
+2025-10-18 02:46:20.392245,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/associatedWithMatter,ObjectProperty,0.58497196,pipe
+2025-10-18 02:46:20.392245,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/hasMatter,ObjectProperty,0.56828284,pipe
+2025-10-18 02:46:20.392246,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/batchLabel,DataProperty,0.44538862,pipe
+2025-10-18 02:46:20.392246,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/reducedChemicalFormula,DataProperty,0.44030207,pipe
+2025-10-18 02:46:20.392246,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/batchID,DataProperty,0.44010353,pipe
+2025-10-18 02:46:20.392246,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.43855962,pipe
+2025-10-18 02:46:20.392247,Is a material recognized as a recycled material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/countryOfAssembly,DataProperty,0.43697393,pipe
+2025-10-18 02:46:20.827915,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.79251057,pipe
+2025-10-18 02:46:20.827918,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.7605599,pipe
+2025-10-18 02:46:20.827919,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.75533175,pipe
+2025-10-18 02:46:20.827919,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/Product,Class,0.74592674,pipe
+2025-10-18 02:46:20.827919,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.6658801,pipe
+2025-10-18 02:46:20.827920,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/Composition,Class,0.6364687,pipe
+2025-10-18 02:46:20.827920,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/Solution,Class,0.62491316,pipe
+2025-10-18 02:46:20.827920,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/Item,Class,0.5911479,pipe
+2025-10-18 02:46:20.827920,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Resource,Class,0.57718694,pipe
+2025-10-18 02:46:20.827921,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Constituent,Class,0.5734325,pipe
+2025-10-18 02:46:20.827921,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/ProductionLocation,Class,0.56185454,pipe
+2025-10-18 02:46:20.827921,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/BuyResourceProcess,Class,0.54374474,pipe
+2025-10-18 02:46:20.827921,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/ManufactureLocation,Class,0.5436045,pipe
+2025-10-18 02:46:20.827922,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/value/ValueProposition,Class,0.5420296,pipe
+2025-10-18 02:46:20.827922,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/Compliance,Class,0.54097944,pipe
+2025-10-18 02:46:20.827922,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasProductComponent,ObjectProperty,0.83429694,pipe
+2025-10-18 02:46:20.827923,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasProductObjectComponent,ObjectProperty,0.8110559,pipe
+2025-10-18 02:46:20.827923,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.7797469,pipe
+2025-10-18 02:46:20.827923,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasComposition,ObjectProperty,0.7439491,pipe
+2025-10-18 02:46:20.827923,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.67130816,pipe
+2025-10-18 02:46:20.827924,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasProductName,DataProperty,0.653229,pipe
+2025-10-18 02:46:20.827924,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasBrand,DataProperty,0.6263521,pipe
+2025-10-18 02:46:20.827924,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/countryOfAssembly,DataProperty,0.608137,pipe
+2025-10-18 02:46:20.827924,What are the components of a product?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasCertificate,DataProperty,0.60593045,pipe
+2025-10-18 02:46:21.274023,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.7567917,pipe
+2025-10-18 02:46:21.274027,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.7150142,pipe
+2025-10-18 02:46:21.274027,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/Material,Class,0.7067475,pipe
+2025-10-18 02:46:21.274028,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.6307936,pipe
+2025-10-18 02:46:21.274028,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.60486233,pipe
+2025-10-18 02:46:21.274028,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/Composition,Class,0.593055,pipe
+2025-10-18 02:46:21.274029,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Resource,Class,0.56780314,pipe
+2025-10-18 02:46:21.274029,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/ChemicalSubstance,Class,0.5393779,pipe
+2025-10-18 02:46:21.274029,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Constituent,Class,0.53685325,pipe
+2025-10-18 02:46:21.274030,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/ChemicalEntity,Class,0.5332744,pipe
+2025-10-18 02:46:21.274030,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/energy/EnergyComposition,Class,0.53134143,pipe
+2025-10-18 02:46:21.274030,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Matter,Class,0.5233425,pipe
+2025-10-18 02:46:21.274030,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/PhysicalObject,Class,0.50414574,pipe
+2025-10-18 02:46:21.274031,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/Product,Class,0.49407685,pipe
+2025-10-18 02:46:21.274031,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/Cellulose,Class,0.4661768,pipe
+2025-10-18 02:46:21.274031,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.7450557,pipe
+2025-10-18 02:46:21.274032,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/associatedWithMatter,ObjectProperty,0.7430094,pipe
+2025-10-18 02:46:21.274032,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasComposition,ObjectProperty,0.69486237,pipe
+2025-10-18 02:46:21.274032,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.66251177,pipe
+2025-10-18 02:46:21.274032,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.6373023,pipe
+2025-10-18 02:46:21.274033,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/hillFormula,DataProperty,0.57107794,pipe
+2025-10-18 02:46:21.274033,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/descriptiveFormula,DataProperty,0.5289846,pipe
+2025-10-18 02:46:21.274033,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage,DataProperty,0.5170119,pipe
+2025-10-18 02:46:21.274034,What is the composition of a material?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/reducedChemicalFormula,DataProperty,0.5000373,pipe
+2025-10-18 02:46:21.717169,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/DisassemblingProcess,Class,0.68646306,pipe
+2025-10-18 02:46:21.717173,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/DismantleProcess,Class,0.62760633,pipe
+2025-10-18 02:46:21.717173,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/actor/DismantlingResource,Class,0.5928725,pipe
+2025-10-18 02:46:21.717174,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/DeconstructionProcess,Class,0.53312993,pipe
+2025-10-18 02:46:21.717174,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/RemoveProcess,Class,0.5103793,pipe
+2025-10-18 02:46:21.717174,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/RemoveResourceProcess,Class,0.5045936,pipe
+2025-10-18 02:46:21.717175,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/AssemblyLocation,Class,0.48959318,pipe
+2025-10-18 02:46:21.717175,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/AssemblingProcess,Class,0.4812789,pipe
+2025-10-18 02:46:21.717175,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/actor/TakingBackResource,Class,0.45913374,pipe
+2025-10-18 02:46:21.717176,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/RoHSCompliance,Class,0.44534695,pipe
+2025-10-18 02:46:21.717176,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.4447277,pipe
+2025-10-18 02:46:21.717176,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/Composition,Class,0.44344333,pipe
+2025-10-18 02:46:21.717176,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/TakeBackProcess,Class,0.44293535,pipe
+2025-10-18 02:46:21.717177,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/process/RepairProcess,Class,0.4320603,pipe
+2025-10-18 02:46:21.717177,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.42706257,pipe
+2025-10-18 02:46:21.717177,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/quantity/hasDismantlingCost,ObjectProperty,0.66999125,pipe
+2025-10-18 02:46:21.717177,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasAssemblyLocation,ObjectProperty,0.5110898,pipe
+2025-10-18 02:46:21.717178,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.5009804,pipe
+2025-10-18 02:46:21.717178,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/hasConstituent,ObjectProperty,0.49377713,pipe
+2025-10-18 02:46:21.717178,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/countryOfAssembly,DataProperty,0.4952399,pipe
+2025-10-18 02:46:21.717179,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.45631808,pipe
+2025-10-18 02:46:21.717179,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage,DataProperty,0.4185385,pipe
+2025-10-18 02:46:21.717179,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/descriptiveFormula,DataProperty,0.410389,pipe
+2025-10-18 02:46:21.717179,What is the guidance of of disassembly method?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/batchID,DataProperty,0.40150538,pipe
+2025-10-18 02:46:22.137456,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.55352795,pipe
+2025-10-18 02:46:22.137460,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/Material,Class,0.5374603,pipe
+2025-10-18 02:46:22.137460,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.50877047,pipe
+2025-10-18 02:46:22.137460,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Resource,Class,0.50761855,pipe
+2025-10-18 02:46:22.137461,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/Cellulose,Class,0.45322967,pipe
+2025-10-18 02:46:22.137461,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.43289295,pipe
+2025-10-18 02:46:22.137461,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/Product,Class,0.4323593,pipe
+2025-10-18 02:46:22.137462,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.43193102,pipe
+2025-10-18 02:46:22.137462,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/Composition,Class,0.43098667,pipe
+2025-10-18 02:46:22.137462,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/energy/EnergyComposition,Class,0.43058336,pipe
+2025-10-18 02:46:22.137462,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/PhysicalObject,Class,0.41964933,pipe
+2025-10-18 02:46:22.137463,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Matter,Class,0.41519246,pipe
+2025-10-18 02:46:22.137463,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/Constituent,Class,0.41389096,pipe
+2025-10-18 02:46:22.137463,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/resourceODP/ResourceQuality,Class,0.40870064,pipe
+2025-10-18 02:46:22.137464,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/ChemicalSubstance,Class,0.40811327,pipe
+2025-10-18 02:46:22.137464,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.6107997,pipe
+2025-10-18 02:46:22.137464,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/associatedWithMatter,ObjectProperty,0.58510494,pipe
+2025-10-18 02:46:22.137464,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/hasChemicalEntity,ObjectProperty,0.54718935,pipe
+2025-10-18 02:46:22.137465,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/hasComposition,ObjectProperty,0.5421246,pipe
+2025-10-18 02:46:22.137465,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.489997,pipe
+2025-10-18 02:46:22.137465,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/hillFormula,DataProperty,0.4692824,pipe
+2025-10-18 02:46:22.137465,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/descriptiveFormula,DataProperty,0.46097362,pipe
+2025-10-18 02:46:22.137466,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/material/anonymousFormula,DataProperty,0.45210484,pipe
+2025-10-18 02:46:22.137466,What materials does a fibre contain?,qwen3-embedding:4b,http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage,DataProperty,0.45100427,pipe
+2025-10-18 02:46:32.059151,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/RecycleProcess,Class,0.3846388,newline
+2025-10-18 02:46:32.059156,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/actor/RecyclingResource,Class,0.36037236,newline
+2025-10-18 02:46:32.059157,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Material,Class,0.33859897,newline
+2025-10-18 02:46:32.059157,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.33568457,newline
+2025-10-18 02:46:32.059157,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/ReuseProcess,Class,0.33100748,newline
+2025-10-18 02:46:32.059158,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/resourceODP/Resource,Class,0.31944048,newline
+2025-10-18 02:46:32.059158,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/cvn/CircularStrategy,Class,0.316626,newline
+2025-10-18 02:46:32.059158,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Erbium,Class,0.3164959,newline
+2025-10-18 02:46:32.059158,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/energy/Biogas,Class,0.31127936,newline
+2025-10-18 02:46:32.059159,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/RareEarthElement,Class,0.3089679,newline
+2025-10-18 02:46:32.059159,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Scandium,Class,0.3027092,newline
+2025-10-18 02:46:32.059159,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Aluminum,Class,0.30093783,newline
+2025-10-18 02:46:32.059159,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Cerium,Class,0.29866162,newline
+2025-10-18 02:46:32.059160,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Cellulose,Class,0.29802456,newline
+2025-10-18 02:46:32.059160,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Neodymium,Class,0.2948324,newline
+2025-10-18 02:46:32.059160,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/quantity/hasRecyclingCost,ObjectProperty,0.34537932,newline
+2025-10-18 02:46:32.059161,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.28472435,newline
+2025-10-18 02:46:32.059161,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/resourceODP/hasResourceQuality,ObjectProperty,0.25649506,newline
+2025-10-18 02:46:32.059161,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/hasChemicalEntity,ObjectProperty,0.2484267,newline
+2025-10-18 02:46:32.059161,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/reducedChemicalFormula,DataProperty,0.23386504,newline
+2025-10-18 02:46:32.059162,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/hasCertificate,DataProperty,0.2190443,newline
+2025-10-18 02:46:32.059162,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/energy/hasSustainability,DataProperty,0.19016111,newline
+2025-10-18 02:46:32.059162,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/hillFormula,DataProperty,0.17790808,newline
+2025-10-18 02:46:32.059162,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/countryOfProduction,DataProperty,0.17354187,newline
+2025-10-18 02:46:32.747935,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.5926821,newline
+2025-10-18 02:46:32.747940,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.5381494,newline
+2025-10-18 02:46:32.747940,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.51788056,newline
+2025-10-18 02:46:32.747940,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/Product,Class,0.5026151,newline
+2025-10-18 02:46:32.747941,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.4373985,newline
+2025-10-18 02:46:32.747941,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/Item,Class,0.3895506,newline
+2025-10-18 02:46:32.747941,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/resourceODP/Constituent,Class,0.35326287,newline
+2025-10-18 02:46:32.747942,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/Solution,Class,0.34800163,newline
+2025-10-18 02:46:32.747942,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/Composition,Class,0.3240273,newline
+2025-10-18 02:46:32.747942,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/ProductionProcess,Class,0.29413477,newline
+2025-10-18 02:46:32.747942,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/Compliance,Class,0.28997028,newline
+2025-10-18 02:46:32.747943,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/AssemblyLocation,Class,0.28731412,newline
+2025-10-18 02:46:32.747943,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/ProductionLocation,Class,0.27306542,newline
+2025-10-18 02:46:32.747943,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Material,Class,0.27214387,newline
+2025-10-18 02:46:32.747944,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/resourceODP/Resource,Class,0.26307833,newline
+2025-10-18 02:46:32.747944,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/hasProductComponent,ObjectProperty,0.5214515,newline
+2025-10-18 02:46:32.747944,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/hasProductObjectComponent,ObjectProperty,0.49559522,newline
+2025-10-18 02:46:32.747944,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.46935397,newline
+2025-10-18 02:46:32.747945,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/associatedWithProductModel,ObjectProperty,0.38813093,newline
+2025-10-18 02:46:32.747945,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/hasProductName,DataProperty,0.36007696,newline
+2025-10-18 02:46:32.747945,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.3057151,newline
+2025-10-18 02:46:32.747945,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/hasBrand,DataProperty,0.28877738,newline
+2025-10-18 02:46:32.747946,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/countryOfProduction,DataProperty,0.25741243,newline
+2025-10-18 02:46:32.747946,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/hasCertificate,DataProperty,0.25432304,newline
+2025-10-18 02:46:33.428035,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.6015024,newline
+2025-10-18 02:46:33.428038,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.527737,newline
+2025-10-18 02:46:33.428039,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.4991876,newline
+2025-10-18 02:46:33.428039,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Material,Class,0.46194562,newline
+2025-10-18 02:46:33.428040,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.43195772,newline
+2025-10-18 02:46:33.428040,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Cellulose,Class,0.4063749,newline
+2025-10-18 02:46:33.428040,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/energy/EnergyComposition,Class,0.38318777,newline
+2025-10-18 02:46:33.428040,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Titanium,Class,0.3792078,newline
+2025-10-18 02:46:33.428041,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/ChemicalEntity,Class,0.3717435,newline
+2025-10-18 02:46:33.428041,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/Composition,Class,0.36988097,newline
+2025-10-18 02:46:33.428041,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/ChemicalSubstance,Class,0.36765093,newline
+2025-10-18 02:46:33.428042,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Aluminum,Class,0.36736518,newline
+2025-10-18 02:46:33.428042,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/ChemicalElement,Class,0.36084816,newline
+2025-10-18 02:46:33.428042,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Magnesium,Class,0.34972054,newline
+2025-10-18 02:46:33.428042,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Silicon,Class,0.34840965,newline
+2025-10-18 02:46:33.428043,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.5430873,newline
+2025-10-18 02:46:33.428043,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/hasComposition,ObjectProperty,0.43994573,newline
+2025-10-18 02:46:33.428043,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.41511282,newline
+2025-10-18 02:46:33.428043,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/associatedWithMatter,ObjectProperty,0.39154008,newline
+2025-10-18 02:46:33.428044,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.43396235,newline
+2025-10-18 02:46:33.428044,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/hillFormula,DataProperty,0.3333161,newline
+2025-10-18 02:46:33.428044,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage,DataProperty,0.3279627,newline
+2025-10-18 02:46:33.428044,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/descriptiveFormula,DataProperty,0.27436945,newline
+2025-10-18 02:46:33.428045,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/anonymousFormula,DataProperty,0.2663598,newline
+2025-10-18 02:46:34.131659,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/DisassemblingProcess,Class,0.42666045,newline
+2025-10-18 02:46:34.131663,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/DismantleProcess,Class,0.35022208,newline
+2025-10-18 02:46:34.131663,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/DeconstructionProcess,Class,0.27604634,newline
+2025-10-18 02:46:34.131663,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/AssemblingProcess,Class,0.27079234,newline
+2025-10-18 02:46:34.131664,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/AssemblyLocation,Class,0.23213606,newline
+2025-10-18 02:46:34.131664,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/actor/DismantlingResource,Class,0.2060365,newline
+2025-10-18 02:46:34.131664,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/RefurbishmentProcess,Class,0.18990116,newline
+2025-10-18 02:46:34.131664,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/RepairProcess,Class,0.18433018,newline
+2025-10-18 02:46:34.131665,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/RemoveProcess,Class,0.18143463,newline
+2025-10-18 02:46:34.131665,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/RoHSCompliance,Class,0.16841736,newline
+2025-10-18 02:46:34.131665,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/RemoveResourceProcess,Class,0.16100898,newline
+2025-10-18 02:46:34.131666,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/TakeBackProcess,Class,0.15999931,newline
+2025-10-18 02:46:34.131666,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/cvn/CircularStrategy,Class,0.15020423,newline
+2025-10-18 02:46:34.131666,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.14614701,newline
+2025-10-18 02:46:34.131666,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/ISOCompliance,Class,0.13921288,newline
+2025-10-18 02:46:34.131667,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/quantity/hasDismantlingCost,ObjectProperty,0.2774604,newline
+2025-10-18 02:46:34.131667,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/hasAssemblyLocation,ObjectProperty,0.22351323,newline
+2025-10-18 02:46:34.131667,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.16522753,newline
+2025-10-18 02:46:34.131667,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/plan/precedesExecution,ObjectProperty,0.16045952,newline
+2025-10-18 02:46:34.131668,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/countryOfAssembly,DataProperty,0.24452554,newline
+2025-10-18 02:46:34.131668,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/countryOfManufacture,DataProperty,0.09630148,newline
+2025-10-18 02:46:34.131668,What is the guidance of of disassembly method?,text-embedding-3-large,http://www.w3.org/2003/01/geo/wgs84_pos#long,DataProperty,0.0893361,newline
+2025-10-18 02:46:34.131669,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.08428529,newline
+2025-10-18 02:46:34.131669,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/descriptiveFormula,DataProperty,0.07297553,newline
+2025-10-18 02:46:34.753613,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Cellulose,Class,0.39732456,newline
+2025-10-18 02:46:34.753617,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.33398697,newline
+2025-10-18 02:46:34.753618,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Material,Class,0.30722898,newline
+2025-10-18 02:46:34.753618,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.26573357,newline
+2025-10-18 02:46:34.753618,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/energy/FossilFuel,Class,0.2641889,newline
+2025-10-18 02:46:34.753619,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Titanium,Class,0.2536826,newline
+2025-10-18 02:46:34.753619,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Iron,Class,0.25264782,newline
+2025-10-18 02:46:34.753619,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/energy/Biogas,Class,0.24819915,newline
+2025-10-18 02:46:34.753619,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/resourceODP/Resource,Class,0.2475561,newline
+2025-10-18 02:46:34.753620,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Erbium,Class,0.23679727,newline
+2025-10-18 02:46:34.753620,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Copper,Class,0.2367685,newline
+2025-10-18 02:46:34.753620,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Ytterbium,Class,0.23049748,newline
+2025-10-18 02:46:34.753620,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/energy/Coal,Class,0.22992381,newline
+2025-10-18 02:46:34.753621,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Niobium,Class,0.22438423,newline
+2025-10-18 02:46:34.753621,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Neodymium,Class,0.22372904,newline
+2025-10-18 02:46:34.753621,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/resourceODP/containsInformation,ObjectProperty,0.2799052,newline
+2025-10-18 02:46:34.753622,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.24885654,newline
+2025-10-18 02:46:34.753622,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.20144226,newline
+2025-10-18 02:46:34.753622,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/hasChemicalEntity,ObjectProperty,0.19788569,newline
+2025-10-18 02:46:34.753622,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/hillFormula,DataProperty,0.19834064,newline
+2025-10-18 02:46:34.753623,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage,DataProperty,0.16083415,newline
+2025-10-18 02:46:34.753623,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/descriptiveFormula,DataProperty,0.14973167,newline
+2025-10-18 02:46:34.753623,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/anonymousFormula,DataProperty,0.14740132,newline
+2025-10-18 02:46:34.753624,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/energy/hasCarbonIntensity,DataProperty,0.13838601,newline
+2025-10-18 02:46:44.496826,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/RecycleProcess,Class,0.39118594,pipe
+2025-10-18 02:46:44.496830,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/actor/RecyclingResource,Class,0.36689025,pipe
+2025-10-18 02:46:44.496831,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Material,Class,0.34903085,pipe
+2025-10-18 02:46:44.496831,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/resourceODP/Resource,Class,0.33244607,pipe
+2025-10-18 02:46:44.496831,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.3263016,pipe
+2025-10-18 02:46:44.496832,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/ReuseProcess,Class,0.325988,pipe
+2025-10-18 02:46:44.496832,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/cvn/CircularStrategy,Class,0.3178338,pipe
+2025-10-18 02:46:44.496832,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Cellulose,Class,0.31617948,pipe
+2025-10-18 02:46:44.496832,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/energy/Biogas,Class,0.31402653,pipe
+2025-10-18 02:46:44.496833,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/RareEarthElement,Class,0.30128634,pipe
+2025-10-18 02:46:44.496833,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Cerium,Class,0.29888588,pipe
+2025-10-18 02:46:44.496833,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Aluminum,Class,0.29412228,pipe
+2025-10-18 02:46:44.496833,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Erbium,Class,0.29339665,pipe
+2025-10-18 02:46:44.496834,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Scandium,Class,0.29230702,pipe
+2025-10-18 02:46:44.496834,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/REACHCompliance,Class,0.28987628,pipe
+2025-10-18 02:46:44.496834,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/quantity/hasRecyclingCost,ObjectProperty,0.3699366,pipe
+2025-10-18 02:46:44.496835,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.3044765,pipe
+2025-10-18 02:46:44.496835,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/hasChemicalEntity,ObjectProperty,0.27544522,pipe
+2025-10-18 02:46:44.496835,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/associatedWithMatter,ObjectProperty,0.26074344,pipe
+2025-10-18 02:46:44.496835,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/reducedChemicalFormula,DataProperty,0.2516038,pipe
+2025-10-18 02:46:44.496836,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/hasCertificate,DataProperty,0.23026,pipe
+2025-10-18 02:46:44.496836,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/hillFormula,DataProperty,0.2030478,pipe
+2025-10-18 02:46:44.496836,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/anonymousFormula,DataProperty,0.19700685,pipe
+2025-10-18 02:46:44.496836,Is a material recognized as a recycled material?,text-embedding-3-large,http://w3id.org/CEON/ontology/energy/hasSustainability,DataProperty,0.1872175,pipe
+2025-10-18 02:46:45.226663,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.5640039,pipe
+2025-10-18 02:46:45.226667,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.52631295,pipe
+2025-10-18 02:46:45.226668,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/Product,Class,0.5137293,pipe
+2025-10-18 02:46:45.226668,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.49107456,pipe
+2025-10-18 02:46:45.226668,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.4138945,pipe
+2025-10-18 02:46:45.226669,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/Item,Class,0.3538851,pipe
+2025-10-18 02:46:45.226669,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/Solution,Class,0.35019615,pipe
+2025-10-18 02:46:45.226669,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/resourceODP/Constituent,Class,0.32824802,pipe
+2025-10-18 02:46:45.226669,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/Composition,Class,0.32025596,pipe
+2025-10-18 02:46:45.226670,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/ProductionProcess,Class,0.29622436,pipe
+2025-10-18 02:46:45.226670,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/AssemblyLocation,Class,0.2913365,pipe
+2025-10-18 02:46:45.226670,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/Compliance,Class,0.289976,pipe
+2025-10-18 02:46:45.226671,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/ProductionLocation,Class,0.2873789,pipe
+2025-10-18 02:46:45.226671,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/AssemblingProcess,Class,0.2781491,pipe
+2025-10-18 02:46:45.226671,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/SupplierLocation,Class,0.26909155,pipe
+2025-10-18 02:46:45.226671,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/hasProductComponent,ObjectProperty,0.540716,pipe
+2025-10-18 02:46:45.226672,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/hasProductObjectComponent,ObjectProperty,0.5052573,pipe
+2025-10-18 02:46:45.226672,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.46559703,pipe
+2025-10-18 02:46:45.226672,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/associatedWithProductModel,ObjectProperty,0.41297352,pipe
+2025-10-18 02:46:45.226673,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/hasProductName,DataProperty,0.37726516,pipe
+2025-10-18 02:46:45.226673,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/hasBrand,DataProperty,0.3261921,pipe
+2025-10-18 02:46:45.226673,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.2925,pipe
+2025-10-18 02:46:45.226673,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/countryOfAssembly,DataProperty,0.2669702,pipe
+2025-10-18 02:46:45.226674,What are the components of a product?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/countryOfProduction,DataProperty,0.26366183,pipe
+2025-10-18 02:46:45.936910,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.5847315,pipe
+2025-10-18 02:46:45.936914,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.5044517,pipe
+2025-10-18 02:46:45.936915,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.48935553,pipe
+2025-10-18 02:46:45.936915,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Material,Class,0.46925026,pipe
+2025-10-18 02:46:45.936915,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.42578053,pipe
+2025-10-18 02:46:45.936916,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/energy/EnergyComposition,Class,0.41003412,pipe
+2025-10-18 02:46:45.936916,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Cellulose,Class,0.40347916,pipe
+2025-10-18 02:46:45.936916,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/ChemicalEntity,Class,0.35726148,pipe
+2025-10-18 02:46:45.936917,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/ChemicalElement,Class,0.35705823,pipe
+2025-10-18 02:46:45.936917,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/ChemicalSubstance,Class,0.35637277,pipe
+2025-10-18 02:46:45.936917,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/Composition,Class,0.3506055,pipe
+2025-10-18 02:46:45.936917,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Aluminum,Class,0.3483339,pipe
+2025-10-18 02:46:45.936918,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Titanium,Class,0.34710202,pipe
+2025-10-18 02:46:45.936918,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/resourceODP/Matter,Class,0.3363738,pipe
+2025-10-18 02:46:45.936918,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Silicon,Class,0.328833,pipe
+2025-10-18 02:46:45.936918,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.5280814,pipe
+2025-10-18 02:46:45.936919,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/hasComposition,ObjectProperty,0.44521162,pipe
+2025-10-18 02:46:45.936919,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.44183803,pipe
+2025-10-18 02:46:45.936919,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/associatedWithMatter,ObjectProperty,0.4042842,pipe
+2025-10-18 02:46:45.936920,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.42018047,pipe
+2025-10-18 02:46:45.936920,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/hillFormula,DataProperty,0.35699838,pipe
+2025-10-18 02:46:45.936920,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage,DataProperty,0.3412844,pipe
+2025-10-18 02:46:45.936920,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/descriptiveFormula,DataProperty,0.30588907,pipe
+2025-10-18 02:46:45.936921,What is the composition of a material?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/anonymousFormula,DataProperty,0.28406906,pipe
+2025-10-18 02:46:46.626559,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/DisassemblingProcess,Class,0.4214353,pipe
+2025-10-18 02:46:46.626563,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/DismantleProcess,Class,0.36052957,pipe
+2025-10-18 02:46:46.626563,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/AssemblingProcess,Class,0.28359008,pipe
+2025-10-18 02:46:46.626564,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/DeconstructionProcess,Class,0.27761778,pipe
+2025-10-18 02:46:46.626564,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/AssemblyLocation,Class,0.23926756,pipe
+2025-10-18 02:46:46.626564,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/RepairProcess,Class,0.2138021,pipe
+2025-10-18 02:46:46.626565,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/actor/DismantlingResource,Class,0.21333902,pipe
+2025-10-18 02:46:46.626565,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/RefurbishmentProcess,Class,0.20892012,pipe
+2025-10-18 02:46:46.626565,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/RemoveProcess,Class,0.19663781,pipe
+2025-10-18 02:46:46.626565,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/TakeBackProcess,Class,0.17939335,pipe
+2025-10-18 02:46:46.626566,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/RemoveResourceProcess,Class,0.1709298,pipe
+2025-10-18 02:46:46.626566,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/RoHSCompliance,Class,0.15870781,pipe
+2025-10-18 02:46:46.626566,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/cvn/CircularStrategy,Class,0.15286152,pipe
+2025-10-18 02:46:46.626567,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/OffsetProcess,Class,0.13983491,pipe
+2025-10-18 02:46:46.626567,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/process/RecycleProcess,Class,0.1391061,pipe
+2025-10-18 02:46:46.626567,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/quantity/hasDismantlingCost,ObjectProperty,0.29968327,pipe
+2025-10-18 02:46:46.626567,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/hasAssemblyLocation,ObjectProperty,0.23956962,pipe
+2025-10-18 02:46:46.626568,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/plan/precedesExecution,ObjectProperty,0.16102517,pipe
+2025-10-18 02:46:46.626568,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.14392126,pipe
+2025-10-18 02:46:46.626568,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/countryOfAssembly,DataProperty,0.2531746,pipe
+2025-10-18 02:46:46.626568,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/countryOfManufacture,DataProperty,0.108543895,pipe
+2025-10-18 02:46:46.626569,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/descriptiveFormula,DataProperty,0.08781695,pipe
+2025-10-18 02:46:46.626569,What is the guidance of of disassembly method?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.08165677,pipe
+2025-10-18 02:46:46.626569,What is the guidance of of disassembly method?,text-embedding-3-large,http://www.opengis.net/ont/geosparql#asGML,DataProperty,0.07513989,pipe
+2025-10-18 02:46:47.295088,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Cellulose,Class,0.38749656,pipe
+2025-10-18 02:46:47.295092,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Material,Class,0.30960912,pipe
+2025-10-18 02:46:47.295092,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.30619285,pipe
+2025-10-18 02:46:47.295093,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.25770056,pipe
+2025-10-18 02:46:47.295093,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/energy/FossilFuel,Class,0.2495533,pipe
+2025-10-18 02:46:47.295093,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/resourceODP/Resource,Class,0.24274957,pipe
+2025-10-18 02:46:47.295094,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Iron,Class,0.24017379,pipe
+2025-10-18 02:46:47.295094,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/energy/Biogas,Class,0.23645532,pipe
+2025-10-18 02:46:47.295094,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Titanium,Class,0.21576431,pipe
+2025-10-18 02:46:47.295094,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/energy/Coal,Class,0.2137857,pipe
+2025-10-18 02:46:47.295095,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.20973907,pipe
+2025-10-18 02:46:47.295095,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Ytterbium,Class,0.2081899,pipe
+2025-10-18 02:46:47.295095,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/resourceODP/Matter,Class,0.20679355,pipe
+2025-10-18 02:46:47.295095,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/Erbium,Class,0.20298827,pipe
+2025-10-18 02:46:47.295096,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/ChemicalSubstance,Class,0.20228633,pipe
+2025-10-18 02:46:47.295096,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.2657736,pipe
+2025-10-18 02:46:47.295096,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/resourceODP/containsInformation,ObjectProperty,0.26344287,pipe
+2025-10-18 02:46:47.295097,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/hasChemicalEntity,ObjectProperty,0.21061605,pipe
+2025-10-18 02:46:47.295097,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.20743674,pipe
+2025-10-18 02:46:47.295097,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/hillFormula,DataProperty,0.21010104,pipe
+2025-10-18 02:46:47.295097,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/descriptiveFormula,DataProperty,0.16733374,pipe
+2025-10-18 02:46:47.295098,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/material/anonymousFormula,DataProperty,0.15714285,pipe
+2025-10-18 02:46:47.295098,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage,DataProperty,0.15295273,pipe
+2025-10-18 02:46:47.295098,What materials does a fibre contain?,text-embedding-3-large,http://w3id.org/CEON/ontology/energy/hasCarbonIntensity,DataProperty,0.13213216,pipe
+2025-10-18 02:46:55.445485,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/actor/RecyclingResource,Class,0.4188301,newline
+2025-10-18 02:46:55.445488,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/RecycleProcess,Class,0.4053504,newline
+2025-10-18 02:46:55.445488,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/Material,Class,0.4009471,newline
+2025-10-18 02:46:55.445489,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.38243377,newline
+2025-10-18 02:46:55.445489,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/ReuseProcess,Class,0.3632195,newline
+2025-10-18 02:46:55.445489,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/cvn/CircularStrategy,Class,0.33074665,newline
+2025-10-18 02:46:55.445490,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/RoHSCompliance,Class,0.32404885,newline
+2025-10-18 02:46:55.445490,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/Biogas,Class,0.31890267,newline
+2025-10-18 02:46:55.445490,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/ResourceQuality,Class,0.31751606,newline
+2025-10-18 02:46:55.445491,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/Biomass,Class,0.3050574,newline
+2025-10-18 02:46:55.445491,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/Compliance,Class,0.2986037,newline
+2025-10-18 02:46:55.445491,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/REACHCompliance,Class,0.2944545,newline
+2025-10-18 02:46:55.445491,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/Cellulose,Class,0.29062015,newline
+2025-10-18 02:46:55.445492,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/Resource,Class,0.28291774,newline
+2025-10-18 02:46:55.445492,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.2802488,newline
+2025-10-18 02:46:55.445492,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/quantity/hasRecyclingCost,ObjectProperty,0.46350336,newline
+2025-10-18 02:46:55.445492,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.423846,newline
+2025-10-18 02:46:55.445493,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/hasChemicalEntity,ObjectProperty,0.33221707,newline
+2025-10-18 02:46:55.445493,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/associatedWithMatter,ObjectProperty,0.31148857,newline
+2025-10-18 02:46:55.445493,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/hasSustainability,DataProperty,0.30112025,newline
+2025-10-18 02:46:55.445493,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/reducedChemicalFormula,DataProperty,0.2888367,newline
+2025-10-18 02:46:55.445494,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/hasCertificate,DataProperty,0.27286595,newline
+2025-10-18 02:46:55.445494,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage,DataProperty,0.25231385,newline
+2025-10-18 02:46:55.445494,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/hasCarbonIntensity,DataProperty,0.23547903,newline
+2025-10-18 02:46:56.042862,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.6094996,newline
+2025-10-18 02:46:56.042866,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.5550916,newline
+2025-10-18 02:46:56.042866,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/Product,Class,0.5375259,newline
+2025-10-18 02:46:56.042866,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.53190666,newline
+2025-10-18 02:46:56.042867,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.49961752,newline
+2025-10-18 02:46:56.042867,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/Item,Class,0.4170992,newline
+2025-10-18 02:46:56.042867,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/Solution,Class,0.4108092,newline
+2025-10-18 02:46:56.042868,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/Constituent,Class,0.37620747,newline
+2025-10-18 02:46:56.042868,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/ManufacturingProcess,Class,0.36389416,newline
+2025-10-18 02:46:56.042868,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/ProductionProcess,Class,0.3635057,newline
+2025-10-18 02:46:56.042868,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/Composition,Class,0.35211775,newline
+2025-10-18 02:46:56.042869,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/AssemblingProcess,Class,0.3354437,newline
+2025-10-18 02:46:56.042869,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/ChemicalSubstance,Class,0.33170506,newline
+2025-10-18 02:46:56.042869,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/ProductionLocation,Class,0.32591516,newline
+2025-10-18 02:46:56.042870,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/Material,Class,0.32426652,newline
+2025-10-18 02:46:56.042870,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/hasProductComponent,ObjectProperty,0.60835695,newline
+2025-10-18 02:46:56.042870,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/hasProductObjectComponent,ObjectProperty,0.5514617,newline
+2025-10-18 02:46:56.042870,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.49950385,newline
+2025-10-18 02:46:56.042871,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/associatedWithProductModel,ObjectProperty,0.47843373,newline
+2025-10-18 02:46:56.042871,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/hasProductName,DataProperty,0.42213127,newline
+2025-10-18 02:46:56.042871,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.37393337,newline
+2025-10-18 02:46:56.042871,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/hasBrand,DataProperty,0.35088524,newline
+2025-10-18 02:46:56.042872,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/countryOfAssembly,DataProperty,0.33860898,newline
+2025-10-18 02:46:56.042872,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/countryOfManufacture,DataProperty,0.31451407,newline
+2025-10-18 02:46:56.748738,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.6936459,newline
+2025-10-18 02:46:56.748742,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.60614103,newline
+2025-10-18 02:46:56.748742,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.5754176,newline
+2025-10-18 02:46:56.748743,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.5316972,newline
+2025-10-18 02:46:56.748743,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/Material,Class,0.5312151,newline
+2025-10-18 02:46:56.748743,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/Composition,Class,0.4832481,newline
+2025-10-18 02:46:56.748743,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/Matter,Class,0.42727578,newline
+2025-10-18 02:46:56.748744,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/ChemicalEntity,Class,0.39294064,newline
+2025-10-18 02:46:56.748744,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/ChemicalSubstance,Class,0.3872771,newline
+2025-10-18 02:46:56.748744,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/EnergyComposition,Class,0.37460285,newline
+2025-10-18 02:46:56.748745,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/Cellulose,Class,0.355467,newline
+2025-10-18 02:46:56.748745,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/ChemicalElement,Class,0.35057285,newline
+2025-10-18 02:46:56.748745,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/Constituent,Class,0.33078146,newline
+2025-10-18 02:46:56.748745,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/Manganese,Class,0.32379967,newline
+2025-10-18 02:46:56.748746,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/Titanium,Class,0.32347035,newline
+2025-10-18 02:46:56.748746,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.579629,newline
+2025-10-18 02:46:56.748746,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/hasComposition,ObjectProperty,0.5540129,newline
+2025-10-18 02:46:56.748746,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/associatedWithMatter,ObjectProperty,0.50479424,newline
+2025-10-18 02:46:56.748747,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.4842314,newline
+2025-10-18 02:46:56.748747,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.49822652,newline
+2025-10-18 02:46:56.748747,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage,DataProperty,0.36788958,newline
+2025-10-18 02:46:56.748748,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/descriptiveFormula,DataProperty,0.32501453,newline
+2025-10-18 02:46:56.748748,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/hillFormula,DataProperty,0.30785486,newline
+2025-10-18 02:46:56.748748,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/reducedChemicalFormula,DataProperty,0.27006,newline
+2025-10-18 02:46:57.430582,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/DismantleProcess,Class,0.5054189,newline
+2025-10-18 02:46:57.430585,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/DisassemblingProcess,Class,0.50177395,newline
+2025-10-18 02:46:57.430585,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/AssemblingProcess,Class,0.39340547,newline
+2025-10-18 02:46:57.430586,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/actor/DismantlingResource,Class,0.38899803,newline
+2025-10-18 02:46:57.430586,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/DeconstructionProcess,Class,0.36478359,newline
+2025-10-18 02:46:57.430586,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/AssemblyLocation,Class,0.33282143,newline
+2025-10-18 02:46:57.430587,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/RemoveProcess,Class,0.30419266,newline
+2025-10-18 02:46:57.430587,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/RemoveResourceProcess,Class,0.2824307,newline
+2025-10-18 02:46:57.430587,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/RepairProcess,Class,0.27802148,newline
+2025-10-18 02:46:57.430588,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/RefurbishmentProcess,Class,0.2576119,newline
+2025-10-18 02:46:57.430588,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/cvn/CircularStrategy,Class,0.24925661,newline
+2025-10-18 02:46:57.430588,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/ReuseProcess,Class,0.24637967,newline
+2025-10-18 02:46:57.430588,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/RoHSCompliance,Class,0.23387595,newline
+2025-10-18 02:46:57.430589,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation,Class,0.22257915,newline
+2025-10-18 02:46:57.430589,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/ManufacturingProcess,Class,0.2183399,newline
+2025-10-18 02:46:57.430589,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/quantity/hasDismantlingCost,ObjectProperty,0.47251248,newline
+2025-10-18 02:46:57.430589,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/hasAssemblyLocation,ObjectProperty,0.33320707,newline
+2025-10-18 02:46:57.430590,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.25970757,newline
+2025-10-18 02:46:57.430590,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/processODP/hasPart,ObjectProperty,0.24525583,newline
+2025-10-18 02:46:57.430590,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/countryOfAssembly,DataProperty,0.32706118,newline
+2025-10-18 02:46:57.430590,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/countryOfManufacture,DataProperty,0.1885666,newline
+2025-10-18 02:46:57.430591,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/batchID,DataProperty,0.18498391,newline
+2025-10-18 02:46:57.430591,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/processODP/occursAtTime,DataProperty,0.17644784,newline
+2025-10-18 02:46:57.430591,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/batchLabel,DataProperty,0.167678,newline
+2025-10-18 02:46:58.052609,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/Cellulose,Class,0.3963605,newline
+2025-10-18 02:46:58.052612,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.35969666,newline
+2025-10-18 02:46:58.052613,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/Material,Class,0.35009608,newline
+2025-10-18 02:46:58.052613,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/Matter,Class,0.28503546,newline
+2025-10-18 02:46:58.052613,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/FossilFuel,Class,0.28109813,newline
+2025-10-18 02:46:58.052614,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.26989347,newline
+2025-10-18 02:46:58.052614,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/ChemicalSubstance,Class,0.25734887,newline
+2025-10-18 02:46:58.052614,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/Coal,Class,0.25550988,newline
+2025-10-18 02:46:58.052614,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/Biomass,Class,0.25257057,newline
+2025-10-18 02:46:58.052615,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.24262041,newline
+2025-10-18 02:46:58.052615,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/Petroleum,Class,0.2328353,newline
+2025-10-18 02:46:58.052615,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/Iron,Class,0.2230787,newline
+2025-10-18 02:46:58.052616,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/Resource,Class,0.22280633,newline
+2025-10-18 02:46:58.052616,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/NaturalGas,Class,0.22218876,newline
+2025-10-18 02:46:58.052616,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/ChemicalEntity,Class,0.21743324,newline
+2025-10-18 02:46:58.052616,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.32721865,newline
+2025-10-18 02:46:58.052617,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/containsInformation,ObjectProperty,0.3103437,newline
+2025-10-18 02:46:58.052617,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/hasChemicalEntity,ObjectProperty,0.26575875,newline
+2025-10-18 02:46:58.052617,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/hasMatter,ObjectProperty,0.23901309,newline
+2025-10-18 02:46:58.052617,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/descriptiveFormula,DataProperty,0.25194696,newline
+2025-10-18 02:46:58.052618,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/anonymousFormula,DataProperty,0.19762737,newline
+2025-10-18 02:46:58.052618,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage,DataProperty,0.195984,newline
+2025-10-18 02:46:58.052618,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/reducedChemicalFormula,DataProperty,0.19529927,newline
+2025-10-18 02:46:58.052618,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/hillFormula,DataProperty,0.19281831,newline
+2025-10-18 02:47:06.016878,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/actor/RecyclingResource,Class,0.4263354,pipe
+2025-10-18 02:47:06.016882,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/Material,Class,0.4156134,pipe
+2025-10-18 02:47:06.016882,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/RecycleProcess,Class,0.40631175,pipe
+2025-10-18 02:47:06.016883,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.38422322,pipe
+2025-10-18 02:47:06.016883,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/ReuseProcess,Class,0.37540647,pipe
+2025-10-18 02:47:06.016883,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/cvn/CircularStrategy,Class,0.31802762,pipe
+2025-10-18 02:47:06.016884,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/RoHSCompliance,Class,0.30199528,pipe
+2025-10-18 02:47:06.016884,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/Biomass,Class,0.30033833,pipe
+2025-10-18 02:47:06.016884,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/Biogas,Class,0.2979453,pipe
+2025-10-18 02:47:06.016884,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/Resource,Class,0.2962358,pipe
+2025-10-18 02:47:06.016885,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/ResourceQuality,Class,0.29546866,pipe
+2025-10-18 02:47:06.016885,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/REACHCompliance,Class,0.29149568,pipe
+2025-10-18 02:47:06.016885,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/Compliance,Class,0.28984672,pipe
+2025-10-18 02:47:06.016886,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/actor/ProcessParticipation,Class,0.28764606,pipe
+2025-10-18 02:47:06.016886,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/RefurbishmentProcess,Class,0.27425566,pipe
+2025-10-18 02:47:06.016886,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/quantity/hasRecyclingCost,ObjectProperty,0.44388175,pipe
+2025-10-18 02:47:06.016886,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.4117574,pipe
+2025-10-18 02:47:06.016887,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/associatedWithMatter,ObjectProperty,0.31944498,pipe
+2025-10-18 02:47:06.016887,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/hasChemicalEntity,ObjectProperty,0.30914664,pipe
+2025-10-18 02:47:06.016887,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/hasSustainability,DataProperty,0.30469313,pipe
+2025-10-18 02:47:06.016888,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/reducedChemicalFormula,DataProperty,0.28513572,pipe
+2025-10-18 02:47:06.016888,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/hasCertificate,DataProperty,0.25915667,pipe
+2025-10-18 02:47:06.016888,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage,DataProperty,0.2407749,pipe
+2025-10-18 02:47:06.016888,Is a material recognized as a recycled material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/countryOfManufacture,DataProperty,0.23098677,pipe
+2025-10-18 02:47:06.652444,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.6142394,pipe
+2025-10-18 02:47:06.652448,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/Product,Class,0.5535631,pipe
+2025-10-18 02:47:06.652448,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.5529498,pipe
+2025-10-18 02:47:06.652448,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.5408784,pipe
+2025-10-18 02:47:06.652449,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.4868838,pipe
+2025-10-18 02:47:06.652449,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/Solution,Class,0.42081562,pipe
+2025-10-18 02:47:06.652449,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/Item,Class,0.41616464,pipe
+2025-10-18 02:47:06.652450,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/ManufacturingProcess,Class,0.37378454,pipe
+2025-10-18 02:47:06.652450,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/ProductionProcess,Class,0.36791456,pipe
+2025-10-18 02:47:06.652450,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/Composition,Class,0.36502624,pipe
+2025-10-18 02:47:06.652450,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/Constituent,Class,0.3580487,pipe
+2025-10-18 02:47:06.652451,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/AssemblyLocation,Class,0.3423798,pipe
+2025-10-18 02:47:06.652451,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/ManufactureLocation,Class,0.33791375,pipe
+2025-10-18 02:47:06.652451,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/ProductionLocation,Class,0.3368711,pipe
+2025-10-18 02:47:06.652452,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/ChemicalSubstance,Class,0.32938522,pipe
+2025-10-18 02:47:06.652452,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/hasProductComponent,ObjectProperty,0.5890182,pipe
+2025-10-18 02:47:06.652452,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/hasProductObjectComponent,ObjectProperty,0.55078936,pipe
+2025-10-18 02:47:06.652452,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.48035538,pipe
+2025-10-18 02:47:06.652453,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/associatedWithProductModel,ObjectProperty,0.47179392,pipe
+2025-10-18 02:47:06.652453,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/hasProductName,DataProperty,0.42772084,pipe
+2025-10-18 02:47:06.652453,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.37966198,pipe
+2025-10-18 02:47:06.652453,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/hasBrand,DataProperty,0.36453244,pipe
+2025-10-18 02:47:06.652454,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/countryOfAssembly,DataProperty,0.35052723,pipe
+2025-10-18 02:47:06.652454,What are the components of a product?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/countryOfManufacture,DataProperty,0.32369938,pipe
+2025-10-18 02:47:07.326388,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.6792692,pipe
+2025-10-18 02:47:07.326391,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.61196476,pipe
+2025-10-18 02:47:07.326392,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.5658334,pipe
+2025-10-18 02:47:07.326392,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/Material,Class,0.5536063,pipe
+2025-10-18 02:47:07.326392,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/ProductObjectComposition,Class,0.52548873,pipe
+2025-10-18 02:47:07.326393,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/Composition,Class,0.49224606,pipe
+2025-10-18 02:47:07.326393,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/Matter,Class,0.4224478,pipe
+2025-10-18 02:47:07.326393,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/ChemicalSubstance,Class,0.39330965,pipe
+2025-10-18 02:47:07.326393,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/ChemicalEntity,Class,0.38758287,pipe
+2025-10-18 02:47:07.326394,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/EnergyComposition,Class,0.38280386,pipe
+2025-10-18 02:47:07.326394,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/ChemicalElement,Class,0.34461886,pipe
+2025-10-18 02:47:07.326394,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/Cellulose,Class,0.3154518,pipe
+2025-10-18 02:47:07.326395,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/Titanium,Class,0.31465897,pipe
+2025-10-18 02:47:07.326395,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/Constituent,Class,0.30972865,pipe
+2025-10-18 02:47:07.326395,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/Manganese,Class,0.30605388,pipe
+2025-10-18 02:47:07.326395,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.5337358,pipe
+2025-10-18 02:47:07.326396,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/hasComposition,ObjectProperty,0.5206062,pipe
+2025-10-18 02:47:07.326396,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/associatedWithMatter,ObjectProperty,0.51512605,pipe
+2025-10-18 02:47:07.326396,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.47392252,pipe
+2025-10-18 02:47:07.326396,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/compositionQuantity,DataProperty,0.51527166,pipe
+2025-10-18 02:47:07.326397,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage,DataProperty,0.3410074,pipe
+2025-10-18 02:47:07.326397,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/hillFormula,DataProperty,0.32109964,pipe
+2025-10-18 02:47:07.326397,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/descriptiveFormula,DataProperty,0.318549,pipe
+2025-10-18 02:47:07.326398,What is the composition of a material?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/reducedChemicalFormula,DataProperty,0.28131393,pipe
+2025-10-18 02:47:07.966605,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/DisassemblingProcess,Class,0.5318803,pipe
+2025-10-18 02:47:07.966608,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/DismantleProcess,Class,0.525396,pipe
+2025-10-18 02:47:07.966608,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/AssemblingProcess,Class,0.400388,pipe
+2025-10-18 02:47:07.966609,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/actor/DismantlingResource,Class,0.38971066,pipe
+2025-10-18 02:47:07.966609,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/DeconstructionProcess,Class,0.38462323,pipe
+2025-10-18 02:47:07.966609,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/AssemblyLocation,Class,0.37258726,pipe
+2025-10-18 02:47:07.966610,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/RemoveProcess,Class,0.28680807,pipe
+2025-10-18 02:47:07.966610,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/RepairProcess,Class,0.28603038,pipe
+2025-10-18 02:47:07.966610,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/RemoveResourceProcess,Class,0.26988584,pipe
+2025-10-18 02:47:07.966610,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/RefurbishmentProcess,Class,0.2649985,pipe
+2025-10-18 02:47:07.966611,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/cvn/CircularStrategy,Class,0.25892666,pipe
+2025-10-18 02:47:07.966611,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/ReuseProcess,Class,0.24849255,pipe
+2025-10-18 02:47:07.966611,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/actorODP/CollaborationParticipation,Class,0.24226695,pipe
+2025-10-18 02:47:07.966612,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/ManufacturingProcess,Class,0.24028431,pipe
+2025-10-18 02:47:07.966612,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/process/ServiceProcess,Class,0.22641891,pipe
+2025-10-18 02:47:07.966612,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/quantity/hasDismantlingCost,ObjectProperty,0.46717188,pipe
+2025-10-18 02:47:07.966612,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/hasAssemblyLocation,ObjectProperty,0.3429327,pipe
+2025-10-18 02:47:07.966613,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/compositionOf,ObjectProperty,0.2495391,pipe
+2025-10-18 02:47:07.966613,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/processODP/hasPart,ObjectProperty,0.23298413,pipe
+2025-10-18 02:47:07.966613,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/countryOfAssembly,DataProperty,0.3257706,pipe
+2025-10-18 02:47:07.966613,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/batchID,DataProperty,0.18933114,pipe
+2025-10-18 02:47:07.966614,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/countryOfManufacture,DataProperty,0.18528089,pipe
+2025-10-18 02:47:07.966614,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/batchLabel,DataProperty,0.16663717,pipe
+2025-10-18 02:47:07.966614,What is the guidance of of disassembly method?,text-embedding-3-small,http://w3id.org/CEON/ontology/processODP/occursAtTime,DataProperty,0.16547316,pipe
+2025-10-18 02:47:08.594790,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/Cellulose,Class,0.3690938,pipe
+2025-10-18 02:47:08.594792,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/Material,Class,0.3564338,pipe
+2025-10-18 02:47:08.594793,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/MaterialComponent,Class,0.353942,pipe
+2025-10-18 02:47:08.594793,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/Matter,Class,0.27448007,pipe
+2025-10-18 02:47:08.594793,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/FossilFuel,Class,0.27278575,pipe
+2025-10-18 02:47:08.594794,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/ChemicalSubstance,Class,0.26221588,pipe
+2025-10-18 02:47:08.594794,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/MatterComposition,Class,0.2576392,pipe
+2025-10-18 02:47:08.594794,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/Biomass,Class,0.24710543,pipe
+2025-10-18 02:47:08.594794,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/Coal,Class,0.24552816,pipe
+2025-10-18 02:47:08.594795,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/ProductComposition,Class,0.23870844,pipe
+2025-10-18 02:47:08.594795,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/Petroleum,Class,0.22095488,pipe
+2025-10-18 02:47:08.594795,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/Resource,Class,0.21992204,pipe
+2025-10-18 02:47:08.594796,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/MolecularEntity,Class,0.21603616,pipe
+2025-10-18 02:47:08.594796,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/NaturalGas,Class,0.21398634,pipe
+2025-10-18 02:47:08.594796,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/Iron,Class,0.21309024,pipe
+2025-10-18 02:47:08.594796,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/hasMaterialComponent,ObjectProperty,0.31534293,pipe
+2025-10-18 02:47:08.594797,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/resourceODP/containsInformation,ObjectProperty,0.29599422,pipe
+2025-10-18 02:47:08.594797,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/hasChemicalEntity,ObjectProperty,0.2440921,pipe
+2025-10-18 02:47:08.594797,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/product/associatedWithMatter,ObjectProperty,0.23211657,pipe
+2025-10-18 02:47:08.594798,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/descriptiveFormula,DataProperty,0.2512127,pipe
+2025-10-18 02:47:08.594798,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/anonymousFormula,DataProperty,0.20736179,pipe
+2025-10-18 02:47:08.594798,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/hillFormula,DataProperty,0.20103146,pipe
+2025-10-18 02:47:08.594798,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/material/reducedChemicalFormula,DataProperty,0.19740513,pipe
+2025-10-18 02:47:08.594799,What materials does a fibre contain?,text-embedding-3-small,http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage,DataProperty,0.18730223,pipe

@@ -1,0 +1,82 @@
+272
+participation end time |The end of a time interval. |http://w3id.org/CEON/ontology/actorODP/participationEndTime |Participation |
+273
+has carbon intensity |hasCarbonIntensity measures how intensive that the carbon is for an energy source. |http://w3id.org/CEON/ontology/energy/hasCarbonIntensity |EnergySource |double |
+274
+has energy component percentage |hasEnergyComponentPercentage represents the percentage of a particular energy as a composition. |http://w3id.org/CEON/ontology/energy/hasEnergyComponentPercentage |EnergyComposition |double |
+275
+has sustainability |hasSustainability measures how sustainable an energy source is. |http://w3id.org/CEON/ontology/energy/hasSustainability |EnergySource |double |
+276
+has country code |Represents the code of a country's name according to ISO 3166-1. |http://w3id.org/CEON/ontology/location/hasCountryCode |string |
+277
+has global location number |The Global Location Number (GLN) is part of the GS1 systems of standards. |http://w3id.org/CEON/ontology/location/hasGlobalLocationNumber |string |
+278
+anonymous formula |anonymousFormula represents that a molecular entity has the anonymous formula in a string. |http://w3id.org/CEON/ontology/material/anonymousFormula |
+279
+descriptive formula |descriptiveFormula represents that a molecular entity has the descriptive formula in a string. |http://w3id.org/CEON/ontology/material/descriptiveFormula |
+280
+hill formula |hillFormula represents that a composition has the hill formula in a string. |http://w3id.org/CEON/ontology/material/hillFormula |
+281
+reduced chemical formula |reducedChemicalFormula represents that a molecular entity has the reduced chemical formula in a string. |http://w3id.org/CEON/ontology/material/reducedChemicalFormula |
+282
+occurs at time |Represents the time at which something takes place. |http://w3id.org/CEON/ontology/plan/occursAtTime |PlanExecution |dateTime |
+283
+end time |Represents the end time of a time interval. |http://w3id.org/CEON/ontology/processODP/endTime |TimeInterval |dateTime |
+284
+start time |Represents the start time of a time interval. |http://w3id.org/CEON/ontology/processODP/startTime |TimeInterval |dateTime |
+285
+composition quantity |compositionQuantity represents the quantity of elements of a composition. |http://w3id.org/CEON/ontology/product/compositionQuantity |Composition |double |
+286
+has brand |The brand name of a product. |http://w3id.org/CEON/ontology/product/hasBrand |string |
+287
+has certificate |Link to the the certificate that certifies the compliance |http://w3id.org/CEON/ontology/product/hasCertificate |Compliance |
+288
+Global Trade Item Number (GTIN) |http://w3id.org/CEON/ontology/product/hasGlobalTradeItemNumber |string |
+289
+product name |The name of a product. |http://w3id.org/CEON/ontology/product/hasProductName |string |
+290
+numerical max value |represents the maximal value of a quantity |http://w3id.org/CEON/ontology/quantity/numericalMaxValue |double |
+291
+numerical min value |represents the minimal value of a quantity |http://w3id.org/CEON/ontology/quantity/numericalMinValue |double |
+292
+batch ID |identifier for a batch |http://w3id.org/CEON/ontology/resourceODP/batchID |BatchOfObjects |string |
+293
+batch label |label for a batch |http://w3id.org/CEON/ontology/resourceODP/batchLabel |BatchOfObjects |string |
+294
+http://www.opengis.net/ont/geosparql#asGML |Geometry |gmlLiteral |
+295
+http://www.opengis.net/ont/geosparql#asGeoJSON |Geometry |geoJSONLiteral |
+296
+http://www.opengis.net/ont/geosparql#asWKT |Geometry |wktLiteral |
+297
+http://www.w3.org/2003/01/geo/wgs84_pos#lat |
+298
+http://www.w3.org/2003/01/geo/wgs84_pos#long |
+299
+Represent name of an organisation., has organisation name |http://w3id.org/CEON/ontology/actor/hasOrganisationName |Organisation |string |
+300
+participation start time |The start of a time interval. |http://w3id.org/CEON/ontology/actorODP/participationStartTime |Participation |
+301
+participation time point |The point in time when something took place or was valid. |http://w3id.org/CEON/ontology/actorODP/participationTimePoint |Participation |
+302
+http://w3id.org/CEON/ontology/processODP/occursAtTime |
+303
+Country of assembly |Used to represent the country of assembly of a product or product object (item). |http://w3id.org/CEON/ontology/product/countryOfAssembly |AssemblyLocation |string |
+304
+Country of manufacture |Used to represent the country of manufacture of a product or product object (item). |http://w3id.org/CEON/ontology/product/countryOfManufacture |ManufactureLocation |string |
+305
+Country of origin |Used to represent the country of origin of a product or product object (item). |http://w3id.org/CEON/ontology/product/countryOfOrigin |OriginLocation |string |
+306
+Country of production |Used to represent the country of production of a product or product object (item). |http://w3id.org/CEON/ontology/product/countryOfProduction |ProductionLocation |string |
+307
+production site |The name of a production site location |http://w3id.org/CEON/ontology/product/productionSite |ProductionLocation |string |
+308
+batch size |batchSize intends to repsent how many physical objects are belong to a batch of objects. |http://w3id.org/CEON/ontology/resourceODP/batchSize |BatchOfObjects |nonNegativeInteger |
+309
+has city |Represents the name of a city. |http://w3id.org/CEON/ontology/location/hasCity |string |
+310
+has country |Represents the name of a country. |http://w3id.org/CEON/ontology/location/hasCountry |string |
+311
+has postal code |Represent postal code |http://w3id.org/CEON/ontology/location/hasPostalCode |string |
+312
+has street address |Represents address of a street, including e.g., street number and name. |http://w3id.org/CEON/ontology/location/hasStreetAddress |string |

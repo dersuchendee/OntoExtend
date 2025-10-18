@@ -1,7 +1,7 @@
 import os
 import tempfile
 from owlready2 import get_ontology, default_world
-from rdflib import Graph, RDF, RDFS, OWL, URIRef
+from rdflib import Graph, RDF, RDFS, OWL, URIRef, BNode
 
 def merge_ontologies(input_dir = "..\..\..\..\Dataset\OntoDESIDECoreOntology"):
 # Set this to your directory containing .ttl files
@@ -44,8 +44,76 @@ def merge_ontologies(input_dir = "..\..\..\..\Dataset\OntoDESIDECoreOntology"):
     # Step 4: Save merged graph as Turtle
     merged_graph.serialize(destination="RAG2/merged.ttl", format="turtle")
     return open("RAG2/merged.ttl", "r",encoding= 'UTF-8').read()  # Ensure newline at end of file
+def Fetch_components(owl_path = "RAG2/merged.ttl"):
+    g = Graph()
+    g.parse(owl_path, format="turtle")
 
+    def local_name(node: URIRef) -> str:
+        """Return the fragment or last path segment of a URIRef."""
+        uri = str(node)
+        if "#" in uri:
+            return uri.split("#")[-1]
+        else:
+            return uri.rstrip("/").split("/")[-1]
 
+    def get_labels(uri):
+        return [str(label) for label in g.objects(uri, RDFS.label)]
+
+    def get_comments(uri):
+        return [str(comment) for comment in g.objects(uri, RDFS.comment)]
+
+    def get_parents(uri):
+        return [local_name(parent) for parent in g.objects(uri, RDFS.subClassOf) 
+                if not isinstance(parent, BNode)]  # Skip blank nodes in parents too
+
+    def get_domains(uri):
+        domains = [d for d in g.objects(uri, RDFS.domain) if not isinstance(d, BNode)]
+        if len(domains) > 1:
+            return " AND ".join(local_name(d) for d in domains)
+        elif domains:
+            return local_name(domains[0])
+        return None
+
+    def get_ranges(uri):
+        ranges = [r for r in g.objects(uri, RDFS.range) if not isinstance(r, BNode)]
+        if len(ranges) > 1:
+            return " AND ".join(local_name(r) for r in ranges)
+        elif ranges:
+            return local_name(ranges[0])
+        return None
+
+    def print_entity_info(uri, entity_type=0):
+        Result_temp = {
+            'Type': entity_type or '',
+            'Labels':", ".join(get_labels(uri)) or '',
+            'Comments':", ".join(get_comments(uri)) or '',
+            'Parents':", ".join(get_parents(uri)) or "",
+            'URI':str(uri) or '',
+            'Domain':get_domains(uri) or "",
+            'Range':get_ranges(uri) or "",
+        }
+        Result = {k:v for k,v in Result_temp.items() if v != ''}
+        return Result
+    
+    Results = []
+    
+    # 1) Classes - SKIP BLANK NODES
+    for s in g.subjects(RDF.type, OWL.Class):
+        if not isinstance(s, BNode):  # Only process named classes
+            Results.append(print_entity_info(s, "Class"))
+    
+    # 2) Object Properties
+    for s in g.subjects(RDF.type, OWL.ObjectProperty):
+        if not isinstance(s, BNode):
+            Results.append(print_entity_info(s, "ObjectProperty"))
+
+    # 3) Data Properties
+    for s in g.subjects(RDF.type, OWL.DatatypeProperty):
+        if not isinstance(s, BNode):
+            Results.append(print_entity_info(s, "DatatypeProperty"))
+
+    return Results
+'''
 def Fetch_components(owl_path = "RAG2/merged.ttl"):
     # print(owl_path)
     # Path to your TTL
@@ -117,4 +185,4 @@ def Fetch_components(owl_path = "RAG2/merged.ttl"):
 
     # print(Results)
     return Results
-
+'''
