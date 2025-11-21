@@ -9,13 +9,13 @@ import time
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Tuple
+from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 
 import faiss  # type: ignore
 import numpy as np
 import pandas as pd
 from pydantic import BaseModel, Field
-from rdflib import Graph, Literal, OWL, RDF, RDFS, URIRef
+from rdflib import BNode, Graph, Literal, Namespace, OWL, RDF, RDFS, URIRef
 from rich import print
 from tiktoken import get_encoding
 from dotenv import load_dotenv
@@ -45,6 +45,8 @@ STANDARD_PREFIXES: Dict[str, str] = {
     "xsd": "http://www.w3.org/2001/XMLSchema#",
 }
 
+SH = Namespace("http://www.w3.org/ns/shacl#")
+
 SYS_PROMPT = (
     "You are an ontology engineer. Reuse elements from the provided core ontology when possible. "
     "If you must create new elements, append '# GENERATED' as a comment. "
@@ -53,27 +55,60 @@ SYS_PROMPT = (
 
 USER_TMPL = """
 You are a helpful assistant designed to generate ontologies. You receive a COMPETENCY QUESTION (CQ) and optionally an ONTOLOGY STORY (OS). \n
+
 Based on CQ, which is a requirement for the ontology, and OS, which tells you what the context of the ontology is, your task is generating one ontology (O). The goal is to generate O that models the CQ properly. This means there is a way to write a SPARQL query to extract the answer to this CQ in O.  \n
+
 Reuse the relevant ontology elements provided in the RELEVANT ONTOLOGY ELEMENTS section below whenever possible. These elements come from multiple reference ontologies. Only create new elements if absolutely necessary. In any case, add labels and comments. \n
+
 Use the following prefixes:
+
 {prefix_block}
+
+ 
 
 Don't put any A-Box (instances) in the ontology and just generate the OWL file using Turtle syntax. Include the entities mentioned in the CQ. Remember to use restrictions when the CQ implies it. The output should be self-contained without any errors. Outside of the code box don't put any comment.\n
 
+ 
+
 INSTRUCTIONS:
+
 1. Analyze the CQ to understand what concepts and relationships are needed
+
 2. Map the required concepts to classes/properties from the RELEVANT ONTOLOGY ELEMENTS above
+
 3. Prefer elements with higher semantic similarity to the CQ concepts
-4. If something required is missing, create it under the : namespace and mark with '# GENERATED'
-5. Output only the TBox ontology in Turtle syntax (no instances/ABox)
-6. Include restrictions when the CQ implies them (e.g., cardinality, value restrictions)
-7. Ensure the output is syntactically correct and self-contained
+
+4. Output only the TBox ontology in Turtle syntax (no instances/ABox)
+
+5. Include restrictions (e.g., cardinality, value restrictions) when the CQ implies them. If the reference ontology uses OWL restrictions use only OWL restrictions; if the reference ontology only uses SHACL, then only use SHACL.
+
+6. Ensure the output is syntactically correct and self-contained
+
+ 
 
 COMPETENCY QUESTION: "{cq}"
 
+ 
+
 RELEVANT ONTOLOGY ELEMENTS (from {num_ontologies} reference ontologies):
+
 {relevant_elements}
 
+ 
+
+NOTE:
+
+- Do not use external ontologies. Only build on the ontologies provided in RELEVANT ONTOLOGY ELEMENTS .
+
+- Reuse the namespace used in the RELEVANT ONTOLOGY ELEMENTS. Only if none are provided, use the ":" namespace .
+
+- Create the PropertyShape names as follows: <ClassName>-<PropertyName> a sh:PropertyShape .
+
+- Create the NodeShape with the same IRI as the Class it shapes, i.e. <ontology-prefix>:<ClassName> a sh:NodeShape .
+
+- For Property and Node Shapes, use the rdfs:label of the property or class as the sh:name .
+
+- Do not create any new owl:Ontology statements .
 """
 
 # ==========================
@@ -87,6 +122,7 @@ class Paths:
     def __post_init__(self) -> None:
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         (self.cache_dir / "individual_ontologies").mkdir(parents=True, exist_ok=True)
+        (self.cache_dir / "retrieved_elements").mkdir(parents=True, exist_ok=True)
 
     @property
     def results_csv(self) -> Path:
@@ -111,6 +147,10 @@ class Paths:
     @property
     def individual_dir(self) -> Path:
         return self.cache_dir / "individual_ontologies"
+
+    @property
+    def retrieved_dir(self) -> Path:
+        return self.cache_dir / "retrieved_elements"
 
 
 class RunLogger:
@@ -238,6 +278,7 @@ class OntologyElement(BaseModel):
     range: Optional[List[str]] = Field(default_factory=list)
     super_classes: Optional[List[str]] = Field(default_factory=list)
     sub_classes: Optional[List[str]] = Field(default_factory=list)
+    additional_info: Optional[List[str]] = Field(default_factory=list)
 
     def get_searchable_text(self) -> str:
         parts: List[str] = []
@@ -256,6 +297,8 @@ class OntologyElement(BaseModel):
         if self.range:
             range_names = [r.split('#')[-1].split('/')[-1] for r in self.range]
             parts.append(f"Range: {', '.join(range_names)}")
+        if self.additional_info:
+            parts.extend(self.additional_info)
         return " | ".join(parts)
 
 
@@ -321,7 +364,7 @@ class OntologyExtractor:
     def __init__(self, logger: RunLogger) -> None:
         self.logger = logger
 
-    def extract_from_files(self, ontology_files: List[str]) -> List[OntologyElement]:
+    def extract_from_files(self, ontology_files: List[str], *, log: bool = True) -> List[OntologyElement]:
         print(f"[blue]Loading {len(ontology_files)} reference ontologies...[/blue]")
         all_elements: List[OntologyElement] = []
         for ontology_file in ontology_files:
@@ -338,7 +381,8 @@ class OntologyExtractor:
                 print(f"[red]Error processing {ontology_file}: {e}[/red]")
                 continue
         print(f"[green]✅ Total extracted {len(all_elements)} elements from {len(ontology_files)} ontologies[/green]")
-        self.logger.log_elements(all_elements)
+        if log:
+            self.logger.log_elements(all_elements)
         return all_elements
 
     def _extract_single(self, ontology_file: str) -> List[OntologyElement]:
@@ -369,6 +413,24 @@ class OntologyExtractor:
                 el = self._extract_property_info(g, prop, 'annotation_property', ontology_file)
                 if el:
                     elements.append(el)
+
+        # SHACL NodeShapes
+        for shape in list(g.subjects(RDF.type, SH.NodeShape)):
+            el = self._extract_shacl_shape(g, shape, ontology_file, 'node_shape')
+            if el:
+                elements.append(el)
+
+        # SHACL PropertyShapes
+        for shape in list(g.subjects(RDF.type, SH.PropertyShape)):
+            el = self._extract_shacl_shape(g, shape, ontology_file, 'property_shape')
+            if el:
+                elements.append(el)
+
+        # Named OWL restrictions (skip blank nodes)
+        for restriction in list(g.subjects(RDF.type, OWL.Restriction)):
+            el = self._extract_named_restriction(g, restriction, ontology_file)
+            if el:
+                elements.append(el)
         return elements
 
     @staticmethod
@@ -418,15 +480,110 @@ class OntologyExtractor:
                 return str(obj)
         return None
 
+    @staticmethod
+    def _local_name(uri: str) -> str:
+        return uri.split('#')[-1].split('/')[-1]
+
+    @staticmethod
+    def _format_uri_list(values: List[str]) -> str:
+        return ", ".join(OntologyExtractor._local_name(v) for v in values)
+
+    @staticmethod
+    def _extract_shacl_shape(g: Graph, shape: Any, source_ontology: str, shape_type: str) -> Optional[OntologyElement]:
+        if not isinstance(shape, URIRef):
+            return None
+        label = OntologyExtractor._get_literal_value(g, shape, RDFS.label)
+        comment = OntologyExtractor._get_literal_value(g, shape, RDFS.comment)
+        info: List[str] = []
+        target_classes = [str(tc) for tc in g.objects(shape, SH.targetClass) if isinstance(tc, URIRef)]
+        if target_classes:
+            info.append(f"Target Classes: {OntologyExtractor._format_uri_list(target_classes)}")
+        target_props = [str(tp) for tp in g.objects(shape, SH.targetObjectsOf) if isinstance(tp, URIRef)]
+        if target_props:
+            info.append(f"Target Objects Of: {OntologyExtractor._format_uri_list(target_props)}")
+        for prop in g.objects(shape, SH.property):
+            if isinstance(prop, URIRef):
+                info.append(f"Uses Property Shape: {OntologyExtractor._local_name(str(prop))}")
+        path = next((str(p) for p in g.objects(shape, SH.path) if isinstance(p, URIRef)), None)
+        if path:
+            info.append(f"Path: {OntologyExtractor._local_name(path)}")
+        datatype = next((str(dt) for dt in g.objects(shape, SH.datatype) if isinstance(dt, URIRef)), None)
+        if datatype:
+            info.append(f"Datatype: {OntologyExtractor._local_name(datatype)}")
+        klass = next((str(cl) for cl in g.objects(shape, SH.class_) if isinstance(cl, URIRef)), None)
+        if klass:
+            info.append(f"Value Class: {OntologyExtractor._local_name(klass)}")
+        min_count = OntologyExtractor._get_literal_value(g, shape, SH.minCount)
+        if min_count:
+            info.append(f"Min Count: {min_count}")
+        max_count = OntologyExtractor._get_literal_value(g, shape, SH.maxCount)
+        if max_count:
+            info.append(f"Max Count: {max_count}")
+        return OntologyElement(
+            uri=str(shape),
+            element_type=shape_type,
+            source_ontology=source_ontology,
+            label=label,
+            comment=comment,
+            additional_info=info,
+        )
+
+    @staticmethod
+    def _extract_named_restriction(g: Graph, restriction: Any, source_ontology: str) -> Optional[OntologyElement]:
+        if not isinstance(restriction, URIRef) or isinstance(restriction, BNode):
+            return None
+        on_property = next((str(op) for op in g.objects(restriction, OWL.onProperty) if isinstance(op, URIRef)), None)
+        some_values = next((str(val) for val in g.objects(restriction, OWL.someValuesFrom) if isinstance(val, URIRef)), None)
+        all_values = next((str(val) for val in g.objects(restriction, OWL.allValuesFrom) if isinstance(val, URIRef)), None)
+        has_value = OntologyExtractor._get_literal_value(g, restriction, OWL.hasValue)
+        info: List[str] = []
+        if on_property:
+            info.append(f"On Property: {OntologyExtractor._local_name(on_property)}")
+        if some_values:
+            info.append(f"Some Values From: {OntologyExtractor._local_name(some_values)}")
+        if all_values:
+            info.append(f"All Values From: {OntologyExtractor._local_name(all_values)}")
+        if has_value:
+            info.append(f"Has Value: {has_value}")
+        for pred, label in [
+            (OWL.cardinality, "Cardinality"),
+            (OWL.minCardinality, "Min Cardinality"),
+            (OWL.maxCardinality, "Max Cardinality"),
+            (OWL.qualifiedCardinality, "Qualified Cardinality"),
+            (OWL.minQualifiedCardinality, "Min Qualified Cardinality"),
+            (OWL.maxQualifiedCardinality, "Max Qualified Cardinality"),
+        ]:
+            val = OntologyExtractor._get_literal_value(g, restriction, pred)
+            if val:
+                info.append(f"{label}: {val}")
+        label_literal = OntologyExtractor._get_literal_value(g, restriction, RDFS.label)
+        comment = OntologyExtractor._get_literal_value(g, restriction, RDFS.comment)
+        return OntologyElement(
+            uri=str(restriction),
+            element_type='restriction',
+            source_ontology=source_ontology,
+            label=label_literal,
+            comment=comment,
+            additional_info=info,
+        )
+
 
 class FaissVectorStore:
     def __init__(self, dim: int, inner_product: bool = True) -> None:
         self.idx = faiss.IndexFlatIP(dim) if inner_product else faiss.IndexFlatL2(dim)
         self.elements: List[OntologyElement] = []
+        self.seen_uris: Set[str] = set()
 
-    def add(self, vec: np.ndarray, element: OntologyElement) -> None:
+    def is_new(self, uri: str) -> bool:
+        return uri not in self.seen_uris
+
+    def add(self, vec: np.ndarray, element: OntologyElement) -> bool:
+        if not element.uri or element.uri in self.seen_uris:
+            return False
         self.idx.add(vec)
         self.elements.append(element)
+        self.seen_uris.add(element.uri)
+        return True
 
     def search(self, vec: np.ndarray, k: int = 10) -> List[Tuple[OntologyElement, float]]:
         if self.idx.ntotal == 0:
@@ -527,6 +684,81 @@ class OntologyRAG:
         self.store = FaissVectorStore(int(VECTOR_DIM), inner_product=True)  # cosine if normalized
         self.llm = get_llm_service(LLM_SERVICE, LLM_MODEL, LLM_TEMPERATURE, self.tracker)
 
+    @staticmethod
+    def _sanitize_token(token: str, default: str = "item") -> str:
+        cleaned = re.sub(r"[^A-Za-z0-9]+", "-", token.strip().lower())
+        cleaned = re.sub(r"-+", "-", cleaned).strip("-")
+        return cleaned or default
+
+    def _core_tag(self, ontology_files: List[str]) -> str:
+        if not ontology_files:
+            return "core"
+        stems = sorted({Path(f).stem for f in ontology_files})
+        combined = "-".join(stems)
+        return self._sanitize_token(combined, "core")
+
+    def _build_cq_basename(self, cq_identifier: Optional[str], seq_num: int, onto_tag: str) -> str:
+        parts: List[str] = []
+        if cq_identifier:
+            parts.append(self._sanitize_token(cq_identifier, "id"))
+        parts.append(f"cq{seq_num:03d}")
+        parts.append(onto_tag)
+        return "_".join(parts)
+
+    @staticmethod
+    def _extract_cq_id(row: pd.Series) -> Optional[str]:
+        candidate_cols = [
+            "CQID", "cqid", "CQ_ID", "cq_id", "CQId", "CQ Id",
+            "ID", "Id", "id"
+        ]
+        for col in candidate_cols:
+            if col in row and pd.notna(row[col]):
+                value = str(row[col]).strip()
+                if value and value.lower() != "nan":
+                    return value
+        return None
+
+    def _write_retrieved_elements(self, basename: str, elements: List[OntologyElement]) -> None:
+        out_path = self.paths.retrieved_dir / f"{basename}_retrieved.csv"
+        with out_path.open("w", newline="", encoding="utf-8") as fh:
+            writer = csv.writer(fh)
+            writer.writerow(["uri", "element_type", "source", "label", "domains", "ranges", "notes"])
+            for el in elements:
+                writer.writerow([
+                    el.uri,
+                    el.element_type,
+                    Path(el.source_ontology).stem,
+                    el.label or "",
+                    ";".join(el.domain or []),
+                    ";".join(el.range or []),
+                    ";".join(el.additional_info or []),
+                ])
+        print(f"[blue]Retrieved elements saved to: {out_path}[/blue]")
+
+    async def _index_elements(self, elements: List[OntologyElement]) -> None:
+        new_elements = [e for e in elements if self.store.is_new(e.uri)]
+        if not new_elements:
+            return
+        texts = [e.get_searchable_text() for e in new_elements]
+        vecs = await self.embedder.embed_many(texts)
+        for vec, element in zip(vecs, new_elements):
+            self.store.add(vec, element)
+
+    async def _index_additional_files(self, files: List[str]) -> None:
+        if not files:
+            return
+        elements = self.extractor.extract_from_files(files, log=False)
+        await self._index_elements(elements)
+
+    async def _index_existing_fragments(self) -> None:
+        if not self.paths.individual_dir.exists():
+            return
+        cache_files = sorted(self.paths.individual_dir.glob("*.ttl"))
+        if not cache_files:
+            return
+        print(f"[yellow]Loading {len(cache_files)} cached CQ fragments into the vector store...[/yellow]")
+        await self._index_additional_files([str(f) for f in cache_files])
+
     # @staticmethod
     # def ensure_api_key() -> None:
     #     if not os.getenv("OPENAI_API_KEY"):
@@ -536,10 +768,8 @@ class OntologyRAG:
     async def _build_store(self, ontology_files: List[str]) -> str:
         print("[yellow]Building vector store from reference ontologies...[/yellow]")
         elements = self.extractor.extract_from_files(ontology_files)
-        texts = [e.get_searchable_text() for e in elements]
-        vecs = await self.embedder.embed_many(texts)
-        for v, e in zip(vecs, elements):
-            self.store.add(v, e)
+        await self._index_elements(elements)
+        await self._index_existing_fragments()
         prefix_block = self.prefix_mgr.build_prefix_block(ontology_files)
         print(f"[green]Indexed {len(self.store.elements)} ontology elements from {len(ontology_files)} ontologies[/green]")
         return prefix_block
@@ -557,13 +787,17 @@ class OntologyRAG:
 
     async def run_single_cq(self, cq: str, ontology_files: List[str], top_k: int = 20) -> None:
         prefix_block = await self._build_store(ontology_files)
+        onto_tag = self._core_tag(ontology_files)
+        basename = self._build_cq_basename(None, 1, onto_tag)
         before = self.tracker.snapshot()
         relevant = await self._retrieve_relevant(cq, k=top_k)
+        self._write_retrieved_elements(basename, relevant)
         fragment = await self._generate_fragment(cq, relevant, prefix_block)
         # validate & write
         if TurtleValidator.validate_ttl(fragment):
-            out_path = self.paths.individual_dir / "single_cq.ttl"
+            out_path = self.paths.individual_dir / f"{basename}.ttl"
             out_path.write_text(fragment, encoding="utf-8")
+            await self._index_additional_files([str(out_path)])
             print(f"[green]Ontology fragment saved to: {out_path}[/green]")
             print("\n[bold green]Ontology fragment[/bold green]\n")
             print(fragment)
@@ -604,6 +838,7 @@ class OntologyRAG:
             print(f"[blue]Processing limited to first {len(df)} rows[/blue]")
 
         prefix_block = await self._build_store(ontology_files)
+        onto_tag = self._core_tag(ontology_files)
 
         fragments: List[Tuple[str, str]] = []
         successful = 0
@@ -613,7 +848,7 @@ class OntologyRAG:
         from tqdm import tqdm  # local import to avoid mandatory dep during static analysis
         pbar = tqdm(total=len(df), desc="Processing CQs")
 
-        for idx, row in df.iterrows():
+        for seq_num, (idx, row) in enumerate(df.iterrows(), start=1):
             cq = str(row['CQ']).strip()
             before = self.tracker.snapshot()
 
@@ -626,9 +861,12 @@ class OntologyRAG:
 
             pbar.set_description(f"Processing CQ {idx}")
             cq_start = time.time()
+            cq_identifier = self._extract_cq_id(row)
+            basename = self._build_cq_basename(cq_identifier, seq_num, onto_tag)
 
             try:
                 relevant = await self._retrieve_relevant(cq, k=top_k)
+                self._write_retrieved_elements(basename, relevant)
                 # counts by source (for logging)
                 src_counts: Dict[str, int] = {}
                 for el in relevant:
@@ -637,8 +875,9 @@ class OntologyRAG:
                 fragment = await self._generate_fragment(cq, relevant, prefix_block)
                 if TurtleValidator.validate_ttl(fragment):
                     fragments.append((cq, fragment))
-                    out_file = self.paths.individual_dir / f"cq_{idx}.ttl"
+                    out_file = self.paths.individual_dir / f"{basename}.ttl"
                     out_file.write_text(fragment, encoding="utf-8")
+                    await self._index_additional_files([str(out_file)])
                     self.logger.log_processing_result(idx, cq, True, len(relevant), src_counts, time.time() - cq_start)
                     successful += 1
                     print(f"[green]CQ {idx} processed successfully[/green]")
@@ -661,15 +900,19 @@ class OntologyRAG:
         if fragments:
             print(f"[yellow]Combining {len(fragments)} ontology fragments...[/yellow]")
             combined = OntologyCombiner.combine(fragments, ontology_files, prefix_block)
-            self.paths.combined_ttl.write_text(combined, encoding="utf-8")
-            print(f"[green]Combined ontology saved to: {self.paths.combined_ttl}[/green]")
+            combined_basename = f"{Path(csv_file).stem}_{onto_tag}"
+            combined_path = self.paths.cache_dir / f"{combined_basename}_combined.ttl"
+            combined_path.write_text(combined, encoding="utf-8")
+            print(f"[green]Combined ontology saved to: {combined_path}[/green]")
             if TurtleValidator.validate_ttl(combined):
                 print("[green]Combined ontology is syntactically valid[/green]")
             else:
                 print("[yellow]Combined ontology has syntax issues[/yellow]")
+        else:
+            combined_path = self.paths.combined_ttl
 
         total_time = time.time() - start_time
-        self.logger.log_final_results(len(df), successful, failed, total_time, str(self.paths.combined_ttl))
+        self.logger.log_final_results(len(df), successful, failed, total_time, str(combined_path))
 
         print(f"\n[bold green]Processing Complete![/bold green]")
         print(f"Total CQs: {len(df)}")
