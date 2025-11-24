@@ -9,7 +9,7 @@ import time
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
+from typing import Any, Dict, Iterable, List, Optional, Set, Tuple, Literal
 
 import faiss  # type: ignore
 import numpy as np
@@ -44,6 +44,44 @@ STANDARD_PREFIXES: Dict[str, str] = {
     "owl": "http://www.w3.org/2002/07/owl#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
 }
+
+REQUIRED_PREFIXES: List[Tuple[str, str]] = [
+    ("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#"),
+    ("rdfs", "http://www.w3.org/2000/01/rdf-schema#"),
+    ("owl", "http://www.w3.org/2002/07/owl#"),
+    ("xsd", "http://www.w3.org/2001/XMLSchema#"),
+    ("bosch-meta-o", "http://semantic.bosch.com/bosch-meta-ontology/v1/"),
+    ("bosch-metadata-o", "http://semantic.bosch.com/bosch-metadata-ontology-v1/"),
+    ("brick", "https://brickschema.org/schema/Brick#"),
+    ("cross-iso11179-registrationstatus-o", "http://semantic.bosch.com/cross-iso11179-registrationstatus-ontology-v1/"),
+    ("csvw", "http://www.w3.org/ns/csvw#"),
+    ("dc", "http://purl.org/dc/elements/1.1/"),
+    ("dcam", "http://purl.org/dc/dcam/"),
+    ("dcat", "http://www.w3.org/ns/dcat#"),
+    ("dcmitype", "http://purl.org/dc/dcmitype/"),
+    ("dct", "http://purl.org/dc/terms/"),
+    ("doap", "http://usefulinc.com/ns/doap#"),
+    ("edg", "http://edg.topbraid.solutions/model/"),
+    ("foaf", "http://xmlns.com/foaf/0.1/"),
+    ("geo", "http://www.opengis.net/ont/geosparql#"),
+    ("metadata", "http://topbraid.org/metadata#"),
+    ("odrl", "http://www.w3.org/ns/odrl/2/"),
+    ("org", "http://www.w3.org/ns/org#"),
+    ("prof", "http://www.w3.org/ns/dx/prof/"),
+    ("prov", "http://www.w3.org/ns/prov#"),
+    ("qb", "http://purl.org/linked-data/cube#"),
+    ("schema", "https://schema.org/"),
+    ("sh", "http://www.w3.org/ns/shacl#"),
+    ("skos", "http://www.w3.org/2004/02/skos/core#"),
+    ("sosa", "http://www.w3.org/ns/sosa/"),
+    ("ssmo", "http://semantic.bosch.com/x-app-schema2semantic-mapping-ontology-v1/"),
+    ("ssn", "http://www.w3.org/ns/ssn/"),
+    ("teamwork", "http://topbraid.org/teamwork#"),
+    ("time", "http://www.w3.org/2006/time#"),
+    ("vann", "http://purl.org/vocab/vann/"),
+    ("void", "http://rdfs.org/ns/void#"),
+    ("wgs", "https://www.w3.org/2003/01/geo/wgs84_pos#"),
+]
 
 SH = Namespace("http://www.w3.org/ns/shacl#")
 
@@ -96,17 +134,18 @@ RELEVANT ONTOLOGY ELEMENTS (from {num_ontologies} reference ontologies):
 
  
 
-NOTE:
+NOTES:
 
 - Do not use external ontologies. Only build on the ontologies provided in RELEVANT ONTOLOGY ELEMENTS .
 
-- Reuse the namespace used in the RELEVANT ONTOLOGY ELEMENTS. Only if none are provided, use the ":" namespace .
-
-- Create the PropertyShape names as follows: <ClassName>-<PropertyName> a sh:PropertyShape .
+- Reuse the namespaces (ontology prefix) used in the RELEVANT ONTOLOGY ELEMENTS whenever possible. Only if none are provided, use the ":" namespace .
 
 - Create the NodeShape with the same IRI as the Class it shapes, i.e. <ontology-prefix>:<ClassName> a sh:NodeShape .
 
-- For Property and Node Shapes, use the rdfs:label of the property or class as the sh:name .
+- Create the PropertyShape names as follows: <ontology-prefix>:<ClassName>-<PropertyName> a sh:PropertyShape .
+
+- For Property and Node Shapes: use the rdfs:label of the property or class as the sh:name .
+
 
 - Do not create any new owl:Ontology statements .
 """
@@ -279,6 +318,7 @@ class OntologyElement(BaseModel):
     super_classes: Optional[List[str]] = Field(default_factory=list)
     sub_classes: Optional[List[str]] = Field(default_factory=list)
     additional_info: Optional[List[str]] = Field(default_factory=list)
+    snippet: Optional[str] = None
 
     def get_searchable_text(self) -> str:
         parts: List[str] = []
@@ -289,8 +329,6 @@ class OntologyElement(BaseModel):
         if self.comment:
             parts.append(self.comment)
         parts.append(f"Type: {self.element_type.replace('_', ' ')}")
-        ontology_name = Path(self.source_ontology).stem
-        parts.append(f"From: {ontology_name}")
         if self.domain:
             domain_names = [d.split('#')[-1].split('/')[-1] for d in self.domain]
             parts.append(f"Domain: {', '.join(domain_names)}")
@@ -319,9 +357,10 @@ class PrefixManager:
         s = re.sub(r"_+", "_", s)
         return s
 
-    def collect_prefixes_from_files(self, ontology_files: List[str]) -> Dict[str, str]:
-        ns_to_prefix: Dict[str, str] = {}
+    def collect_prefixes_from_files(self, ontology_files: List[str]) -> Tuple[Optional[str], Dict[str, str]]:
+        extra_prefixes: Dict[str, str] = {}
         used: set[str] = set(STANDARD_PREFIXES.keys())
+        default_ns: Optional[str] = None
         for f in ontology_files:
             g = Graph()
             try:
@@ -330,29 +369,39 @@ class PrefixManager:
                 continue
             for pref, ns in g.namespaces():
                 ns = str(ns)
-                if not ns or (pref and str(pref).lower() == "xml"):
+                if not ns:
                     continue
-                if ns in STANDARD_PREFIXES.values():
+                pref_str = "" if pref is None else str(pref)
+                if pref_str.lower() == "xml":
                     continue
-                p = self.sanitize_prefix_name(pref)
+                if pref_str == "":
+                    if not default_ns:
+                        default_ns = ns
+                    continue
+                if pref_str in STANDARD_PREFIXES:
+                    continue
+                p = self.sanitize_prefix_name(pref_str)
                 while p in used:
                     m = re.search(r"(\d+)$", p)
                     p = re.sub(r"\d+$", str(int(m.group(1)) + 1), p) if m else f"{p}2"
-                ns_to_prefix[ns] = p
+                extra_prefixes[p] = ns
                 used.add(p)
-        return ns_to_prefix
+        return default_ns, extra_prefixes
 
     def build_prefix_block(self, ontology_files: List[str]) -> str:
-        ns_to_prefix = self.collect_prefixes_from_files(ontology_files)
-        lines = [
-            '@prefix : <http://www.example.org/ontology#> .',
-            '@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .',
-            '@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .',
-            '@prefix owl: <http://www.w3.org/2002/07/owl#> .',
-            '@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .',
-        ]
-        for ns, pref in sorted(ns_to_prefix.items(), key=lambda kv: kv[1].lower()):
-            lines.append(f"@prefix {pref}: <{ns}> .")
+        _, extra_prefixes = self.collect_prefixes_from_files(ontology_files)
+        lines: List[str] = []
+        used: Set[str] = set()
+        for pref, uri in REQUIRED_PREFIXES:
+            if pref in used:
+                continue
+            lines.append(f"@prefix {pref}: <{uri}> .")
+            used.add(pref)
+        for pref in sorted(extra_prefixes.keys(), key=str.lower):
+            if pref in used:
+                continue
+            lines.append(f"@prefix {pref}: <{extra_prefixes[pref]}> .")
+            used.add(pref)
         return "\n".join(lines) + "\n"
 
 
@@ -363,6 +412,30 @@ class PrefixManager:
 class OntologyExtractor:
     def __init__(self, logger: RunLogger) -> None:
         self.logger = logger
+
+    @staticmethod
+    def _collect_snippet(g: Graph, subject: URIRef, depth: int = 1) -> str:
+        snippet = Graph()
+        for pref, ns in g.namespaces():
+            if pref is None:
+                snippet.bind('', ns)
+            else:
+                snippet.bind(pref, ns)
+
+        visited_bnodes: Set[BNode] = set()
+
+        def add_triples(node: Any, remaining: int) -> None:
+            for pred, obj in g.predicate_objects(node):
+                snippet.add((node, pred, obj))
+                if remaining > 0 and isinstance(obj, BNode) and obj not in visited_bnodes:
+                    visited_bnodes.add(obj)
+                    add_triples(obj, remaining - 1)
+
+        add_triples(subject, depth)
+        try:
+            return snippet.serialize(format="turtle").strip()
+        except Exception:
+            return ""
 
     def extract_from_files(self, ontology_files: List[str], *, log: bool = True) -> List[OntologyElement]:
         print(f"[blue]Loading {len(ontology_files)} reference ontologies...[/blue]")
@@ -448,6 +521,7 @@ class OntologyExtractor:
                 comment=comment,
                 super_classes=super_classes,
                 sub_classes=sub_classes,
+                snippet=OntologyExtractor._collect_snippet(g, cls),
             )
         except Exception as e:
             print(f"[yellow] Error extracting class {cls}: {e}[/yellow]")
@@ -468,6 +542,7 @@ class OntologyExtractor:
                 comment=comment,
                 domain=domain,
                 range=range_vals,
+                snippet=OntologyExtractor._collect_snippet(g, prop),
             )
         except Exception as e:
             print(f"[yellow]Error extracting property {prop}: {e}[/yellow]")
@@ -526,6 +601,7 @@ class OntologyExtractor:
             label=label,
             comment=comment,
             additional_info=info,
+            snippet=OntologyExtractor._collect_snippet(g, shape),
         )
 
     @staticmethod
@@ -565,6 +641,7 @@ class OntologyExtractor:
             label=label_literal,
             comment=comment,
             additional_info=info,
+            snippet=OntologyExtractor._collect_snippet(g, restriction),
         )
 
 
@@ -611,6 +688,12 @@ class PromptBuilder:
             parts.append(f"\n## From {source} ontology:")
             for e in els:
                 parts.append(f"- {e.get_searchable_text()}")
+                if e.snippet:
+                    snippet = e.snippet.strip()
+                    if snippet:
+                        parts.append("```ttl")
+                        parts.append(snippet)
+                        parts.append("```")
         return "\n".join(parts), len(elements_by_source)
 
     def build(self, cq: str, elements: List[OntologyElement]) -> str:
@@ -683,6 +766,24 @@ class OntologyRAG:
         self.embedder = get_embedder(EMBEDDER, EMBED_MODEL, self.tracker, normalize=normalize_vectors, batch_size=batch_size)
         self.store = FaissVectorStore(int(VECTOR_DIM), inner_product=True)  # cosine if normalized
         self.llm = get_llm_service(LLM_SERVICE, LLM_MODEL, LLM_TEMPERATURE, self.tracker)
+        self.include_cache: bool = False
+        self.reference_sources: Set[str] = set()
+        self.session_sources: Set[str] = set()
+        self.cache_sources: Set[str] = set()
+
+    @staticmethod
+    def _resolve_path(path: str) -> str:
+        try:
+            return str(Path(path).resolve())
+        except Exception:
+            return path
+
+    def _allowed_sources(self) -> Set[str]:
+        allowed = set(self.reference_sources)
+        allowed.update(self.session_sources)
+        if self.include_cache:
+            allowed.update(self.cache_sources)
+        return allowed
 
     @staticmethod
     def _sanitize_token(token: str, default: str = "item") -> str:
@@ -744,20 +845,27 @@ class OntologyRAG:
         for vec, element in zip(vecs, new_elements):
             self.store.add(vec, element)
 
-    async def _index_additional_files(self, files: List[str]) -> None:
+    async def _index_additional_files(self, files: List[str], *, origin: Literal["cache", "session"]) -> None:
         if not files:
             return
         elements = self.extractor.extract_from_files(files, log=False)
         await self._index_elements(elements)
+        resolved = {self._resolve_path(f) for f in files}
+        if origin == "cache":
+            self.cache_sources.update(resolved)
+        else:
+            self.session_sources.update(resolved)
 
     async def _index_existing_fragments(self) -> None:
+        if not self.include_cache:
+            return
         if not self.paths.individual_dir.exists():
             return
         cache_files = sorted(self.paths.individual_dir.glob("*.ttl"))
         if not cache_files:
             return
         print(f"[yellow]Loading {len(cache_files)} cached CQ fragments into the vector store...[/yellow]")
-        await self._index_additional_files([str(f) for f in cache_files])
+        await self._index_additional_files([str(f) for f in cache_files], origin="cache")
 
     # @staticmethod
     # def ensure_api_key() -> None:
@@ -767,6 +875,10 @@ class OntologyRAG:
 
     async def _build_store(self, ontology_files: List[str]) -> str:
         print("[yellow]Building vector store from reference ontologies...[/yellow]")
+        self.reference_sources = {self._resolve_path(f) for f in ontology_files}
+        self.session_sources.clear()
+        if not self.include_cache:
+            self.cache_sources.clear()
         elements = self.extractor.extract_from_files(ontology_files)
         await self._index_elements(elements)
         await self._index_existing_fragments()
@@ -777,7 +889,13 @@ class OntologyRAG:
     async def _retrieve_relevant(self, cq: str, k: int = 20) -> List[OntologyElement]:
         qvec = await self.embedder.embed_one(cq)
         results = self.store.search(qvec, k)
-        return [el for el, _ in results]
+        allowed_sources = self._allowed_sources()
+        filtered: List[OntologyElement] = []
+        for el, _ in results:
+            src = self._resolve_path(el.source_ontology)
+            if src in allowed_sources:
+                filtered.append(el)
+        return filtered
 
     async def _generate_fragment(self, cq: str, relevant: List[OntologyElement], prefix_block: str) -> str:
         prompt = PromptBuilder(prefix_block).build(cq, relevant)
@@ -797,7 +915,7 @@ class OntologyRAG:
         if TurtleValidator.validate_ttl(fragment):
             out_path = self.paths.individual_dir / f"{basename}.ttl"
             out_path.write_text(fragment, encoding="utf-8")
-            await self._index_additional_files([str(out_path)])
+            await self._index_additional_files([str(out_path)], origin="session")
             print(f"[green]Ontology fragment saved to: {out_path}[/green]")
             print("\n[bold green]Ontology fragment[/bold green]\n")
             print(fragment)
@@ -877,7 +995,7 @@ class OntologyRAG:
                     fragments.append((cq, fragment))
                     out_file = self.paths.individual_dir / f"{basename}.ttl"
                     out_file.write_text(fragment, encoding="utf-8")
-                    await self._index_additional_files([str(out_file)])
+                    await self._index_additional_files([str(out_file)], origin="session")
                     self.logger.log_processing_result(idx, cq, True, len(relevant), src_counts, time.time() - cq_start)
                     successful += 1
                     print(f"[green]CQ {idx} processed successfully[/green]")
@@ -960,6 +1078,7 @@ def parse_args() -> argparse.Namespace:
     p_single.add_argument("--onto", nargs="+", help="One or more reference ontology files (.ttl/.owl)")
     p_single.add_argument("--onto-dir", nargs="+", help="One or more directories to scan for .ttl/.owl")
     p_single.add_argument("--top-k", type=int, default=20, help="Top-K elements to retrieve")
+    p_single.add_argument("--include-cache", action="store_true", help="Also reuse previously generated CQ fragments from cache")
 
     p_batch = sub.add_parser("csv", help="Process a CSV with a CQ column")
     p_batch.add_argument("--file", required=True, help="CSV file with column 'CQ'")
@@ -967,6 +1086,7 @@ def parse_args() -> argparse.Namespace:
     p_batch.add_argument("--onto-dir", nargs="+", help="One or more directories to scan for .ttl/.owl")
     p_batch.add_argument("--limit", type=int, default=None, help="Process only first N rows")
     p_batch.add_argument("--top-k", type=int, default=20, help="Top-K elements to retrieve")
+    p_batch.add_argument("--include-cache", action="store_true", help="Also reuse previously generated CQ fragments from cache")
 
     return p.parse_args()
 
@@ -981,9 +1101,11 @@ async def _main_async(args: argparse.Namespace) -> None:
         sys.exit(1)
 
     if args.cmd == "cq":
+        app.include_cache = bool(getattr(args, "include_cache", False))
         ontofiles = expand_onto_args(args.onto, args.onto_dir)
         await app.run_single_cq(args.cq, ontofiles, top_k=args.top_k)
     elif args.cmd == "csv":
+        app.include_cache = bool(getattr(args, "include_cache", False))
         ontofiles = expand_onto_args(args.onto, args.onto_dir)
         await app.run_csv(args.file, ontofiles, limit=args.limit, top_k=args.top_k)
 
