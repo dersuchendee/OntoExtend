@@ -2,9 +2,9 @@
 
 ## Standard OpenAI service with OpenAI API key
 LLM_SERVICE = "openai"
-LLM_MODEL = "gpt-4o"
-LLM_TEMPERATURE = 0.7
-OPENAI_API_KEY = "your-api-key-here"
+LLM_MODEL = "o1-preview"
+LLM_TEMPERATURE = 0
+OPENAI_API_KEY = "sk-xxxx"
 
 # LLM_MODEL = "o4-mini"
 # LLM_TEMPERATURE = 1.0
@@ -23,12 +23,12 @@ OPENAI_API_KEY = "your-api-key-here"
 
 ### Define embedding model and vector dimension
 
-# EMBEDDER = "openai"
-# EMBED_MODEL = "text-embedding-3-small"
-# VECTOR_DIM = 1536
-EMBEDDER = "huggingface"
-EMBED_MODEL = "all-MiniLM-L6-v2"
-VECTOR_DIM = 384
+ EMBEDDER = "openai"
+ EMBED_MODEL = "text-embedding-ada-002"
+ VECTOR_DIM = 1536
+# EMBEDDER = "huggingface"
+# EMBED_MODEL = "all-MiniLM-L6-v2"
+# VECTOR_DIM = 384
 
 
 ### Optional: define LLM costs file
