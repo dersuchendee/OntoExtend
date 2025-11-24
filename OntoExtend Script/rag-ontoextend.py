@@ -120,7 +120,9 @@ INSTRUCTIONS:
 
 5. Include restrictions (e.g., cardinality, value restrictions) when the CQ implies them. If the reference ontology uses OWL restrictions use only OWL restrictions; if the reference ontology only uses SHACL, then only use SHACL.
 
-6. Ensure the output is syntactically correct and self-contained
+6. For every object or data property you introduce, include explicit rdfs:domain and rdfs:range statements (reuse the existing classes or datatypes when possible).
+
+7. Ensure the output is syntactically correct and self-contained
 
  
 
@@ -145,6 +147,8 @@ NOTES:
 - Create the PropertyShape names as follows: <ontology-prefix>:<ClassName>-<PropertyName> a sh:PropertyShape .
 
 - For Property and Node Shapes: use the rdfs:label of the property or class as the sh:name .
+
+- Every property definition must contain both rdfs:domain and rdfs:range statements.
 
 
 - Do not create any new owl:Ontology statements .
@@ -389,9 +393,12 @@ class PrefixManager:
         return default_ns, extra_prefixes
 
     def build_prefix_block(self, ontology_files: List[str]) -> str:
-        _, extra_prefixes = self.collect_prefixes_from_files(ontology_files)
+        default_ns, extra_prefixes = self.collect_prefixes_from_files(ontology_files)
         lines: List[str] = []
         used: Set[str] = set()
+        if default_ns:
+            lines.append(f"@prefix : <{default_ns}> .")
+            used.add("")
         for pref, uri in REQUIRED_PREFIXES:
             if pref in used:
                 continue
@@ -722,6 +729,39 @@ class TurtleValidator:
             return False
 
 
+class PropertyConstraintValidator:
+    @staticmethod
+    def ensure_domain_range(ttl_content: str) -> None:
+        try:
+            g = Graph()
+            g.parse(data=ttl_content, format="turtle")
+        except Exception as e:
+            raise ValueError(f"Unable to parse TTL for domain/range validation: {e}") from e
+
+        issues: List[str] = []
+
+        def _check(prop: URIRef, prop_type: str) -> None:
+            has_domain = any(True for _ in g.objects(prop, RDFS.domain))
+            has_range = any(True for _ in g.objects(prop, RDFS.range))
+            if not has_domain or not has_range:
+                missing_parts: List[str] = []
+                if not has_domain:
+                    missing_parts.append("rdfs:domain")
+                if not has_range:
+                    missing_parts.append("rdfs:range")
+                issues.append(f"{prop} ({prop_type}) missing {' and '.join(missing_parts)}")
+
+        for prop in g.subjects(RDF.type, OWL.ObjectProperty):
+            if isinstance(prop, URIRef):
+                _check(prop, "ObjectProperty")
+        for prop in g.subjects(RDF.type, OWL.DatatypeProperty):
+            if isinstance(prop, URIRef):
+                _check(prop, "DatatypeProperty")
+
+        if issues:
+            raise ValueError("Property domain/range check failed: " + "; ".join(issues))
+
+
 class OntologyCombiner:
     @staticmethod
     def remove_prefixes_from_fragment(fragment: str) -> str:
@@ -910,7 +950,14 @@ class OntologyRAG:
         before = self.tracker.snapshot()
         relevant = await self._retrieve_relevant(cq, k=top_k)
         self._write_retrieved_elements(basename, relevant)
-        fragment = await self._generate_fragment(cq, relevant, prefix_block)
+        try:
+            fragment = await self._generate_fragment(cq, relevant, prefix_block)
+            PropertyConstraintValidator.ensure_domain_range(fragment)
+        except ValueError as err:
+            print(f"[red]{err}[/red]")
+            after = self.tracker.snapshot()
+            self.logger.log_cost_row(-1, cq, self.tracker.diff(before, after))
+            return
         # validate & write
         if TurtleValidator.validate_ttl(fragment):
             out_path = self.paths.individual_dir / f"{basename}.ttl"
@@ -982,15 +1029,18 @@ class OntologyRAG:
             cq_identifier = self._extract_cq_id(row)
             basename = self._build_cq_basename(cq_identifier, seq_num, onto_tag)
 
+            relevant: List[OntologyElement] = []
+            src_counts: Dict[str, int] = {}
+
             try:
                 relevant = await self._retrieve_relevant(cq, k=top_k)
                 self._write_retrieved_elements(basename, relevant)
-                # counts by source (for logging)
-                src_counts: Dict[str, int] = {}
                 for el in relevant:
                     src_counts[Path(el.source_ontology).stem] = src_counts.get(Path(el.source_ontology).stem, 0) + 1
 
                 fragment = await self._generate_fragment(cq, relevant, prefix_block)
+                PropertyConstraintValidator.ensure_domain_range(fragment)
+
                 if TurtleValidator.validate_ttl(fragment):
                     fragments.append((cq, fragment))
                     out_file = self.paths.individual_dir / f"{basename}.ttl"
@@ -1003,6 +1053,10 @@ class OntologyRAG:
                     print(f"[red]CQ {idx}: Generated invalid Turtle[/red]")
                     self.logger.log_processing_result(idx, cq, False, len(relevant), src_counts, time.time() - cq_start, "Invalid Turtle")
                     failed += 1
+            except ValueError as err:
+                print(f"[red]{err}[/red]")
+                self.logger.log_processing_result(idx, cq, False, len(relevant), src_counts, time.time() - cq_start, str(err))
+                failed += 1
             except Exception as e:
                 print(f"[red]CQ {idx} failed: {e}[/red]")
                 self.logger.log_processing_result(idx, cq, False, 0, {}, time.time() - cq_start, str(e))
