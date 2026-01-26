@@ -444,7 +444,7 @@ comment. Return only Turtle/TTL syntax inside one markdown code block.
 
 ### User prompt template
 
-The full templates are defined in `USER_TMPL` in [`rag-ontoextend.py:94-155`](OntoExtend%20Script/rag-ontoextend.py#L94-L155).  
+The full templates are defined in `USER_TMPL` in ([OntoExtend%20Script/rag-ontoextend.py#L94-L155](https://github.com/dersuchendee/OntoExtend/tree/main/OntoExtend%20Script/OntoExtender/Prompting%20Techniques/Components/PromptTemplate)).  
 
 
 
