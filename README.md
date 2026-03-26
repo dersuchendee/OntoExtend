@@ -6,6 +6,9 @@
 </p>
 
 ## Ontology Extension through Retrieval-Augmented Generation
+<p align="center">
+  <img src="Images/unnamed.png" alt="OntoExtend Logo" />
+</p>
 
 OntoExtend automatically generates OWL/SHACL ontology fragments from natural-language **competency questions** (CQs) by retrieving semantically relevant elements from existing reference ontologies and prompting an LLM to compose valid Turtle (TTL) output.  The generated fragments reuse classes, properties, and restrictions already defined in the reference ontologies wherever possible, and only mint new concepts when the CQ demands it.
 
