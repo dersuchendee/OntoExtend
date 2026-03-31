@@ -71,6 +71,25 @@ Each element carries a **Turtle snippet** -- the serialised triples for that ele
                   can have a collection of components." ;
     rdfs:label "has material component" .
 ```
+###### Examples of CQs from Industry and EU-project
+
+Here are some examples of the CQs used in the experiment.
+
+###### EU-project CQs
+
+1. Which textile products are classified as products that can be used for a better use?
+2. Which textile products are maintained or repaired by an untrained person?
+3. Which textile products are maintained or repaired by a trained person?
+4. What are the items or products that are conductive items or conductive products?
+5. Products or items can have a fire resistance rating; for example, F30 represents a fire resistance duration of 30 min, and F60 represents a fire resistance duration of 60 min. What is this category for a given product or item?
+
+###### Industry CQs
+
+1. Get me the Delta Force measurements of the press fitting process with the process id X.
+2. Get me all press fitting processes that are executed by press fitting machine X.
+3. Which magnetic valve has been inserted into the bore with bore id X?
+4. Find me the hydraulic unit with the batch id number X.
+5. Get all instances of the class Bore, with their bore position id number (integer) and their bore id (double).
 
 ### Step 2 -- Build searchable text & embed
 
