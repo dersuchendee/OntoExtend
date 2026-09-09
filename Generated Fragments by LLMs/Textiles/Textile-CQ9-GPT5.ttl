@@ -1,0 +1,10 @@
+@prefix : <http://w3id.org/CEON/ontology/textile/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:hasSparePart a owl:ObjectProperty ;
+    rdfs:label "has spare part" ;
+    rdfs:comment "Relates a textile product to its spare parts." ;
+    rdfs:domain :TextileProduct ;
+    rdfs:range :TextileProductComponentValue .
+

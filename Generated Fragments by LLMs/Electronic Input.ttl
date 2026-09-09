@@ -1,0 +1,2767 @@
+@prefix : <http://w3id.org/CEON/demo/electronics/> .
+@prefix ns1: <http://qudt.org/schema/qudt/> .
+@prefix ns2: <http://w3id.org/CEON/ontology/statement/> .
+@prefix ns3: <http://w3id.org/CEON/ontology/actorODP/> .
+@prefix ns4: <http://w3id.org/CEON/ontology/resourceODP/> .
+@prefix ns5: <http://w3id.org/CEON/ontology/product/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://w3id.org/CEON/demo/electronics/> .
+
+<http://w3id.org/CEON/demo/electronics/> rdf:type owl:Ontology ;
+                                          owl:versionIRI <http://w3id.org/CEON/demo/electronics/0.2/> ;
+                                          owl:imports <http://w3id.org/CEON/ontology/actor/0.4/> ,
+                                                      <http://w3id.org/CEON/ontology/datasheet/0.3/> ,
+                                                      <http://w3id.org/CEON/ontology/material/0.4/> ,
+                                                      <http://w3id.org/CEON/ontology/product/0.5/> ,
+                                                      <http://w3id.org/CEON/ontology/quantity/0.2/> ,
+                                                      <http://w3id.org/CEON/ontology/resourceODP/0.5/> ;
+                                          dcterms:contributor "Eva Blomqvist" ;
+                                          dcterms:created "2023-09-14"^^xsd:date ;
+                                          dcterms:creator "Huanyu Li" ;
+                                          dcterms:description "The Electronics module of CEON (Circular Economy Ontology Network)." ;
+                                          dcterms:issued "2025-06-30"^^xsd:date ;
+                                          dcterms:license "https://creativecommons.org/licenses/by/4.0/" ;
+                                          dcterms:publisher "Onto-DESIDE" ;
+                                          dcterms:title "Circular Economy Ontology Network (CEON) - Electronics Module" ;
+                                          vann:preferredNamespacePrefix "ceon-demo-electronics" ;
+                                          vann:preferredNamespaceUri "http://w3id.org/CEON/demo/electronics/" ;
+                                          rdfs:seeAlso "https://github.com/LiUSemWeb/CEON" ;
+                                          owl:priorVersion 0.1 ;
+                                          owl:versionInfo 0.2 .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://qudt.org/schema/qudt/expression
+ns1:expression rdf:type owl:AnnotationProperty .
+
+
+###  http://w3id.org/CEON/ontology/actorODP/participatingObject
+ns3:participatingObject rdf:type owl:AnnotationProperty .
+
+
+###  http://w3id.org/CEON/ontology/actorODP/participatingSubject
+ns3:participatingSubject rdf:type owl:AnnotationProperty .
+
+
+###  http://w3id.org/CEON/ontology/statement/statementAbout
+ns2:statementAbout rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://qudt.org/schema/qudt/definedUnitOfSystem
+ns1:definedUnitOfSystem rdf:type owl:ObjectProperty .
+
+
+###  http://qudt.org/schema/qudt/derivedCoherentUnitOfSystem
+ns1:derivedCoherentUnitOfSystem rdf:type owl:ObjectProperty .
+
+
+###  http://qudt.org/schema/qudt/exactMatch
+ns1:exactMatch rdf:type owl:ObjectProperty .
+
+
+###  http://qudt.org/schema/qudt/hasDimensionVector
+ns1:hasDimensionVector rdf:type owl:ObjectProperty .
+
+
+###  http://qudt.org/schema/qudt/hasUnit
+ns1:hasUnit rdf:type owl:ObjectProperty .
+
+
+###  http://w3id.org/CEON/demo/electronics/complianceWith
+:complianceWith rdf:type owl:ObjectProperty .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasCatalystCompositionValue
+:hasCatalystCompositionValue rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf ns1:quantityValue ;
+                             rdfs:domain :CatalystComposition ;
+                             rdfs:range :CatalystCompositionValue ;
+                             rdfs:label "has catalyst composition value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasChemicalElement
+:hasChemicalElement rdf:type owl:ObjectProperty ;
+                    rdfs:range <http://w3id.org/CEON/ontology/material/ChemicalElement> ;
+                    rdfs:label "has chemical element" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasChemicalElementCompositionValue
+:hasChemicalElementCompositionValue rdf:type owl:ObjectProperty ;
+                                    rdfs:subPropertyOf ns1:quantityValue ;
+                                    rdfs:domain :ChemicalElementComposition ;
+                                    rdfs:range :ChemicalElementCompositionValue ;
+                                    rdfs:label "has chemical element composition value" .
+
+
+
+
+
+
+###  http://w3id.org/CEON/demo/electronics/hasDensityAt25
+:hasDensityAt25 rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf ns4:hasResourceProperty ;
+                rdfs:domain ns5:Item ;
+                rdfs:range :DensityAt25 ;
+                rdfs:label "has density at 25" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasDensityAt25Value
+:hasDensityAt25Value rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf ns1:quantityValue ;
+                     rdfs:domain :DensityAt25 ,
+                                 [ rdf:type owl:Class ;
+                                   owl:unionOf ( ns5:Item
+                                                 ns5:Product
+                                               )
+                                 ] ;
+                     rdfs:range :DensityAt25Value ;
+                     rdfs:label "has density value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasDepth
+:hasDepth rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf ns4:hasResourceProperty ;
+          rdfs:range :Depth ;
+          rdfs:label "has depth" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasDepthValue
+:hasDepthValue rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity/hasDimension> ;
+               rdfs:domain :Depth ,
+                           [ rdf:type owl:Class ;
+                             owl:unionOf ( ns5:Item
+                                           ns5:Product
+                                         )
+                           ] ;
+               rdfs:range :DepthValue ;
+               rdfs:label "has depth value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasDiameter
+:hasDiameter rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf ns4:hasResourceProperty ;
+             rdfs:range :Diameter ;
+             rdfs:label "has diameter" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasDiameterValue
+:hasDiameterValue rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf <http://w3id.org/CEON/ontology/quantity/hasDimension> ;
+                  rdfs:domain :Diameter ,
+                              [ rdf:type owl:Class ;
+                                owl:unionOf ( ns5:Item
+                                              ns5:Product
+                                            )
+                              ] ;
+                  rdfs:range :DiameterValue ;
+                  rdfs:label "has diameter value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasFiberElongationAtBreak
+:hasFiberElongationAtBreak rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf ns4:hasResourceProperty ;
+                           rdfs:domain ns5:Item ;
+                           rdfs:range :FiberElongationAtBreak ;
+                           rdfs:label "has fiber elongation at break" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasFiberElongationAtBreakValue
+:hasFiberElongationAtBreakValue rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf ns1:quantityValue ;
+                                rdfs:domain :FiberElongationAtBreak ,
+                                            [ rdf:type owl:Class ;
+                                              owl:unionOf ( ns5:Item
+                                                            ns5:Product
+                                                          )
+                                            ] ;
+                                rdfs:range :FiberElongationAtBreakValue ;
+                                rdfs:label "has fiber elongation at break value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasFiberVolumeContent
+:hasFiberVolumeContent rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf ns4:hasResourceProperty ;
+                       rdfs:domain ns5:Item ;
+                       rdfs:range :FiberVolumeContent ;
+                       rdfs:label "has fiber volume content" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasFiberVolumeContentValue
+:hasFiberVolumeContentValue rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf ns1:quantityValue ;
+                            rdfs:domain :FiberVolumeContent ,
+                                        [ rdf:type owl:Class ;
+                                          owl:unionOf ( ns5:Item
+                                                        ns5:Product
+                                                      )
+                                        ] ;
+                            rdfs:range :FiberVolumeContentValue ;
+                            rdfs:label "has fiber volume content value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasHazardousMaterial
+:hasHazardousMaterial rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf ns1:quantityValue ;
+                      rdfs:domain [ rdf:type owl:Class ;
+                                    owl:unionOf ( ns5:Item
+                                                  ns5:Product
+                                                )
+                                  ] ;
+                      rdfs:range :HazardousMaterialPercentage ;
+                      rdfs:label "has hazardous material" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasLCAValue
+:hasLCAValue rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf ns1:quantityValue ;
+             rdfs:range :LCAValue ;
+             rdfs:label "has LCA value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasLength
+:hasLength rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf ns4:hasResourceProperty ;
+           rdfs:range :Length ;
+           rdfs:label "has length" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasLifeSpanTime
+:hasLifeSpanTime rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf ns4:hasResourceProperty ;
+                 rdfs:range :LifeSpanTime ;
+                 rdfs:label "has life span time" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasLifeSpanTimeValue
+:hasLifeSpanTimeValue rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf ns1:quantityValue ;
+                      rdfs:domain :LifeSpanTime ,
+                                  [ rdf:type owl:Class ;
+                                    owl:unionOf ( ns5:Item
+                                                  ns5:Product
+                                                )
+                                  ] ;
+                      rdfs:range :LifeSpanTimeValue ;
+                      rdfs:label "has life span time value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasMaximumEnergyProduct
+:hasMaximumEnergyProduct rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf ns4:hasResourceProperty ;
+                         rdfs:domain ns5:Item ;
+                         rdfs:range :MaximumEnergyProduct ;
+                         rdfs:label "has maximum energy product" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasMaximumEnergyProductValue
+:hasMaximumEnergyProductValue rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf ns1:quantityValue ;
+                              rdfs:domain :MaximumEnergyProduct ,
+                                          [ rdf:type owl:Class ;
+                                            owl:unionOf ( ns5:Item
+                                                          ns5:Product
+                                                        )
+                                          ] ;
+                              rdfs:range :MaximumEnergyProductValue ;
+                              rdfs:label "has maximum energy product value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasMetalCompositionValue
+:hasMetalCompositionValue rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf ns1:quantityValue ;
+                          rdfs:domain :MetalComposition ;
+                          rdfs:range :MetalCompositionValue ;
+                          rdfs:label "has metal composition value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasOperatingVoltage
+:hasOperatingVoltage rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf ns4:hasResourceProperty ;
+                     rdfs:domain ns5:Item ;
+                     rdfs:range :OperatingVoltage ;
+                     rdfs:label "has operating voltage" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasOperatingVoltageValue
+:hasOperatingVoltageValue rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf ns1:quantityValue ;
+                          rdfs:domain :OperatingVoltage ,
+                                      [ rdf:type owl:Class ;
+                                        owl:unionOf ( ns5:Item
+                                                      ns5:Product
+                                                    )
+                                      ] ;
+                          rdfs:range :OperatingVoltageValue ;
+                          rdfs:label "has operating voltage value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasOuterDiameter
+:hasOuterDiameter rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasDiameter .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasPostConsumerRecycledContentValue
+:hasPostConsumerRecycledContentValue rdf:type owl:ObjectProperty ;
+                                     rdfs:subPropertyOf ns1:quantityValue ;
+                                     rdfs:domain :PostConsumerRecycledContent ;
+                                     rdfs:range :PostConsumerRecycledContentValue ;
+                                     rdfs:label "has post consumer recycled content value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasPreConsumerRecycledContentValue
+:hasPreConsumerRecycledContentValue rdf:type owl:ObjectProperty ;
+                                    rdfs:subPropertyOf ns1:quantityValue ;
+                                    rdfs:domain :PreConsumerRecycledContent ;
+                                    rdfs:range :PreConsumerRecycledContentValue ;
+                                    rdfs:label "has pre consumer recycled content value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRareEarthCompositionValue
+:hasRareEarthCompositionValue rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf ns1:quantityValue ;
+                              rdfs:domain :RareEarthComposition ;
+                              rdfs:range :RareEarthCompositionValue ;
+                              rdfs:label "has rare earth composition value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRatedLoadAmps
+:hasRatedLoadAmps rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf ns4:hasResourceProperty ;
+                  rdfs:domain ns5:Item ;
+                  rdfs:range :RatedLoadAmps ;
+                  rdfs:label "has rated load amps" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRatedLoadAmpsValue
+:hasRatedLoadAmpsValue rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf ns1:quantityValue ;
+                       rdfs:domain :RatedLoadAmps ,
+                                   [ rdf:type owl:Class ;
+                                     owl:unionOf ( ns5:Item
+                                                   ns5:Product
+                                                 )
+                                   ] ;
+                       rdfs:range :RatedLoadAmpsValue ;
+                       rdfs:label "has rated load amps value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRatedPowerOutput
+:hasRatedPowerOutput rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf ns4:hasResourceProperty ;
+                     rdfs:domain ns5:Item ;
+                     rdfs:range :RatedPowerOutput ;
+                     rdfs:label "has rated power output" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRatedPowerOutputValue
+:hasRatedPowerOutputValue rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf ns1:quantityValue ;
+                          rdfs:domain :RatedPowerOutput ,
+                                      [ rdf:type owl:Class ;
+                                        owl:unionOf ( ns5:Item
+                                                      ns5:Product
+                                                    )
+                                      ] ;
+                          rdfs:range :RatedPowerOutputValue ;
+                          rdfs:label "has rated power output value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRatedRPM
+:hasRatedRPM rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf ns4:hasResourceProperty ;
+             rdfs:domain ns5:Item ;
+             rdfs:range :RatedRPM ;
+             rdfs:label "has rpm output" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRatedRPMValue
+:hasRatedRPMValue rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf ns1:quantityValue ;
+                  rdfs:domain :RatedRPM ,
+                              ns5:Item ;
+                  rdfs:range :RatedRPMValue ;
+                  rdfs:label "has rpm value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRecyclingPressureValue
+:hasRecyclingPressureValue rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf ns1:quantityValue ;
+                           rdfs:range :RecyclingPressureValue ;
+                           rdfs:label "has recycling pressure value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRecyclingProcessDuration
+:hasRecyclingProcessDuration rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf ns1:quantityValue ;
+                             rdfs:range :RecyclingProcessDuration ;
+                             rdfs:label "has recycling process duration" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRecyclingProcessTemperature
+:hasRecyclingProcessTemperature rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf ns1:quantityValue ;
+                                rdfs:range :RecyclingTemperatureValue ;
+                                rdfs:label "has recycling process temperature" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRefractiveIndexAt25
+:hasRefractiveIndexAt25 rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf ns1:quantityValue ;
+                        rdfs:range :RefractiveIndexAt25 ;
+                        rdfs:label "has refractive index at 25" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRemanentMagneticFluxDensity
+:hasRemanentMagneticFluxDensity rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf ns4:hasResourceProperty ;
+                                rdfs:domain ns5:Item ;
+                                rdfs:range :RemanentMagneticFluxDensity ;
+                                rdfs:label "has remanent magnetic flux fensity" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRemanentMagneticFluxDensityValue
+:hasRemanentMagneticFluxDensityValue rdf:type owl:ObjectProperty ;
+                                     rdfs:subPropertyOf ns1:quantityValue ;
+                                     rdfs:domain :RemanentMagneticFluxDensity ,
+                                                 ns5:Item ;
+                                     rdfs:range :RemanentMagneticFluxDensityValue ;
+                                     rdfs:label "has remanent magnetic flux density value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRenewableContentValue
+:hasRenewableContentValue rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf ns1:quantityValue ;
+                          rdfs:domain :RenewableContent ,
+                                      ns5:Item ;
+                          rdfs:range :RenewableContentValue ;
+                          rdfs:label "has renewable content value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasResistivityValue
+:hasResistivityValue rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf ns1:quantityValue ;
+                     rdfs:domain :Resistivity ,
+                                 ns5:Item ;
+                     rdfs:range :ResistivityValue ;
+                     rdfs:label "has resistivity value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasShape
+:hasShape rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf ns4:hasResourceProperty ;
+          rdfs:range :Shape ;
+          rdfs:label "has shape" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasShearStrength
+:hasShearStrength rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf ns4:hasResourceProperty ;
+                  rdfs:domain ns5:Item ;
+                  rdfs:range :ShearStrength ;
+                  rdfs:label "has shear strength" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasShearStrengthValue
+:hasShearStrengthValue rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf ns1:quantityValue ;
+                       rdfs:domain :ShearStrength ,
+                                   ns5:Item ;
+                       rdfs:range :ShearStrengthValue ;
+                       rdfs:label "has shear strength value" .
+
+
+
+
+
+###  http://w3id.org/CEON/demo/electronics/hasTensileModulus
+:hasTensileModulus rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf ns4:hasResourceProperty ;
+                   rdfs:domain ns5:Item ;
+                   rdfs:range :TensileModulus ;
+                   rdfs:label "has tensile modulus" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasTensileModulusValue
+:hasTensileModulusValue rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf ns1:quantityValue ;
+                        rdfs:domain :TensileModulus ,
+                                    ns5:Item ;
+                        rdfs:range :TensileModulusValue ;
+                        rdfs:label "has tensile modulus value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasTensileStrength
+:hasTensileStrength rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf ns4:hasResourceProperty ;
+                    rdfs:domain ns5:Item ;
+                    rdfs:range :TensileStrength ;
+                    rdfs:label "has tensile strength" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasTensileStrengthValue
+:hasTensileStrengthValue rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf ns1:quantityValue ;
+                         rdfs:domain :TensileStrength ,
+                                     ns5:Item ;
+                         rdfs:range :TensileStrengthValue ;
+                         rdfs:label "has tensile strength value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasTransitionTemperature
+:hasTransitionTemperature rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf ns4:hasResourceProperty ;
+                          rdfs:domain ns5:Item ;
+                          rdfs:range :TransitionTemperature ;
+                          rdfs:label "has transition temperature" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasTransitionTemperatureValue
+:hasTransitionTemperatureValue rdf:type owl:ObjectProperty ;
+                               rdfs:subPropertyOf ns1:quantityValue ;
+                               rdfs:domain :TransitionTemperature ,
+                                           ns5:Item ;
+                               rdfs:range :TransitionTemperatureValue ;
+                               rdfs:label "has transition temperature value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasUnknownAcuteToxicity
+:hasUnknownAcuteToxicity rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf ns1:quantityValue ;
+                         rdfs:domain ns5:Item ;
+                         rdfs:range :UnknownAcuteToxicityPercentage ;
+                         rdfs:label "has unknown acute toxicity" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasVirginFosilContentValue
+:hasVirginFosilContentValue rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf ns1:quantityValue ;
+                            rdfs:domain :VirginFosilContent ,
+                                        ns5:Item ;
+                            rdfs:range :VirginFosilContentValue ;
+                            rdfs:label "has virgin fosil content value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasViscosityAt25
+:hasViscosityAt25 rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf ns4:hasResourceProperty ;
+                  rdfs:domain ns5:Item ;
+                  rdfs:range :ViscosityAt25 ;
+                  rdfs:label "has viscosity at 25" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasViscosityAt25Value
+:hasViscosityAt25Value rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf ns1:quantityValue ;
+                       rdfs:domain :ViscosityAt25 ,
+                                   ns5:Item ;
+                       rdfs:range :ViscosityAt25Value ;
+                       rdfs:label "has viscosity at 25 value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasWidth
+:hasWidth rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf ns4:hasResourceProperty ;
+          rdfs:range :Width ;
+          rdfs:label "has width" .
+
+
+###  http://w3id.org/CEON/ontology/actorODP/participantRole
+ns3:participantRole rdf:type owl:ObjectProperty .
+
+
+###  http://w3id.org/CEON/ontology/actorODP/participatingActor
+ns3:participatingActor rdf:type owl:ObjectProperty .
+
+
+###  http://w3id.org/CEON/ontology/actorODP/participatingResource
+ns3:participatingResource rdf:type owl:ObjectProperty .
+
+
+###  http://w3id.org/CEON/ontology/actorODP/participationIn
+ns3:participationIn rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://qudt.org/schema/qudt/conversionMultiplier
+ns1:conversionMultiplier rdf:type owl:DatatypeProperty .
+
+
+###  http://qudt.org/schema/qudt/iec61360Code
+ns1:iec61360Code rdf:type owl:DatatypeProperty .
+
+
+###  http://qudt.org/schema/qudt/numericalValue
+ns1:numericalValue rdf:type owl:DatatypeProperty .
+
+
+###  http://qudt.org/schema/qudt/siUnitsExpression
+ns1:siUnitsExpression rdf:type owl:DatatypeProperty .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasASTMComplianceFileUrl
+:hasASTMComplianceFileUrl rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :hasFileUrl ;
+                          rdfs:range xsd:string ;
+                          rdfs:label "has ASTM compliance file url" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasBatchInvoiceNumber
+:hasBatchInvoiceNumber rdf:type owl:DatatypeProperty ;
+                       rdfs:range xsd:string ;
+                       rdfs:label "has batch invoice number" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasBatchNumber
+:hasBatchNumber rdf:type owl:DatatypeProperty ;
+                rdfs:domain ns4:BatchOfObjects ;
+                rdfs:range xsd:integer ;
+                rdfs:comment "hasBatchNumber represents the identical information of a batch of objects." ;
+                rdfs:label "has batch number" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasBlackECoatingBrandName
+:hasBlackECoatingBrandName rdf:type owl:DatatypeProperty ;
+                           rdfs:range xsd:string ;
+                           rdfs:label "has black E-coating brand name" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasBlackECoatingTechnicalDatasheet
+:hasBlackECoatingTechnicalDatasheet rdf:type owl:DatatypeProperty ;
+                                    rdfs:subPropertyOf :hasFileUrl ;
+                                    rdfs:range xsd:string ;
+                                    rdfs:label "has black e-coating technical datasheet" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasCastingCertificate
+:hasCastingCertificate rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf :hasFileUrl ;
+                       rdfs:range xsd:string ;
+                       rdfs:label "has casting certificate" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasDecomissioningDate
+:hasDecomissioningDate rdf:type owl:DatatypeProperty ;
+                       rdfs:range xsd:dateTime ;
+                       rdfs:comment "hasDecomissioningDate represents the date of decomissioning of a batch of products." ;
+                       rdfs:label "has decomissioning date" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasDecommissionReason
+:hasDecommissionReason rdf:type owl:DatatypeProperty ;
+                       rdfs:range xsd:string ;
+                       rdfs:comment "The reason for a decommission operation." ;
+                       rdfs:label "has decommission reason" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasEfficiencyClass
+:hasEfficiencyClass rdf:type owl:DatatypeProperty ;
+                    rdfs:label "has efficiency class" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasEnvironmentalProductDeclaration
+:hasEnvironmentalProductDeclaration rdf:type owl:DatatypeProperty ;
+                                    rdfs:subPropertyOf :hasFileUrl ;
+                                    rdfs:range xsd:string ;
+                                    rdfs:label "has environmental product declaration" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasFileUrl
+:hasFileUrl rdf:type owl:DatatypeProperty ;
+            rdfs:range xsd:string ;
+            rdfs:label "has file url" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasFireWorkingConditionComplianceFileUrl
+:hasFireWorkingConditionComplianceFileUrl rdf:type owl:DatatypeProperty ;
+                                          rdfs:subPropertyOf :hasFileUrl ;
+                                          rdfs:range xsd:string ;
+                                          rdfs:label "has fire working condition compliance file url" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasHysteresisCurveTechReport
+:hasHysteresisCurveTechReport rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf :hasFileUrl ;
+                              rdfs:range xsd:string ;
+                              rdfs:label "has hysteresis curve tech report" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasISOComplianceFileUrl
+:hasISOComplianceFileUrl rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf :hasFileUrl ;
+                         rdfs:range xsd:string ;
+                         rdfs:label "has ISO compliance file url" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasInstallationDate
+:hasInstallationDate rdf:type owl:DatatypeProperty ;
+                     rdfs:range xsd:dateTime ;
+                     rdfs:comment "hasInstallationDate represents the date of installation of a batch of products." ;
+                     rdfs:label "has installation date" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasInstallationInstructions
+:hasInstallationInstructions rdf:type owl:DatatypeProperty ;
+                             rdfs:range xsd:string ;
+                             rdfs:label "has installation instructions" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasIntendedApplication
+:hasIntendedApplication rdf:type owl:DatatypeProperty ;
+                        rdfs:range xsd:string ;
+                        rdfs:label "has intended application" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasLCAReport
+:hasLCAReport rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :hasFileUrl ;
+              rdfs:range xsd:string ;
+              rdfs:label "has LCA report" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasLayUpSequence
+:hasLayUpSequence rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "has lay up sequence" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasMagnetLocation
+:hasMagnetLocation rdf:type owl:DatatypeProperty ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "The placement of a magnet." ;
+                   rdfs:label "has magnet location" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasMaintenanceInstructions
+:hasMaintenanceInstructions rdf:type owl:DatatypeProperty ;
+                            rdfs:range xsd:string ;
+                            rdfs:label "has maintenance instructions" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasMaintenanceMeasures
+:hasMaintenanceMeasures rdf:type owl:DatatypeProperty ;
+                        rdfs:range xsd:string ;
+                        rdfs:label "has maintenance measures" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasMaintenanceReport
+:hasMaintenanceReport rdf:type owl:DatatypeProperty ;
+                      rdfs:range xsd:string ;
+                      rdfs:label "has maintenance report" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasMaintenanceTrigger
+:hasMaintenanceTrigger rdf:type owl:DatatypeProperty ;
+                       rdfs:range xsd:string ;
+                       rdfs:label "has maintenance trigger" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasManufacturingSequence
+:hasManufacturingSequence rdf:type owl:DatatypeProperty ;
+                          rdfs:range xsd:string ;
+                          rdfs:label "has manufacturing sequence" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasMaterialDatasheet
+:hasMaterialDatasheet rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf :hasFileUrl ;
+                      rdfs:range xsd:string ;
+                      rdfs:label "has material datasheet" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasNormativeReferenceFileUrl
+:hasNormativeReferenceFileUrl rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf :hasFileUrl ;
+                              rdfs:range xsd:string ;
+                              rdfs:label "has normative reference file url" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasPartNumberCode
+:hasPartNumberCode rdf:type owl:DatatypeProperty ;
+                   rdfs:range xsd:string ;
+                   rdfs:label "has part number code" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasPassivationProductTechnicalDatasheet
+:hasPassivationProductTechnicalDatasheet rdf:type owl:DatatypeProperty ;
+                                         rdfs:subPropertyOf :hasFileUrl ;
+                                         rdfs:range xsd:string ;
+                                         rdfs:label "has passivation product technical datasheet" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasProductionDate
+:hasProductionDate rdf:type owl:DatatypeProperty ;
+                   rdfs:domain ns4:BatchOfObjects ;
+                   rdfs:range xsd:dateTime ;
+                   rdfs:comment "hasProductionDate represents the date of production of a batch of products." ;
+                   rdfs:label "has production date" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasQualityTestLink
+:hasQualityTestLink rdf:type owl:DatatypeProperty ;
+                    rdfs:range xsd:string ;
+                    rdfs:label "has quality test link" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasREACHComplianceFileUrl
+:hasREACHComplianceFileUrl rdf:type owl:DatatypeProperty ;
+                           rdfs:subPropertyOf :hasFileUrl ;
+                           rdfs:range xsd:string ;
+                           rdfs:label "has REACH compliance file url" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRecyclingProcessName
+:hasRecyclingProcessName rdf:type owl:DatatypeProperty ;
+                         rdfs:range xsd:string ;
+                         rdfs:label "has recycling process name" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRepairInstructions
+:hasRepairInstructions rdf:type owl:DatatypeProperty ;
+                       rdfs:range xsd:anyURI ;
+                       rdfs:label "has repair instructions" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasReportedDamage
+:hasReportedDamage rdf:type owl:DatatypeProperty ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "hasReportedDamage is used to represent damage information." ;
+                   rdfs:label "has reported damage" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasReportedRepairs
+:hasReportedRepairs rdf:type owl:DatatypeProperty ;
+                    rdfs:range xsd:string ;
+                    rdfs:comment "hasReportedRepairs is used to represent repairing information." ;
+                    rdfs:label "has reported repairs" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasResponsibleSourcingCertificate
+:hasResponsibleSourcingCertificate rdf:type owl:DatatypeProperty ;
+                                   rdfs:subPropertyOf :hasFileUrl ;
+                                   rdfs:range xsd:string ;
+                                   rdfs:label "has responsible sourcing certificate" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasRoHSComplianceFileUrl
+:hasRoHSComplianceFileUrl rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf :hasFileUrl ;
+                          rdfs:range xsd:string ;
+                          rdfs:label "has RoHS compliance file url" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasSafetyDatasheet
+:hasSafetyDatasheet rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :hasFileUrl ;
+                    rdfs:range xsd:string ;
+                    rdfs:label "has safety datasheet" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasSiteName
+:hasSiteName rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:string ;
+             rdfs:comment "The name of the site where the batch of products is located. This property may be replaced by a location module in the future." ;
+             rdfs:label "has site name" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasSizeLevel
+:hasSizeLevel rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:double ;
+              rdfs:label "has size level" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasSupplyDueDiligencePolicyReport
+:hasSupplyDueDiligencePolicyReport rdf:type owl:DatatypeProperty ;
+                                   rdfs:subPropertyOf :hasFileUrl ;
+                                   rdfs:range xsd:string ;
+                                   rdfs:label "has supply due diligence policy report" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasSustainabilityDeclaration
+:hasSustainabilityDeclaration rdf:type owl:DatatypeProperty ;
+                              rdfs:subPropertyOf :hasFileUrl ;
+                              rdfs:range xsd:string ;
+                              rdfs:label "has sustainability declaration" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasUseAndAssemblyInstructions
+:hasUseAndAssemblyInstructions rdf:type owl:DatatypeProperty ;
+                               rdfs:range xsd:string ;
+                               rdfs:label "has use and assembly instructions" .
+
+
+###  http://w3id.org/CEON/demo/electronics/hasdisassemblyInstructions
+:hasdisassemblyInstructions rdf:type owl:DatatypeProperty ;
+                            rdfs:range xsd:string ;
+                            rdfs:label "has disassembly instructions" .
+
+
+###  http://w3id.org/CEON/demo/electronics/isAdhesiveContained
+:isAdhesiveContained rdf:type owl:DatatypeProperty ;
+                     rdfs:range xsd:boolean ;
+                     rdfs:label "is adhesive contained" .
+
+
+###  http://w3id.org/CEON/demo/electronics/isBromideContained
+:isBromideContained rdf:type owl:DatatypeProperty ;
+                    rdfs:range xsd:boolean ;
+                    rdfs:label "is bromide contained" .
+
+
+###  http://w3id.org/CEON/demo/electronics/isCatalystContained
+:isCatalystContained rdf:type owl:DatatypeProperty ;
+                     rdfs:range xsd:boolean ;
+                     rdfs:label "is catalyst contained" .
+
+
+###  http://w3id.org/CEON/demo/electronics/isCoresContained
+:isCoresContained rdf:type owl:DatatypeProperty .
+
+
+###  http://w3id.org/CEON/demo/electronics/isFlameRetardant
+:isFlameRetardant rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:boolean ;
+                  rdfs:comment "Flame Retardancy property is used to represent whether a product or content resist or delay the ignition and spread of fire. This property has 'True' of 'False' values." ;
+                  rdfs:label "is flame retardant" .
+
+
+###  http://w3id.org/CEON/demo/electronics/isHighUVResistance
+:isHighUVResistance rdf:type owl:DatatypeProperty ;
+                    rdfs:range xsd:boolean ;
+                    rdfs:comment "High UV Resistance property is used to represent whether a product or content withstand the damaging effects of ultraviolet (UV) radiation. It has values 'True' or 'False'." ;
+                    rdfs:label "is high UV resistance" .
+
+
+###  http://w3id.org/CEON/demo/electronics/isLaminateContained
+:isLaminateContained rdf:type owl:DatatypeProperty ;
+                     rdfs:range xsd:boolean ;
+                     rdfs:label "is laminate contained" .
+
+
+###  http://w3id.org/CEON/demo/electronics/isMatrixAdditiveContained
+:isMatrixAdditiveContained rdf:type owl:DatatypeProperty ;
+                           rdfs:range xsd:boolean ;
+                           rdfs:label "is matrix additive contained" .
+
+
+###  http://w3id.org/CEON/demo/electronics/isMetalContained
+:isMetalContained rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:boolean ;
+                  rdfs:label "is metal contained" .
+
+
+###  http://w3id.org/CEON/demo/electronics/isNitrogenContained
+:isNitrogenContained rdf:type owl:DatatypeProperty ;
+                     rdfs:range xsd:boolean ;
+                     rdfs:label "is nitrogen contained" .
+
+
+###  http://w3id.org/CEON/demo/electronics/isOxygenContained
+:isOxygenContained rdf:type owl:DatatypeProperty ;
+                   rdfs:range xsd:boolean ;
+                   rdfs:label "is oxygen contained" .
+
+
+###  http://w3id.org/CEON/demo/electronics/isPrePregContained
+:isPrePregContained rdf:type owl:DatatypeProperty ;
+                    rdfs:range xsd:boolean ;
+                    rdfs:label "is pre-preg contained" .
+
+
+###  http://w3id.org/CEON/demo/electronics/isREACHcomplied
+:isREACHcomplied rdf:type owl:DatatypeProperty ;
+                 rdfs:range xsd:boolean ;
+                 rdfs:label "is REACH complied" .
+
+
+###  http://w3id.org/CEON/demo/electronics/isRareEarthContained
+:isRareEarthContained rdf:type owl:DatatypeProperty ;
+                      rdfs:range xsd:boolean ;
+                      rdfs:label "is rare earth contained" .
+
+
+###  http://w3id.org/CEON/demo/electronics/isRoHSComplied
+:isRoHSComplied rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:boolean ;
+                rdfs:label "is RoHS complied" .
+
+
+###  http://w3id.org/CEON/demo/electronics/isSurfaceFinishContained
+:isSurfaceFinishContained rdf:type owl:DatatypeProperty ;
+                          rdfs:range xsd:boolean ;
+                          rdfs:label "is surface finish contained" .
+
+
+###  http://w3id.org/CEON/demo/electronics/numberOfRecyclingCycles
+:numberOfRecyclingCycles rdf:type owl:DatatypeProperty .
+
+
+###  http://w3id.org/CEON/ontology/actorODP/participationTimePoint
+ns3:participationTimePoint rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://qudt.org/schema/qudt/DerivedUnit
+ns1:DerivedUnit rdf:type owl:Class ;
+                rdfs:subClassOf ns1:Unit ;
+                dcterms:description "A DerivedUnit is a type specification for units that are derived from other units." ;
+                rdfs:isDefinedBy <http://qudt.org/2.1/schema/qudt> ;
+                rdfs:label "Derived Unit" .
+
+
+###  http://w3id.org/CEON/demo/electronics/ActinoidsMetal
+:ActinoidsMetal rdf:type owl:Class ;
+                rdfs:subClassOf :MetalMaterial .
+
+
+###  http://w3id.org/CEON/demo/electronics/AdhesiveMaterial
+:AdhesiveMaterial rdf:type owl:Class ;
+                  rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
+###  http://w3id.org/CEON/demo/electronics/AlkaliMetal
+:AlkaliMetal rdf:type owl:Class ;
+             rdfs:subClassOf :MetalMaterial .
+
+
+###  http://w3id.org/CEON/demo/electronics/AlkalineEarthMetal
+:AlkalineEarthMetal rdf:type owl:Class ;
+                    rdfs:subClassOf :MetalMaterial .
+
+
+###  http://w3id.org/CEON/demo/electronics/AluminumDomeTweeter
+:AluminumDomeTweeter rdf:type owl:Class ;
+                     rdfs:subClassOf :ElectronicsProduct ;
+                     rdfs:label "Aluminum Dome Tweeter" .
+
+
+###  http://w3id.org/CEON/demo/electronics/BromideMaterial
+:BromideMaterial rdf:type owl:Class ;
+                 rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
+###  http://w3id.org/CEON/demo/electronics/CatalystComposition
+:CatalystComposition rdf:type owl:Class ;
+                     rdfs:subClassOf ns1:Quantity ,
+                                     ns5:MatterComposition ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hasCatalystCompositionValue ;
+                                       owl:allValuesFrom :CatalystCompositionValue
+                                     ] ;
+                     rdfs:label "Catalyst Composition" .
+
+
+###  http://w3id.org/CEON/demo/electronics/CatalystCompositionValue
+:CatalystCompositionValue rdf:type owl:Class ;
+                          rdfs:subClassOf ns1:QuantityValue ;
+                          rdfs:label "Catalyst Composition Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/CatalystMaterial
+:CatalystMaterial rdf:type owl:Class ;
+                  rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
+###  http://w3id.org/CEON/demo/electronics/ChemicalElementComposition
+:ChemicalElementComposition rdf:type owl:Class ;
+                            rdfs:subClassOf ns1:Quantity ,
+                                            ns5:MatterComposition ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :hasChemicalElementCompositionValue ;
+                                              owl:allValuesFrom :ChemicalElementCompositionValue
+                                            ] ;
+                            rdfs:label "Chemical Element Composition" .
+
+
+###  http://w3id.org/CEON/demo/electronics/ChemicalElementCompositionValue
+:ChemicalElementCompositionValue rdf:type owl:Class ;
+                                 rdfs:subClassOf ns1:QuantityValue ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty ns1:hasUnit ;
+                                                   owl:hasValue <https://qudt.org/vocab/unit/PERCENT>
+                                                 ] ;
+                                 rdfs:label "Chemical Element Composition Value" .
+
+
+
+
+
+
+
+
+###  http://w3id.org/CEON/demo/electronics/CoreMaterial
+:CoreMaterial rdf:type owl:Class ;
+              rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
+###  http://w3id.org/CEON/demo/electronics/CouplingCone
+:CouplingCone rdf:type owl:Class ;
+              rdfs:subClassOf :ElectronicsProduct ;
+              rdfs:label "Coupling Cone" .
+
+
+###  http://w3id.org/CEON/demo/electronics/Damper
+:Damper rdf:type owl:Class ;
+        rdfs:subClassOf :ElectronicsProduct ;
+        rdfs:label "Damper" .
+
+
+###  http://w3id.org/CEON/demo/electronics/DensityAt25
+:DensityAt25 rdf:type owl:Class ;
+             rdfs:subClassOf ns1:Quantity ,
+                             ns4:ResourceProperty ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasDensityAt25Value ;
+                               owl:allValuesFrom :DensityAt25Value
+                             ] ;
+             rdfs:label "Density At 25" .
+
+
+###  http://w3id.org/CEON/demo/electronics/DensityAt25Value
+:DensityAt25Value rdf:type owl:Class ;
+                  rdfs:subClassOf ns1:QuantityValue ,
+                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                           owl:onProperty ns1:hasUnit ;
+                                                           owl:someValuesFrom ns1:Unit
+                                                         ]
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty ns1:hasUnit ;
+                                                           owl:allValuesFrom ns1:Unit
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty ns1:numericValue ;
+                                    owl:allValuesFrom xsd:double
+                                  ] ;
+                  rdfs:comment "The value of density at temperature 25 degree" ;
+                  rdfs:label "Density At 25 Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/Depth
+:Depth rdf:type owl:Class ;
+       rdfs:subClassOf ns1:Quantity ,
+                       ns4:ResourceProperty ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasDepthValue ;
+                         owl:allValuesFrom :DepthValue
+                       ] ;
+       rdfs:label "Depth" .
+
+
+###  http://w3id.org/CEON/demo/electronics/DepthValue
+:DepthValue rdf:type owl:Class ;
+            rdfs:subClassOf ns1:QuantityValue ,
+                            [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                     owl:onProperty ns1:hasUnit ;
+                                                     owl:someValuesFrom ns1:Unit
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty ns1:hasUnit ;
+                                                     owl:allValuesFrom ns1:Unit
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty ns1:numericValue ;
+                              owl:allValuesFrom xsd:double
+                            ] ;
+            rdfs:label "Depth Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/Diameter
+:Diameter rdf:type owl:Class ;
+          rdfs:subClassOf ns1:Quantity ,
+                          ns4:ResourceProperty ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasDiameterValue ;
+                            owl:allValuesFrom :DiameterValue
+                          ] ;
+          rdfs:label "Diameter" .
+
+
+###  http://w3id.org/CEON/demo/electronics/DiameterValue
+:DiameterValue rdf:type owl:Class ;
+               rdfs:subClassOf ns1:QuantityValue ,
+                               [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                        owl:onProperty ns1:hasUnit ;
+                                                        owl:someValuesFrom ns1:Unit
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty ns1:hasUnit ;
+                                                        owl:allValuesFrom ns1:Unit
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty ns1:numericValue ;
+                                 owl:allValuesFrom xsd:double
+                               ] ;
+               rdfs:comment "The value of diameter of a component." ;
+               rdfs:label "Diameter Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/DoubleMagnet
+:DoubleMagnet rdf:type owl:Class ;
+              rdfs:subClassOf :ElectronicsProduct ;
+              rdfs:label "Double Magnet" .
+
+
+###  http://w3id.org/CEON/demo/electronics/ElectronicsProduct
+:ElectronicsProduct rdf:type owl:Class ;
+                    rdfs:subClassOf ns5:Product ;
+                    rdfs:label "Electronics Product" .
+
+
+###  http://w3id.org/CEON/demo/electronics/ElectronicsProductSourcingComponentRelation
+:ElectronicsProductSourcingComponentRelation rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://w3id.org/CEON/ontology/provenance/Statement> ;
+                                             rdfs:label "Electronics product sourcing component relation" .
+
+
+###  http://w3id.org/CEON/demo/electronics/FasteningMethod
+:FasteningMethod rdf:type owl:Class ;
+                 rdfs:label "Fastening Method" .
+
+
+###  http://w3id.org/CEON/demo/electronics/FiberElongationAtBreak
+:FiberElongationAtBreak rdf:type owl:Class ;
+                        rdfs:subClassOf ns1:Quantity ,
+                                        ns4:ResourceProperty ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :hasFiberElongationAtBreakValue ;
+                                          owl:allValuesFrom :FiberElongationAtBreakValue
+                                        ] ;
+                        rdfs:label "Fiber Elongation At Break" .
+
+
+###  http://w3id.org/CEON/demo/electronics/FiberElongationAtBreakValue
+:FiberElongationAtBreakValue rdf:type owl:Class ;
+                             rdfs:subClassOf ns1:QuantityValue ,
+                                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty ns1:hasUnit ;
+                                                                      owl:someValuesFrom ns1:Unit
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty ns1:hasUnit ;
+                                                                      owl:allValuesFrom ns1:Unit
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty ns1:numericValue ;
+                                               owl:allValuesFrom xsd:double
+                                             ] ;
+                             rdfs:label "Fiber Elongation At Break Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/FiberVolumeContent
+:FiberVolumeContent rdf:type owl:Class ;
+                    rdfs:subClassOf ns1:Quantity ,
+                                    ns4:ResourceProperty ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasFiberVolumeContentValue ;
+                                      owl:allValuesFrom :FiberVolumeContentValue
+                                    ] ;
+                    rdfs:label "Fiber Volume Content" .
+
+
+###  http://w3id.org/CEON/demo/electronics/FiberVolumeContentValue
+:FiberVolumeContentValue rdf:type owl:Class ;
+                         rdfs:subClassOf ns1:QuantityValue ,
+                                         [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty ns1:hasUnit ;
+                                                                  owl:someValuesFrom ns1:Unit
+                                                                ]
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty ns1:hasUnit ;
+                                                                  owl:allValuesFrom ns1:Unit
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty ns1:numericValue ;
+                                           owl:allValuesFrom xsd:double
+                                         ] ;
+                         rdfs:label "Fiber Volume Content Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/FibreMaterial
+:FibreMaterial rdf:type owl:Class ;
+               rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
+###  http://w3id.org/CEON/demo/electronics/FlameRetardantMaterial
+:FlameRetardantMaterial rdf:type owl:Class ;
+                        rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
+###  http://w3id.org/CEON/demo/electronics/Frame
+:Frame rdf:type owl:Class ;
+       rdfs:subClassOf :DoubleMagnet ;
+       rdfs:label "Frame" .
+
+
+###  http://w3id.org/CEON/demo/electronics/HardenerMaterial
+:HardenerMaterial rdf:type owl:Class ;
+                  rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
+###  http://w3id.org/CEON/demo/electronics/HazardousMaterialPercentage
+:HazardousMaterialPercentage rdf:type owl:Class ;
+                             rdfs:subClassOf ns1:QuantityValue ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty ns1:hasUnit ;
+                                               owl:hasValue <https://qudt.org/vocab/unit/PERCENT>
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty ns1:numericValue ;
+                                               owl:allValuesFrom xsd:double
+                                             ] ;
+                             rdfs:label "Hazardous Material Percentage" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LCAAcidification
+:LCAAcidification rdf:type owl:Class ;
+                  rdfs:subClassOf :LCAValue ,
+                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                           owl:onProperty ns1:hasUnit ;
+                                                           owl:someValuesFrom :LCAUnit
+                                                         ]
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty ns1:hasUnit ;
+                                                           owl:allValuesFrom :LCAUnit
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty ns1:numericValue ;
+                                    owl:allValuesFrom xsd:double
+                                  ] ;
+                  rdfs:label "LCA Acidification" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LCAClimateChange
+:LCAClimateChange rdf:type owl:Class ;
+                  rdfs:subClassOf :LCAValue ,
+                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                           owl:onProperty ns1:hasUnit ;
+                                                           owl:someValuesFrom :LCAUnit
+                                                         ]
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty ns1:hasUnit ;
+                                                           owl:allValuesFrom :LCAUnit
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty ns1:numericValue ;
+                                    owl:allValuesFrom xsd:double
+                                  ] ;
+                  rdfs:label "LCA Climate Change" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LCAClimateChangeBiogenic
+:LCAClimateChangeBiogenic rdf:type owl:Class ;
+                          rdfs:subClassOf :LCAValue ,
+                                          [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty ns1:hasUnit ;
+                                                                   owl:someValuesFrom :LCAUnit
+                                                                 ]
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty ns1:hasUnit ;
+                                                                   owl:allValuesFrom :LCAUnit
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty ns1:numericValue ;
+                                            owl:allValuesFrom xsd:double
+                                          ] ;
+                          rdfs:label "LCA Climate Change Biogenic" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LCAClimateChangeFossil
+:LCAClimateChangeFossil rdf:type owl:Class ;
+                        rdfs:subClassOf :LCAValue ,
+                                        [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty ns1:hasUnit ;
+                                                                 owl:someValuesFrom :LCAUnit
+                                                               ]
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty ns1:hasUnit ;
+                                                                 owl:allValuesFrom :LCAUnit
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty ns1:numericValue ;
+                                          owl:allValuesFrom xsd:double
+                                        ] ;
+                        rdfs:label "LCA Climate Change Fossil" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LCAEcotoxicityFreshWater
+:LCAEcotoxicityFreshWater rdf:type owl:Class ;
+                          rdfs:subClassOf :LCAValue ,
+                                          [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty ns1:hasUnit ;
+                                                                   owl:someValuesFrom :LCAUnit
+                                                                 ]
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty ns1:hasUnit ;
+                                                                   owl:allValuesFrom :LCAUnit
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty ns1:numericValue ;
+                                            owl:allValuesFrom xsd:double
+                                          ] ;
+                          rdfs:label "LCA Ecotoxicity Fresh Water" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LCAEutrophicationFreshWater
+:LCAEutrophicationFreshWater rdf:type owl:Class ;
+                             rdfs:subClassOf :LCAValue ,
+                                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty ns1:hasUnit ;
+                                                                      owl:someValuesFrom :LCAUnit
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty ns1:hasUnit ;
+                                                                      owl:allValuesFrom :LCAUnit
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ] ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty ns1:numericValue ;
+                                               owl:allValuesFrom xsd:double
+                                             ] ;
+                             rdfs:label "LCA Eutrophication Fresh Water" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LCAEutrophicationMarine
+:LCAEutrophicationMarine rdf:type owl:Class ;
+                         rdfs:subClassOf :LCAValue ,
+                                         [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty ns1:hasUnit ;
+                                                                  owl:someValuesFrom :LCAUnit
+                                                                ]
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty ns1:hasUnit ;
+                                                                  owl:allValuesFrom :LCAUnit
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty ns1:numericValue ;
+                                           owl:allValuesFrom xsd:double
+                                         ] ;
+                         rdfs:label "LCA Eutrophication Marine" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LCAHumanToxicityCancer
+:LCAHumanToxicityCancer rdf:type owl:Class ;
+                        rdfs:subClassOf :LCAValue ,
+                                        [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty ns1:hasUnit ;
+                                                                 owl:someValuesFrom :LCAUnit
+                                                               ]
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty ns1:hasUnit ;
+                                                                 owl:allValuesFrom :LCAUnit
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty ns1:numericValue ;
+                                          owl:allValuesFrom xsd:double
+                                        ] ;
+                        rdfs:label "LCA Human Toxicity Cancer" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LCALonisingRaditionHumanHealth
+:LCALonisingRaditionHumanHealth rdf:type owl:Class ;
+                                rdfs:subClassOf :LCAValue ,
+                                                [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty ns1:hasUnit ;
+                                                                         owl:someValuesFrom :LCAUnit
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty ns1:hasUnit ;
+                                                                         owl:allValuesFrom :LCAUnit
+                                                                       ]
+                                                                     ) ;
+                                                  rdf:type owl:Class
+                                                ] ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty ns1:numericValue ;
+                                                  owl:allValuesFrom xsd:double
+                                                ] ;
+                                rdfs:label "LCA Lonising Radition Human Health" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LCAMineralUse
+:LCAMineralUse rdf:type owl:Class ;
+               rdfs:subClassOf :LCAValue ,
+                               [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                        owl:onProperty ns1:hasUnit ;
+                                                        owl:someValuesFrom :LCAUnit
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty ns1:hasUnit ;
+                                                        owl:allValuesFrom :LCAUnit
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty ns1:numericValue ;
+                                 owl:allValuesFrom xsd:double
+                               ] ;
+               rdfs:label "LCA Mineral Use" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LCAUnit
+:LCAUnit rdf:type owl:Class ;
+         rdfs:subClassOf ns1:Unit ;
+         rdfs:comment "Units for LCA (Life Cycle Assessment) environmental impact indexes" ;
+         rdfs:label "LCA Unit" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LCAValue
+:LCAValue rdf:type owl:Class ;
+          rdfs:subClassOf ns1:QuantityValue ;
+          rdfs:label "LCA Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LCAWaterUse
+:LCAWaterUse rdf:type owl:Class ;
+             rdfs:subClassOf :LCAValue ,
+                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                      owl:onProperty ns1:hasUnit ;
+                                                      owl:someValuesFrom :LCAUnit
+                                                    ]
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty ns1:hasUnit ;
+                                                      owl:allValuesFrom :LCAUnit
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty ns1:numericValue ;
+                               owl:allValuesFrom xsd:double
+                             ] ;
+             rdfs:label "LCA Water Use" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LaminateMaterial
+:LaminateMaterial rdf:type owl:Class ;
+                  rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
+###  http://w3id.org/CEON/demo/electronics/Length
+:Length rdf:type owl:Class ;
+        rdfs:subClassOf ns1:Quantity ,
+                        ns4:ResourceProperty ;
+        rdfs:label "Length" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LengthValue
+:LengthValue rdf:type owl:Class ;
+             rdfs:subClassOf ns1:QuantityValue ,
+                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                      owl:onProperty ns1:hasUnit ;
+                                                      owl:someValuesFrom ns1:Unit
+                                                    ]
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty ns1:hasUnit ;
+                                                      owl:allValuesFrom ns1:Unit
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty ns1:numericValue ;
+                               owl:allValuesFrom xsd:double
+                             ] ;
+             rdfs:label "Length Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LifeSpanTime
+:LifeSpanTime rdf:type owl:Class ;
+              rdfs:subClassOf ns1:Quantity ,
+                              ns4:ResourceProperty ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasLifeSpanTimeValue ;
+                                owl:allValuesFrom :LifeSpanTimeValue
+                              ] ;
+              rdfs:label "Life Span Time" .
+
+
+###  http://w3id.org/CEON/demo/electronics/LifeSpanTimeValue
+:LifeSpanTimeValue rdf:type owl:Class ;
+                   rdfs:subClassOf ns1:QuantityValue ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty ns1:hasUnit ;
+                                     owl:hasValue <http://qudt.org/vocab/unit/YR>
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty ns1:numericValue ;
+                                     owl:allValuesFrom xsd:double
+                                   ] ;
+                   rdfs:label "Life Span Time Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/MaterialGrade
+:MaterialGrade rdf:type owl:Class ;
+               rdfs:label "Material Grade" .
+
+
+###  http://w3id.org/CEON/demo/electronics/MatrixAdditiveMAterial
+:MatrixAdditiveMAterial rdf:type owl:Class ;
+                        rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
+###  http://w3id.org/CEON/demo/electronics/MaximumEnergyProduct
+:MaximumEnergyProduct rdf:type owl:Class ;
+                      rdfs:subClassOf ns1:Quantity ,
+                                      ns4:ResourceProperty ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasMaximumEnergyProductValue ;
+                                        owl:allValuesFrom :MaximumEnergyProductValue
+                                      ] ;
+                      rdfs:comment "Valore (BH)max [KJ/m3; MGOe]" ;
+                      rdfs:label "Maximum Energy Product" .
+
+
+###  http://w3id.org/CEON/demo/electronics/MaximumEnergyProductValue
+:MaximumEnergyProductValue rdf:type owl:Class ;
+                           rdfs:subClassOf ns1:QuantityValue ,
+                                           [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty ns1:hasUnit ;
+                                                                    owl:someValuesFrom ns1:Unit
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty ns1:hasUnit ;
+                                                                    owl:allValuesFrom ns1:Unit
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty ns1:numericValue ;
+                                             owl:allValuesFrom xsd:double
+                                           ] ;
+                           rdfs:label "Maximum Energy Product Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/MetalComposition
+:MetalComposition rdf:type owl:Class ;
+                  rdfs:subClassOf ns1:Quantity ,
+                                  ns5:MatterComposition ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasMetalCompositionValue ;
+                                    owl:allValuesFrom :MetalCompositionValue
+                                  ] ;
+                  rdfs:label "Metal Composition" .
+
+
+###  http://w3id.org/CEON/demo/electronics/MetalCompositionValue
+:MetalCompositionValue rdf:type owl:Class ;
+                       rdfs:subClassOf ns1:QuantityValue ;
+                       rdfs:label "Metal Composition Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/MetalMaterial
+:MetalMaterial rdf:type owl:Class ;
+               rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
+###  http://w3id.org/CEON/demo/electronics/MotorSpeedType
+:MotorSpeedType rdf:type owl:Class ;
+                rdfs:label "Motor Speed Type" .
+
+
+###  http://w3id.org/CEON/demo/electronics/MotorType
+:MotorType rdf:type owl:Class ;
+           rdfs:label "Motor Type" .
+
+
+###  http://w3id.org/CEON/demo/electronics/NeodymiumMagnet
+:NeodymiumMagnet rdf:type owl:Class ;
+                 rdfs:subClassOf :ElectronicsProduct ;
+                 rdfs:label "Neodymium Magnet" .
+
+
+###  http://w3id.org/CEON/demo/electronics/NonMetalMaterial
+:NonMetalMaterial rdf:type owl:Class ;
+                  rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
+###  http://w3id.org/CEON/demo/electronics/OperatingVoltage
+:OperatingVoltage rdf:type owl:Class ;
+                  rdfs:subClassOf ns1:Quantity ,
+                                  ns4:ResourceProperty ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasOperatingVoltageValue ;
+                                    owl:allValuesFrom :OperatingVoltageValue
+                                  ] ;
+                  rdfs:label "Operating Voltage" .
+
+
+###  http://w3id.org/CEON/demo/electronics/OperatingVoltageValue
+:OperatingVoltageValue rdf:type owl:Class ;
+                       rdfs:subClassOf ns1:QuantityValue ,
+                                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                owl:onProperty ns1:hasUnit ;
+                                                                owl:someValuesFrom ns1:Unit
+                                                              ]
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty ns1:hasUnit ;
+                                                                owl:allValuesFrom ns1:Unit
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty ns1:numericValue ;
+                                         owl:allValuesFrom xsd:double
+                                       ] ;
+                       rdfs:label "Operating Voltage Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/PostConsumerRecycledContent
+:PostConsumerRecycledContent rdf:type owl:Class ;
+                             rdfs:subClassOf ns1:Quantity ,
+                                             ns5:ProductComposition ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :hasPostConsumerRecycledContentValue ;
+                                               owl:allValuesFrom :PostConsumerRecycledContentValue
+                                             ] ;
+                             rdfs:label "Post Consumer Recycled Content" ;
+                             rdfs:seeAlso "The finished goods or products have been used by a consumer, and then the material has been recycled." .
+
+
+###  http://w3id.org/CEON/demo/electronics/PostConsumerRecycledContentValue
+:PostConsumerRecycledContentValue rdf:type owl:Class ;
+                                  rdfs:subClassOf ns1:QuantityValue ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty ns1:hasUnit ;
+                                                    owl:hasValue <https://qudt.org/vocab/unit/PERCENT>
+                                                  ] ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty ns1:numericValue ;
+                                                    owl:allValuesFrom xsd:double
+                                                  ] ;
+                                  rdfs:label "Post Consumer Recycled Content Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/PostCustomerRecycledContent
+:PostCustomerRecycledContent rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/demo/electronics/PreConsumerRecycledContent
+:PreConsumerRecycledContent rdf:type owl:Class ;
+                            rdfs:subClassOf ns1:Quantity ,
+                                            ns5:ProductComposition ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :hasPreConsumerRecycledContentValue ;
+                                              owl:allValuesFrom :PreConsumerRecycledContentValue
+                                            ] ;
+                            rdfs:comment "The recycled content has been retained during the process of manufacturing or delivering products, before delivering to a customer." ;
+                            rdfs:label "Pre Consumer Recycled Content" ;
+                            rdfs:seeAlso "https://en.wikipedia.org/wiki/Pre-consumer_recycling" .
+
+
+###  http://w3id.org/CEON/demo/electronics/PreConsumerRecycledContentValue
+:PreConsumerRecycledContentValue rdf:type owl:Class ;
+                                 rdfs:subClassOf ns1:QuantityValue ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty ns1:hasUnit ;
+                                                   owl:hasValue <https://qudt.org/vocab/unit/PERCENT>
+                                                 ] ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty ns1:numericValue ;
+                                                   owl:allValuesFrom xsd:double
+                                                 ] ;
+                                 rdfs:label "Pre Consumer Recycled Content Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/PrepregMaterial
+:PrepregMaterial rdf:type owl:Class ;
+                 rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
+###  http://w3id.org/CEON/demo/electronics/RareEarthComposition
+:RareEarthComposition rdf:type owl:Class ;
+                      rdfs:subClassOf ns1:Quantity ,
+                                      ns5:MatterComposition ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasRareEarthCompositionValue ;
+                                        owl:allValuesFrom :RareEarthCompositionValue
+                                      ] ;
+                      rdfs:label "Rare Earth Composition" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RareEarthCompositionValue
+:RareEarthCompositionValue rdf:type owl:Class ;
+                           rdfs:subClassOf ns1:QuantityValue ;
+                           rdfs:label "Rare Earth Composition Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RareEarthMaterial
+:RareEarthMaterial rdf:type owl:Class ;
+                   rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
+###  http://w3id.org/CEON/demo/electronics/RatedLoadAmps
+:RatedLoadAmps rdf:type owl:Class ;
+               rdfs:subClassOf ns1:Quantity ,
+                               ns4:ResourceProperty ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasRatedLoadAmpsValue ;
+                                 owl:allValuesFrom :RatedLoadAmpsValue
+                               ] ;
+               rdfs:label "Rated Load Amps" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RatedLoadAmpsValue
+:RatedLoadAmpsValue rdf:type owl:Class ;
+                    rdfs:subClassOf ns1:QuantityValue ,
+                                    [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                             owl:onProperty ns1:hasUnit ;
+                                                             owl:someValuesFrom ns1:Unit
+                                                           ]
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty ns1:hasUnit ;
+                                                             owl:allValuesFrom ns1:Unit
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty ns1:numericValue ;
+                                      owl:allValuesFrom xsd:double
+                                    ] ;
+                    rdfs:label "Rated Load Amps Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RatedPowerOutput
+:RatedPowerOutput rdf:type owl:Class ;
+                  rdfs:subClassOf ns1:Quantity ,
+                                  ns4:ResourceProperty ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasRatedPowerOutputValue ;
+                                    owl:allValuesFrom :RatedPowerOutputValue
+                                  ] ;
+                  rdfs:label "Rated Power Output" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RatedPowerOutputValue
+:RatedPowerOutputValue rdf:type owl:Class ;
+                       rdfs:subClassOf ns1:QuantityValue ,
+                                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                owl:onProperty ns1:hasUnit ;
+                                                                owl:someValuesFrom ns1:Unit
+                                                              ]
+                                                              [ rdf:type owl:Restriction ;
+                                                                owl:onProperty ns1:hasUnit ;
+                                                                owl:allValuesFrom ns1:Unit
+                                                              ]
+                                                            ) ;
+                                         rdf:type owl:Class
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty ns1:numericValue ;
+                                         owl:allValuesFrom xsd:double
+                                       ] ;
+                       rdfs:label "Rated Power Output Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RatedRPM
+:RatedRPM rdf:type owl:Class ;
+          rdfs:subClassOf ns1:Quantity ,
+                          ns4:ResourceProperty ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :hasRatedRPMValue ;
+                            owl:allValuesFrom :RatedRPMValue
+                          ] ;
+          rdfs:label "Rated RPM" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RatedRPMValue
+:RatedRPMValue rdf:type owl:Class ;
+               rdfs:subClassOf ns1:QuantityValue ,
+                               [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                        owl:onProperty ns1:hasUnit ;
+                                                        owl:someValuesFrom ns1:Unit
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty ns1:hasUnit ;
+                                                        owl:allValuesFrom ns1:Unit
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty ns1:numericValue ;
+                                 owl:allValuesFrom xsd:double
+                               ] ;
+               rdfs:label "Rated RPM Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RecyclingPressure
+:RecyclingPressure rdf:type owl:Class ;
+                   rdfs:subClassOf ns1:Quantity ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasRecyclingPressureValue ;
+                                     owl:allValuesFrom :RecyclingPressureValue
+                                   ] ;
+                   rdfs:label "Recycling Pressure" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RecyclingPressureValue
+:RecyclingPressureValue rdf:type owl:Class ;
+                        rdfs:subClassOf ns1:QuantityValue ,
+                                        [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty ns1:hasUnit ;
+                                                                 owl:someValuesFrom ns1:Unit
+                                                               ]
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty ns1:hasUnit ;
+                                                                 owl:allValuesFrom ns1:Unit
+                                                               ]
+                                                             ) ;
+                                          rdf:type owl:Class
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty ns1:numericValue ;
+                                          owl:allValuesFrom xsd:double
+                                        ] ;
+                        rdfs:label "Recycling Pressure Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RecyclingProcessDuration
+:RecyclingProcessDuration rdf:type owl:Class ;
+                          rdfs:subClassOf ns1:QuantityValue ,
+                                          [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty ns1:hasUnit ;
+                                                                   owl:someValuesFrom ns1:Unit
+                                                                 ]
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty ns1:hasUnit ;
+                                                                   owl:allValuesFrom ns1:Unit
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty ns1:numericValue ;
+                                            owl:allValuesFrom xsd:double
+                                          ] ;
+                          rdfs:label "Recycling Process Duration" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RecyclingTemperatureValue
+:RecyclingTemperatureValue rdf:type owl:Class ;
+                           rdfs:subClassOf ns1:QuantityValue ,
+                                           [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty ns1:hasUnit ;
+                                                                    owl:someValuesFrom ns1:Unit
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty ns1:hasUnit ;
+                                                                    owl:allValuesFrom ns1:Unit
+                                                                  ]
+                                                                ) ;
+                                             rdf:type owl:Class
+                                           ] ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty ns1:numericValue ;
+                                             owl:allValuesFrom xsd:double
+                                           ] ;
+                           rdfs:label "Recycling Temperature Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RefractiveIndexAt25
+:RefractiveIndexAt25 rdf:type owl:Class ;
+                     rdfs:subClassOf ns1:Quantity ,
+                                     ns4:ResourceProperty ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hasRefractiveIndexAt25 ;
+                                       owl:allValuesFrom :RefractiveIndexAt25Value
+                                     ] ;
+                     rdfs:label "Refractive Index At 25" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RefractiveIndexAt25Value
+:RefractiveIndexAt25Value rdf:type owl:Class ;
+                          rdfs:subClassOf ns1:QuantityValue ,
+                                          [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty ns1:hasUnit ;
+                                                                   owl:someValuesFrom ns1:Unit
+                                                                 ]
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty ns1:hasUnit ;
+                                                                   owl:allValuesFrom ns1:Unit
+                                                                 ]
+                                                               ) ;
+                                            rdf:type owl:Class
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty ns1:numericValue ;
+                                            owl:allValuesFrom xsd:double
+                                          ] ;
+                          rdfs:label "Refractive Index At 25 Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RemanentMagneticFluxDensity
+:RemanentMagneticFluxDensity rdf:type owl:Class ;
+                             rdfs:subClassOf ns1:Quantity ,
+                                             ns4:ResourceProperty ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty :hasRemanentMagneticFluxDensityValue ;
+                                               owl:allValuesFrom :RemanentMagneticFluxDensityValue
+                                             ] ;
+                             rdfs:comment "Valore Br(mT;Gs)" ;
+                             rdfs:label "Remanence" ,
+                                        "Remanent Magnetic Flux Density" ;
+                             rdfs:seeAlso "https://en.wikipedia.org/wiki/Remanence" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RemanentMagneticFluxDensityValue
+:RemanentMagneticFluxDensityValue rdf:type owl:Class ;
+                                  rdfs:subClassOf ns1:QuantityValue ,
+                                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty ns1:hasUnit ;
+                                                                           owl:someValuesFrom ns1:Unit
+                                                                         ]
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty ns1:hasUnit ;
+                                                                           owl:allValuesFrom ns1:Unit
+                                                                         ]
+                                                                       ) ;
+                                                    rdf:type owl:Class
+                                                  ] ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty ns1:numericValue ;
+                                                    owl:allValuesFrom xsd:double
+                                                  ] ;
+                                  rdfs:label "Remanent Magnetic Flux Density Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RenewableContent
+:RenewableContent rdf:type owl:Class ;
+                  rdfs:subClassOf ns1:Quantity ,
+                                  ns5:ProductComposition ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasRenewableContentValue ;
+                                    owl:allValuesFrom :RenewableContentValue
+                                  ] ;
+                  rdfs:comment "The content of product/material that can be renewed." ;
+                  rdfs:label "Renewable Content" .
+
+
+###  http://w3id.org/CEON/demo/electronics/RenewableContentValue
+:RenewableContentValue rdf:type owl:Class ;
+                       rdfs:subClassOf ns1:QuantityValue ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty ns1:hasUnit ;
+                                         owl:hasValue <https://qudt.org/vocab/unit/PERCENT>
+                                       ] ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty ns1:numericValue ;
+                                         owl:allValuesFrom xsd:double
+                                       ] ;
+                       rdfs:label "Renewable Content Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/ResinMaterial
+:ResinMaterial rdf:type owl:Class ;
+               rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
+###  http://w3id.org/CEON/demo/electronics/Resistivity
+:Resistivity rdf:type owl:Class ;
+             rdfs:subClassOf ns1:Quantity ,
+                             ns4:ResourceProperty ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasResistivityValue ;
+                               owl:allValuesFrom :ResistivityValue
+                             ] ;
+             rdfs:label "Resistivity" .
+
+
+###  http://w3id.org/CEON/demo/electronics/ResistivityValue
+:ResistivityValue rdf:type owl:Class ;
+                  rdfs:subClassOf ns1:QuantityValue ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty ns1:numericValue ;
+                                    owl:allValuesFrom xsd:double
+                                  ] ;
+                  rdfs:label "Resistivity Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/Shape
+:Shape rdf:type owl:Class ;
+       rdfs:subClassOf ns4:ResourceProperty .
+
+
+###  http://w3id.org/CEON/demo/electronics/ShearStrength
+:ShearStrength rdf:type owl:Class ;
+               rdfs:subClassOf ns1:Quantity ,
+                               ns4:ResourceProperty ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasShearStrengthValue ;
+                                 owl:allValuesFrom :ShearStrengthValue
+                               ] ;
+               rdfs:label "Shear Strength" .
+
+
+###  http://w3id.org/CEON/demo/electronics/ShearStrengthValue
+:ShearStrengthValue rdf:type owl:Class ;
+                    rdfs:subClassOf ns1:QuantityValue ,
+                                    [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                             owl:onProperty ns1:hasUnit ;
+                                                             owl:someValuesFrom ns1:Unit
+                                                           ]
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty ns1:hasUnit ;
+                                                             owl:allValuesFrom ns1:Unit
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty ns1:numericValue ;
+                                      owl:allValuesFrom xsd:double
+                                    ] ;
+                    rdfs:label "Shear Strength Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/Speaker
+:Speaker rdf:type owl:Class ;
+         rdfs:subClassOf :ElectronicsProduct ;
+         rdfs:label "Speaker" .
+
+
+
+
+
+
+
+
+###  http://w3id.org/CEON/demo/electronics/SurfaceFinishMaterial
+:SurfaceFinishMaterial rdf:type owl:Class ;
+                       rdfs:subClassOf <http://w3id.org/CEON/ontology/material/Material> .
+
+
+###  http://w3id.org/CEON/demo/electronics/TensileModulus
+:TensileModulus rdf:type owl:Class ;
+                rdfs:subClassOf ns1:Quantity ,
+                                ns4:ResourceProperty ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasTensileModulusValue ;
+                                  owl:allValuesFrom :TensileModulusValue
+                                ] ;
+                rdfs:label "Tensile Modulus" .
+
+
+###  http://w3id.org/CEON/demo/electronics/TensileModulusValue
+:TensileModulusValue rdf:type owl:Class ;
+                     rdfs:subClassOf ns1:QuantityValue ,
+                                     [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                              owl:onProperty ns1:hasUnit ;
+                                                              owl:someValuesFrom ns1:Unit
+                                                            ]
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty ns1:hasUnit ;
+                                                              owl:allValuesFrom ns1:Unit
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty ns1:numericValue ;
+                                       owl:allValuesFrom xsd:double
+                                     ] ;
+                     rdfs:label "Tensile Modulus Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/TensileStrength
+:TensileStrength rdf:type owl:Class ;
+                 rdfs:subClassOf ns1:Quantity ,
+                                 ns4:ResourceProperty ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasTensileStrengthValue ;
+                                   owl:allValuesFrom :TensileStrengthValue
+                                 ] ;
+                 rdfs:label "Tensile Strength" .
+
+
+###  http://w3id.org/CEON/demo/electronics/TensileStrengthValue
+:TensileStrengthValue rdf:type owl:Class ;
+                      rdfs:subClassOf ns1:QuantityValue ,
+                                      [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                               owl:onProperty ns1:hasUnit ;
+                                                               owl:someValuesFrom ns1:Unit
+                                                             ]
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty ns1:hasUnit ;
+                                                               owl:allValuesFrom ns1:Unit
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty ns1:numericValue ;
+                                        owl:allValuesFrom xsd:double
+                                      ] ;
+                      rdfs:label "Tensile Strength Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/TransitionTemperature
+:TransitionTemperature rdf:type owl:Class ;
+                       rdfs:subClassOf ns1:Quantity ,
+                                       ns4:ResourceProperty ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty :hasTransitionTemperatureValue ;
+                                         owl:allValuesFrom :TransitionTemperatureValue
+                                       ] ;
+                       rdfs:label "Transition Temperature" .
+
+
+###  http://w3id.org/CEON/demo/electronics/TransitionTemperatureValue
+:TransitionTemperatureValue rdf:type owl:Class ;
+                            rdfs:subClassOf ns1:QuantityValue ,
+                                            [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty ns1:hasUnit ;
+                                                                     owl:someValuesFrom ns1:Unit
+                                                                   ]
+                                                                   [ rdf:type owl:Restriction ;
+                                                                     owl:onProperty ns1:hasUnit ;
+                                                                     owl:allValuesFrom ns1:Unit
+                                                                   ]
+                                                                 ) ;
+                                              rdf:type owl:Class
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty ns1:numericValue ;
+                                              owl:allValuesFrom xsd:double
+                                            ] ;
+                            rdfs:label "Transition Temperature Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/TransitionalMetal
+:TransitionalMetal rdf:type owl:Class ;
+                   rdfs:subClassOf :MetalMaterial .
+
+
+###  http://w3id.org/CEON/demo/electronics/UnknownAcuteToxicityPercentage
+:UnknownAcuteToxicityPercentage rdf:type owl:Class ;
+                                rdfs:subClassOf ns1:QuantityValue ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty ns1:hasUnit ;
+                                                  owl:hasValue <https://qudt.org/vocab/unit/PERCENT>
+                                                ] ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty ns1:numericValue ;
+                                                  owl:allValuesFrom xsd:double
+                                                ] ;
+                                rdfs:label "Unknown Acute Toxicity Percentage" .
+
+
+###  http://w3id.org/CEON/demo/electronics/VirginFosilContent
+:VirginFosilContent rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/demo/electronics/VirginFosilContentValue
+:VirginFosilContentValue rdf:type owl:Class ;
+                         rdfs:subClassOf ns1:QuantityValue ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty ns1:hasUnit ;
+                                           owl:hasValue <https://qudt.org/vocab/unit/PERCENT>
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty ns1:numericValue ;
+                                           owl:allValuesFrom xsd:double
+                                         ] ;
+                         rdfs:label "Virgin Fosil Content Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/VirginFossilContent
+:VirginFossilContent rdf:type owl:Class ;
+                     rdfs:subClassOf ns1:Quantity ,
+                                     ns5:ProductComposition ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hasVirginFosilContentValue ;
+                                       owl:allValuesFrom :VirginFosilContentValue
+                                     ] ;
+                     rdfs:label "Virgin Fossil Content" .
+
+
+###  http://w3id.org/CEON/demo/electronics/ViscosityAt25
+:ViscosityAt25 rdf:type owl:Class ;
+               rdfs:subClassOf ns1:Quantity ,
+                               ns4:ResourceProperty ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasViscosityAt25Value ;
+                                 owl:allValuesFrom :ViscosityAt25Value
+                               ] ;
+               rdfs:label "Viscosity At 25" .
+
+
+###  http://w3id.org/CEON/demo/electronics/ViscosityAt25Value
+:ViscosityAt25Value rdf:type owl:Class ;
+                    rdfs:subClassOf ns1:QuantityValue ,
+                                    [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                             owl:onProperty ns1:hasUnit ;
+                                                             owl:someValuesFrom ns1:Unit
+                                                           ]
+                                                           [ rdf:type owl:Restriction ;
+                                                             owl:onProperty ns1:hasUnit ;
+                                                             owl:allValuesFrom ns1:Unit
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty ns1:numericValue ;
+                                      owl:allValuesFrom xsd:double
+                                    ] ;
+                    rdfs:label "Viscosity At 25 Value" .
+
+
+###  http://w3id.org/CEON/demo/electronics/Width
+:Width rdf:type owl:Class ;
+       rdfs:subClassOf ns1:Quantity ,
+                       ns4:ResourceProperty ;
+       rdfs:label "Width" .
+
+
+###  http://w3id.org/CEON/demo/electronics/WidthValue
+:WidthValue rdf:type owl:Class ;
+            rdfs:subClassOf ns1:QuantityValue ,
+                            [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                     owl:onProperty ns1:hasUnit ;
+                                                     owl:someValuesFrom ns1:Unit
+                                                   ]
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty ns1:hasUnit ;
+                                                     owl:allValuesFrom ns1:Unit
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty ns1:numericValue ;
+                              owl:allValuesFrom xsd:double
+                            ] ;
+            rdfs:label "Width Value" .
+
+
+###  http://w3id.org/CEON/ontology/actor/IssuingResource
+<http://w3id.org/CEON/ontology/actor/IssuingResource> rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/actor/ProcessParticipation
+<http://w3id.org/CEON/ontology/actor/ProcessParticipation> rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/actor/ProducingResource
+<http://w3id.org/CEON/ontology/actor/ProducingResource> rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/actor/SupplyingResource
+<http://w3id.org/CEON/ontology/actor/SupplyingResource> rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/actorODP/Actor
+ns3:Actor rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/actorODP/ResourceRelation
+ns3:ResourceRelation rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/processODP/Process
+<http://w3id.org/CEON/ontology/processODP/Process> rdf:type owl:Class .
+
+
+###  http://w3id.org/CEON/ontology/provenance/Statement
+<http://w3id.org/CEON/ontology/provenance/Statement> rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://qudt.org/vocab/dimensionvector/A0E0L-1I0M1H0T-1D0
+<http://qudt.org/vocab/dimensionvector/A0E0L-1I0M1H0T-1D0> rdf:type owl:NamedIndividual .
+
+
+###  http://qudt.org/vocab/dimensionvector/A0E0L-1I0M1H0T-2D0
+<http://qudt.org/vocab/dimensionvector/A0E0L-1I0M1H0T-2D0> rdf:type owl:NamedIndividual .
+
+
+###  http://qudt.org/vocab/sou/SI
+<http://qudt.org/vocab/sou/SI> rdf:type owl:NamedIndividual .
+
+
+###  http://qudt.org/vocab/unit/GigaPA
+<http://qudt.org/vocab/unit/GigaPA> rdf:type owl:NamedIndividual ,
+                                             ns1:Unit ;
+                                    ns1:hasDimensionVector <http://qudt.org/vocab/dimensionvector/A0E0L-1I0M1H0T-2D0> ;
+                                    ns1:conversionMultiplier 1000000000.0 ;
+                                    ns1:iec61360Code "0112/2///62720#UAA153" ;
+                                    dcterms:description "1 000 000 000-fold of the SI derived unit pascal"^^rdf:HTML ;
+                                    ns1:plainTextDescription "1 000 000 000-fold of the SI derived unit pascal" ;
+                                    ns1:prefix <http://qudt.org/vocab/prefix/Giga> ;
+                                    ns1:symbol "GPa" ;
+                                    ns1:ucumCode "GPa"^^ns1:UCUMcs ;
+                                    ns1:uneceCommonCode "A89" ;
+                                    rdfs:isDefinedBy <http://qudt.org/2.1/vocab/unit> ,
+                                                     <http://qudt.org/vocab/unit> ;
+                                    rdfs:label "Gigapascal"@en .
+
+
+###  http://qudt.org/vocab/unit/KiloGM-PER-M-SEC2
+<http://qudt.org/vocab/unit/KiloGM-PER-M-SEC2> rdf:type owl:NamedIndividual .
+
+
+###  http://qudt.org/vocab/unit/MegaPA
+<http://qudt.org/vocab/unit/MegaPA> rdf:type owl:NamedIndividual ,
+                                             ns1:Unit ;
+                                    ns1:conversionMultiplier 1000000.0 ;
+                                    ns1:iec61360Code "0112/2///62720#UAA215" ;
+                                    dcterms:description "1,000,000-fold of the derived unit pascal"^^rdf:HTML ;
+                                    ns1:plainTextDescription "1,000,000-fold of the derived unit pascal" ;
+                                    ns1:prefix <http://qudt.org/vocab/prefix/Mega> ;
+                                    ns1:symbol "MPa" ;
+                                    ns1:ucumCode "MPa"^^ns1:UCUMcs ;
+                                    ns1:uneceCommonCode "MPA" ;
+                                    rdfs:isDefinedBy <http://qudt.org/2.1/vocab/unit> ,
+                                                     <http://qudt.org/vocab/unit> ;
+                                    rdfs:label "Megapascal"@en .
+
+
+###  http://qudt.org/vocab/unit/N-PER-M2
+<http://qudt.org/vocab/unit/N-PER-M2> rdf:type owl:NamedIndividual .
+
+
+###  http://qudt.org/vocab/unit/OHM-M
+<http://qudt.org/vocab/unit/OHM-M> rdf:type owl:NamedIndividual ,
+                                            ns1:Unit ;
+                                   ns1:conversionMultiplier 1.0 ;
+                                   ns1:iec61360Code "0112/2///62720#UAA020" ;
+                                   ns1:informativeReference "http://www.iso.org/iso/catalogue_detail?csnumber=31897"^^xsd:anyURI ;
+                                   ns1:symbol "Î©â‹…m" ;
+                                   ns1:ucumCode "Ohm.m"^^ns1:UCUMcs ;
+                                   ns1:uneceCommonCode "C61" ;
+                                   rdfs:isDefinedBy <http://qudt.org/2.1/vocab/unit> ,
+                                                    <http://qudt.org/vocab/unit> ;
+                                   rdfs:label "Ohm Meter"@en-us ,
+                                              "ohm metre"@en .
+
+
+###  http://qudt.org/vocab/unit/PA
+<http://qudt.org/vocab/unit/PA> rdf:type owl:NamedIndividual ,
+                                         ns1:Unit ;
+                                ns1:exactMatch <http://qudt.org/vocab/unit/KiloGM-PER-M-SEC2> ,
+                                               <http://qudt.org/vocab/unit/N-PER-M2> ;
+                                ns1:conversionMultiplier 1.0 ;
+                                ns1:iec61360Code "0112/2///62720#UAA258" ;
+                                ns1:siUnitsExpression "N/m^2" ;
+                                dcterms:description "The SI unit of pressure. The pascal is the standard pressure unit in the MKS metric system, equal to one newton per square meter or one &quot;kilogram per meter per second per second.&quot; The unit is named for Blaise Pascal (1623-1662), French philosopher and mathematician, who was the first person to use a barometer to measure differences in altitude."^^rdf:HTML ;
+                                ns1:dbpediaMatch "http://dbpedia.org/resource/Pascal"^^xsd:anyURI ;
+                                ns1:informativeReference "http://en.wikipedia.org/wiki/Pascal?oldid=492989202"^^xsd:anyURI ;
+                                ns1:omUnit <http://www.ontology-of-units-of-measure.org/resource/om-2/pascal> ;
+                                ns1:symbol "Pa" ;
+                                ns1:ucumCode "Pa"^^ns1:UCUMcs ;
+                                ns1:udunitsCode "Pa" ;
+                                ns1:uneceCommonCode "PAL" ;
+                                rdfs:isDefinedBy <http://qudt.org/2.1/vocab/unit> ,
+                                                 <http://qudt.org/vocab/unit> ;
+                                rdfs:label "pascal"@en .
+
+
+###  http://qudt.org/vocab/unit/PA-SEC
+<http://qudt.org/vocab/unit/PA-SEC> rdf:type owl:NamedIndividual ,
+                                             ns1:DerivedUnit ,
+                                             ns1:Unit ;
+                                    ns1:definedUnitOfSystem <http://qudt.org/vocab/sou/SI> ;
+                                    ns1:derivedCoherentUnitOfSystem <http://qudt.org/vocab/sou/SI> ;
+                                    ns1:hasDimensionVector <http://qudt.org/vocab/dimensionvector/A0E0L-1I0M1H0T-1D0> ;
+                                    ns1:conversionMultiplier 1.0 ;
+                                    ns1:iec61360Code "0112/2///62720#UAA265" ;
+                                    ns1:siUnitsExpression "Pa.s" ;
+                                    dcterms:description "The SI unit of dynamic viscosity, equal to 10 poises or 1000 centipoises. "^^rdf:HTML ;
+                                    ns1:expression "\\(Pa-s\\)"^^ns1:LatexString ;
+                                    ns1:symbol "Paâ‹…s" ;
+                                    ns1:ucumCode "Pa.s"^^ns1:UCUMcs ;
+                                    ns1:uneceCommonCode "C65" ;
+                                    rdfs:isDefinedBy <http://qudt.org/2.1/vocab/unit> ,
+                                                     <http://qudt.org/vocab/unit> ;
+                                    rdfs:label "pascal second"@en .
+
+
+###  http://w3id.org/CEON/demo/electronics/Induction
+:Induction rdf:type owl:NamedIndividual ,
+                    :MotorType .
+
+
+###  http://w3id.org/CEON/demo/electronics/M
+:M rdf:type owl:NamedIndividual ,
+            ns3:Actor .
+
+
+###  http://w3id.org/CEON/demo/electronics/N35H
+:N35H rdf:type owl:NamedIndividual ,
+               :MaterialGrade ;
+      rdfs:comment "The material grade for neodymium (NdFeB) magnets." .
+
+
+###  http://w3id.org/CEON/demo/electronics/PressFitOrFriction
+:PressFitOrFriction rdf:type owl:NamedIndividual ,
+                             :FasteningMethod .
+
+
+###  http://w3id.org/CEON/demo/electronics/REACH
+:REACH rdf:type owl:NamedIndividual .
+
+
+###  http://w3id.org/CEON/demo/electronics/boc_x
+:boc_x rdf:type owl:NamedIndividual ,
+                ns4:BatchOfObjects ;
+       ns5:batchOfProduct :speaker_x .
+
+
+###  http://w3id.org/CEON/demo/electronics/broken_condition
+:broken_condition rdf:type owl:NamedIndividual ,
+                           ns4:ResourceCondition .
+
+
+###  http://w3id.org/CEON/demo/electronics/carbon_material_a
+:carbon_material_a rdf:type owl:NamedIndividual ,
+                            :NonMetalMaterial .
+
+
+###  http://w3id.org/CEON/demo/electronics/company_a
+:company_a rdf:type owl:NamedIndividual ,
+                    ns3:Actor .
+
+
+###  http://w3id.org/CEON/demo/electronics/company_b
+:company_b rdf:type owl:NamedIndividual ,
+                    ns3:Actor .
+
+
+###  http://w3id.org/CEON/demo/electronics/company_x
+:company_x rdf:type owl:NamedIndividual ,
+                    ns3:Actor .
+
+
+###  http://w3id.org/CEON/demo/electronics/company_y
+:company_y rdf:type owl:NamedIndividual ,
+                    ns3:Actor .
+
+
+###  http://w3id.org/CEON/demo/electronics/composition_a
+:composition_a rdf:type owl:NamedIndividual ,
+                        ns1:Quantity ,
+                        ns3:ResourceRelation ,
+                        <http://w3id.org/CEON/ontology/provenance/Statement> ;
+               ns1:hasUnit <http://qudt.org/vocab/unit/GM> ;
+               ns3:participatingObject :carbon_material_a ;
+               ns3:participatingSubject :speaker_x ;
+               ns1:numericalValue "300.0"^^xsd:double ;
+               rdfs:comment "Speaker x contains 300 grams of carbon material a." .
+
+
+###  http://w3id.org/CEON/demo/electronics/content_1
+:content_1 rdf:type owl:NamedIndividual ,
+                    :PostCustomerRecycledContent ;
+           ns1:hasUnit <https://qudt.org/vocab/unit/PERCENT> ;
+           ns1:numericalValue "50.0"^^xsd:double .
+
+
+###  http://w3id.org/CEON/demo/electronics/continuous_variable_speed
+:continuous_variable_speed rdf:type owl:NamedIndividual ,
+                                    :MotorSpeedType .
+
+
+###  http://w3id.org/CEON/demo/electronics/cylinder
+:cylinder rdf:type owl:NamedIndividual ,
+                   :Shape .
+
+
+###  http://w3id.org/CEON/demo/electronics/damper_x
+:damper_x rdf:type owl:NamedIndividual ,
+                   :Damper ,
+                   ns5:Product .
+
+
+###  http://w3id.org/CEON/demo/electronics/datasheet_1
+:datasheet_1 rdf:type owl:NamedIndividual ,
+                      <http://w3id.org/CEON/ontology/datasheet/DataSheet> ;
+             ns4:containsInformation :composition_a ,
+                                     :s63 .
+
+
+###  http://w3id.org/CEON/demo/electronics/dismantling_company_b
+:dismantling_company_b rdf:type owl:NamedIndividual ,
+                                ns3:Actor .
+
+
+###  http://w3id.org/CEON/demo/electronics/dismantling_process_1
+:dismantling_process_1 rdf:type owl:NamedIndividual ,
+                                <http://w3id.org/CEON/ontology/processODP/Process> ;
+                       ns3:participatingResource :boc_x .
+
+
+###  http://w3id.org/CEON/demo/electronics/ds_issue_1
+:ds_issue_1 rdf:type owl:NamedIndividual ,
+                     <http://w3id.org/CEON/ontology/actor/IssuingResource> ;
+            ns3:participantRole <http://w3id.org/CEON/ontology/actor/issuer> ;
+            ns3:participatingActor :M ;
+            ns3:participatingResource :datasheet_1 ;
+            ns3:participationTimePoint "2023-10-11"^^xsd:date ;
+            rdfs:comment "'Data sheet 1' was issued by organization 'M' on date '2023-10-11', and contains the statement that 'Speaker x contains 300 grams of carbon materials.'" .
+
+
+###  http://w3id.org/CEON/demo/electronics/neodymium_magnet_x
+:neodymium_magnet_x rdf:type owl:NamedIndividual ,
+                             :NeodymiumMagnet ,
+                             ns5:Product ;
+                    ns4:hasConstituent :damper_x ,
+                                       :neodymium_magnet_x .
+
+
+###  http://w3id.org/CEON/demo/electronics/nitrogen_material_a
+:nitrogen_material_a rdf:type owl:NamedIndividual ,
+                              :NonMetalMaterial .
+
+
+###  http://w3id.org/CEON/demo/electronics/q1
+:q1 rdf:type owl:NamedIndividual ,
+             ns1:Quantity ,
+             <http://w3id.org/CEON/ontology/provenance/Statement> ;
+    ns1:hasUnit <http://qudt.org/vocab/unit/PA> ;
+    ns2:statementAbout :speaker_x .
+
+
+###  http://w3id.org/CEON/demo/electronics/s63
+:s63 rdf:type owl:NamedIndividual ,
+              <http://w3id.org/CEON/ontology/actor/ProcessParticipation> ;
+     ns3:participantRole <http://w3id.org/CEON/ontology/actor/dismantler> ;
+     ns3:participatingActor :dismantling_company_b ;
+     ns3:participationIn :dismantling_process_1 ;
+     :hasDecommissionReason "They are broken." ;
+     rdfs:comment "The batch of products \"box x\" is going to be decommissioned, operated by the 'dismantling company b', because of 'They are broken'." .
+
+
+###  http://w3id.org/CEON/demo/electronics/s7
+:s7 rdf:type owl:NamedIndividual ,
+             <http://w3id.org/CEON/ontology/actor/SupplyingResource> ;
+    ns3:participantRole <http://w3id.org/CEON/ontology/actor/supplier> ;
+    ns3:participatingActor :company_x ;
+    ns3:participatingResource :boc_x ;
+    rdfs:comment "The batch of products ('boc_x') is supplied by the 'company_x' company." .
+
+
+###  http://w3id.org/CEON/demo/electronics/speaker_x
+:speaker_x rdf:type owl:NamedIndividual ,
+                    :Speaker .
+
+
+###  http://w3id.org/CEON/demo/electronics/ss_1
+:ss_1 rdf:type owl:NamedIndividual ,
+               <http://w3id.org/CEON/ontology/actor/ProducingResource> ;
+      ns3:participantRole <http://w3id.org/CEON/ontology/actor/manufacturer> ;
+      ns3:participatingActor :company_y ;
+      ns3:participatingResource :speaker_x ;
+      rdfs:comment "This 'speaker x' product is manufactured by the 'company y' company." .
+
+
+###  http://w3id.org/CEON/demo/electronics/ss_2
+:ss_2 rdf:type owl:NamedIndividual ,
+               <http://w3id.org/CEON/ontology/actor/ProducingResource> ;
+      ns3:participantRole <http://w3id.org/CEON/ontology/actor/manufacturer> ;
+      ns3:participatingActor :company_a ;
+      ns3:participatingResource :neodymium_magnet_x ;
+      rdfs:comment "The 'neodymium magnet x' product is manufactured by the 'company a' company." .
+
+
+###  http://w3id.org/CEON/demo/electronics/ss_3
+:ss_3 rdf:type owl:NamedIndividual ,
+               <http://w3id.org/CEON/ontology/actor/ProducingResource> ;
+      ns3:participantRole <http://w3id.org/CEON/ontology/actor/manufacturer> ;
+      ns3:participatingActor :company_b ;
+      ns3:participatingResource :damper_x ;
+      rdfs:comment "The 'damper x' product is manufactured by the 'company b' company." .
+
+
+###  http://w3id.org/CEON/ontology/actor/dismantler
+<http://w3id.org/CEON/ontology/actor/dismantler> rdf:type owl:NamedIndividual .
+
+
+###  http://w3id.org/CEON/ontology/actor/issuer
+<http://w3id.org/CEON/ontology/actor/issuer> rdf:type owl:NamedIndividual .
+
+
+###  http://w3id.org/CEON/ontology/actor/manufacturer
+<http://w3id.org/CEON/ontology/actor/manufacturer> rdf:type owl:NamedIndividual .
+
+
+###  http://w3id.org/CEON/ontology/actor/supplier
+<http://w3id.org/CEON/ontology/actor/supplier> rdf:type owl:NamedIndividual .
+
+
+###  https://qudt.org/vocab/unit/PERCENT
+<https://qudt.org/vocab/unit/PERCENT> rdf:type owl:NamedIndividual ,
+                                               ns1:Unit .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

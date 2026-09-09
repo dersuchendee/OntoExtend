@@ -1,0 +1,34 @@
+@prefix : <http://w3id.org/CEON/demo/electronics/> .
+@prefix ns1: <http://qudt.org/schema/qudt/> .
+@prefix ns5: <http://w3id.org/CEON/ontology/product/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:Item a owl:Class ;
+    rdfs:label "Item" ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :hasStiffnessValue ; # GENERATED
+        owl:someValuesFrom :StiffnessValue # GENERATED
+    ] .
+
+:Product a owl:Class ;
+    rdfs:label "Product" ;
+    rdfs:subClassOf ns5:Item ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :hasStiffnessValue ; # GENERATED
+        owl:someValuesFrom :StiffnessValue # GENERATED
+    ] .
+
+:StiffnessValue a owl:Class ; # GENERATED
+    rdfs:label "Stiffness Value" ;
+    rdfs:subClassOf ns1:QuantityValue ;
+    rdfs:comment "A class representing the stiffness value of an item or product." .
+
+:hasStiffnessValue a owl:ObjectProperty ; # GENERATED
+    rdfs:label "has stiffness value" ;
+    rdfs:domain [ a owl:Class ;
+        owl:unionOf ( :Item :Product ) ] ;
+    rdfs:range :StiffnessValue ;
+    rdfs:comment "Relates an item or product to its stiffness value." .

@@ -1,0 +1,19 @@
+@prefix : <http://w3id.org/CEON/ontology/textile/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:MaintenanceOrRepairProcess a owl:Class ;
+    rdfs:label "Maintenance or Repair Process" ;
+    rdfs:comment "A process that involves maintaining or repairing textile products." ;
+    rdfs:subClassOf <http://w3id.org/CEON/ontology/processODP/Process> .
+
+:maintainedOrRepairedBy a owl:ObjectProperty ;
+    rdfs:label "maintained or repaired by" ;
+    rdfs:comment "Relates a textile product to a trained person who maintains or repairs it." ;
+    rdfs:domain :TextileProduct ;
+    rdfs:range :TrainedPerson .
+
+:TrainedPerson a owl:Class ;
+    rdfs:label "Trained Person" ;
+    rdfs:comment "A person who is trained to maintain or repair textile products." .
+

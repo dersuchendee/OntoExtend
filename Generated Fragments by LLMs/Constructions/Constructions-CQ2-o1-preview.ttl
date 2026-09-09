@@ -1,0 +1,18 @@
+@prefix : <http://w3id.org/CEON/demo/construction/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:Item a owl:Class ;
+    rdfs:label "Item" ;
+    rdfs:comment "A class representing items which may have various attributes including fire resistance ratings." .
+
+:Product a owl:Class ;
+    rdfs:label "Product" ;
+    rdfs:comment "A class representing products which may have various attributes including fire resistance ratings." .
+
+:hasFireResistanceRating a owl:ObjectProperty ;
+    rdfs:label "has fire resistance rating" ;
+    rdfs:comment "Relates a product or item to its fire resistance rating." ;
+    rdfs:domain [ a owl:Class ] ;
+    rdfs:range :FireResistanceRelation .
+

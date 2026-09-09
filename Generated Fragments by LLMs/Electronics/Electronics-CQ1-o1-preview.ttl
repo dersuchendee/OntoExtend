@@ -1,0 +1,37 @@
+@prefix : <http://w3id.org/CEON/demo/electronics/> .
+@prefix ns5: <http://w3id.org/CEON/ontology/product/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:ConductiveItem a owl:Class ;
+    rdfs:label "Conductive Item" ;
+    rdfs:comment "An item that possesses conductive properties." ;
+    rdfs:subClassOf ns5:Item, [ a owl:Restriction ;
+                                owl:onProperty :hasResistivityValue ;
+                                owl:someValuesFrom :ResistivityValue ] .
+
+:ConductiveProduct a owl:Class ;
+    rdfs:label "Conductive Product" ;
+    rdfs:comment "A product that is conductive in nature." ;
+    rdfs:subClassOf ns5:Product, [ a owl:Restriction ;
+                                   owl:onProperty :hasResistivityValue ;
+                                   owl:someValuesFrom :ResistivityValue ] .
+
+:ConductiveElectronicsProduct a owl:Class ;
+    rdfs:label "Conductive Electronics Product" ;
+    rdfs:comment "An electronics product that is conductive." ;
+    rdfs:subClassOf :ElectronicsProduct, :ConductiveProduct .
+
+:ConductiveElectronicsItem a owl:Class ;
+    rdfs:label "Conductive Electronics Item" ;
+    rdfs:comment "An electronics item that is conductive." ;
+    rdfs:subClassOf ns5:Item, :ConductiveItem .
+
+:ConductiveItemsOrProducts a owl:Class ;
+    rdfs:label "Conductive Items or Products" ;
+    rdfs:comment "A union class representing items or products that are conductive." ;
+    owl:equivalentClass [ a owl:Class ;
+                          owl:unionOf ( :ConductiveItem 
+                                        :ConductiveProduct 
+                                        :ConductiveElectronicsProduct 
+                                        :ConductiveElectronicsItem ) ] .

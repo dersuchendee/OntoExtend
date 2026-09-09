@@ -1,0 +1,17 @@
+@prefix : <http://w3id.org/CEON/ontology/textile/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:TextileProduct a owl:Class ;
+    rdfs:label "Textile Product" ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :maintenanceOrRepairPossible ;
+        owl:hasValue false
+    ] .
+
+:maintenanceOrRepairPossible a owl:DatatypeProperty ; # GENERATED
+    rdfs:label "maintenance or repair possible" ;
+    rdfs:comment "Indicates if maintenance or repair is possible during the use period of a textile product" ;
+    rdfs:domain :TextileProduct ;
+    rdfs:range xsd:boolean .

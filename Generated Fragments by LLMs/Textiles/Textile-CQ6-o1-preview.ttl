@@ -1,0 +1,35 @@
+@prefix : <http://w3id.org/CEON/ontology/textile/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:TextileProduct a owl:Class ;
+    rdfs:label "Textile Product" ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :requiresMaintenanceOrRepair ;
+        owl:hasValue false
+    ] .
+
+:requiresMaintenanceOrRepair a owl:DatatypeProperty ;
+    rdfs:label "requires maintenance or repair" ;
+    rdfs:comment "Indicates whether the textile product requires maintenance or repair if the intended use is followed." ;
+    rdfs:range xsd:boolean .
+
+:TextileProductIntendedUse a owl:Class ;
+    rdfs:label "Textile Product Intended Use" ;
+    rdfs:comment "Represents the intended use of a textile product." .
+
+:hasIntendedUse a owl:ObjectProperty ;
+    rdfs:label "has intended use" ;
+    rdfs:comment "Relates a textile product to its intended use." ;
+    rdfs:domain :TextileProduct ;
+    rdfs:range :TextileProductIntendedUse .
+
+:TextileProductNoMaintenance a owl:Class ;
+    rdfs:label "Textile Product No Maintenance" ;
+    rdfs:comment "A textile product that requires no maintenance or repair if the intended use is followed." ;
+    rdfs:subClassOf :TextileProduct, [
+        a owl:Restriction ;
+        owl:onProperty :requiresMaintenanceOrRepair ;
+        owl:hasValue false
+    ] .

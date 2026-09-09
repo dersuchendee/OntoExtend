@@ -1,0 +1,19 @@
+@prefix : <http://w3id.org/CEON/ontology/textile/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:TextileProductForBetterUse a owl:Class ;  # GENERATED
+    rdfs:label "Textile Product For Better Use" ;  # GENERATED
+    rdfs:comment "Textile products that are designed for better use, including recycling, renewable content, refurbishment, remanufacturing, reuse, and dismantling." ;  # GENERATED
+    rdfs:subClassOf :TextileProduct,  # Existing class
+        [ a owl:Restriction ;
+            owl:onProperty rdf:type ;
+            owl:someValuesFrom [ a owl:Class ;
+                owl:unionOf (
+                    :TextileProductDesignForRecycling
+                    :TextileProductRenewableContent
+                    :TextileProductDesignForRefurbishment
+                    :TextileProductDesignForRemanufacturing
+                    :TextileProductDesignForReuseMethod
+                    :TextileProductDesignForDismantling
+                ) ] ] .

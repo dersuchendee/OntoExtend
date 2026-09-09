@@ -1,0 +1,21 @@
+@prefix : <http://w3id.org/CEON/ontology/textile/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:ConsumableTextileProduct a owl:Class ;
+    rdfs:label "Consumable Textile Product" ;
+    rdfs:comment "A class representing textile products that are consumables." ;
+    rdfs:subClassOf :TextileProduct .
+
+:EasyToReplaceTextileProduct a owl:Class ;
+    rdfs:label "Easy to Replace Textile Product" ;
+    rdfs:comment "A class representing textile products that can be easily replaced by untrained personnel." ;
+    rdfs:subClassOf :TextileProduct .
+
+:ConsumableAndEasyToReplaceTextileProduct a owl:Class ;
+    rdfs:label "Consumable and Easy to Replace Textile Product" ;
+    rdfs:comment "A class representing textile products that are consumables and can be easily replaced by untrained personnel." ;
+    rdfs:subClassOf [
+        a owl:Class ;
+        owl:intersectionOf (:ConsumableTextileProduct :EasyToReplaceTextileProduct)
+    ] .

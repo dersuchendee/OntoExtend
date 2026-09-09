@@ -1,0 +1,20 @@
+@prefix : <http://w3id.org/CEON/ontology/textile/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:TextileProductWithoutHarmfulDispersionOrEmission a owl:Class ; # GENERATED
+    rdfs:label "Textile Product Without Harmful Dispersion or Emission" ; # GENERATED
+    rdfs:comment "A class representing textile products that do not cause harmful dispersion or emission." ; # GENERATED
+    rdfs:subClassOf :TextileProduct, # Reuse existing TextileProduct class
+        [ a owl:Restriction ; # Add restriction to ensure no harmful dispersion or emission
+            owl:onProperty :containsHazardousSubstanceAbove0.1ForPreConsumerRecycledContent ;
+            owl:hasValue false
+        ],
+        [ a owl:Restriction ;
+            owl:onProperty :containsHazardousSubstanceAbove0.1ForPostConsumerRecycledContent ;
+            owl:hasValue false
+        ],
+        [ a owl:Restriction ;
+            owl:onProperty :textileProductDesignForRecycling ; # Assuming this property is relevant for clean design
+            owl:allValuesFrom :TextileProductDesignToBeCleanlyRemoved
+        ] .

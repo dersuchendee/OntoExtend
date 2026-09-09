@@ -1,0 +1,19 @@
+@prefix location: <http://w3id.org/CEON/ontology/location/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+org:hasName a owl:DatatypeProperty ;
+    rdfs:label "has name" ;
+    rdfs:comment "The name of the organization." ;
+    rdfs:domain org:Organization ;
+    rdfs:range xsd:string .
+
+org:Organization a owl:Class ;
+    rdfs:label "Organization" ;
+    rdfs:comment "An entity such as a company or institution that has a collective goal and is linked to an external environment." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty location:hasLocation ;
+            owl:someValuesFrom location:Location ] .
+

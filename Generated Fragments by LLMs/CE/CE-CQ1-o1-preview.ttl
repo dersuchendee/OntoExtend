@@ -1,0 +1,8 @@
+@prefix : <http://www.semanticweb.org/OntoDESIDE#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:Catalyst a owl:Class ;
+    rdfs:label "Catalyst" ;
+    rdfs:comment "A substance that increases the rate of a chemical reaction without itself undergoing any permanent chemical change." .
+

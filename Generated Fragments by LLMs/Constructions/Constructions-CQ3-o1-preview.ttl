@@ -1,0 +1,54 @@
+@prefix : <http://w3id.org/CEON/demo/construction/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:Product a owl:Class ;
+    rdfs:label "Product" ;
+    rdfs:comment "A product entity which can be subjected to certain treatment policies." .
+
+:Item a owl:Class ;
+    rdfs:label "Item" ;
+    rdfs:comment "An item is a specific instance of a product." .
+
+:Policy a owl:Class ; # GENERATED
+    rdfs:label "Policy" ;
+    rdfs:comment "A policy that describes the treatment approach for a product or item." .
+
+:TreatmentPolicy a owl:Class ; # GENERATED
+    rdfs:label "Treatment Policy" ;
+    rdfs:comment "A treatment policy that can be applied to a product or item, such as reuse, refurbish, or reprocessing." ;
+    owl:equivalentClass [ a owl:Class ;
+        owl:unionOf ( :ReusePolicy :RefurbishPolicy :ReprocessingPolicy )
+    ] .
+
+:ReusePolicy a owl:Class ; # GENERATED
+    rdfs:label "Reuse Policy" ;
+    rdfs:comment "A policy for reuse of a product or item." .
+
+:RefurbishPolicy a owl:Class ; # GENERATED
+    rdfs:label "Refurbish Policy" ;
+    rdfs:comment "A policy for refurbishing a product or item." .
+
+:ReprocessingPolicy a owl:Class ; # GENERATED
+    rdfs:label "Reprocessing Policy" ;
+    rdfs:comment "A policy for reprocessing a product or item." .
+
+:hasPolicy a owl:ObjectProperty ; # GENERATED
+    rdfs:label "has policy" ;
+    rdfs:comment "Relates a product or item to its treatment policy." ;
+    rdfs:domain [ a owl:Class ;
+        owl:unionOf ( :Product :Item )
+    ] ;
+    rdfs:range :TreatmentPolicy .
+
+:Product rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty :hasPolicy ;
+    owl:someValuesFrom :TreatmentPolicy
+] .
+
+:Item rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty :hasPolicy ;
+    owl:someValuesFrom :TreatmentPolicy
+] .

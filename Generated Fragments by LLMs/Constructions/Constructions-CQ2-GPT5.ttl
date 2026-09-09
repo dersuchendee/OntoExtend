@@ -1,0 +1,21 @@
+@prefix : <http://w3id.org/CEON/demo/construction/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:fireResistanceDuration a owl:DatatypeProperty ;
+    rdfs:label "fire resistance duration" ;
+    rdfs:comment "Specifies the duration of fire resistance in minutes." ;
+    rdfs:domain :FireResistanceRelation ;
+    rdfs:range xsd:int .
+
+:hasFireResistanceRating a owl:ObjectProperty ;
+    rdfs:label "has fire resistance rating" ;
+    rdfs:comment "Relates a product or item to its fire resistance rating." ;
+    rdfs:domain :ProductOrItem ;
+    rdfs:range :FireResistanceRelation .
+
+:ProductOrItem a owl:Class ;
+    rdfs:label "Product or Item" ;
+    rdfs:comment "A class representing either a product or an item, which can have various qualities such as fire resistance." .
+

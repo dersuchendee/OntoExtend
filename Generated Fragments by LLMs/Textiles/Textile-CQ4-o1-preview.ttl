@@ -1,0 +1,9 @@
+@prefix : <http://w3id.org/CEON/ontology/textile/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:TextileProductDesignedForPositiveImpact a owl:Class ;
+    rdfs:label "Textile Product Designed for Positive Impact" ;
+    rdfs:comment "A textile product that is designed for actively positive impacts, such as being renewable, recyclable, or designed for refurbishment." ;
+    rdfs:subClassOf :TextileProduct .
+

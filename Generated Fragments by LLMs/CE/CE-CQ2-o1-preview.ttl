@@ -1,0 +1,19 @@
+@prefix : <http://www.semanticweb.org/OntoDESIDE#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:ActorThatIsOrganizationOrPerson a owl:Class ;
+    rdfs:label "Actor that is an Organization or Person" ;
+    rdfs:comment "An actor that is either an organization or a person." ;
+    owl:equivalentClass [ a owl:Class ] .
+
+org:Organization a owl:Class ;
+    rdfs:label "Organization" ;
+    rdfs:comment "An entity such as a company or institution comprised of people." .
+
+foaf:Person a owl:Class ;
+    rdfs:label "Person" ;
+    rdfs:comment "An individual human being." .
+

@@ -1,0 +1,22 @@
+@prefix : <http://www.semanticweb.org/OntoDESIDE#> .
+@prefix location: <http://w3id.org/CEON/ontology/location/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:hasName a owl:DatatypeProperty ;
+    rdfs:label "has name" ;
+    rdfs:comment "The name of an organization." ;
+    rdfs:domain org:Organization ;
+    rdfs:range rdfs:Literal .
+
+org:Organization a owl:Class ;
+    rdfs:label "Organization" ;
+    rdfs:comment "An entity comprising individuals working together towards shared goals." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :hasName ;
+            owl:someValuesFrom rdfs:Literal ],
+        [ a owl:Restriction ;
+            owl:onProperty location:hasLocation ;
+            owl:someValuesFrom location:Location ] .
+

@@ -1,0 +1,33 @@
+@prefix : <http://w3id.org/CEON/demo/electronics/> .
+@prefix ns1: <http://qudt.org/schema/qudt/> .
+@prefix ns5: <http://w3id.org/CEON/ontology/product/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:Conductivity a owl:Class ;
+    rdfs:label "Conductivity" ;
+    rdfs:comment "Represents the conductivity property of an item or product." ;
+    rdfs:subClassOf ns1:Quantity .
+
+:hasConductivityValue a owl:ObjectProperty ;
+    rdfs:label "has conductivity value" ;
+    rdfs:comment "Relates an item or product to its conductivity value." ;
+    rdfs:domain [ a owl:Class ;
+                  owl:unionOf (ns5:Item :Product) ] ;
+    rdfs:range :ConductivityValue ;
+    rdfs:subPropertyOf ns1:quantityValue .
+
+:ConductivityValue a owl:Class ;
+    rdfs:label "Conductivity Value" ;
+    rdfs:comment "Represents the conductivity value of an item or product." ;
+    rdfs:subClassOf :ResistivityValue, [ a owl:Restriction ;
+            owl:onProperty ns1:numericValue ;
+            owl:allValuesFrom xsd:double ],
+        [ a owl:Restriction ;
+            owl:onProperty ns1:unit ;
+            owl:hasValue ns1:Ohm ] .
+
+:Product a owl:Class ; # GENERATED
+    rdfs:label "Product" ;
+    rdfs:comment "Represents a product in the context of conductivity." ;
+    rdfs:subClassOf ns5:Item .

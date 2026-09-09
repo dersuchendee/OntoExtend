@@ -1,0 +1,13 @@
+@prefix : <http://w3id.org/CEON/demo/electronics/> .
+@prefix ns5: <http://w3id.org/CEON/ontology/product/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:StiffItem a owl:Class ;
+    rdfs:label "Stiff Item" ;
+    rdfs:comment "An item characterized by having stiffness properties." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :hasTensileModulus ;
+            owl:someValuesFrom :TensileModulus ],
+        ns5:Item .
+

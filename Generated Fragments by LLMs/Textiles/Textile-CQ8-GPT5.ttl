@@ -1,0 +1,18 @@
+@prefix : <http://w3id.org/CEON/ontology/textile/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+:ConsumableTextileProduct a owl:Class ;
+    rdfs:label "Consumable Textile Product" ;
+    rdfs:comment "A textile product that is consumable and can be easily replaced by untrained personnel." ;
+    rdfs:subClassOf :TextileProduct,
+        [ a owl:Restriction ;
+            owl:onProperty :canBeReplacedByUntrainedPersonnel ;
+            owl:hasValue true ] . # GENERATED
+
+:canBeReplacedByUntrainedPersonnel a owl:DatatypeProperty ; # GENERATED
+    rdfs:label "can be replaced by untrained personnel" ;
+    rdfs:comment "Indicates whether a textile product can be replaced by untrained personnel." ;
+    rdfs:range rdf:Literal ;
+    rdfs:domain :TextileProduct .

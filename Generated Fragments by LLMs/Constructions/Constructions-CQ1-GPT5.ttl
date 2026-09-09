@@ -1,0 +1,31 @@
+@prefix : <http://w3id.org/CEON/demo/construction/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:FloorTile a owl:Class ; # GENERATED
+    rdfs:label "Floor Tile" ; # GENERATED
+    rdfs:comment "A floor tile is a type of product that can have various conditions." . # GENERATED
+
+:GoodCondition a owl:Class ; # GENERATED
+    rdfs:label "Good Condition" ; # GENERATED
+    rdfs:comment "Represents a good condition of a product." ; # GENERATED
+    rdfs:subClassOf :Condition .
+
+:MediumCondition a owl:Class ; # GENERATED
+    rdfs:label "Medium Condition" ; # GENERATED
+    rdfs:comment "Represents a medium condition of a product." ; # GENERATED
+    rdfs:subClassOf :Condition .
+
+:BadCondition a owl:Class ; # GENERATED
+    rdfs:label "Bad Condition" ; # GENERATED
+    rdfs:comment "Represents a bad condition of a product." ; # GENERATED
+    rdfs:subClassOf :Condition .
+
+:FloorTileCondition a owl:Class ; # GENERATED
+    rdfs:label "Floor Tile with Condition" ; # GENERATED
+    rdfs:comment "A floor tile that can have a good, medium, or bad condition." ; # GENERATED
+    rdfs:subClassOf :FloorTile, 
+        [ a owl:Restriction ;
+          owl:onProperty :hasCondition ;
+          owl:someValuesFrom [ a owl:Class ;
+                               owl:unionOf ( :GoodCondition :MediumCondition :BadCondition ) ] ] .

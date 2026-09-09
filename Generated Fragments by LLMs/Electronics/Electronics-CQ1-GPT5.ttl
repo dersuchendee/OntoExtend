@@ -1,0 +1,26 @@
+@prefix : <http://w3id.org/CEON/demo/electronics/> .
+@prefix ns5: <http://w3id.org/CEON/ontology/product/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:ConductiveItem a owl:Class ;
+    rdfs:label "Conductive Item" ;
+    rdfs:comment "An item that has conductive properties." ;
+    rdfs:subClassOf ns5:Item,
+        [ a owl:Restriction ;
+            owl:onProperty :hasResistivityValue ;
+            owl:someValuesFrom :ResistivityValue ] . # Assuming ResistivityValue implies conductivity
+
+:ConductiveProduct a owl:Class ;
+    rdfs:label "Conductive Product" ;
+    rdfs:comment "A product that has conductive properties." ;
+    rdfs:subClassOf ns5:Product,
+        [ a owl:Restriction ;
+            owl:onProperty :hasResistivityValue ;
+            owl:someValuesFrom :ResistivityValue ] . # Assuming ResistivityValue implies conductivity
+
+:ConductiveEntity a owl:Class ;
+    rdfs:label "Conductive Entity" ;
+    rdfs:comment "An entity that is either a conductive item or a conductive product." ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:unionOf ( :ConductiveItem :ConductiveProduct ) ] .

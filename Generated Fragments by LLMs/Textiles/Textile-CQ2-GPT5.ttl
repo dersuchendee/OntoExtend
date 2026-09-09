@@ -1,0 +1,16 @@
+@prefix : <http://w3id.org/CEON/ontology/textile/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+:MaintainedBy a owl:ObjectProperty ;
+    rdfs:label "maintained by" ;
+    rdfs:comment "Indicates the agent responsible for maintaining a textile product." .
+
+:RepairedBy a owl:ObjectProperty ;
+    rdfs:label "repaired by" ;
+    rdfs:comment "Indicates the agent responsible for repairing a textile product." .
+
+:UntrainedPerson a owl:Class ;
+    rdfs:label "Untrained Person" ;
+    rdfs:comment "A person without formal training or certification in textile maintenance or repair." .
+
