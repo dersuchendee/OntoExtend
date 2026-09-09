@@ -7,12 +7,16 @@
 
 ## Ontology Extension through Retrieval-Augmented Generation
 <p align="center">
-  <img src="Images/unnamed.png" alt="OntoExtend Logo" />
+  <img src="Images/Setup2.png" alt="OntoExtend Logo" />
 </p>
 
 OntoExtend automatically generates OWL/SHACL ontology fragments from natural-language **competency questions** (CQs) by retrieving semantically relevant elements from existing reference ontologies and prompting an LLM to compose valid Turtle (TTL) output.  The generated fragments reuse classes, properties, and restrictions already defined in the reference ontologies wherever possible, and only mint new concepts when the CQ demands it.
 
-
+## Quick start:
+1- Embed your large ontology; each vector represents a class or property.
+2- Embed your CQ and retrieve the top 20 elements from your embedding space. (Retrieval step)
+3- Put the CQ (with story if it exists) and the top 20 retrieved elements in the placeholder: OntoExtend Script/OntoExtender/Prompting Techniques/Components/PromptTemplate/DecomposedPromptingLong.py  (Extention step)
+4- Send it to an LLM and paste it into your ontology (Integration step)
 ---
 
 ## Table of Contents
