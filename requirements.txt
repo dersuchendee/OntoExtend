@@ -8,7 +8,7 @@ openai==0.27.8
 owlready2==0.48
 pandas==1.5.3
 pydantic==2.12.0
-python-dotenv==1.1.1
+python-dotenv==1.2.2
 PyYAML==6.0
 PyYAML==6.0.3
 rdflib==7.2.1
